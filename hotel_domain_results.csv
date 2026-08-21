@@ -1,0 +1,13 @@
+index,technique,key_config,test_micro_f1_pct,test_macro_f1_pct,precision_pct,recall_pct,delta_vs_baseline,verdict
+0a,Hotel (earlier baseline),encoder_lr=5e-5,75.13,,75.39,74.88,,earlier baseline before encoder_lr tuning
+0b,Hotel_clean (ABSA_LLMs re-split),different train/dev/test split - not directly comparable,74.66,,75.83,73.53,,reference only
+1,Baseline (encoder_lr=2e-5),--encoder_lr 2e-5,75.63,40.74,77.11,74.20,,reference for all A/B tests below
+2,Child-Tuning,--child_tuning --child_tuning_ratio 0.3,75.75,42.49,77.77,73.83,+0.12,"best on BOTH micro (+0.12) and macro (+1.75) -- not noise, genuine best technique"
+3,Asymmetric Loss (ASL),--acd_loss_fn asl,75.13,,77.05,73.31,-0.50,worse - recall collapse pattern
+4,Focal loss (post double-counting fix),--acd/sent/joint_loss_fn focal,74.21,,73.55,74.88,-1.42,worse - real effect not noise
+5,Per-category threshold,infer.py --per_category_threshold on baseline checkpoint,75.70,41.28,74.83,76.60,+0.07,flat on micro; tiny macro gain
+6,Rare-category oversampling,--oversample_rare_categories --oversample_power 0.5,75.20-75.27,42.09-42.21,73.8-74.0,76.6-77.7,-0.4,only technique with a real macro-F1 gain; small micro cost
+7,Architecture sweep,--num_attention_heads 12 --adapter_dim 384,74.83,,77.53,72.30,-0.80,worse - more capacity is not the bottleneck
+8,Category self-attention,--category_self_attention,74.77,,72.22,77.52,-0.86,worse overall; did help ROOMS#MISCELLANEOUS specifically
+X1,"[excluded, bundled/buggy] Kitchen sink",gate_lr=5e-3 + llrd_decay=0.9 + focal(gamma=2; pre-fix) + per_category_threshold (unguarded/buggy),73.16,,71.60,74.79,-2.47,excluded - bundled untested changes + known threshold bug
+X2,"[excluded, bundled/buggy] Child-Tuning + focal",--child_tuning --acd/sent/joint_loss_fn focal (pre double-counting fix),73.92,,75.02,72.85,-1.71,excluded - predates focal double-counting fix

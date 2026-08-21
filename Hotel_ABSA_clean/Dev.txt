@@ -1,0 +1,3180 @@
+#1
+phòng_ốc có thiết_kế đẹp vệ_sinh đảm_bảo
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#2
+nếu số_lượng món ăn nhiều hơn thì tốt biết_mấy
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#3
+ngay chợ và hồ xuân_hương
+{LOCATION#GENERAL, positive}
+
+#4
+nhân_viên có phong_cách phục_vụ lịch_sự ân_cần
+{SERVICE#GENERAL, positive}
+
+#5
+về phòng_ốc thì tôi không cần phải nói nhiều nữa vì chất_lượng đã rất tốt rồi
+{ROOMS#QUALITY, positive}
+
+#6
+tuy_nhiên ăn sáng không được phong_phú và không hợp_khẩu_vị lắm
+{FOOD&DRINKS#QUALITY, negative}, {FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#7
+khi đến nhận phòng tại khách_sạn ttc hotel premium ngọc_lan ngọc_lan đà lạt thì hơi bất_ngờ vì tôi đặt phòng deluxe giường đôi nhưng khách_sạn lại đưa tôi giường đơn
+{HOTEL#GENERAL, negative}
+
+#8
+thái_độ phục_vụ của nhân_viên cũng thân_thiện chu_đáo
+{SERVICE#GENERAL, positive}
+
+#9
+nên lần này tôi đặt phòng cho bạn của tôi khi họ đến đà_lạt họ cũng không phàn_nàn gì khi ở đây
+{HOTEL#GENERAL, positive}
+
+#10
+vị_trí trung_tâm nhân_viên nhiệt_tình phòng_ốc tạm ổn so với giá_cả thì quá tốt
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#PRICES, positive}, {ROOMS#QUALITY, neutral}
+
+#11
+trong chuyến đi vừa_rồi thì tôi đã chọn khách_sạn ttc hotel premium ngọc_lan là nơi để nghỉ_ngơi
+{HOTEL#GENERAL, neutral}
+
+#12
+phòng_ốc cũng sạch_sẽ tươm_tất nội_thất trong phòng cũng trang_bị đầy_đủ
+{ROOMS#CLEANLINESS, positive}, {ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#13
+lúc đầu tôi thấy không vui lắm tại vì họ xếp tôi ở căn phòng gác mái
+{ROOMS#COMFORT, negative}, {ROOMS#DESIGN&FEATURES, negative}
+
+#14
+nhưng view không đẹp như mong_đợi
+{HOTEL#GENERAL, neutral}
+
+#15
+trang thiết_bị tiện_nghi khách_sạn cung_cấp khá đầy_đủ
+{FACILITIES#GENERAL, positive}
+
+#16
+phòng ở được giữ vệ_sinh sạch_sẽ tiện_nghi_trang thiêt bị trong phòng khách_sạn trang_bị đầy_đủ hơn nữa nhân_viên nơi này phục_vụ rất chu_đáo nhiệt_tình
+{ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}, {ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#17
+cách bố_trí trang thiết_bị hợp_lý các tiện_nghi khang_trang dọn phòng kỹ_lưỡng gọn_gàng
+{ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#18
+khách_sạn dịch_vụ tốt
+{SERVICE#GENERAL, positive}
+
+#19
+tuy_nhiên buffet cuối tuần không quá ngon nên các bạn không nên thử
+{FOOD&DRINKS#QUALITY, negative}
+
+#20
+khách_sạn ngọc_lan đà lạt có vị_trí nằm gần trung_tâm nên đi_lại thuận_tiện dịch_vụ phòng_ốc ở đây cũng tốt vệ_sinh phòng sạch_sẽ gọn_gàng tiện_nghi đầy_đủ nhân_viên thì lịch_sự vui_vẻ mọi thứ đều ổn giá_cả cũng khá hợp_lý tôi khá hài_lòng khi nghỉ tại đây
+{LOCATION#GENERAL, positive}, {ROOMS#QUALITY, positive}, {ROOMS#CLEANLINESS, positive}, {HOTEL#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOMS#PRICES, positive}, {HOTEL#COMFORT, positive}
+
+#21
+chỉ có bữa sáng ở đây là tôi thấy chưa được ưng_ý lắm ít món ăn nên cũng không ngon
+{FOOD&DRINKS#QUALITY, negative}
+
+#22
+nhân_viên chưa được niềm_nở biểu_cảm khuôn_mặt quá chán
+{SERVICE#GENERAL, negative}
+
+#23
+tôi có đặt dùm khách của tôi phòng ở khách_sạn ngọc_lan và khi khách đi về thì không có phàn_nàn gì về dịch_vụ cả nhìn_chung là hài_lòng khi nghỉ tại đây phòng_ốc mọi thứ đạt tiêu_chuẩn và đạt yêu_cầu
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}, {ROOMS#QUALITY, positive}
+
+#24
+nếu đánh_giá về tiêu_chuẩn thì khách_sạn này chưa đạt chuẩn sao cửa phòng tôi không kín hệ_thống cách_âm không tốt nên tôi bị ảnh_hưởng bởi tiếng_động bên ngoài buffet ít món khi tôi sử_dụng dịch_vụ ở nhà_hàng bên dưới khách_sạn thì nhận_xét về nhân_viên ở đây chưa năng_động thiếu chủ_động trong việc phục_vụ khi khách yêu_cầu thì mới phục_vụ thì tôi thấy hơi mất thời_gian nên chưa hài_lòng
+{HOTEL#QUALITY, negative}, {ROOM_AMENITIES#QUALITY, negative}, {ROOMS#COMFORT, negative}, {FOOD&DRINKS#STYLE&OPTIONS, negative}, {SERVICE#GENERAL, negative}
+
+#25
+đặc_biệt là căn phòng tôi ở được trang_bị đầy_đủ tiện_nghi hữu_dụng và không kém phần sạch_sẽ
+{ROOM_AMENITIES#GENERAL, positive},   {ROOMS#CLEANLINESS, positive}
+
+#26
+tôi đánh_giá khách_sạn được điểm giá_cả như vậy tôi thấy rất là hợp_lý
+{HOTEL#PRICES, positive}, {HOTEL#GENERAL, positive}
+
+#27
+theo ý_kiến cá_nhân của tôi thì tôi rất hài_lòng về khách_sạn ngọc_lan đà_lạt khi tôi có đặt phòng tại đây trong chuyến đi vừa_qua
+{HOTEL#COMFORT, positive}
+
+#28
+bên cạnh đó thì vị_trí của khách_sạn khá thuận_tiện cho việc đi_lại của tôi
+{LOCATION#GENERAL, positive}
+
+#29
+khách_sạn ngọc_lan có dịch_vụ rất tốt tôi rất thích và rất thoải_mái khi nghỉ tại đây
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#30
+khách_sạn ngọc_lan đà lạt có vị_trí ở trung_tâm nên đi_lại rất thuận_tiện tuy_nhiên cũng do gần trung_tâm nên không_gian có vẻ hơi ồn_ào và cũng hạn_chế view đẹp được cái thì phòng_ốc của khách_sạn hơi nhỏ nhưng tiện_nghi rất đầy_đủ vệ_sinh sạch_sẽ đúng tiêu_chuẩn_sao
+{LOCATION#GENERAL, positive}, {HOTEL#COMFORT, negative}, {ROOMS#DESIGN&FEATURES, negative}, {ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {HOTEL#QUALITY, positive}
+
+#31
+đầy_đủ tiện_nghi cơ_bản phù_hợp nhu_cầu sử_dụng
+{ROOM_AMENITIES#GENERAL, positive}
+
+#32
+khách_sạn ở khu_vực đông_đúc nhưng trong phòng rất yên_tĩnh thoải_mái để nghỉ_ngơi tiện_nghi tương_đối ổn
+{HOTEL#COMFORT, positive}, {LOCATION#GENERAL, neutral}, {ROOM_AMENITIES#GENERAL, positive}
+
+#33
+mọi dịch_vụ ở đây đều tốt tiện_nghi đầy_đủ đáp_ứng được nhu_cầu sử_dụng của tôi vị_trí thuận_tiện đi_lại và sinh_hoạt vui_chơi thái_độ phục_vụ của nhân_viên cũng vui_vẻ và thân_thiện
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {FACILITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#34
+khách_sạn ngọc_lan phòng đẹp vệ_sinh sạch_sẽ
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#35
+phòng có tầm nhìn ra hồ và chợ đêm rất tuyệt
+{ROOMS#DESIGN&FEATURES, positive}
+
+#36
+vì dịch_vụ của khách_sạn cũng giống như những khách_sạn giá_tiền sao không có điểm gì nổi_bật
+{SERVICE#GENERAL, negative}
+
+#37
+vi trí khách_sạn cũng ngay trung_tâm rất thuận_tiện cho tôi đi_lại và di_chuyển
+{LOCATION#GENERAL, positive}
+
+#38
+phục_vụ chu_đáo nhân_viên nhiệt_tình vệ_sinh cũng rất sạch_sẽ
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#39
+rất thoải_mái
+{HOTEL#COMFORT, positive}
+
+#40
+vì_vậy tôi thấy vệ_sinh cũng không được tốt
+{HOTEL#CLEANLINESS, negative}
+
+#41
+nói_chung là hài_lòng ngoại_trừ sàn phòng lót bằng gỗ rất trơn không phù_hợp và an_toàn cho trẻ_em nên thay bằng thảm
+{HOTEL#GENERAL, positive}, {ROOM_AMENITIES#COMFORT, negative}
+
+#42
+địa_điểm tốt ăn sáng hơi kém giá_cả hơi đắt nhưng có dịp sẽ ghé thăm nữa
+{LOCATION#GENERAL, positive}, {FOOD&DRINKS#QUALITY, negative}, {HOTEL#PRICES, negative}
+
+#43
+khách_sạn nằm ở vị_trí trung_tâm có_thể xem bắn pháo_hoa từ phòng nếu đặt hồ view
+{LOCATION#GENERAL, positive}
+
+#44
+gia_đình tôi đã rất vui vì kì nghỉ này ngay lễ_hội hoa đà_lạt
+{HOTEL#GENERAL, neutral}
+
+#45
+duy chỉ có một_chút trục_trặc gối của khách_sạn rất cao
+{ROOM_AMENITIES#COMFORT, negative}
+
+#46
+đặc_biệt các nhân_viên rất cởi_mở và vui_vẻ
+{SERVICE#GENERAL, positive}
+
+#47
+vệ_sinh vô_cùng sạch_sẽ
+{HOTEL#CLEANLINESS, positive}
+
+#48
+cảm_ơn mytour đã chọn khách_sạn giúp tôi hẹn gặp lại các bạn vào dịp khác tôi sẽ liên_hệ mytour
+{HOTEL#GENERAL, neutral}
+
+#49
+họ đã sắp_xếp phòng cho chúng_tôi rất lãng_mạn ngọt_ngào làm chúng_tôi cảm_giác thật hạnh_phúc
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#COMFORT, positive}
+
+#50
+thức_ăn sáng rất ngon nhân_viên tiếp_đón nhiệt_tình
+{SERVICE#GENERAL, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#51
+chúng_tôi cảm_thây yêu sự bình_yên của đà_lạt xen_lẫn cái hối_hả nhộn_nhịp của dòng người đang lưu_thông trên đường
+{HOTEL#GENERAL, neutral}
+
+#52
+việc xây_dựng rất ồn_ào
+{HOTEL#MISCELLANEOUS, positive}, {HOTEL#COMFORT, negative}
+
+#53
+phủ đầy sương vào buổi tối trong ánh đèn_vàng đường_phố hay mờ_ảo trong sương vào buổi sáng sớm
+{HOTEL#GENERAL, neutral}
+
+#54
+chúng_tôi đã có những giây_phút thư_giãn thoải_mái tại đây
+{HOTEL#COMFORT, positive}
+
+#55
+cũng rất nhiệt_tình và vui_vẻ
+{SERVICE#GENERAL, positive}
+
+#56
+nhưng nếu mở cửa_sổ cửa ra lang cang thì lại dễ bị muỗi đặc_biệt không hiểu sao muỗi ở đà_lạt lại to đến vậy
+{ROOMS#DESIGN&FEATURES, negative}, {ROOMS#COMFORT, negative}
+
+#57
+khách_sạn saphir đà lạt đáp_ứng được các yêu_cầu của tôi về phòng_ốc như phòng có một giường đôi phòng không hút thuốc phòng ở tầng cao
+{ROOMS#GENERAL, positive}
+
+#58
+khách_sạn saphir đà lạt có lối kiến_trúc cổ nên nhìn phòng_ốc có vẻ hơi cũ
+{HOTEL#DESIGN&FEATURES, negative}
+
+#59
+về vệ_sinh thì tương_đối ổn tiện_nghi thì thiếu bình đun nước sôi nên khi nào cần nước nóng thì báo nhân_viên đem lên
+{HOTEL#CLEANLINESS, neutral}, {ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#60
+bữa sáng phong_phú với nhiều sự lựa_chọn
+{FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#61
+phòng_ốc tại khách_sạn saphir đà lạt tôi nhận_xét là được dọn_dẹp sạch_sẽ và cũng đầy_đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#62
+giá_cả khá tương_xứng
+{HOTEL#PRICES, positive}
+
+#63
+trừ điểm này ra thì còn lại mọi thứ đều ổn từ hệ_thống phòng_ốc nhân_viên phục_vụ đến tiện_nghi đi kèm và vị_trí cũng như giá_cả
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#64
+phòng thì hôi dơ ẩm_thấp có cửa_sổ nhưng không thoáng và vệ_sinh không sạch_sẽ
+{ROOMS#CLEANLINESS, negative},   {ROOMS#COMFORT, negative}
+
+#65
+sau khi ở đây tôi có vài nhận_xét về phòng ôc cũng tàm_tạm view không đẹp nên tôi không thích cho lắm
+{HOTEL#GENERAL, negative}, {ROOMS#GENERAL, neutral}
+
+#66
+phòng_ốc cũng được nhân_viên lễ_tân thái_độ niềm_nở vị_trí thì gần trung_tâm và giá_cả cũng khá tốt
+{ROOMS#GENERAL, positive}, {SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#67
+chất_lượng phòng nghỉ phù_hợp với nhu_cầu nghỉ_ngơi tiện_nghi được trang_bị đầy_đủ họ chuẩn_bị phòng_ốc khá chu_đáo ngăn_nắp
+{ROOM_AMENITIES#GENERAL, positive},   {ROOMS#QUALITY, positive}
+
+#68
+phòng_ốc vệ_sinh ổn tiện_nghi cơ_bản tương_đối đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#GENERAL, positive}
+
+#69
+nhân_viên khách_sạn làm_việc cũng tốt
+{SERVICE#GENERAL, positive}
+
+#70
+bữa sáng phong_phú với nhiều sự lựa_chọn món ăn
+{FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#71
+đã nhiều lần tôi chọn khách_sạn saphir đà_lạt để đặt phòng vì nơi này có những dịch_vụ tốt tôi rất hài_lòng nhân_viên nhiệt_tình lịch_sự với khách_hàng phòng ở được giữ vệ_sinh sạch_sẽ và những tiện_nghi thiết_bị trong phòng đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#72
+nếu với mức giá_như thế_là không xứng_đáng chuyến này tôi chẳng hài_lòng
+{HOTEL#PRICES, negative}, {HOTEL#COMFORT, negative}
+
+#73
+trong chuyến du_lịch đến đà lạt vừa_rồi tôi đã chọn dịch_vụ mà khách_sạn saphir
+{HOTEL#GENERAL, positive}
+
+#74
+điều_kiện vệ_sinh tốt phòng được dọn_dẹp thường_xuyên
+{ROOMS#CLEANLINESS, positive}
+
+#75
+khách_sạn saphir đà lạt có dịch_vụ tốt mọi thứ đều tốt phòng_ốc sạch_sẽ và đầy_đủ tiện_nghi
+{HOTEL#GENERAL, positive}, {ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#76
+phòng_ốc khách_sạn rộng_rãi thiết_kế đẹp và nội_thất trong phòng bố_trí hợp_lý
+{ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#77
+nhân_viên phục_vụ thân_thiện lễ_tân vui_vẻ hướng_dẫn khách
+{SERVICE#GENERAL, positive}
+
+#78
+khách_sạn saphir ở đà lạt lần này tôi cảm_thấy chưa hài_lòng khi chọn dịch_vụ tại đây phòng_ốc đồ_đạc cũ_kỹ mà phòng tôi ở là phòng đầu_tiên gần lễ_tân nên rất ồn không có hệ_thống cách_âm nên rất khó ngủ nhưng được một điểm là nhân_viên ở đây cũng vui_vẻ thân_thiện và nhiệt_tình
+{SERVICE#GENERAL, positive}, {ROOM_AMENITIES#QUALITY, negative}, {HOTEL#COMFORT, negative}, {ROOM_AMENITIES#QUALITY, negative}
+
+#79
+tuy_nhiên phục_vụ bữa sáng chưa được đa_dạng lắm
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#80
+nhìn_chung khách_sạn sạch_sẽ cơ_sở vật_chất tốt đồ ăn sáng hơi nghèo_nàn nhưng tạm ổn so với tiêu_chuẩn_sao
+{HOTEL#CLEANLINESS, positive}, {FOOD&DRINKS#STYLE&OPTIONS, negative}, {FACILITIES#GENERAL, neutral}
+
+#81
+tôi đã nghỉ lại khách_sạn saphir trong chuyến du_lịch ngắn ngày của tôi tại đà_lạt
+{HOTEL#GENERAL, positive}
+
+#82
+khách_sạn sạch_sẽ nội_thất đầy_đủ khá khang_trang nên trong thời_gian nghỉ_ngơi lại đây tôi ở cũng cảm_thấy thoải_mái
+{HOTEL#CLEANLINESS, positive}, {HOTEL#COMFORT, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#83
+giá_cả khi đặt qua mytour tôi thấy cũng khá hợp_lý
+{HOTEL#PRICES, positive}
+
+#84
+không_gian mát_mẻ phòng_ốc tiện_nghi_vệ_sinh tươm_tất nhân_viên phục_vụ thì vừa vui_vẻ vừa nhiệt_tình nên tôi cũng tương_đối có ấn_tượng với khách_sạn này
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOMS#COMFORT, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#85
+căn phòng tôi ở trông cũng thoáng mát và sạch_sẽ nên nhìn_chung tôi thấy dịch_vụ như_vậy cũng tốt rồi
+{ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}, {SERVICE#GENERAL, positive}
+
+#86
+bốn là bữa sáng tại khách_sạn thì không được phong_phú và hầu_như toàn những món đồ khô nên chưa được tốt cho lắm
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#87
+tôi có đặt phòng tại khách_sạn saphir đà lạt thông_qua hệ_thống mytour dùm người bạn
+{HOTEL#GENERAL, positive}
+
+#88
+phòng_ốc ở khách_sạn saphir này cũng khá ổn vệ_sinh trong phòng khá sạch_sẽ nhưng tiện_nghi thì nhìn khá cũ tv thì cũ trong phòng cũng thiếu một_số tiện_nghi như bình đun nước hay nước uống miễn_phí
+{ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#QUALITY, negative}, {ROOMS#GENERAL, positive}
+
+#89
+nhìn_chung tôi thấy khá hài_lòng khi nghỉ tại đây
+{HOTEL#COMFORT, positive}
+
+#90
+thức_ăn ở đây cũng hơi nguội do cách bảo_quản đưa đến cho khách chưa được tốt
+{FOOD&DRINKS#QUALITY, negative}
+
+#91
+bữa ăn sáng phong_phú và phù_hợp_khẩu_vị với tôi
+{FOOD&DRINKS#QUALITY, positive}, {FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#92
+không có gì phàn_nàn về dịch_vụ ở đây cả
+{SERVICE#GENERAL, positive}
+
+#93
+với giá_cả như_vậy thì tôi thấy cũng khá hợp_lý
+{HOTEL#PRICES, positive}
+
+#94
+khách_sạn saphir đà lạt có chất_lượng và dịch_vụ cũng ổn
+{HOTEL#QUALITY, neutral}, {SERVICE#GENERAL, neutral}
+
+#95
+vị_trí thuận_tiện cho việc đi_lại trong chuyến công_tác của tôi
+{LOCATION#GENERAL, positive}
+
+#96
+không_gian xung_quanh khách_sạn cũng khá đẹp và thoáng
+{HOTEL#GENERAL, positive}
+
+#97
+bữa ăn có nhiều món để lựa_chọn các món ăn cũng ổn
+{FOOD&DRINKS#QUALITY, positive}, {FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#98
+khách_sạn saphir toạ_lạc tại trung_tâm thành_phố đà lạt gần chợ khá thuận_tiện đi_lại tham_quan những địa_điểm du_lịch
+{LOCATION#GENERAL, positive}
+
+#99
+cảm_ơn các bạn nhân_viên mytour đã hỗ_trợ tôi đặt phòng
+{HOTEL#GENERAL, positive}
+
+#100
+giá_như vậy là khá rẻ cho chất_lượng sao
+{HOTEL#PRICES, positive}, {HOTEL#QUALITY, positive}
+
+#101
+hôm tôi đến khách_sạn xếp tôi phòng ở đưới tầng hầm phòng_vệ_sinh thì có mùi hôi khách_sạn thì tối
+{ROOM_AMENITIES#CLEANLINESS, negative}, {HOTEL#DESIGN&FEATURES, negative}
+
+#102
+còn lại những tiện_nghi và dịch_vụ của khách_sạn thì rất tốt
+{ROOM_AMENITIES#GENERAL, positive}
+
+#103
+tiện_nghi trong phòng cũng ổn tuy_nhiên tôi thấy diện_tích phòng rất nhỏ và phòng tôi được xếp ở lầu trên cùng tôi có con nhỏ nên thấy hơi bất_tiện
+{ROOMS#COMFORT, negative}, {ROOM_AMENITIES#GENERAL, negative}
+
+#104
+khách_sạn saphir đà lạt có tiêu_chuẩn sao nhưng không có máy điều_hoà cũng không có máy quạt mùa này thời_tiết nóng nên tôi cảm_thấy chưa được thoải_mái lắm
+{ROOM_AMENITIES#DESIGN&FEATURES, negative}, {ROOMS#COMFORT, negative}
+
+#105
+khách_sạn saphir đà lạt có kiến_trúc và được bài_trí theo phong_cách cổ nhưng diện_tích phòng hơi nhỏ nên chưa được thoải_mái lắm
+{HOTEL#DESIGN&FEATURES, positive}, {ROOMS#DESIGN&FEATURES, negative}, {ROOMS#COMFORT, negative}
+
+#106
+phục_vụ nhiệt_tình dễ_thương
+{SERVICE#GENERAL, positive}
+
+#107
+thái_độ nhân_viên phục_vụ rất tốt chỉ không hài_lòng vì dù còn phòng trống nhưng khách_sạn vẫn thu phí lấy phòng sớm giá_tiền nghìn điểm tốt nhất của khách_sạn là buffet cực ngon của cô đầu_bếp cực dễ_thương x cám_ơn bạn phan hoàng diệu thư nhân_viên chăm_sóc khách_hàng của mytour đã nhiệt_tình hỗ_trợ mình trong đơn đặt phòng này dù mình thay_đổi ngày đi đến lần nhưng bạn vẫn nhiệt_tình hỗ_trợ
+{SERVICE#GENERAL, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#108
+một nơi nổi_tiếng với những khung_cảnh hữu_tình thơ_mộng
+{HOTEL#GENERAL, positive}
+
+#109
+phòng ở sạch_sẽ thái_độ phục_vụ của nhân_viên khách_sạn rất tốt chu_đáo thân_thiện
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, negative}
+
+#110
+tôi rất hài_lòng về khách_sạn saphir đà lạt phòng thoáng mát có view nhìn ra toàn thành_phố rất đẹp nhân_viên lại nhiệt_tình chu_đáo
+{ROOMS#GENERAL, positive}, {SERVICE#GENERAL, positive},   {ROOMS#COMFORT, positive}
+
+#111
+khách_sạn yên_tĩnh mặc_dù gần trung_tâm
+{LOCATION#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#112
+không_gian và phòng khách có thiết_kế cá_tính rất hợp để chụp ảnh ở đây
+{HOTEL#DESIGN&FEATURES, positive}
+
+#113
+ban_đêm có thêm sữa nóng khá tốt
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#114
+vì cảm_giác nó hơi thấp hình_như hợp khách tây hơn là khách việt
+{ROOMS#COMFORT, negative}
+
+#115
+phòngsạch sẽ
+{ROOMS#CLEANLINESS, positive}
+
+#116
+điểm cộng cho khách_sạn là buffet sáng ở saphir phong_phú và ngon nội_thất đẹp wifi mạnh gần chợ phòng giống trong hình chụp
+{FOOD&DRINKS#QUALITY, positive}, {FOOD&DRINKS#STYLE&OPTIONS, positive}, {LOCATION#GENERAL, positive}, {FACILITIES#QUALITY, positive}
+
+#117
+khung_cảnh đẹp
+{HOTEL#DESIGN&FEATURES, positive}, {HOTEL#GENERAL, positive}
+
+#118
+phòng_ốc cũng sạch_sẽ tươm_tất
+{ROOMS#CLEANLINESS, positive}
+
+#119
+khách_sạn phục_vụ bữa ăn đêm nên rất tiện cho khách lẻ ngại đi ra ngoài khi trời lạnh
+{SERVICE#GENERAL, positive}, {FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#120
+khách_sạn saphir đà lạt mới chỉ khai_trương cách đây tháng
+{HOTEL#GENERAL, positive}
+
+#121
+phụ vụ tận_tình chu_đáo nhưng thật_sự tốt nếu có thêm những hướng_dẫn về đặc_sản và đặc_trưng tại địa_phương ví_dụ như những nơi ăn_uống tham_quan cảnh thiên_nhiên
+{SERVICE#GENERAL, positive}
+
+#122
+người đàn_ông lấy túi của chúng_tôi và đưa chúng_tôi đến phòng của chúng_tôi thậm_chí sẽ không chấp_nhận tiền boa
+{SERVICE#GENERAL, positive}
+
+#123
+nhân_viên tiếp_đón khách lịch_sự thái_độ hoà_đồng
+{SERVICE#GENERAL, positive}
+
+#124
+còn vị_trí thì không thuận_tiện đi_lại lắm
+{LOCATION#GENERAL, negative}
+
+#125
+nhân_viên thì cũng vui_vẻ và hiền
+{SERVICE#GENERAL, positive}
+
+#126
+bữa ăn sáng ít món
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#127
+resort có quầy bar nhỏ ở hồ bơi
+{FACILITIES#DESIGN&FEATURES, neutral}
+
+#128
+phòng_ốc ở đây cũng được vị_trí thuận_tiện đi_lại
+{LOCATION#GENERAL, positive}, {ROOMS#GENERAL, neutral}
+
+#129
+mũi né paradise beach resort tôi có nghỉ_ngơi trong chuyến đi vừa_qua và đánh_giá nơi này tốt
+{HOTEL#GENERAL, positive}
+
+#130
+tuy_nhiên tôi có đem cái ly và cái muỗng ở trong phòng ra ngoài uống nước và để đó chứ không đem về phòng
+{FOOD&DRINKS#MISCELLANEOUS, neutral}
+
+#131
+trong chuyến du_lịch vừa_qua tôi có đặt phòng tại mũi né paradise beach resort và sau khi ở đây tôi có nhận_xét như sau
+{HOTEL#GENERAL, neutral}
+
+#132
+nhân_viên phục_vụ cũng lịch_sự chu_đáo
+{SERVICE#GENERAL, positive}
+
+#133
+các tiện_ích có đầy_đủ và tương_xứng với giá không có gì phàn_nàn khi nghỉ tại đây
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#134
+khách_sạn có bãi biển không được đẹp bể_bơi bẩn phòng_ốc có mùi hôi khó_chịu đồ ăn sáng không ngon
+{ROOMS#CLEANLINESS, negative},   {FOOD&DRINKS#QUALITY, negative}, {FACILITIES#GENERAL, positive}, {FACILITIES#CLEANLINESS, negative}
+
+#135
+không_gian lại rộng_rãi và thoáng mát nên khi nghỉ_ngơi lại đây tôi thấy thoải_mái
+{HOTEL#DESIGN&FEATURES, positive},   {HOTEL#COMFORT, positive}
+
+#136
+nhân_viên phục_vụ tốt chu_đáo hỗ_trợ du_khách tận_tình
+{SERVICE#GENERAL, positive}
+
+#137
+phòng có diện_tích vừa đủ tiện_nghi sắp_xếp ngăn_nắp
+{ROOMS#DESIGN&FEATURES, positive}
+
+#138
+bữa sáng khá chán bởi vì lượng khách ít nên resort không tổ_chức buffet mà mỗi người chỉ chọn món với tí hoa_quả thôi
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#139
+tôi cảm_thấy sau khi khách_sạn đổi chủ thì quá là tệ
+{HOTEL#GENERAL, negative}
+
+#140
+nhìn_chung thì dịch_vụ ở paradise mũi né không có gì phàn_nàn cả
+{SERVICE#GENERAL, neutral}
+
+#141
+phòng_ốc có đỡ hơn nhưng trong phòng không đáp_ứng được các tiện_nghi thiết_yếu nhất không có cả điện_thoại_bàn
+{ROOM_AMENITIES#GENERAL, negative}
+
+#142
+tôi có nghỉ tại paradise beach resort trong chuyến đi vừa_rồi tôi khá hài_lòng và thoải_mái khi nghỉ tại đây như nhiều ý_kiến đánh_giá thì tôi thấy dịch_vụ ở đây cũng tốt phòng sạch_sẽ đạt tiêu_chuẩn và tương_xứng với giá_tiền
+{ROOMS#CLEANLINESS, positive}, {HOTEL#COMFORT, positive}, {SERVICE#GENERAL, positive}, {ROOMS#PRICES, positive}
+
+#143
+ngoài_ra nhân_viên cũng tích_cực hỗ_trợ khách
+{SERVICE#GENERAL, positive}
+
+#144
+ở đây có chỗ tắm nhưng không thích_hợp lắm với tôi vì gia_đình tôi có trẻ_con nên muốn có bãi_tắm riêng thì sẽ thuận_tiện hơn
+{FACILITIES#COMFORT, negative}
+
+#145
+về phòng_ốc ở resort thì tốt nhưng ở đây có vẻ thiếu nhân_viên vì khi tôi xuống ăn bữa sáng phải ngồi rất lâu mà không thấy ai đến hỏi_thăm cả
+{ROOMS#GENERAL, positive}, {SERVICE#GENERAL, negative}
+
+#146
+cơ_sở vật_chất đã có hiện_tượng xuống_cấp tiện_nghi trong phòng quá cũ được cái là các bạn nhân_viên dọn_dẹp kĩ_lưỡng nên còn tạm được
+{ROOM_AMENITIES#QUALITY, negative}, {ROOMS#CLEANLINESS, positive}
+
+#147
+hồ bơi khách_sạn này không sạch xung_quanh có rát hệ_thống xử_lý nước chưa tốt không có bộ lọc mặc_dù lúc_nào cũng có người vớt rát nhưng không vớt sạch được mỗi lần tắm xong thì mẹ con tôi đều bị nổi mẫn đỏ
+{FACILITIES#CLEANLINESS, negative}, {FACILITIES#QUALITY, negative}
+
+#148
+cần chú_ý kiểm_tra đồ_đạc trong phòng để thay_thế
+{ROOM_AMENITIES#GENERAL, negative}
+
+#149
+chuyến nghỉ_dưỡng của tôi tại resort này đã rất thành_công
+{HOTEL#COMFORT, positive}
+
+#150
+nhìn_chung bị điểm trừ cho máy_lạnh và điểm cho những điểm khác
+{HOTEL#GENERAL, neutral}
+
+#151
+trong chuyến du_lịch phan_thiết vừa_rồi tôi có lưu_trú lại paradise mũi né tôi nhận thấy phòng_ốc sạch_sẽ nhân_viên lịch_sự vị_trí thuận_tiện nên nhìn_chung cũng được
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#152
+xét về tổng_quan từ vị_trí tiện_nghi đến thái_độ phục_vụ của nhân_viên đều khiến tôi cảm_thấy hài_lòng
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {FACILITIES#COMFORT, positive}
+
+#153
+nhìn_chung mọi thứ ở đây đều rất tốt
+{HOTEL#GENERAL, positive}
+
+#154
+trong chuyến du_lịch vừa_rồi tôi có lựa_chọn resort mũi né paradise beach để lưu_trú lại
+{HOTEL#GENERAL, neutral}
+
+#155
+phòng ở sạch_sẽ thoáng mát rộng_rãi và đầy_đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}
+
+#156
+mũi né paradise resort có khuôn_viên rộng_rãi thoáng mát vệ_sinh sạch_sẽ tiện_nghi đầy_đủ nhân_viên resort hỗ_trợ khách nhiệt_tình tôi cảm thấy chất_lượng của resort tốt tôi không có vấn_đề gì phải phàn_nàn cả
+{SERVICE#GENERAL, positive}, {HOTEL#DESIGN&FEATURES, positive}, {HOTEL#CLEANLINESS, positive}, {HOTEL#COMFORT, positive}
+
+#157
+chất_lượng resort xứng tầm_sao
+{HOTEL#QUALITY, neutral}
+
+#158
+mùa này ở mũi né paradise beach resort bãi biển rất nhiều rác nên không tắm được mặc_dù nhân_viên ở đây cũng rất tích_cực để dọn nhưng do thiên_nhiên nên cũng không cải_thiện được
+{FACILITIES#CLEANLINESS, negative}
+
+#159
+view nhìn ra ngoài có phần hạn_chế
+{ROOMS#GENERAL, negative}
+
+#160
+tuy_nhiên để đi đến các nơi vui_chơi ở phan_thiết thì hơi xa hơi bất_tiện
+{LOCATION#GENERAL, negative}
+
+#161
+phòng_ốc cũng hết_sức tiện_nghi và thoải_mái
+{ROOM_AMENITIES#COMFORT, positive}
+
+#162
+nhân_viên cũng ổn chu_đáo
+{SERVICE#GENERAL, positive}
+
+#163
+vậy nên tôi thấy hài_lòng và sẽ tiếp_tục đặt phòng khách_sạn này
+{HOTEL#COMFORT, positive}
+
+#164
+và phong_cách phục_vụ thân_thiện nhiệt_tình của nhân_viên khiến tôi cảm_thấy rất hài_lòng
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#165
+rất thích_hợp cho nghĩ dưỡng cùng gia_đình
+{HOTEL#COMFORT, positive}
+
+#166
+thứ nhất khi bước vào phòng mở_cửa ra tôi thấy có một mùi rất khó_chịu
+{ROOMS#CLEANLINESS, negative}
+
+#167
+trong phòng không có điện_thoại nên tôi phải đi xuống tận quầy lễ_tân để gọi người lên sửa
+{ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#168
+mũi né paradise beach resort có kiến_trúc đẹp trang thiết_bị đầy_đủ và hiện_đại
+{FACILITIES#GENERAL, positive}, {HOTEL#DESIGN&FEATURES, positive}
+
+#169
+do lịch công_tác dày nên nhà tôi chỉ lưu_trú tại resort ngày
+{HOTEL#GENERAL, neutral}
+
+#170
+vài review của tôi vị_trí resort nằm cuối bãi biển nên bãi_tắm không được đẹp lại xa khu trung_tâm ăn_uống tầm km phòng nhà tôi lấy loại phòng garden view và beachpfront
+{LOCATION#GENERAL, negative}
+
+#171
+resort có chất_lượng tốt trang thiết_bị đầy_đủ và hiện_đại
+{FACILITIES#GENERAL, positive}, {HOTEL#QUALITY, positive}
+
+#172
+chúng_tôi đã có thời_gian vui_vẻ và thoái mái khi nghĩ dưỡng tại đây
+{HOTEL#COMFORT, positive}
+
+#173
+nhân_viên nhiệt_tình chỉ_dẫn tôi cách di_chuyển từ ga đến khách_sạn nên tôi không bị bỡ_ngỡ khi vừa xuống tàu
+{SERVICE#GENERAL, positive}
+
+#174
+resort khá đẹp
+{HOTEL#GENERAL, positive}
+
+#175
+đồ ăn tại nhà_hàng của resort tương_đối_ngon
+{FOOD&DRINKS#QUALITY, positive}
+
+#176
+may là mình ở đây có đêm
+{HOTEL#GENERAL, neutral}
+
+#177
+máy_sấy_tóc không có điện_thoại trong phòng không có mỗi lần muốn liên_hệ lễ_tân phải chạy ra tận quầy mà không biết nhân_viên lễ_tân đi đâu mà lúc_nào quầy cũng vắng_tanh phải chạy vòng_vòng đi tìm cũng may là khách_sạn nhỏ_xíu
+{SERVICE#GENERAL, negative},   {ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#178
+phòng_ốc gọn_gàng sạch_sẽ cung_cấp đầy_đủ vật_dụng cho tôi sử_dụng
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#179
+dịch_vụ tương_xứng với giá_tiền
+{HOTEL#PRICES, positive}, {SERVICE#GENERAL, positive}
+
+#180
+vị_trí đi_lại dễ_dàng và giá_cả phải_chăng
+{LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#181
+nhân_viên dọn_dẹp vệ_sinh phòng ở sạch_sẽ
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#182
+tôi hoàn_toàn hài_lòng về mọi dịch_vụ cũng như chất_lượng mà khách_sạn blue sea đã cung_cấp trong thời_gian lưu_trú tại đây cùng gia_đình
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}, {SERVICE#GENERAL, positive}, {HOTEL#QUALITY, positive}
+
+#183
+các chị_em gia_đình tôi có kỳ nghỉ vui_vẻ ở vũng_tàu
+{HOTEL#GENERAL, positive}
+
+#184
+tôi hy_vọng khách_sạn sẽ sớm cải_thiện để phục_vụ được tốt hơn
+{SERVICE#GENERAL, negative}
+
+#185
+khách_sạn blue sea có vị_trí gần biển nên cũng khá thuận_tiện cho việc nghỉ_ngơi của gia_đình tôi mà giá_cả cũng hợp_lí
+{LOCATION#GENERAL, positive}
+
+#186
+tuy_nhiên nếu phòng có cách_âm tốt hơn thì tôi sẽ đánh_giá cao hơn
+{ROOMS#DESIGN&FEATURES, negative}
+
+#187
+phòng_ốc được dọn_dẹp vệ_sinh sạch_sẽ tươm_tất nội_thất được bố_trí đầy_đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#188
+nhân_viên khách_sạn họ phục_vụ khách_hàng ổn vui_vẻ nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#189
+các bạn nhân_viên khách_sạn họ phục_vụ khách_hàng nhiệt_tình vui_vẻ
+{SERVICE#GENERAL, positive}
+
+#190
+tôi đã có khoảng thời_gian nghỉ_ngơi thoải_mái tại khách_sạn blue sea
+{HOTEL#COMFORT, positive}
+
+#191
+các bạn nhân_viên làm_việc tốt vui_vẻ nhiệt_tình với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#192
+chỉ có việc không vui là gạch lót thang_máy bị bể rất dễ bị đứt chân nếu đi tắm biển không mang dép theo
+{FACILITIES#MISCELLANEOUS, negative}
+
+#193
+theo tôi nhận thấy khách_sạn này này có chất_lượng đạt yêu_cầu
+{HOTEL#QUALITY, positive}
+
+#194
+yên_tĩnh
+{HOTEL#COMFORT, positive}
+
+#195
+mà nhìn_chung ăn_uống vậy cũng được rồi
+{FOOD&DRINKS#QUALITY, positive}
+
+#196
+tiện_nghi_trang thiết_bị được khách_sạn cung_cấp khá đầy_đủ
+{FACILITIES#GENERAL, positive}, {FACILITIES#GENERAL, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#197
+các bạn tiếp_tân khách_sạn dễ_thương vui_vẻ nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#198
+ở đây thuận_lợi cho việc tắm biển
+{LOCATION#GENERAL, positive}
+
+#199
+nói_chung tôi hài_lòng khi chọn khách_sạn này nghỉ_ngơi
+{HOTEL#COMFORT, positive}
+
+#200
+bởi_vì mọi thứ đều tốt lắm
+{HOTEL#GENERAL, positive}
+
+#201
+dịch_vụ không có gì phàn_nàn và tương_xứng với giá_cả
+{HOTEL#PRICES, positive}, {SERVICE#GENERAL, positive}
+
+#202
+diện_tích căn phòng nhỏ hơi có mùi và nệm cứng
+{ROOMS#DESIGN&FEATURES, negative}, {ROOM_AMENITIES#COMFORT, negative}, {ROOMS#CLEANLINESS, positive}
+
+#203
+nhân_viên thì phục_vụ tốt vui_vẻ nhiệt_tình với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#204
+cơ_sở vật_chất rất cũ như là khu nhà_nghỉ chứ không xứng tầm gọi là khách_sạn
+{ROOM_AMENITIES#QUALITY, negative}
+
+#205
+nhân_viên có thái đọ lịch_sự nhiệt_tình với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#206
+tôi nhận thấy dịch_vụ mà khách_sạn này cung_cấp khiến tôi hài_lòng như nhân_viên thân_thiện lịch_sự với khách_hàng phòng ở thì được vệ_sinh sạch_sẽ những tiện_nghi thiết_bị trong phòng được khách_sạn trang_bị đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#207
+vừa_rồi tôi có đặt phòng ở khách_sạn blue sea đánh_giá tổng_quan tôi thấy khách_sạn này tốt nhân_viên ở đay họ thân_thiện với khách_hàng phòng ở được vệ_sinh sạch_sẽ tiện_nghi trong phòng được trang_bị đầy_đủ
+{HOTEL#GENERAL, positive}, {ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#208
+căn phòng không quá tuyệt_vời nhưng sạch_sẽ trang thiết_bị cơ_bản là đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#GENERAL, neutral}
+
+#209
+tôi thấy dịch_vụ ở khách_sạn blue sea này được các dịch vu như phòng_ốc tiện_nghi_vệ_sinh chung đều đạt tiêu_chuẩn sạch_sẽ đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive},   {HOTEL#CLEANLINESS, positive},   {SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#210
+về nhân_viên phục_vụ thì họ vui_vẻ địa_điểm gần biển
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#211
+ở khách_sạn blue sea thì vị_trí cũng đẹp đi_lại thuận_tiện phòng ở cũng tốt vệ_sinh sạch_sẽ đầy_đủ tiện_nghi
+{LOCATION#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#GENERAL, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#212
+riêng cá_nhân tôi cảm_nhận thì khách_sạn blue sea có chất_lượng tốt ở thoải_mái
+{HOTEL#COMFORT, positive}, {HOTEL#QUALITY, positive}
+
+#213
+mọi người ở khách_sạn blue sea đều nhiệt_tình cung_cách phục_vụ tốt
+{SERVICE#GENERAL, positive}
+
+#214
+tôi thấy việc này khá bất_tiện
+{ROOMS#COMFORT, negative}
+
+#215
+địa_điểm khách_sạn nằm gần biển nên tiện_lợi
+{LOCATION#GENERAL, positive}
+
+#216
+khách_sạn blue sea là nơi tôi lựa_chọn để dừng chân cho chuyến đi đến vũng_tàu vừa_qua của mình
+{HOTEL#GENERAL, positive}
+
+#217
+phòng_ốc đảm_bảo được các yêu_cầu cơ_bản về sự tiện_nghi cũng như sự sạch_sẽ
+{ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#218
+tôi cảm thấy chất_lượng dịch_vụ của khách_sạn blue sea tốt bữa sáng phù_hợp_khẩu_vị với tôi
+{FOOD&DRINKS#QUALITY, positive}, {SERVICE#GENERAL, positive}
+
+#219
+khách_sạn có vị_trí hơi xa trung_tâm nên đi_lại hơi bất_tiện một_chút
+{LOCATION#GENERAL, negative}
+
+#220
+ngoài_ra phòng_ốc đầy_đủ tiện_nghi tươm_tất giá_cả thì phù_hợp nên tôi chẳng có gì để phàn_nàn cả
+{ROOM_AMENITIES#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#221
+tuy_nhiên bữa sáng phục_vụ còn ít món và quang_cảnh xung_quanh chưa đẹp lắm vì khách_sạn đang xây_dựng
+{FOOD&DRINKS#STYLE&OPTIONS, negative}, {HOTEL#MISCELLANEOUS, positive}, {HOTEL#GENERAL, negative}
+
+#222
+tôi có góp_ý nhỏ với khách_sạn là nên có xe đưa_đón để hỗ_trợ khách đi ra biển và có xe hay nhân_viên hỗ_trợ xách hành_lí cho khách thì dịch_vụ sẽ tốt hơn
+{SERVICE#GENERAL, negative}, {FACILITIES#GENERAL, negative}
+
+#223
+nhìn_chung mọi thứ còn lại thì cũng khá ổn
+{HOTEL#GENERAL, positive}
+
+#224
+phòng_ốc ở đây thì cũng tốt ở cũng được nhân_viên thì cũng vui_vẻ và thân_thiện với khách
+{SERVICE#GENERAL, positive}, {ROOMS#GENERAL, positive}
+
+#225
+tôi cảm_thấy hài_lòng và thoải_mái khi nghỉ tại khách_sạn blue sea
+{HOTEL#COMFORT, positive}
+
+#226
+phòng_ốc khá là thoải_mái rộng_rãi khăn tắm thì không được sạch_sẽ lắm nhưng vì tôi có_mang khăn theo nên cũng không phản_ánh với khách_sạn
+{ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#CLEANLINESS, negative}
+
+#227
+tôi có đặt phòng cho người_thân của tôi ở tại khách_sạn blue sea trong chuyến đi vừa_qua
+{HOTEL#GENERAL, positive}
+
+#228
+chúng_tôi có chuyến đi vui_vẻ và thành_công khi chọn blue sea cho chuyến đi của mình đặc_biệt là nhân_viên ở đây rất dễ_thương ai cũng nhiệt_tình chu_đáo
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#229
+vị_trí cũng khá thuận_tiện và gần biển
+{LOCATION#GENERAL, positive}
+
+#230
+khách_sạn này tôi đã ở trước đó cảm_thấy tốt nên đã đặt lại trong chuyến đi vừa_rồi
+{HOTEL#GENERAL, positive}
+
+#231
+giá phòng phải_chăng vừa túi_tiền
+{ROOMS#PRICES, positive}
+
+#232
+về dịch_vụ của khách_sạn thì khá là ổn
+{SERVICE#GENERAL, positive}
+
+#233
+dịch_vụ phòng ngủ tốt nhân_viên thân_thiện và phục_vụ nhanh_chóng
+{SERVICE#GENERAL, positive}
+
+#234
+chuyến đi này tôi rất hài_lòng
+{HOTEL#COMFORT, positive}
+
+#235
+sóng wifi phủ đến phòng quá kém
+{FACILITIES#QUALITY, negative}
+
+#236
+nhà_tắm ngăn sạch_sẽ áp_lực nước vòi_sen rất lớn
+{ROOM_AMENITIES#MISCELLANEOUS, negative}, {ROOM_AMENITIES#CLEANLINESS, positive}
+
+#237
+chất_lượng tương_xứng với giá_tiền mình bỏ ra
+{HOTEL#QUALITY, positive}, {HOTEL#PRICES, positive}, {HOTEL#QUALITY, positive}
+
+#238
+nhìn_chung mọi thứ ở đây khá ổn
+{HOTEL#GENERAL, positive}
+
+#239
+tuy_nhiên cách_âm không dược tốt nên tôi thấy hơi ồn_ào
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#COMFORT, positive}
+
+#240
+khách_sạn nằm ở vị_trí yên_tĩnh thích_hợp cho gia_đình đi nghĩ dưỡng
+{LOCATION#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#241
+nhất là nước cam chua không uống nổi luôn
+{FOOD&DRINKS#QUALITY, negative}
+
+#242
+nói_chung mình và các bạn củng đi khá hài_lòng
+{HOTEL#COMFORT, positive}
+
+#243
+nhân_viên cũng rất nhiệt_tình có_điều cách_âm hơi bị kém
+{SERVICE#GENERAL, positive}, {ROOMS#DESIGN&FEATURES, negative}
+
+#244
+phòng không máy_sấy_tóc bình đun nước sôi pha trà
+{ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#245
+đặc_biệt nhân_viên tận_tình và chu_đáo
+{SERVICE#GENERAL, positive}
+
+#246
+vị_trí gần bãi biển
+{LOCATION#GENERAL, positive}
+
+#247
+hồ bơi là của khu resort sơn_thuỷ bên cạnh và muốn bơi phải đi bộ sang và mua vé
+{FACILITIES#MISCELLANEOUS, negative}
+
+#248
+vị_trí tốt gần biển và rất yên_tĩnh
+{LOCATION#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#249
+trừ điều đó ra thì tôi không than_phiền gì thái_độ nhân_viên khá tốt
+{SERVICE#GENERAL, positive}
+
+#250
+tôi lưu_trú đêm tại khách_sạn phương huy đà lạt nhưng cảm_nhận của tôi về dịch_vụ của khách_sạn khá tốt
+{SERVICE#GENERAL, positive}
+
+#251
+bởi_vì ai_nấy đều nhiệt_tình vui_vẻ hỗ_trợ khách_hàng
+{SERVICE#GENERAL, positive}
+
+#252
+vừa_qua tôi có chọn khách_sạn phương huy đà_lạt làm nơi lưu_trú của mình theo đánh_giá của tôi thì dịch_vụ ở đây chỉ ở mức trung_bình từ chất_lượng phòng_ốc đến thái_độ làm_việc của nhân_viên
+{SERVICE#GENERAL, neutral}, {ROOMS#QUALITY, neutral}
+
+#253
+còn cơ_sở vật_chất thì rất là tệ phòng_ốc cũ_kĩ trang thiết_bị cũng cũ vệ_sinh thì không sạch_sẽ và wifi rất là yếu
+{ROOMS#CLEANLINESS, negative}, {FACILITIES#QUALITY, negative}, {ROOM_AMENITIES#QUALITY, negative}
+
+#254
+căn phòng sạch_sẽ gọn_gàng
+{ROOMS#CLEANLINESS, positive}
+
+#255
+nên so_sánh với số tiền bỏ ra thì tôi thấy hợp_lý
+{HOTEL#PRICES, positive}
+
+#256
+đặt phòng nhưng tôi đi suốt nên không đánh_giá được tất_cả
+{HOTEL#GENERAL, neutral}
+
+#257
+nghỉ_ngơi tại khách_sạn phương huy đà lạt tôi rất hài_lòng các dịch_vụ đều rất tốt
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#258
+với mức phí đã bỏ ra thì tôi nhận thấy khách_sạn này có chất_lượng cũng được
+{HOTEL#PRICES, positive}, {HOTEL#QUALITY, positive}
+
+#259
+nội_thất trang thiết_bị cần_thiết khách_sạn cung_cấp tương_đối đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}
+
+#260
+nhờ vào địa_thế gần trung_tâm nên khi muốn đi đâu đều nhanh_chóng tiện_lợi
+{LOCATION#GENERAL, positive}
+
+#261
+mọi dịch_vụ tôi sử_dụng đều tốt từ phòng_ốc tiện_nghi đến thái_độ nhân_viên cũng như mức giá_cả và vị_trí di_chuyển
+{LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}, {ROOMS#GENERAL, positive}, {FACILITIES#GENERAL, positive}
+
+#262
+nhìn_chung thì hài_lòng khi nghỉ_ngơi tại khách_sạn phương huy đà lạt này
+{HOTEL#COMFORT, positive}
+
+#263
+còn về giường nệm thì ổn không có nước suối miễn_phí trong phòng
+{ROOM_AMENITIES#QUALITY, positive}, {ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#264
+tuy_nhiên thì phòng_ốc ở đây tôi thấy có vẻ hơi cũ
+{ROOMS#QUALITY, negative}
+
+#265
+tôi đến vào dịp khách_sạn phương huy đà lạt này đang sửa_chữa nên hơi bất_tiện với tôi
+{HOTEL#MISCELLANEOUS, positive}, {HOTEL#COMFORT, negative}
+
+#266
+đánh_giá về dịch_vụ tại khách_sạn phương huy đà_lạt như sau
+{HOTEL#GENERAL, neutral}
+
+#267
+phòng_ốc thì không giống như quảng_cáo hơi cũ tv cũng cũ và nhỏ tủ_lạnh thì không có và vệ_sinh thì tương_đối nhân_viên thì thái_độ lịch_sự và lễ_phép vị_trí đi_lại thuận_tiện và giá_cả thì hợp_lý
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOM_AMENITIES#MISCELLANEOUS, negative}, {HOTEL#CLEANLINESS, neutral}
+
+#268
+khách_sạn phương huy đà lạt có chất_lượng và dịch_vụ cũng được
+{HOTEL#QUALITY, positive}, {SERVICE#GENERAL, positive}
+
+#269
+ngoài_ra thì những điểm khác tôi thấy cũng được
+{HOTEL#GENERAL, positive}
+
+#270
+chỉ có điều phươg huy không có thang_máy phải đi bộ lên lầu mỏi chân
+{FACILITIES#DESIGN&FEATURES, negative}
+
+#271
+khi tôi vừa đến nhận phòng tại khách_sạn phương huy đà lạt thì nhân_viên báo là hết phòng nên chuyển tôi qua khách_sạn khác cùng hệ_thống và tôi đánh_giá dịch_vụ ở đó cũng bình_thường chưa có gì nổi_bật hết từ việc đi_lại ngủ nghỉ đến nhân_viên phục_vụ và giá_cả
+{SERVICE#GENERAL, neutral}
+
+#272
+về chất_lượng phòng_ốc thì khá tốt giữ_gìn vệ_sinh sạch_sẽ nội_thất tiện_nghi đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#QUALITY, positive}, {ROOMS#CLEANLINESS, positive}
+
+#273
+khách_sạn ph cũ nhưng giá_cả rất hợp_lý
+{HOTEL#PRICES, positive}, {HOTEL#QUALITY, negative}
+
+#274
+nhìn_chung thì không có gì để phàn_nàn về nơi này
+{HOTEL#GENERAL, positive}
+
+#275
+tôi rất hài_lòng khi quyết_định nghỉ_ngơi tại khách_sạn này từ đội_ngũ nhân_viên phục_vụ khách_hàng chuyên_nghiệp đến phòng_ốc chú_ý giữ_gìn vệ_sinh chu_đáo và bố_trí vật_dụng nội_thất cần_thiết đầy_đủ gọn_gàng
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {HOTEL#COMFORT, positive}
+
+#276
+tôi đã chọn khách_sạn phương huy đà lạt là nơi để nghỉ_ngơi trong chuyến đi vừa_qua
+{HOTEL#GENERAL, positive}
+
+#277
+khi lưu_trú tại khách_sạn phương huy chất_lượng dịch_vụ ở đây khá tốt
+{SERVICE#GENERAL, positive}
+
+#278
+khách_sạn toạ_lạc ở gần chợ nên việc di_chuyển thuận_tiện và dễ_dàng
+{LOCATION#GENERAL, positive}
+
+#279
+tôi cảm_thấy hài_lòng khi quyết_định chọn khách_sạn phương huy đà_lạt để trú_ngụ
+{HOTEL#COMFORT, positive}
+
+#280
+theo như phản_hồi thì dịch_vụ tốt người_nhà tôi không than_phiền gì
+{HOTEL#COMFORT, positive}
+
+#281
+phòng được dọn_dẹp sạch_sẽ hàng ngày
+{ROOMS#CLEANLINESS, positive}
+
+#282
+nhìn_chung cũng không phàn_nàn nhiều về nơi này
+{ROOMS#COMFORT, positive}
+
+#283
+nhìn_chung khách_sạn phương huy đà lạt có dịch_vụ ổn
+{SERVICE#GENERAL, neutral}
+
+#284
+khách_sạn phương huy đà lạt có vị_trí trung_tâm nên thuận_tiện đi_lại và cũng dễ tìm_kiếm và chi_phí cũng hợp_lí
+{LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#285
+vị_trí thuận_tiện và giá_cả bình_thường
+{LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#286
+kì nghỉ vừa_qua tôi có chọn điểm dừng chân là khách_sạn phương huy đà_lạt và sau khi ở đây tôi có vài nhận_xét sau
+{HOTEL#GENERAL, positive}
+
+#287
+chất_lượng phòng_ốc chưa tốt một phần vì phòng cũ một phần vì vật_dụng trong phòng chưa thiết_thực
+{ROOMS#QUALITY, negative}, {ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#288
+thái_độ nhân_viên làm_việc tốt
+{SERVICE#GENERAL, positive}
+
+#289
+tôi có đặt giúp người_nhà tôi căn phòng ở khách_sạn phương huy để người_nhà tôi lưu_trú lại trong chuyến du_lịch đà_lạt
+{HOTEL#GENERAL, positive}
+
+#290
+chuyến đi du_lịch đến đà lạt tôi đã chọn dịch_vụ khách_sạn phương huy để nghỉ lại và thấy phòng_ốc ở đây đầy_đủ tiện_nghi phục_vụ ổn nhưng chưa ấn_tượng và bắt_mắt cho lắm chỉ tạm ổn và không có điều gì để phàn_nàn khi đã chọn dịch_vụ này
+{SERVICE#GENERAL, neutral}, {ROOM_AMENITIES#GENERAL, neutral}
+
+#291
+tôi hài_lòng lắm khi quyết_định chọn_lựa khách_sạn phương huy để nghỉ_ngơi trong đợt vừa_rồi
+{HOTEL#COMFORT, positive}
+
+#292
+địa_thế toạ_lạc của khách_sạn phương huy rất tốt nằm gần trung_tâm nên đi_lại dễ_dàng lắm
+{LOCATION#GENERAL, positive}
+
+#293
+khi về được phản_hồi là những dịch_vụ khách_sạn đang cung_cấp đến khách_hàng có chất_lượng cũng bình_thường phòng ở cũng ổn
+{HOTEL#QUALITY, neutral}, {ROOMS#GENERAL, neutral}
+
+#294
+tiện_nghi_trang thiết_bị cơ_bản trong phòng được khách_sạn cung_cấp tương_đối đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}
+
+#295
+nằm ở vị_trí dễ_dàng tìm_kiếm và khá gần chợ cũng như những địa_điểm khác nên chúng_tôi cảm_thấy giá_cả hợp_lý và chất_lượng phòng cũng rất ổn
+{LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}, {ROOMS#QUALITY, positive}
+
+#296
+giá_cả không cao_giá tương_xứng với dịch_vụ tôi hài_lòng khi nghỉ tại đây
+{HOTEL#PRICES, positive}, {HOTEL#COMFORT, positive}
+
+#297
+địa_điểm của khách_sạn thích_hợp cho việc đi du_lịch khám_phá của tôi vì nằm gần trung_tâm thành_phố
+{LOCATION#GENERAL, positive}
+
+#298
+chẳng gì phải phiền_lòng
+{HOTEL#COMFORT, positive}
+
+#299
+trả lại phòng đơn tuy_nhiên khách_sạn lại không hoàn_trả lại số tiền này cho chúng_tôi
+{SERVICE#GENERAL, negative}
+
+#300
+tôi đánh_giá cao dịch_vụ ở khách_sạn phương huy này dịch_vụ rất tốt mọi thứ đều tốt đạt tiêu_chuẩn và tương_xứng với giá_cả
+{SERVICE#GENERAL, positive}, {ROOMS#QUALITY, positive}, {ROOMS#PRICES, positive}, {ROOMS#GENERAL, positive}
+
+#301
+khách_sạn phương huy là nơi mà tôi chọn cho mình khi vừa_qua tôi có chuyến du_lịch đến đà_lạt
+{HOTEL#GENERAL, positive}
+
+#302
+thái_độ phục_vụ của nhân_viên bình_thường mức giá hợp_lý
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#303
+về dịch_vụ phòng_ốc thì sạch_sẽ gọn_gàng và đầy_đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#304
+không có điều gì phát_sinh khi tôi sử_dụng dịch_vụ tại đây cả
+{HOTEL#COMFORT, positive}
+
+#305
+khách_sạn phương huy là nơi mà tôi chọn khi có chuyến du_lịch đến đà lạt vị_trí khách_sạn nằm ngay trung_tâm gần chợ cũng như gần các điểm du_lịch nên rất thuận_lợi phòng_ốc được trang_bị đầy_đủ tiện_nghi_vệ_sinh sạch_sẽ cũng như nhân_viên ở đây cũng vui_vẻ nhiệt_tình
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#CLEANLINESS, positive}
+
+#306
+ngoài_ra thì vị_trí thuận_lợi cho tôi đi_lại giá_cả tốt nhân_viên phục_vụ chu_đáo
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#307
+nhìn_chung dịch_vụ tương_xứng với tầm giá nên tôi ở cũng khá ưng_ý
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#308
+nhân_viên phục_vụ nhiệt_tình vị_trí đi_lại cũng thuận_tiện cho tôi vì_vậy khi có dịp đến đà lạt lần nữa tôi sẽ tiếp_tục chọn khách_sạn này
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#309
+khi nhận phòng thì tôi thấy phòng của tôi có diện_tích hơi nhỏ trần nhà thấp do vậy_mà không_gian hơi ngộp một_tí
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#COMFORT, neutral}
+
+#310
+nhân_viên ở đây thì vui_vẻ lịch_sự
+{SERVICE#GENERAL, positive}
+
+#311
+căn phòng mà tôi ở thì sạch_sẽ và có máy nước nóng
+{ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#MISCELLANEOUS, positive}
+
+#312
+giá_cả bình_dân nhưng chất_lượng thì cũng tương_đối tốt
+{HOTEL#PRICES, positive}, {HOTEL#QUALITY, positive}
+
+#313
+phòng_ốc sạch_sẽ tiện_nghi đầy_đủ nhân_viên cũng phục_vụ chu_đáo nên tôi cũng rất hài_lòng với chi_phí mà mình đã bỏ ra
+{SERVICE#GENERAL, positive}, {ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#314
+nhân_viên nói_chuyện cũng dễ_thương
+{SERVICE#GENERAL, positive}
+
+#315
+sáng hôm sau gia_đình tôi có phản_ánh lại vấn_đề lễ_tân vẫn vui_vẻ nhiệt_tình sắp_xếp chỗ đỗ xe cho gia_đình tôi cũng như thay chăn drap
+{SERVICE#GENERAL, positive}
+
+#316
+vị_trí khách_sạn gần chợ đà_lạt rất thuận_tiện
+{LOCATION#GENERAL, positive}
+
+#317
+dịch_vụ khách_sạn tốt mà giá lại khá rẻ
+{HOTEL#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#318
+tôi rất hài_lòng về nơi này và sẽ quay lại nếu có dịp
+{HOTEL#COMFORT, positive}
+
+#319
+khách_sạn không có thang_máy nên hơi bất_tiện tuy_nhiên có_thể yêu_cầu nhân_viên khiêng vali lên tân_phòng
+{SERVICE#GENERAL, positive}, {ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#320
+tuy là khách_sạn sao nhưng tôi không nghĩ khách_sạn phương huy lại có dịch_vụ tốt như_vậy
+{SERVICE#GENERAL, positive}
+
+#321
+khách_sạn cần nâng_cấp lại
+{HOTEL#QUALITY, negative}
+
+#322
+nếu có dịp quay lại tôi sẽ chọn khách_sạn phương huy
+{HOTEL#GENERAL, positive}
+
+#323
+khách_sạn có vị_trí tốt tiện_nghi sang_trọng phục_vụ nhiệt_tình vệ_sinh sạch_sẽ giá_cả vào ngày lễ hơi cao so với chất_lượng
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, negative}, {HOTEL#CLEANLINESS, positive}, {HOTEL#QUALITY, negative}, {ROOM_AMENITIES#DESIGN&FEATURES, positive}
+
+#324
+vị_trí thuận_tiện phòng nghỉ sạch_sẽ nhân_viên nhiệt_tình
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#325
+phòng để cái hơi bất_tiện vì là phòng người
+{ROOM_AMENITIES#COMFORT, negative}
+
+#326
+khách_sạn bình_dân với mức giá giá_tiền đồng đêm với thái_độ nhân_viên phục_vụ tốt niềm_nở
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#327
+chỉ là_hơi xa trung_tâm chút nên phải đi xe_máy
+{LOCATION#GENERAL, negative}
+
+#328
+phòng rộng_rãi nhân_viên ân_cần lịch_sự vị_trí trung_tâm tiện_lợi đi tham_quan các địa_điểm nổi_tiếng ở đà_lạt
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#DESIGN&FEATURES, positive}
+
+#329
+ngoài vđề nêu trên tôi khá hài_lòng với nơi đây
+{HOTEL#COMFORT, positive}
+
+#330
+trừ việc đó ra thì tôi không than_phiền gì
+{HOTEL#COMFORT, positive}
+
+#331
+mọi dịch_vụ vẫn đáp_ứng tốt từ vấn_đề_phòng ở ăn_uống đến nhân_viên phục_vụ vị_trí đi_lại hay mức giá_cả
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#332
+đối_với số tiền mà tôi đã chi_trả thì chất_lượng dịch_vụ ở terracotta hotel and resort đà_lạt phù_hợp
+{HOTEL#PRICES, positive}
+
+#333
+đây là làn thứ tôi trở_lại khách_sạn đẹp yên_tĩnh thích_hợp nghỉ_dưỡng tôi hài_lòng với kỳ nghỉ ở dây
+{HOTEL#GENERAL, positive}
+
+#334
+thiết_kế diện_tích phòng_ốc rộng_rãi bài_trí trang thiết_bị trang_nhã
+{ROOMS#DESIGN&FEATURES, positive}
+
+#335
+phong_cách phục_vụ của nhân_viên hoạt_bát nhưng cũng không kém phần lịch_sự
+{SERVICE#GENERAL, positive}
+
+#336
+nơi nghỉ_dưỡng tuyệt_vời
+{HOTEL#GENERAL, positive}
+
+#337
+vì ở terracotta hotel and resort đà lạt có khung_cảnh đẹp và thơ_mộng
+{HOTEL#DESIGN&FEATURES, positive}
+
+#338
+chứ nhìn phòng vẫn trang_nhã tiện_nghi
+{ROOMS#DESIGN&FEATURES, positive}
+
+#339
+đúng_ra thì nên mở thêm minimart để khách tiện mua nhu yếu_phẩm cần_thiết
+{HOTEL#MISCELLANEOUS, negative}
+
+#340
+buffet sáng rất tệ
+{FOOD&DRINKS#QUALITY, negative}
+
+#341
+và sáng hôm sau các loại bánh mà cô tiếp_tân xinh_đẹp mang lên phòng cho tôi đều có_mặt đầy_đủ trên quầy buffet trong buổi sáng liên_tiếp không thay_đổi chồng tôi bảo thế hoá_ra chiều_hôm nọ họ đưa bánh thừa buổi sáng lên cho mình à em
+{SERVICE#GENERAL, negative}, {FOOD&DRINKS#MISCELLANEOUS, negative}
+
+#342
+lúc đi chơi về tôi thấy các vết đen bám trên lông thảm nên có gọi lễ_tân hỏi tôi được thông_báo đã hút bụi rất kĩ
+{ROOM_AMENITIES#MISCELLANEOUS, neutral}
+
+#343
+resort phục_vụ ăn sáng nhiều món chế_biến đồ ăn ngon hợp_khẩu_vị chung của du_khách
+{FOOD&DRINKS#QUALITY, positive}, {FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#344
+vào_khoảng giá_tiền giờ tôi đặt xe đi vòng_quanh hồ nhân_viên hẹn lại đến giá_tiền giờ giá_tiền nhưng vẫn không bố_trí được tài_xế để lái_xe tôi thấy chưa hài_lòng về phần dịch_vụ này lắm
+{SERVICE#GENERAL, negative}, {FACILITIES#MISCELLANEOUS, negative}
+
+#345
+kì nghỉ vừa_qua tôi có đặt phòng ở terracotta hotel and resort đà lạt resort cung_cấp đầy_đủ các tiện_nghi phục_vụ cho nhu_cầu nghỉ_ngơi của tôi giá_cả tương_xứng so với chất_lượng dịch_vụ
+{HOTEL#PRICES, positive}, {SERVICE#GENERAL, positive}
+
+#346
+không_gian rộng thoáng không_khí trong_lành
+{HOTEL#DESIGN&FEATURES, positive}, {HOTEL#COMFORT, positive}
+
+#347
+tôi thấy khách_sạn có vị_trí đi_lại hơi xa_việc lui_tới trung_tâm chợ đà lạt cũng không thuận_lợi
+{LOCATION#GENERAL, negative}
+
+#348
+nhân_viên cũng vui_vẻ và nhiệt_tình thân_thiện tiện_nghi bên trong rất tốt
+{SERVICE#GENERAL, positive}, {ROOM_AMENITIES#QUALITY, positive}
+
+#349
+phòng_ốc sạch_sẽ thoáng mát mọi chất_lượng dịch_vụ tại đây tôi rất hài_lòng
+{ROOMS#CLEANLINESS, positive},   {ROOMS#COMFORT, positive}, {SERVICE#GENERAL, positive}
+
+#350
+terracotta hotel and resort đà lạt đảm_bảo những điều_kiện về tiện_nghi phòng ở tạo sự thoải_mái cho khách_hàng trong quá_trình lưu_trú
+{ROOMS#COMFORT, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#351
+tôi thấy khá hài_lòng về dịch_vụ của terracotta hotel and resort đà_lạt
+{HOTEL#COMFORT, positive}
+
+#352
+terracotta hotel and resort đà_lạt mang đến một chất_lượng tuyệt_vời phòng ở được chú_trọng vệ_sinh sạch_sẽ tiện_nghi phòng_ốc đầy_đủ và đạt tiêu_chuẩn
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#353
+tôi cảm_thấy rất thoải_mái khi sử_dụng dịch_vụ ở đây
+{HOTEL#COMFORT, positive}
+
+#354
+về terracotta hotel and resort đà lạt tôi không có gì phàn_nàn
+{HOTEL#COMFORT, positive}
+
+#355
+phòng ở được vệ_sinh sạch_sẽ sắp_xếp vật_dụng gọn_gàng
+{ROOMS#CLEANLINESS, positive}
+
+#356
+phòng đẹp khuôn_viên rộng phục_vụ tốt
+{SERVICE#GENERAL, positive},   {ROOMS#DESIGN&FEATURES, positive}
+
+#357
+phòng của tôi ở trong góc nên có vẻ không_gian không được thoáng cho lắm
+{ROOMS#DESIGN&FEATURES, negative}, {ROOMS#COMFORT, negative}
+
+#358
+họ bố_trí tôi ở căn phòng có diện_tích rộng_rãi và được thiết_kế tiện_nghi_trang_nhã
+{ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#DESIGN&FEATURES, positive}
+
+#359
+tác_phong phục_vụ nhiệt_tình niềm_nở
+{SERVICE#GENERAL, positive}
+
+#360
+tôi cảm_thấy hài_lòng trong thời_gian ở terracotta hotel and resort đà_lạt
+{HOTEL#COMFORT, positive}
+
+#361
+nhìn_chung thì tôi cảm_thấy hài_lòng về chất_lượng dịch_vụ của terracotta hotel and resort đà lạt này
+{HOTEL#COMFORT, positive}, {SERVICE#GENERAL, positive}
+
+#362
+không_gian rộng_rãi và mát_mẻ
+{HOTEL#DESIGN&FEATURES, positive}
+
+#363
+còn chất_lượng phòng cũng được sạch_sẽ đầy_đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#QUALITY, positive}
+
+#364
+thái_độ nhân_viên phục_vụ dễ_thương vui_vẻ khung_cảnh đẹp ăn_uống ổn và giá_cả phù_hợp
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#365
+cảnh_quan ở terracotta hotel and resort đà lạt đẹp không_gian vừa mát_mẻ vừa rộng_rãi
+{HOTEL#DESIGN&FEATURES, positive}
+
+#366
+thái_độ phục_vụ của nhân_viên nơi đây tốt chăm_sóc khách_hàng nhiệt_tình chu_đáo
+{SERVICE#GENERAL, positive}
+
+#367
+kỳ lễ vừa_qua tôi có nghỉ_ngơi tại terracotta hotel and resort đà lạt tôi thấy rất hài_lòng về chất_lượng dịch_vụ ở đây từ dịch_vụ phòng_ốc cũng như nhân_viên cũng như vị_trí đi_lại mọi thứ đều có chất_lượng tốt
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#GENERAL, positive}
+
+#368
+phòng_ốc rộng_rãi vệ_sinh sạch_sẽ
+{ROOMS#DESIGN&FEATURES, positive},   {ROOMS#CLEANLINESS, positive}
+
+#369
+phòng ở phù_hợp với số tiền tôi đã chi_trả
+{HOTEL#PRICES, positive}
+
+#370
+nhân_viên lễ_tân cực_kỳ tốt
+{SERVICE#GENERAL, positive}
+
+#371
+tôi có đặt phòng giúp bạn tại terracotta hotel and resort đà lạt sau khi về thì bạn tôi không phàn_nàn gì về chất_lượng resort này đang có vì_thế nếu có đánh_giá tôi sẽ đánh_giá khách_sạn này ở mức khá tốt
+{HOTEL#GENERAL, positive}
+
+#372
+phòng_ốc chú_ý giữ_gìn vệ_sinh sạch_sẽ và bố_trí tiện_nghi đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#373
+tôi sẽ đánh_giá khách_sạn này ở mức cao nhất vì chất_lượng nơi này tốt lắm
+{HOTEL#QUALITY, positive}
+
+#374
+khung_cảnh đẹp cùng không_gian rộng_rãi mát_mẻ đủ làm tôi đánh_giá số điểm tuyệt_đối cho terracotta hotel resort và spa đà_lạt
+{HOTEL#DESIGN&FEATURES, positive}
+
+#375
+khách_sạn này có phòng_ốc khang_trang và rộng_rãi tiện_nghi được phân_bổ đầy_đủ để sử_dụng
+{ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#376
+thật_ra về chất_lượng phòng_ốc thì tôi không có chê_trách gì nó phù_hợp với mục_đích nghỉ_ngơi của tôi
+{ROOMS#QUALITY, positive}
+
+#377
+còn về cảnh_quan đẹp mát_mẻ
+{HOTEL#DESIGN&FEATURES, positive}
+
+#378
+những dịch_vụ khách_sạn đang cung_cấp theo cảm_nhận của tôi rất tuyệt_vời
+{SERVICE#GENERAL, positive}
+
+#379
+còn về chất_lượng phòng nghỉ thì đạt yêu_cầu các trang thiết_bị tiện_nghi hoạt_động tốt dọn phòng kỹ_lưỡng gọn_gàng
+{ROOMS#CLEANLINESS, positive}, {ROOMS#QUALITY, positive}, {ROOM_AMENITIES#QUALITY, positive}
+
+#380
+phục_vụ ổn mọi người đều nhiệt_tình tiếp_đón du_khách
+{SERVICE#GENERAL, positive}
+
+#381
+lần này ở terracotta hotel resort và spa đà lạt tôi chưa hài_lòng lắm vì tôi đặt giường đôi nhưng resort nói hết phòng và xếp tôi ở phòng giường đơn phải ghép giường nên nghỉ_ngơi cũng chưa thoải_mái lắm
+{HOTEL#COMFORT, negative}, {ROOMS#COMFORT, negative}, {SERVICE#GENERAL, negative}
+
+#382
+theo cá_nhân tôi thấy thì dịch_vụ ở terracotta hotel resort và spa đà lạt cũng ổn
+{SERVICE#GENERAL, neutral}
+
+#383
+terracotta hotel resort và spa đà lạt là một địa_điểm nghỉ_dưỡng tuyệt_vời không_gian rất đẹp sân vườn rộng_rãi và mát_mẻ
+{HOTEL#GENERAL, positive}, {HOTEL#DESIGN&FEATURES, positive}
+
+#384
+chi_phí đã trả là hoàn_toàn xứng_đáng
+{HOTEL#PRICES, positive}
+
+#385
+không_gian thoáng mát đẹp tôi khá hài_lòng khi nghỉ tại đây
+{HOTEL#COMFORT, positive}
+
+#386
+tuy_nhiên ở đây thì hệ_thống wifi hơi yếu không sử_dụng được khá bất_tiện về điều này
+{FACILITIES#QUALITY, negative}
+
+#387
+phòng_ốc sạch_sẽ đẹp nhân_viên chuyên_nghiệp và lịch_sự đúng với tiêu_chuẩn mà khách_sạn để
+{SERVICE#GENERAL, positive},   {ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#388
+nhân_viên thì chuyên_nghiệp lịch_sự
+{SERVICE#GENERAL, positive}
+
+#389
+nhân_viên làm_việc cũng rất chu_đáo và nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#390
+nhân_viên thì lịch_sự nhiệt_tình với khách
+{SERVICE#GENERAL, positive}
+
+#391
+ăn sáng cũng tốt nhìn_chung thì mọi thứ ở đây đều ổn tôi hài_lòng khi nghỉ tại đây
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#392
+nhìn_chung mọi thứ đều tốt đáp_ứng được yêu_cầu của tôi
+{HOTEL#GENERAL, positive}
+
+#393
+ở đây hơi xa trung_tâm khá yên_tĩnh là nơi thích_hợp để nghỉ_dưỡng
+{LOCATION#GENERAL, negative}, {HOTEL#COMFORT, positive}
+
+#394
+vì có xe nhà nên việc đi_lại cũng khá dễ_dàng và thuận_tiện
+{HOTEL#MISCELLANEOUS, positive}
+
+#395
+nhân_viên thì theo tôi thấy chưa được nhiệt_tình và chu_đáo lắm
+{SERVICE#GENERAL, negative}
+
+#396
+thích nhất là có trồng nhiều hoa đẹp có những bức tượng gốm nho_nhỏ xinh_xắn bày_biện khắp nơi trong khuôn_viên
+{HOTEL#DESIGN&FEATURES, positive}
+
+#397
+khung_cảnh resort thoáng_đãng phòng_ốc sạch_sẽ
+{HOTEL#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#398
+tôi khá vừa_lòng khi chọn cần giờ resort để lưu_trú trong kỳ nghỉ vừa_rồi
+{HOTEL#COMFORT, positive}
+
+#399
+phòng_ốc thì sạch_sẽ đồ_đạc gọ n gàng nhân_viên thì vui_vẻ ni ềm nở chào_đón bữa sáng không phải buf fet nhưng ăn cũng được vị_trí đi_lại cũng tiện và giá_cả thì phải_chăng
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive},   {ROOMS#CLEANLINESS, positive}, {FOOD&DRINKS#MISCELLANEOUS, neutral}, {HOTEL#PRICES, positive}
+
+#400
+tôi đã có ngày nghỉ_ngơi thoải_mái khi ở cần giờ resort
+{HOTEL#COMFORT, positive}
+
+#401
+thiết_kế phòng_ốc rộng_rãi dọn phòng kỹ_càng và sạch_sẽ nên tôi thấy ở đây cũng khá tốt
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}
+
+#402
+nhìn_chung về cần giờ resort tôi thấy cũng ổn
+{HOTEL#GENERAL, neutral}
+
+#403
+phòng_ốc được dọn_dẹp sạch_sẽ tiện_nghi
+{ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#404
+tuy_nhiên các tiện_ích kèm theo không tốt lắm nhất là hồ bơi không sạch_sẽ mấy
+{FACILITIES#CLEANLINESS, negative}
+
+#405
+phòng_ốc đáp_ứng đúng yêu_cầu_mong_đợi ban_đầu của tôi
+{ROOMS#GENERAL, positive}
+
+#406
+thế nhưng phòng nhiều muỗi và toilet hôi vì không có quạt hút mùi
+{ROOMS#CLEANLINESS, negative},   {ROOM_AMENITIES#CLEANLINESS, negative}
+
+#407
+còn thái_độ làm_việc cũng bình_thường
+{SERVICE#GENERAL, neutral}
+
+#408
+khi tôi đến nhận phòng mọi người lịch_sự thân_thiện chào_hỏi đón_tiếp
+{SERVICE#GENERAL, positive}
+
+#409
+diện_tích phòng nghỉ rộng_rãi không_gian mát_mẻ tạo cảm_giác_thư giãn khi nghỉ_ngơi lại đây
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#COMFORT, positive}
+
+#410
+nhân_viên dọn_dẹp phòng_ốc sạch_sẽ đầy_đủ tiện_nghi vị_trí thuận_tiện đi_lại
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#411
+tổng_quan nơi này đẹp phòng_ốc sạch_sẽ các bạn nhân_viên vui_vẻ giá_cả hợp_lý
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}, {HOTEL#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#412
+tôi đánh_giá khách_sạn này có chất_lượng dịch_vụ cũng được
+{SERVICE#GENERAL, positive}
+
+#413
+phòng ở vệ_sinh sạch_sẽ trang thiết_bị đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#414
+tuy_nhiên phòng tôi có máy_lạnh hơi yếu nên chưa được mát lắm
+{ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#415
+ở đây còn muỗi nhiều quá
+{HOTEL#CLEANLINESS, negative}
+
+#416
+tuy_nhiên bữa sáng còn chưa đa_dạng
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#417
+với lại hiện_nay resort cũng chưa có bãi_tắm riêng nữa
+{FACILITIES#MISCELLANEOUS, negative}
+
+#418
+về vị_trí toạ_lạc của cần giờ resort thì tôi không phàn_nàn gì đi_lại thuận_lợi
+{LOCATION#GENERAL, positive}
+
+#419
+về nhân_viên cũng làm_việc lịch_sự không có gì phàn_nàn ăn_uống tốt tôi hài_lòng khi nghỉ tại đây
+{SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#420
+trong chuyến du_lịch đến cần giờ vừa_rồi tôi đã chọn dịch_vụ ở cần giờ resort
+{HOTEL#GENERAL, positive}
+
+#421
+chất_lượng phòng đạt yêu_cầu dọn_dẹp sạch và đầy_đủ đồ_dùng cơ_bản
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#QUALITY, positive}
+
+#422
+nhìn_chung resort tốt và tôi cảm_thấy hài_lòng khi nghỉ tại đây
+{HOTEL#COMFORT, positive}
+
+#423
+resort sạch_sẽ phòng_ốc cũng sạch đầy_đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#424
+nước trong hồ bơi không sạch lâu_lâu mới thay một lần đồ ăn thì đảm_bảo_an_toàn vệ_sinh nhưng giá_thành còn đắt quá
+{FACILITIES#CLEANLINESS, negative}, {FOOD&DRINKS#MISCELLANEOUS, positive}, {FOOD&DRINKS#PRICES, negative}
+
+#425
+sau khoảng thời_gian trải nghiệm dịch_vụ của resort về người quen tôi phản_hồi dịch_vụ ở đây cũng tốt giá_cả như vậy chấp_nhận được
+{HOTEL#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#426
+phòng_ốc sạch_sẽ tiện_nghi cũng tốt
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#427
+với lại tôi thấy đồ ăn sáng chưa được đa_dạng lắm và hơi có muỗi
+{ROOMS#CLEANLINESS, negative}, {FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#428
+đồ ăn sáng thì cũng tàm_tạm nhưng bù lại thái_độ phục_vụ tốt thân_thiện vui_vẻ
+{SERVICE#GENERAL, positive}, {FOOD&DRINKS#QUALITY, neutral}
+
+#429
+sau thời_gian ở đây từ phòng ở đến nhân_viên thì tôi không có gì phải phàn_nàn cả
+{HOTEL#GENERAL, positive}
+
+#430
+dịch_vụ và tiện_ích cơ_bản kèm theo hoạt_động tốt
+{SERVICE#GENERAL, positive}
+
+#431
+cần giờ resort toạ_lạc nằm gần biển nên thuận_tiện đi_lại lắm
+{LOCATION#GENERAL, positive}
+
+#432
+vào buổi tối thì đường đi không có đèn nên khá tối
+{HOTEL#MISCELLANEOUS, negative}
+
+#433
+resort này vị_trí đẹp
+{LOCATION#GENERAL, positive}
+
+#434
+thái_độ phục_vụ của nhân_viên thì tốt và nhìn_chung thì resort này có chất_lượng cũng khá ổn
+{SERVICE#GENERAL, positive}, {HOTEL#QUALITY, positive}
+
+#435
+khuôn_viên rộng_rãi đồ ăn phục_vụ đa_dạng mà cũng ngon_miệng các hoạt_động vui_chơi giải_trí rất vui
+{FOOD&DRINKS#STYLE&OPTIONS, positive}, {FOOD&DRINKS#QUALITY, positive}, {HOTEL#MISCELLANEOUS, positive}
+
+#436
+tôi không hề hài_lòng về resort này
+{HOTEL#COMFORT, negative}
+
+#437
+resort có bãi đỗ xe nhưng có tính phí riêng
+{FACILITIES#PRICES, negative}
+
+#438
+phòng_ốc sạch_sẽ tiện_nghi tốt
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#439
+nhân_viên cũng lịch_sự thân_thiện và nhiệt_tình với khách
+{SERVICE#GENERAL, positive}
+
+#440
+tôi thấy phòng_ốc ở cần giờ resort khá sạch_sẽ tiện_nghi đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#441
+tuy_nhiên có_lẽ do lúc tôi đến thì resort hơi vắng khách nên đồ ăn sáng ở đây không được phong_phú cho lắm
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#442
+vừa_qua khi có chuyến đi đến cần giờ thì tôi đã có đặt phòng tại cần giờ resort thông_qua hệ_thống của mytour
+{HOTEL#GENERAL, positive}
+
+#443
+tôi ở cần giờ resort tôi thấy rất hài_lòng
+{HOTEL#COMFORT, positive}
+
+#444
+nhưng chỉ có điểm là cảnh biển của resort chưa được đẹp
+{HOTEL#DESIGN&FEATURES, negative}
+
+#445
+cần giờ resort có các dịch_vụ tốt tôi đã có một kỳ nghỉ_dưỡng vui_vẻ cùng bạn_bè
+{SERVICE#GENERAL, positive}
+
+#446
+phòng tôi ở vị_trí cuối_cùng của dãy lúc trời mưa mặc_dù đã đóng cửa_sổ nhưng vẫn bị nước nhiễu vào phòng
+{ROOMS#MISCELLANEOUS, negative}
+
+#447
+tôi đã nhiều lần ở lại resort cần giờ nhưng vấn_đề muỗi nhiều vẫn chưa khắc_phục được
+{ROOMS#CLEANLINESS, negative}
+
+#448
+hệ_thống còn không còn được mới nữa
+{HOTEL#QUALITY, negative}
+
+#449
+tôi thấy cũng hài_lòng vậy nên những lần sau tôi sẽ quay lại khách_sạn này
+{HOTEL#GENERAL, positive}
+
+#450
+tôi thấy mọi thứ rất tuyệt_vời
+{HOTEL#GENERAL, positive}
+
+#451
+và sẽ giới_thiệu cho bạn_bè người_thân tới resort
+{HOTEL#GENERAL, positive}
+
+#452
+phòng rất yên_tĩnh thoáng_đãng vê sinh luôn sạch_sẽ tiện_nghi đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive},   {ROOMS#CLEANLINESS, positive},   {ROOMS#COMFORT, positive}
+
+#453
+về phòng_ốc thì rất tốt khuôn_viên đẹp
+{HOTEL#DESIGN&FEATURES, positive}, {ROOMS#GENERAL, positive}
+
+#454
+nhân_viên phục_vụ dễ_thương nhiệt_tình hỗ_trợ khách
+{SERVICE#GENERAL, positive}
+
+#455
+tuy_nhiên ít dịch_vụ giải_trí thể_thao
+{HOTEL#MISCELLANEOUS, negative}
+
+#456
+gia_đình tôi rất hài_lòng khi ở tại cần giờ resort
+{HOTEL#COMFORT, positive}
+
+#457
+tôi không hài_lòng vấn_đề này
+{HOTEL#COMFORT, negative}
+
+#458
+vị_trí resort gần biển nên thuận_tiện ra biển đi dạo và ăn hải_sản
+{LOCATION#GENERAL, positive}
+
+#459
+mình dự_trù sẽ quay lại đây thêm nhiều lần nữa
+{HOTEL#GENERAL, positive}
+
+#460
+tôi quên thoa kem tránh muỗi nên bị chít nhiều
+{HOTEL#MISCELLANEOUS, negative}, {ROOMS#CLEANLINESS, negative}
+
+#461
+phòng nghỉ không quá rộng nhưng sạch_sẽ và đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#DESIGN&FEATURES, neutral}, {ROOMS#CLEANLINESS, positive}
+
+#462
+dịch_vụ cần giờ resort tạm ổn lễ_tân vui_vẻ và nhanh_nhẹn
+{SERVICE#GENERAL, neutral}
+
+#463
+ưu_điểm resort yên_tĩnh thích_hợp cho nghĩ dưỡng
+{HOTEL#COMFORT, positive}
+
+#464
+phòng họp máy điều_hoà hư mà không sửa_chữa
+{ROOM_AMENITIES#QUALITY, negative}
+
+#465
+khu nghỉ_mát này toạ_lạc bên cạnh bãi biển trong một khu vườn xinh_đẹp
+{LOCATION#GENERAL, positive}
+
+#466
+một_số nhân_viên có thái_độ thiếu nhiệt_tình thiếu hợp_tác với khách
+{SERVICE#GENERAL, negative}
+
+#467
+với giá_thành bình_dân và tiêu_chuẩn sao thì tôi đánh_giá dịch_vụ tại đây cũng ổn không có gì phát_sinh trong thời_gian lưu_trú vừa_qua
+{HOTEL#PRICES, positive},   {SERVICE#GENERAL, neutral}
+
+#468
+một điểm trừ tại happy day guesthouse là toilet hơi cũ và bị ẩm_mốc
+{ROOM_AMENITIES#QUALITY, negative}
+
+#469
+tuy_nhiên nhân_viên nên thay drap mỗi khi dọn thì sẽ tốt hơn nhiều
+{SERVICE#GENERAL, positive}
+
+#470
+nói_chung thì dịch_vụ ở đây theo tôi thì cũng ổn cũng đáp_ứng được nhu_cầu cơ_bản từ phòng ở vệ_sinh gọn_gàng ngăn_nắp đến vị_trí ra chợ gần nên thuận_tiện đi_lại
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {LOCATION#GENERAL, positive}
+
+#471
+kì nghỉ_mát vừa_qua ở đà lạt tôi có chọn happy day guesthouse làm nơi lưu_trú và có vài ý_kiến sau
+{HOTEL#GENERAL, positive}
+
+#472
+happy day chỉ là guesthouse nhưng nó có đủ các trang thiết_bị và vật_dụng sinh_hoạt cần_thiết để du_khách sử_dụng
+{FACILITIES#GENERAL, positive}
+
+#473
+mọi thứ đều tốt trừ thời_gian nhận phòng khác trên mytour
+{HOTEL#GENERAL, positive}
+
+#474
+chất_lượng dịch_vụ ở đây cũng được phù_hợp với giá_tiền mà tôi đã bỏ ra
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#475
+kì nghỉ vừa_qua tôi có đặt phòng ở happy day guesthouse tôi cũng không phàn_nàn gì khi lưu_trú ở đây giá_cả nhìn_chung cũng tương_xứng so với chất_lượng dịch_vụ phòng_ốc cũng sạch_sẽ và tiện_nghi cơ_bản được trang_bị đầy_đủ
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#476
+tôi cũng không gặp vấn_đề nào phàn_nàn cả
+{HOTEL#GENERAL, positive}
+
+#477
+cơ_sở vật_chất nhìn cũ
+{FACILITIES#GENERAL, negative}
+
+#478
+nhân_viên thân_thiện khi tiếp_đón khách_hàng
+{SERVICE#GENERAL, positive}
+
+#479
+những vật_dụng tiện_nghi cần_thiết được khách_sạn cung_cấp đầy_đủ gọn_gàng
+{FACILITIES#GENERAL, positive}
+
+#480
+với địa_thế gần chợ phù_hợp đối_với nhu_cầu đi_lại của du_khách
+{LOCATION#GENERAL, positive}
+
+#481
+tuy_nhiên dịch_vụ phòng không tốt lắm
+{ROOMS#GENERAL, negative}
+
+#482
+chăn với drap cũng không được sạch lắm
+{ROOM_AMENITIES#CLEANLINESS, negative}
+
+#483
+nhân_viên thì làm_việc cũng khá thân_thiện
+{SERVICE#GENERAL, positive}
+
+#484
+happy day hotel có phòng hơi chật không được ấn_tượng với tôi cho lắm cửa nhà vệ_sinh cũng bị hỏng không có đóng kín được
+{ROOMS#DESIGN&FEATURES, negative}, {ROOM_AMENITIES#DESIGN&FEATURES, negative}
+
+#485
+điểm trừ duy_nhất là diện_tích phòng hơi nhỏ chứ vệ_sinh thì đảm_bảo sạch_sẽ tinh_tươm
+{ROOMS#DESIGN&FEATURES, negative}, {ROOMS#CLEANLINESS, positive}
+
+#486
+so_sánh với dịch_vụ mà happy day hotel đang cung_cấp thì giá_thành hợp_lý
+{HOTEL#PRICES, positive}
+
+#487
+thái_độ chào_đón phục_vụ khách thân_thiện nhưng cũng không kém phần lịch_sự
+{SERVICE#GENERAL, positive}
+
+#488
+happy day hotel có lợi_thế_là gần chợ nên thuận_tiện cho việc tham_quan và mua_sắm của tôi thái_độ phục_vụ của nhân_viên cũng nhiệt_tình hỗ_trợ tốt
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#489
+phòng_ốc sạch_sẽ ngăn_nắp
+{ROOMS#CLEANLINESS, positive}
+
+#490
+vì chất_lượng dịch_vụ tương_ứng với số tiền tôi đã bỏ ra
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#491
+nhân_viên họ có thái_độ tương_đối vui_vẻ lịch_sự với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#492
+chứ phòng được chuẩn_bị kỹ_càng và sạch_sẽ
+{ROOMS#CLEANLINESS, positive}
+
+#493
+về dịch_vụ phòng_ốc tại happy day hotel theo tôi đánh_giá cũng tạm ổn vì hệ_thống máy nóng lạnh chập_chờn lúc thì nóng quá lúc thì không nóng
+{SERVICE#GENERAL, positive}, {ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#494
+nhân_viên tại happy day hotel này phục_vụ tốt nhiệt_tình thân_thiện
+{SERVICE#GENERAL, positive}
+
+#495
+tổng_thể tôi hài_lòng và không phàn_nàn gì hết
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#496
+nhìn_chung mọi thứ tại khách_sạn happy day hotel tôi thấy cũng tạm ổn trong suốt thời_gian lưu_trú tại đây cùng người_thân
+{HOTEL#GENERAL, neutral}
+
+#497
+khách_sạn không có thang_máy nên đi_lại hơi khó_khăn
+{FACILITIES#DESIGN&FEATURES, negative}
+
+#498
+những bạn nhân_viên thì có cung_cách phục_vụ khách_hàng tốt
+{SERVICE#GENERAL, positive}
+
+#499
+phòng_ốc cũng như toilet đã xuống_cấp
+{ROOMS#QUALITY, negative}
+
+#500
+happy day hotel có vị_trí ổn
+{LOCATION#GENERAL, positive}
+
+#501
+tôi được bố_trí nghỉ_ngơi tại phòng giá_tiền nhưng phòng_ốc cũng như tiện_nghi dơ tất_cả mọi thứ cũ
+{ROOMS#GENERAL, negative}, {ROOMS#CLEANLINESS, negative}
+
+#502
+phòng_ốc tại đây cũng sạch_sẽ tương_đối đủ tiện_nghi cho tôi sử_dụng
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#503
+giá_cả như_vậy cũng khá phù_hợp
+{HOTEL#PRICES, positive}
+
+#504
+phòng_ốc được dọn_dẹp vệ_sinh sạch_sẽ nội_thất trong phòng được trang_bị đầy_đủ nghi đầy_đủ cung_cách phục_vụ của nhân_viên khách_sạn này tốt nhiệt_tình thân_thiện
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOM_AMENITIES#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#505
+tôi chọn khách_sạn happy day hotel cho chuyến đi vừa_rồi và tôi cảm_thấy khá tốt
+{HOTEL#GENERAL, positive}
+
+#506
+phòng_ốc sạch_sẽ tươm_tất thoáng mát
+{HOTEL#CLEANLINESS, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}
+
+#507
+giá phòng hợp_lý
+{ROOMS#PRICES, positive}
+
+#508
+không quá nổi_bật nhưng cũng không có gì phàn_nàn khi nghỉ tại đây
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#509
+tuy_nhiên nhà vệ_sinh nơi này đã khá cũ rồi
+{ROOM_AMENITIES#DESIGN&FEATURES, positive}
+
+#510
+tôi đi cùng người già và trẻ_em nhưng lúc đầu khách_sạn không biết nên bố_trí tôi phòng ở lầu và lầu
+{HOTEL#GENERAL, positive}
+
+#511
+nhân_viên thì cũng được tiếp_đón tốt
+{SERVICE#GENERAL, positive}
+
+#512
+happyday hotel có vị_trí khá gần trung_tâm nên đi_lại thuận_tiện
+{LOCATION#GENERAL, positive}
+
+#513
+giá_cả hợp_lý tiện_nghi đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {FACILITIES#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#514
+nhân_viên khách_sạn niềm_nở chu_đáo và tận_tình giúp_đỡ mọi thông_tin du_lịch phòng ở thì trang thiết_bị khá tốt xin chân_thành cảm_ơn_my tour và khách sạnan happyday
+{SERVICE#GENERAL, positive}
+
+#515
+nhân_viên nhiệt_tình chu_đáo
+{SERVICE#GENERAL, positive}
+
+#516
+sạch_sẽ thoáng mát nhân_viên rất thoải_mái dịch_vụ tốt địa_điểm khách_sạn nằm ngay khu trung_tâm dễ_dàng đi chơi chúng_tôi cảm_thấy rất hài_lòng khi ở tại đây sẽ quay lại happy hotel trong chuyến du_lịch đến đà lạt lần sau cám_ơn happy hotel đã cho chúng_tôi một trải nghiệm tuyệt_vời
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#COMFORT, positive}, {ROOMS#COMFORT, positive}
+
+#517
+đến khi chúng_tôi bị nhân_viên bắt trả phòng lúc giá_tiền giờ thì tôi mới xem_lại mail với dòng chứ rất nhỏ gọi lại thì mytour chuyển máy cho người khác không phải người bán phòng cho tôi và bạn này trả_lời vô trách_nhiệm không có thiện_chí giúp_đỡ khách_hàng
+{SERVICE#GENERAL, positive}, {ROOMS#DESIGN&FEATURES, positive}
+
+#518
+tổng_quan tôi thấy thoải_mái khi ở đây
+{HOTEL#DESIGN&FEATURES, positive}, {HOTEL#COMFORT, positive}, {ROOMS#COMFORT, positive}
+
+#519
+dù diện_tích căn phòng hơi nhỏ một_chút nhưng bù lại vệ_sinh phòng_ốc sạch_sẽ tinh_tươm
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#520
+chẳng điểm nào khiến tôi phiền_lòng cả
+{HOTEL#COMFORT, positive}
+
+#521
+phòng_ốc khách_sạn được trang_bị đầy_đủ tiện_nghi_vệ_sinh sạch_sẽ nhân_viên khách_sạn vui_vẻ và nhiệt_tình
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {HOTEL#CLEANLINESS, positive}, {ROOMS#CLEANLINESS, positive}
+
+#522
+về cách làm_việc của nhân_viên cũng thân_thiện nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#523
+tôi đánh_giá dịch_vụ phòng ở happy day không được tốt
+{HOTEL#GENERAL, positive}
+
+#524
+tôi lựa_chọn khách_sạn này vì nó nằm gần hồ xuân hương gần chợ dễ_dàng đi_lại
+{HOTEL#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#525
+không_những vậy hôm sau phòng giường đôi của tôi lại ghép thành phòng giường tôi rất khó_chịu nhưng vì chỉ ở đêm nữa rồi về nên tôi cũng không muốn phiền_phức chấp_nhận ở tạm
+{HOTEL#GENERAL, positive}
+
+#526
+diện_tích căn phòng rộng nhưng mà trong phòng rất sơ xài
+{ROOMS#DESIGN&FEATURES, positive}
+
+#527
+khách_sạn happy day là nơi tôi lựa_chọn để nghỉ_ngơi cho chuyến đi đà lạt vừa_qua của mình
+{HOTEL#GENERAL, positive}
+
+#528
+bạn ấy không chịu tìm mà cứ bảo là tôi không có đưa
+{HOTEL#GENERAL, positive}
+
+#529
+tôi góp_ý để lần sau nhân_viên tại đây nên kĩ_lưỡng hơn chứ cách phục_vụ như thế không ổn tí nào
+{SERVICE#GENERAL, positive}
+
+#530
+thời_gian lưu lại đây tôi không_thể_nào ngủ được vì khách_sạn quá ồn
+{HOTEL#GENERAL, positive}
+
+#531
+nhìn_chung giá_cả khách_sạn như thế_là phù_hợp với chất_lượng vệ_sinh tốt thái_độ phục_vụ của nhân_viên thân_thiện phòng ở đây rất thoáng nhưng để ấn_tượng hơn thì khách_sạn nên thay cửa nhôm bằng một loại cửa có chất_liệu khác
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#532
+chuyến đi của tôi đã rất tệ khi tôi chọn khách_sạn happy day để nghỉ lại
+{HOTEL#GENERAL, positive}
+
+#533
+nói_chung thì dịch_vụ rất tốt mọi người đều thân_thiện và vui_vẻ với du_khách
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#534
+vừa_qua thì tôi có đặt phòng tại khách_sạn happy day thông_qua hệ_thống của công_ty mytour cho chuyến đi đến đà_lạt của mình
+{HOTEL#GENERAL, positive}
+
+#535
+vậy nên bọn mình ở trong phòng cũng ít nói_chuyện và không_thể mở nhạc hay loa ngoài vì sẽ vọng hết ra ngoài
+{HOTEL#GENERAL, positive}
+
+#536
+phòng nhìn cũng khá mới
+{ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#DESIGN&FEATURES, positive}
+
+#537
+vị_trí khách_sạn có vị_trí tốt gần khu những ăn_uống và mua_sắm nên chúng_tôi rất hài_lòng
+{LOCATION#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#538
+giá thuê xe_máy khá rẻ giá_tiền nghìn xe số giá_tiền nghìn tay ga
+{FACILITIES#PRICES, positive}
+
+#539
+căn phòng mà tôi ở tại khách_sạn happy day thì cũng tương_đối ổn nhưng các trang thiết_bị nội_thất trong phòng thì hơi cũ
+{ROOM_AMENITIES#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#QUALITY, positive}
+
+#540
+thái_độ phục_vụ của nhân_viên rất nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#541
+lúc đầu tôi ở căn phòng lúc trời mưa thì bị dột nước lúc có lúc không
+{ROOM_AMENITIES#QUALITY, positive}
+
+#542
+phòng_ốc cũng được trang_bị đầy_đủ tiện_nghi_vệ_sinh sạch_sẽ
+{ROOM_AMENITIES#GENERAL, positive}, {HOTEL#CLEANLINESS, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}
+
+#543
+điều tôi ấn_tượng nhất chính là sự hoà_đồng mến khách của những nhân_viên ở khách_sạn happy này
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#544
+happy đà lạt nằm ngay trung_tâm nên đi chợ đà lạt đi dạo hồ xuân hương và đi ăn_uống cũng rất thuận_lợi
+{LOCATION#GENERAL, positive}
+
+#545
+nhìn_chung thì tôi khá là hài_lòng về chất_lượng và dịch_vụ của khách_sạn này
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}, {HOTEL#QUALITY, positive}
+
+#546
+tôi hài_lòng về khách_sạn và sẽ quay lại khi có cơ_hội
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#547
+nhân_viên rất thân_thiện nhiệt_tình chu_đáo
+{SERVICE#GENERAL, positive}
+
+#548
+nhân_viên khách_sạn khá thân_thiện và nhiệt_tình chúng_tôi cần gì cũng có nước nóng nước_đá chăn đây sẽ là nơi lưu_trú thích_hợp và làm hài_lòng các bạn dĩ_nhiên là có chúng_tôi
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#549
+tôi và gia_đình phải nâng_cấp lên một phòng cao_cấp hơn
+{HOTEL#GENERAL, positive}
+
+#550
+nhưng chỉ có một vấn_đề khiến tôi không hài_lòng là nhân_viên tự_ý đổi phòng của tôi
+{SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#551
+nhưng sang ngày hôm sau khách snj lại lấy ại và chuyển tôi lên phòng trên cùng căn phòng này tệ hơn và không có sự riêng_tư
+{SERVICE#GENERAL, positive}, {ROOMS#COMFORT, positive}
+
+#552
+tạo cho du_khách cảm_giác_thư giãn và thoải_mái khi nghỉ_ngơi
+{HOTEL#COMFORT, positive}
+
+#553
+về mức_độ đa_dạng của món ăn trong bữa sáng thì chấp_nhận được
+{FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#554
+cơ_sở hạ_tầng tốt trang thiết_bị hiện_đại
+{FACILITIES#QUALITY, positive}, {FACILITIES#DESIGN&FEATURES, positive}
+
+#555
+khách_sạn gần bờ biển tiện_lợi khung_cảnh đẹp nhân_viên thân_thiện nhiệt_tình
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#DESIGN&FEATURES, positive}
+
+#556
+chất_lượng dịch_vụ ở đây làm tôi hài_lòng về số tiền mà tôi đã bỏ ra
+{HOTEL#COMFORT, positive}
+
+#557
+nếu xét về tổng_quan sau thời_gian nghỉ_ngơi lại khách_sạn mường thanh grand đà_nẵng thì dịch_vụ tạm ổn
+{SERVICE#GENERAL, neutral}
+
+#558
+phòng cũng rộng_rãi thoáng mát tiện_nghi đạt tiêu_chuẩn
+{ROOMS#DESIGN&FEATURES, positive},   {ROOMS#COMFORT, positive}
+
+#559
+cơ sơ chất chất được trang_bị đầy_đủ khang_trang không_gian sạch_sẽ phòng_ốc được sắp_xếp gọn_gàng
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#560
+trong chuyến đi vừa_rồi tôi có đặt phòng tại khách_sạn mường thanh grand đà_nẵng để nghỉ_ngơi
+{HOTEL#GENERAL, positive}
+
+#561
+khách_sạn có vị_trí thuận_tiện đi_lại nhân_viên cũng nhiệt_tình thân_thiện
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#562
+theo đánh_giá của riêng tôi thì chất_lượng khách_sạn này nhìn_chung cũng được
+{HOTEL#QUALITY, neutral}
+
+#563
+tôi khá hài_lòng về khách_sạn mường thanh grand đà_nẵng nơi mà tôi đã ở lại tại đây trong chuyến đi vừa_rồi
+{HOTEL#COMFORT, positive}
+
+#564
+buffet sáng hơi chán một phần do đồ ăn_không phong_phú một phần do món ăn_không mấy hợp_khẩu_vị
+{FOOD&DRINKS#QUALITY, negative}, {FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#565
+chỉ bất_tiện ở điểm là hơi vị_trí khách_sạn này hơi xa biển
+{LOCATION#GENERAL, negative}
+
+#566
+nhân_viên khách_sạn họ phục_vụ khách_hàng nhìn_chung khá là vui_vẻ
+{SERVICE#GENERAL, positive}
+
+#567
+khách_sạn sao mà hệ_thống máy_lạnh nóng
+{ROOM_AMENITIES#QUALITY, negative}
+
+#568
+diện_tích căn phòng tôi ở hơi nhỏ so với hình_ảnh
+{ROOMS#DESIGN&FEATURES, negative}
+
+#569
+chất_lượng khách_sạn rất tương_xứng với tiêu_chuẩn_sao
+{HOTEL#QUALITY, positive}
+
+#570
+nhân_viên khách_sạn này nhiệt_tình chu_đáo
+{SERVICE#GENERAL, positive}
+
+#571
+tôi có nghỉ_ngơi ngơi một đêm tại khách_sạn mường thanh grand đà_nẵng và theo tôi nhận_xét thì dịch_vụ ở đây tốt
+{SERVICE#GENERAL, positive}
+
+#572
+chất_lượng những dịch_vụ khách_sạn đang cung_cấp đến khách_hàng tốt
+{SERVICE#GENERAL, positive}
+
+#573
+nhận_xét của tôi với khách_sạn mường thanh grand đà_nẵng là tốt
+{HOTEL#GENERAL, positive}
+
+#574
+chuyến đi đà_nẵng cùng gia_đình của chúng_tôi vừa_qua đã chọn dịch_vụ khách_sạn mường thanh grand đà_nẵng để nghỉ lại và thấy dịch_vụ phòng_ốc khang_trang và lịch_sự thức_ăn sáng được chuẩn_bị chu_đáo và khá hợp_khẩu_vị
+{FOOD&DRINKS#QUALITY, positive}, {SERVICE#GENERAL, positive}
+
+#575
+nội_thất cơ_sở vật_chất được khách_sạn trang_bị đầy_đủ
+{ROOM_AMENITIES#GENERAL, positive}, {FACILITIES#GENERAL, positive}
+
+#576
+theo cá_nhân tôi đánh_giá thì khách_sạn mường thanh grand đà_nẵng này đã xuống_cấp nhiều rồi
+{HOTEL#QUALITY, negative}
+
+#577
+nghỉ_ngơi không thoải_mái về dịch_vụ chung thì tốt nhân_viên cũng lịch_sự
+{SERVICE#GENERAL, positive}, {ROOMS#COMFORT, negative}
+
+#578
+những dịch_vụ khách_sạn cung_cấp có chất_lượng tốt khiến tôi hài_lòng lắm
+{HOTEL#COMFORT, positive}, {HOTEL#QUALITY, positive}
+
+#579
+có bấm chuông để nhân_viên lên dọn phòng nhưng vẫn không ai dọn
+{SERVICE#GENERAL, negative}, {ROOMS#CLEANLINESS, negative}
+
+#580
+hỏi thì nói ưu tiện khách mới
+{SERVICE#GENERAL, positive}
+
+#581
+bữa sáng phục_vụ đủ món hồ bơi dọn_dẹp tương_đối đạt yêu_cầu
+{FACILITIES#DESIGN&FEATURES, positive},   {FOOD&DRINKS#STYLE&OPTIONS, positive}
+
+#582
+bữa ăn sáng phục_vụ khá ngon căn phòng nhân được khá rộng_rãi sạch_sẽ gọn_gàng
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#583
+khách_sạn ttc hotel premium ngọc_lan có chất_lượng phục_vụ đến nội_thất trang thiết_bị trong phòng đều tốt và tiện_nghi
+{SERVICE#GENERAL, positive},  {ROOM_AMENITIES#QUALITY, positive}
+
+#584
+tôi có nghỉ tại khách_sạn ngọc_lan đà lạt này vài lần rồi lần này thì phòng ở không đẹp lắm phòng khá bí vì chỉ có cái cửa số nhỏ view cũng không đẹp
+{ROOMS#COMFORT, negative}, {ROOMS#GENERAL, negative}, {ROOMS#DESIGN&FEATURES, negative}
+
+#585
+cộng với thái_độ phục_vụ của nhân_viên lịch_sự và niềm_nở với du_khách nên thời_gian ở đây tôi thấy thoải_mái
+{SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#586
+vị_trí khách_sạn tuyệt_vời lễ_tân thân_thiện phòng mới và đẹp không có gì để phàn_nàn
+{LOCATION#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#587
+tôi hài_lòng điểm này
+{HOTEL#COMFORT, positive}
+
+#588
+tôi đã có một kỳ trăng_mật khá hoàn_hảo
+{HOTEL#GENERAL, neutral}
+
+#589
+bữa sáng được phục_vụ ở tầng cao nhất của nhà_hàng
+{FOOD&DRINKS#STYLE&OPTIONS, neutral}
+
+#590
+bãi đậu xe_hơi nhỏ nên hơi bất_tiện
+{FACILITIES#COMFORT, negative}
+
+#591
+khâu vệ_sinh được chú_ý sạch_sẽ tinh_tươm
+{HOTEL#CLEANLINESS, positive}
+
+#592
+mọi thứ ở đây đều tốt chỉ có vị_trí thì tôi chưa thích lắm thôi
+{HOTEL#GENERAL, positive}, {LOCATION#GENERAL, negative}
+
+#593
+chúng_tôi vô_tình ở lại khách_sạn river palace và trả_giá_tiền nghìn đồng vào đêm đầu_tiên ở đà_lạt và nó thậm_chí không bằng chất_lượng của saphir
+{ROOMS#PRICES, positive}, {HOTEL#QUALITY, positive}
+
+#594
+điểm cộng là không_gian resort sạch_sẽ thái_độ phục_vụ niềm_nở và vui_vẻ
+{SERVICE#GENERAL, positive}, {HOTEL#CLEANLINESS, positive}, {HOTEL#CLEANLINESS, positive}
+
+#595
+lại thêm vấn_đề buffet không ngon nữa
+{FOOD&DRINKS#QUALITY, negative}
+
+#596
+paradise beach resort là một trong những sự lựa_chọn của tôi cho chuyến du_lịch mũi né vừa_rồi
+{HOTEL#GENERAL, neutral}
+
+#597
+cám_ơn mytour đã giúp tôi đặt phòng nhanh_chóng
+{SERVICE#GENERAL, positive}
+
+#598
+nhân_viên phục_vụ rất là tận_tình
+{SERVICE#GENERAL, positive}
+
+#599
+phòng_ốc nơi đây rất đẹp sạch_sẽ và tiện_nghi
+{ROOMS#DESIGN&FEATURES, positive},   {ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}
+
+#600
+nhân_viên khách_sạn rất là dễ_thương buffet thì rất ngon vợ_chồng tôi rất hài_lòng lần sau sẽ tiếp_tục ghé thăm
+{SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#601
+vị_trí thì nằm trong hẻm các dịch_vụ còn lại đều tốt phòng khá sạch_sẽ ở cũng không có gì phàn_nàn đầy_đủ tiện_nghi cơ_bản
+{ROOMS#CLEANLINESS, positive}, {SERVICE#GENERAL, positive}, {LOCATION#GENERAL, negative}, {ROOM_AMENITIES#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#602
+mọi thứ đều tốt từ phòng ở sạch_sẽ đầy_đủ tiện_nghi đến phong_cách làm_việc của nhân_viên cũng thân_thiện vui_vẻ
+{HOTEL#GENERAL, positive}, {ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#603
+khách_sạn blue sea cũng khiến tôi hài_lòng tôi nghĩ đây là một khách_sạn khá tốt
+{HOTEL#COMFORT, positive}
+
+#604
+vị_trí của khách_sạn thì nằm gần biển nên đi_lại cũng thuận_tiện
+{LOCATION#GENERAL, positive}
+
+#605
+nhân_viên thì cũng vui_vẻ và nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#606
+vấn_đề vệ_sinh rất là tệ
+{HOTEL#CLEANLINESS, negative}
+
+#607
+còn lại tôi hoàn_toàn hài_lòng về khách_sạn
+{HOTEL#COMFORT, positive}
+
+#608
+tôi đi cùng với gia_đình nói_chung khách_sạn tốt nhân_viên thân_thiện chu_đáo phòng_ốc sạch_sẽ thoải_mái
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive},   {ROOMS#CLEANLINESS, positive}
+
+#609
+bởi khi tôi mới tới khách_sạn nhận phòng mọi người đã vui_vẻ thân_thiện tiếp_đón tôi
+{SERVICE#GENERAL, positive}
+
+#610
+mọi dịch_vụ tại khách_sạn phương huy đà lạt theo tôi đánh_giá là đều tốt và đáp_ứng đủ nhu_cầu của gia_đình tôi từ phòng_ốc gọn_gàng sạch_sẽ tiện_nghi đi kèm được đến thái_độ nhân_viên vui_vẻ vị_trí cũng thuận_tiện và giá_cả phù_hợp
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#611
+bên cạnh đó căn phòng họ sắp_xếp tôi ở cũng đáp_ứng được những tiêu_chí cơ_bản về sự thoáng mát sạch_sẽ
+{ROOMS#CLEANLINESS, positive}, {ROOMS#COMFORT, positive}
+
+#612
+chuyến đi đà lạt vừa_qua tôi chọn dịch_vụ khách_sạn phương huy để nghỉ lại và thấy dịch_vụ phòng_ốc khang_trang tiện_nghi đầy_đủ chúng_tôi được nhanh phòng và phục_vụ nhiệt_tình chu_đáo nữa nên hoà toàn hài_lòng và ấn_tượng về dịch_vụ này
+{FACILITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#613
+theo cá_nhân tôi thấy thì dịch_vụ ở khách_sạn phương huy tốt vì giá_cả hợp_lý giá không cao nên cũng không có ý_kiến nhiều về dịch_vụ nhìn_chung thì phòng_ốc cũng đạt tiêu_chuẩn vệ_sinh sạch_sẽ tiện_nghi có đầy_đủ
+{HOTEL#PRICES, positive}, {HOTEL#CLEANLINESS, positive}, {ROOM_AMENITIES#GENERAL, positive}, {ROOMS#QUALITY, negative}
+
+#614
+dịp lễ mà giá chỉ giá_tiền nghìn khi đặt qua mytour
+{HOTEL#PRICES, negative}
+
+#615
+nhân_viên đón_tiếp niềm_nở và vui_vẻ ăn_uống được và giá_cả thì hợp_lý
+{SERVICE#GENERAL, positive}, {HOTEL#PRICES, positive}, {FOOD&DRINKS#QUALITY, neutral}
+
+#616
+quang_cảnh đẹp hài_hoà
+{HOTEL#DESIGN&FEATURES, positive}
+
+#617
+lần phòng ngay thang_máy lại ở vị_trí mái xéo nên không thoải_mái và ồn bởi tiếng thang_máy người_ta đi lên đi xuống đến giá_tiền giờ đêm tôi phải đổi phòng lần thì mới yên_ổn ngủ được
+{ROOMS#DESIGN&FEATURES, negative},   {ROOMS#COMFORT, negative}
+
+#618
+đồng_thời thì nhân_viên thân_thiện niềm_nở với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#619
+các bạn nhân_viên họ phục_vụ khách_hàng lịch_sự
+{SERVICE#GENERAL, positive}
+
+#620
+đến cần giờ resort nghỉ_ngơi tôi khá hài_lòng với các dịch_vụ mà resort đang cung_cấp
+{HOTEL#COMFORT, positive}, {SERVICE#GENERAL, positive}
+
+#621
+do đó thời_gian ở cần giờ resort tôi thấy tốt
+{HOTEL#COMFORT, positive}
+
+#622
+căn phòng nằm hơi khuất nên bị muỗi nữa
+{ROOMS#CLEANLINESS, negative}, {ROOMS#MISCELLANEOUS, negative}
+
+#623
+ở cần giờ resort giúp tôi thuận_tiện đi_lại tham_quan
+{LOCATION#GENERAL, positive}
+
+#624
+tôi rất hài_lòng về cần giờ resort nơi đây có không_gian thoáng mát giá_cả hợp_lý
+{HOTEL#PRICES, positive},   {HOTEL#COMFORT, positive}
+
+#625
+mình thấy cần giờ resort phục_vụ tốt nhưng buffet còn đơn_điệu và ít món quá
+{SERVICE#GENERAL, positive}, {FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#626
+bữa sáng tự chọn được mở_rộng cũng khá ngon
+{FOOD&DRINKS#QUALITY, positive}
+
+#627
+vị_trí ở đây cũng thuận_tiện cho tôi di_chuyển
+{LOCATION#GENERAL, positive}
+
+#628
+về vị_trí khách_sạn gần chợ tiện_lợi cho việc đi_lại
+{LOCATION#GENERAL, positive}
+
+#629
+nhìn_chung tôi không có gì phải phàn_nàn
+{HOTEL#GENERAL, positive}
+
+#630
+về chất_lượng phòng cũng khá ổn nhân_viên dọn phòng sạch_sẽ
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {ROOMS#QUALITY, positive}
+
+#631
+nhìn chung chất_lượng dịch_vụ nơi này cũng được
+{HOTEL#GENERAL, positive}, {HOTEL#QUALITY, positive}
+
+#632
+tôi có nghỉ tại happyday hotel trong chuyến đi vừa_rồi và không có gì phàn_nàn khi nghỉ tại đây mọi thứ khá tốt phòng_ốc sạch_sẽ tiện_nghi đầy_đủ dịch_vụ không phải là quá tốt nhưng với giá_cả như_vậy là phù_hợp
+{HOTEL#GENERAL, positive}, {HOTEL#PRICES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#633
+bù lại thì nhân_viên làm_việc tốt địa_điểm gần trung_tâm dù_sao thì nhờ vậy_mà việc đị lại trong thành_phố của tôi đã dễ_dàng hơn
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}
+
+#634
+xét về dịch_vụ chung ở happy day hotel thì cơ_bản là ổn ở đây không phải là quá tốt phòng_ốc khá chật nhỏ ở chưa thoải_mái lắm nhưng vì giá_cả không cao_giá khá hợp_lý nên cũng không ý_kiến nhiều về dịch_vụ nhìn_chung dịch_vụ tương_xứng với giá_cả vệ_sinh cũng khá sạch_sẽ
+{HOTEL#GENERAL, positive}, {HOTEL#PRICES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#635
+khách_sạn gần chợ đi chợ đêm thông_qua chợ mới đà_lạt rất gần
+{LOCATION#GENERAL, positive}
+
+#636
+trong toilet đèn sáng yếu nước cũng yếu
+{ROOM_AMENITIES#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#QUALITY, positive}
+
+#637
+chúng_tôi thuê xe nửa ngày từ giờ chiều đến giờ sang hôm sau chỉ với giá_tiền nghìn
+{SERVICE#GENERAL, positive}
+
+#638
+khách_sạn tổng_quan là sạch_sẽ
+{HOTEL#CLEANLINESS, positive}, {ROOMS#CLEANLINESS, positive}
+
+#639
+nhân_viên ở đây thì rất vui_vẻ lich sự và nhiệt_tình với khách
+{SERVICE#GENERAL, positive},
+
+#640
+vị_trí của khách_sạn rất gần chợ tiện_lợi vui_chơi tham_quan nhân_viên thì nhiệt_tình vui_vẻ phòng_ốc đầy_đủ tiện_nghi sạch_sẽ
+{ROOM_AMENITIES#GENERAL, positive}, {SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#641
+với mức giá quá cao không xứng đồng_tiền bỏ ra
+{HOTEL#PRICES, negative}
+
+#642
+nhân_viên ở đây rất nhiệt tinh và chu_đáo với tôi họ thường đáp_ứng được mọi nhu_cầu của tôi
+{SERVICE#GENERAL, positive}
+
+#643
+khách_sạn sạch đẹp phục_vụ tốt
+{SERVICE#GENERAL, positive}, {HOTEL#DESIGN&FEATURES, positive}
+
+#644
+ăn sáng thì người_lớn nhận_xét ăn khá ngon nhưng trẻ_em không thích lắm
+{FOOD&DRINKS#STYLE&OPTIONS, negative}, {FOOD&DRINKS#QUALITY, positive}
+
+#645
+tuy phòng khá chật nhưng khâu vệ_sinh phòng_ốc cũng được dọn_dẹp sạch_sẽ
+{ROOMS#DESIGN&FEATURES, neutral}, {ROOMS#CLEANLINESS, positive}
+
+#646
+giá_tiền hợp_lý khi đặt qua mytour
+{HOTEL#PRICES, positive}
+
+#647
+bữa sáng hợp_khẩu_vị của tôi
+{FOOD&DRINKS#QUALITY, positive}
+
+#648
+nhìn chung chất_lượng dịch_vụ ở đây cũng tốt
+{SERVICE#GENERAL, positive}
+
+#649
+vị_trí gần trung_tâm tôi đánh_giá tốt dịch_vụ ở đây
+{LOCATION#GENERAL, neutral}, {SERVICE#GENERAL, positive}
+
+#650
+thái_độ đón_tiếp khách ân_cần niềm_nở thức_ăn sáng được chuẩn_bị khá chu_đáo và hợp_khẩu_vị với tôi
+{SERVICE#GENERAL, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#651
+phòng_ốc sạch đẹp tầm nhìn thoáng
+{ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#652
+mọi thứ ở đây từ phòng_ốc nhân_viên cho đến bữa ăn đều khá tốt và tôi có_thể cho khách_sạn được giá_tiền điểm về chất_lượng
+{ROOMS#GENERAL, positive}, {SERVICE#GENERAL, positive}, {HOTEL#GENERAL, positive}
+
+#653
+khách_sạn chưa thực_sự hoàn_hảo nhưng với mức giá_như vậy thì tôi cũng không có yêu_cầu gì nhiều
+{HOTEL#GENERAL, neutral}, {HOTEL#PRICES, neutral}
+
+#654
+giá phòng ở đây cũng phù_hợp với chất_lượng
+{HOTEL#PRICES, neutral}, {HOTEL#QUALITY, neutral}
+
+#655
+khách_sạn gần công_viên ấp ánh_sáng
+{LOCATION#GENERAL, positive}
+
+#656
+vì phòng tôi chọn là phòng city view nhưng thật chất không hề nhìn ra được thành_phố
+{ROOMS#DESIGN&FEATURES, negative}
+
+#657
+mọi thứ tương_đối ổn không có gì phải phàn_nàn
+{HOTEL#GENERAL, neutral}
+
+#658
+với phong_cách phục_vụ lịch_sự và chuyên_nghiệp đã gây ấn_tượng tốt cho khách lưu_trú tại khách_sạn
+{SERVICE#GENERAL, positive}
+
+#659
+thái_độ phục_vụ của nhân_viên tốt vui_vẻ thân_thiện với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#660
+tuy_nhiên tôi thấy nhà vệ_sinh ở đây dơ bồn_cầu cũng bị ố vàng
+{ROOM_AMENITIES#CLEANLINESS, negative}
+
+#661
+khi tôi lên phòng thì mặc_dù wifi vẫn có hiển_thị nhưng tôi không_thể vào được
+{FACILITIES#QUALITY, negative}
+
+#662
+cảm_thấy hài_lòng với dịch_vụ trên và tiếp_tục ủng_hộ cho những dịp sau
+{SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#663
+tuy_nhiên tôi có một góp_ý đó là cách_âm trong phòng cực_kì tệ rất ồn và tôi không được nghỉ_ngơi thoải_mái khi ở đây
+{ROOMS#DESIGN&FEATURES, negative},   {ROOMS#COMFORT, negative}
+
+#664
+nhân_viên nhiệt_tình niềm_nở trong khi tiếp_đón khách
+{SERVICE#GENERAL, positive}
+
+#665
+nhìn_chung thì tôi khá hài_lòng về khách_sạn này và tôi không có gì để phàn_nàn về khách_sạn cả
+{HOTEL#COMFORT, positive}
+
+#666
+phòng_ốc với diện_tích rộng_rãi vệ_sinh sạch_sẽ được trang bi tiện_nghi đầy_đủ phù_hợp nhu_cầu sử_dụng
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#DESIGN&FEATURES, positive}, {ROOMS#CLEANLINESS, positive}
+
+#667
+khách_sạn có kiến_trúc rất đẹp phòng được trang_bị đầy_đủ các tiện_nghi hiện_đại nhưng tôi thấy lạ là không được trang_bị máy_lạnh cũng như quạt_máy những khách_sạn có chất_lượng tương_đương khác ở đà_lạt từng ở thì tôi thấy được trang_bị rất đầy_đủ
+{ROOM_AMENITIES#GENERAL, negative}, {HOTEL#DESIGN&FEATURES, positive}
+
+#668
+tiện_nghi phòng_ốc đầy_đủ sạch_sẽ và thoáng mát
+{ROOM_AMENITIES#GENERAL, positive},   {ROOMS#CLEANLINESS, positive}, {HOTEL#COMFORT, positive}
+
+#669
+khách_sạn gần trung_tâm rất tiện_lợi cho việc đi_lại và vui_chơi không_gian lãng_mạn cổ_kính thích_hợp cho cặp đôi
+{LOCATION#GENERAL, positive}
+
+#670
+như phòng mình ở sáng hướng nắng chiếu vào nên khá nóng hỏi khách_sạn xem có quạt không thì khách_sạn nói không có
+{ROOMS#COMFORT, negative}, {ROOM_AMENITIES#GENERAL, negative}
+
+#671
+tuy phòng hơi nhỏ nhưng nhân_viên phục_vụ rát tốt
+{SERVICE#GENERAL, positive},   {ROOMS#DESIGN&FEATURES, negative}
+
+#672
+khách_sạn có chất_lượng quá bình_thường
+{HOTEL#QUALITY, neutral}
+
+#673
+do ở một ngày nên cũng không đổi phòng
+{HOTEL#MISCELLANEOUS, neutral}
+
+#674
+tôi đã đến ở mũi né paradise beach resort này cũng nhiều lần rồi
+{HOTEL#GENERAL, positive}
+
+#675
+phòng_ốc thì cũ dơ dưới giường còn nhiều rác mà nhân_viên không dọn kĩ
+{SERVICE#GENERAL, negative}, {ROOMS#CLEANLINESS, negative}, {ROOMS#QUALITY, negative}
+
+#676
+chỉ có điều resort nên kiểm_tra lại đường truyền internet và tv để nâng cao chất_lượng dịch_vụ hơn
+{FACILITIES#QUALITY, negative}, {SERVICE#GENERAL, negative}
+
+#677
+nhân_viên thì tốt vui_vẻ thân thiên một_số tiện_ích chưa đáp_ứng được yêu_cầu của khách
+{SERVICE#GENERAL, positive}, {FACILITIES#GENERAL, neutral}
+
+#678
+hồ bơi sâu nhất chỉ có_giá_tiền nên không đã lắm
+{FACILITIES#DESIGN&FEATURES, neutral}
+
+#679
+về chất_lượng phòng_ốc thì được
+{ROOMS#QUALITY, positive}
+
+#680
+không_gian xung_quanh của resort rất là thoáng_đãng ở cũng thoải_mái các dịch_vụ từ phòng ở tiện_nghi cách phục_vụ của nhân_viên cho đến ăn sáng cũng đều rất ổn tôi đều hài_lòng
+{HOTEL#GENERAL, positive}, {SERVICE#GENERAL, positive}, {HOTEL#COMFORT, positive}, {ROOMS#COMFORT, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#681
+tôi thấy hài_lòng khi nghỉ tại mũi né paradise beach resort
+{HOTEL#COMFORT, positive}
+
+#682
+vị_trí cũng gần biển nên rất tiện_lợi bãi biển riêng dài và đẹp
+{LOCATION#GENERAL, positive}
+
+#683
+tuy_nhiên phòng của resort có diện_tích hơi bé và chưa đẹp lắm
+{ROOMS#DESIGN&FEATURES, negative}, {ROOMS#GENERAL, negative}
+
+#684
+quang_cảnh xung_quanh rất đẹp nhưng tiếc cái là khuôn_viên hơi nhỏ
+{HOTEL#DESIGN&FEATURES, negative},   {HOTEL#GENERAL, positive}
+
+#685
+phòng không có quạt hút trong nhà vệ_sinh nên hơi có mùi
+{ROOMS#CLEANLINESS, negative}
+
+#686
+xa các bãi_tắm trung_tâm khác
+{LOCATION#GENERAL, negative}
+
+#687
+về mũi né paradise beach resort tất_cả đều ổn mọi thứ chấp_nhận được giá_cả ăn_uống rất hợp_lý đồ ăn ngon
+{HOTEL#GENERAL, positive},   {FOOD&DRINKS#PRICES, positive}, {FOOD&DRINKS#QUALITY, positive}
+
+#688
+mong quý_khách_sạn khắc_phục sự_cố này
+{FACILITIES#MISCELLANEOUS, negative}
+
+#689
+khách_sạn blue sea tốt phòng nghỉ sạch_sẽ và gọn_gàng trang thiết_bị đầy_đủ hoạt_động tốt
+{ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#QUALITY, positive}, {HOTEL#GENERAL, positive}
+
+#690
+thời_gian trải nghiệm dịch_vụ ở khách_sạn blue sea tương_đối ngắn nhưng nếu xét về cơ_bản thì mọi thứ đều tốt
+{HOTEL#GENERAL, positive}
+
+#691
+họ nâng_cấp miễn_phí cho tôi loại phòng cao hơn các trang thiết_bị tiện_nghi đều hoạt_động tốt dọn phòng tươm_tất
+{ROOM_AMENITIES#QUALITY, positive}
+
+#692
+phòng của tôi bị sự_cố hệ_thống thoát nước bị hỏng nước cứ trào ngược lên nhìn rất là kinh
+{ROOM_AMENITIES#QUALITY, negative}
+
+#693
+chất_lượng phòng ở đáp_ứng được sự thoáng mát cũng như sự sạch_sẽ
+{ROOMS#CLEANLINESS, positive}, {ROOMS#QUALITY, positive}, {HOTEL#COMFORT, positive}
+
+#694
+với mức giá đặt qua mytour như_vậy thì tôi thấy hợp_lý nhưng so với giá chuẩn của khách_sạn thì thấy cao bởi đây giống như chung_cư người_ta nâng_cấp lên chứ chưa chuẩn riêng về khách_sạn
+{HOTEL#PRICES, positive}
+
+#695
+vị_trí khách_sạn nằm xa trung_tâm
+{LOCATION#GENERAL, negative}
+
+#696
+tôi có đi vũng_tàu với gia_đình và ở phòng
+{HOTEL#GENERAL, positive}
+
+#697
+nhân_viên phục_vụ cũng được tôi yêu_cầu gì cũng đáp_ứng
+{SERVICE#GENERAL, positive}
+
+#698
+không_gian trong phòng mà tôi ở thoáng_đãng sáng_sủa luôn có ánh nắng nên tôi cảm_thấy rất hài_lòng
+{ROOMS#COMFORT, positive}
+
+#699
+mytour đã hỗ_trợ tôi nhanh_chóng hiệu_quả
+{HOTEL#GENERAL, positive}
+
+#700
+vòi_nước trong phòng toilet bị rò_rỉ
+{ROOM_AMENITIES#QUALITY, negative}, {ROOM_AMENITIES#MISCELLANEOUS, negative}
+
+#701
+do có lựa_chọn trước nên vị_trí ở đây khá thuận_tiện cho chuyến đi du_lịch của tôi
+{LOCATION#GENERAL, positive}
+
+#702
+trong chuyến du_lịch tại vũng_tàu vừa_qua gia_đình tôi có ở lại khách_sạn blue sea
+{HOTEL#GENERAL, positive}
+
+#703
+phòng_ốc sạch_sẽ thoáng mát ở rất thoải_mái
+{ROOMS#CLEANLINESS, positive},   {ROOMS#COMFORT, positive}
+
+#704
+đây là khách_sạn quen của nhóm tôi
+{HOTEL#GENERAL, positive}
+
+#705
+khách_sạn hướng biển nên cảnh rất đẹp và đầy_đủ các tiện_nghi
+{HOTEL#GENERAL, positive}, {HOTEL#GENERAL, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#706
+phòng_ốc tiện_nghi đầy_đủ vệ_sinh cũng sạch_sẽ nhưng nhìn cách bày trí chất_lượng nội_thất thì bình_thường
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#QUALITY, negative}
+
+#707
+dịch_vụ và phòng tại khách_sạn tốt và đáp_ứng tốt nhu_cầu của khách
+{HOTEL#GENERAL, positive}
+
+#708
+khâu vệ_sinh phòng cũng khá tốt nhân_viên của khách_sạn vui_vẻ và thân_thiện
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#709
+dịch_vụ mà khách_sạn phương huy đà_lạt đã đáp_ứng cho tôi trong kì nghỉ vừa_qua là đều tốt từ hệ_thống phòng_ốc nhân_viên phục_vụ đến vị_trí đi_lại cũng như vấn_đề giá_cả
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {ROOMS#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#710
+vị_trí thì xa chợ khoảng giá_tiền mình các bạn nhân_viên phục_vụ thì ổn và do giá_cả rẻ nên tôi cũng không đòi_hỏi gì nhiều về dịch_vụ nơi này
+{SERVICE#GENERAL, neutral}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}
+
+#711
+để đánh_giá về dịch_vụ tại khách_sạn phương huy đà lạt là mọi thứ khá ổn đáp_ứng được nhu_cầu tuy không nổi_bật từ vị_trí toạ_lạc thái_độ nhân_viên phục_vụ cũng như vệ_sinh phòng_ốc tiện_nghi đi kèm và vấn_đề giá_cả
+{HOTEL#GENERAL, neutral}, {SERVICE#GENERAL, neutral}, {LOCATION#GENERAL, neutral}, {HOTEL#PRICES, neutral}, {ROOM_AMENITIES#GENERAL, neutral}
+
+#712
+thái_độ nhân_viên phục_vụ dễ_thương vui_vẻ vị_trí tiện_lợi cho việc di_chuyển và giá_cả phù_hợp túi_tiền nên tôi khá hài_lòng về nơi này
+{SERVICE#GENERAL, positive}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}, {HOTEL#COMFORT, positive}
+
+#713
+phòng_ốc thì đã cũ cửa toilet không khoá được trong những phòng tôi đặt thì có phòng không có quạt phải gọi bổ_sung máy nước nóng lúc có lúc không nghỉ_ngơi thì cũng tạm thôi
+{ROOM_AMENITIES#QUALITY, negative}, {ROOMS#QUALITY, negative}
+
+#714
+nhân_viên dọn phòng hằng ngày đều_đặn và nhanh_chóng
+{SERVICE#GENERAL, positive}
+
+#715
+các bạn nhân_viên khách_sạn có thái_độ phục_vụ khách_hàng khá là tốt
+{SERVICE#GENERAL, positive}
+
+#716
+khách_sạn chuẩn_bị phòng_ốc tương_đối chu_đáo vệ_sinh phòng ở cẩn_thận
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}
+
+#717
+khách_sạn phương huy tôi có đặt phòng cho con_trai khi có cơ_hội đến đà_lạt
+{HOTEL#GENERAL, positive}
+
+#718
+khi đến nhận phòng thì phòng ẩm không được tốt lắm do đó tôi đổi sang phòng khác khá tốt sách sẽ tiện_nghi cơ_bản đầy_đủ nhân_viên ở đây nhiệt_tình thân_thiện lắm hướng_dẫn giới_thiệu những quán ăn ngon cho khách_hàng
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, negative}
+
+#719
+dịch_vụ phòng chưa tốt
+{ROOMS#GENERAL, negative}, {SERVICE#GENERAL, negative}
+
+#720
+mọi người đều lịch_sự địa_điểm thuận_tiện giá_cả hợp_lý nên tôi ở thấy thoải_mái
+{LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}, {HOTEL#COMFORT, positive}, {SERVICE#GENERAL, positive}
+
+#721
+nhân_viên có cung_cách lịch_sự tác_phong nhanh_nhẹn
+{SERVICE#GENERAL, positive}
+
+#722
+nói_chung là mọi thứ tốt hết nên tôi cảm_thấy hài_lòng khi lưu_trú lại khách_sạn phương huy này
+{HOTEL#GENERAL, positive}, {HOTEL#COMFORT, positive}
+
+#723
+về phòng_ốc thì sạch_sẽ tinh_tươm không_gian thoáng mát
+{ROOMS#CLEANLINESS, positive},   {ROOMS#COMFORT, positive}
+
+#724
+vị_trí đắc_địa nằm trên đường bùi thị xuân nên ra chợ cũng gần
+{LOCATION#GENERAL, positive}
+
+#725
+nhân_viên rất vui_vẻ nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#726
+đây là một khách_sạn nhỏ nhưng mới và sạch_sẽ ở trung_tâm thành_phố đà_lạt rất thuận_tiện cho việc đi_lại và vui_chơi
+{LOCATION#GENERAL, positive}, {HOTEL#QUALITY, positive}, {HOTEL#CLEANLINESS, positive}
+
+#727
+chúng_tôi sẽ tiếp_tục đặt đoàn khách của
+{HOTEL#GENERAL, positive}
+
+#728
+nhân_viên dịch_vụ phòng nên kiểm_tra về đường điện và pin của remote để khách_hàng hài_lòng hơn
+{ROOM_AMENITIES#MISCELLANEOUS, neutral}
+
+#729
+anh nhận thấy khách_sạn chỉ bình_thường nhưng tv thì cũ và nhiễu sóng
+{HOTEL#GENERAL, neutral}, {ROOM_AMENITIES#QUALITY, negative}
+
+#730
+phong_cảnh đẹp không_khí trong_lành phục_vụ tốt
+{HOTEL#COMFORT, positive}, {HOTEL#DESIGN&FEATURES, positive}, {SERVICE#GENERAL, positive}
+
+#731
+thái_độ phục_vụ của nhân_viên thân_thiện và luôn tươi_cười vui_vẻ
+{SERVICE#GENERAL, positive}
+
+#732
+chứ về tổng_thể thì tốt rồi
+{HOTEL#GENERAL, positive}
+
+#733
+cảm_nhận khách_quan của riêng tôi khi lưu_trú lại terracotta hotel and resort đà lạt thì dịch_vụ tốt
+{SERVICE#GENERAL, positive}
+
+#734
+theo cảm_nhận của riêng tôi thì dịch_vụ của terracotta hotel and resort đà lạt cũng được
+{SERVICE#GENERAL, neutral}
+
+#735
+điểm làm tôi ấn_tượng nhất khi ở terracotta hotel and resort đà lạt là không_gian rộng mát
+{HOTEL#DESIGN&FEATURES, positive}
+
+#736
+còn khung_cảnh xung_quanh thì khá đẹp mà giá_cả thì quá hợp_lý
+{HOTEL#PRICES, positive}, {HOTEL#DESIGN&FEATURES, positive}
+
+#737
+mọi thứ ở terracotta hotel and resort đà lạt này tôi thấy đều tốt
+{HOTEL#GENERAL, positive}
+
+#738
+tôi hoàn_toàn hài_lòng về những dịch_vụ mà terracotta hotel resort và spa đà_lạt đã cung_cấp cho gia_đình tôi trong chuyến du_lịch vừa_qua
+{HOTEL#COMFORT, positive}
+
+#739
+ăn sáng tốt
+{FOOD&DRINKS#QUALITY, positive}
+
+#740
+quang_cảnh ở đây nên_thơ và hữu_tình
+{HOTEL#DESIGN&FEATURES, positive}
+
+#741
+nhìn_chung chuyến đi cảm_thấy hài_lòng
+{HOTEL#COMFORT, positive}
+
+#742
+các tiện_ích đi kèm đầy_đủ phòng sạch nhân_viên phục_vụ vui_vẻ
+{SERVICE#GENERAL, positive}, {ROOMS#CLEANLINESS, positive}, {FACILITIES#GENERAL, positive}
+
+#743
+phòng_ốc được thiết_kế sang_trọng không_gian ấm_cúng tiện_nghi đầy_đủ mà mọi thứ được sắp_xếp rất hài_hoà bữa sáng thì ngon_miệng và đa_dạng
+{FOOD&DRINKS#QUALITY, positive}, {FOOD&DRINKS#STYLE&OPTIONS, positive}, {HOTEL#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#744
+khu này hơi xa trung_tâm thích_hợp để nghỉ_dưỡng tôi hài_lòng khi nghỉ tại đây
+{LOCATION#GENERAL, negative}
+
+#745
+nói_chung là tôi cảm_thấy hài_lòng khi ở đây
+{HOTEL#COMFORT, positive}
+
+#746
+nhìn_chung cảm_thấy thật hài_lòng về sự lựa_chọn về dịch_vụ này cho chuyến đi nghỉ_mát của tôi
+{HOTEL#COMFORT, positive}
+
+#747
+xứng_đáng với chất_lượng sao
+{HOTEL#QUALITY, positive}
+
+#748
+khuôn_viên không_những rộng mà còn mát_mẻ vì nằm ngay cạnh bờ biển
+{LOCATION#GENERAL, positive}, {HOTEL#DESIGN&FEATURES, positive}
+
+#749
+trong quá_trình đặt phòng và lưu_trú tại cần giờ resort tôi không gặp phải vấn_đề gì quá khó_khăn
+{HOTEL#GENERAL, positive}
+
+#750
+khá tốt trong khu_vực đó thức_ăn ngon
+{FOOD&DRINKS#QUALITY, positive}
+
+#751
+vị trị khách_sạn cũng tốt tuy_nhiên phòng hơi cũ bể_bơi không được sạch lắm nhà_hàng giá quá cao
+{ROOMS#QUALITY, negative}, {HOTEL#PRICES, negative}, {FACILITIES#CLEANLINESS, negative}
+
+#752
+về dịch_vụ phòng_ốc và thái_độ của nhân_viên thì tốt nhưng mà cần giờ resort này nhiều muỗi nhiều lắm
+{ROOMS#GENERAL, positive}, {SERVICE#GENERAL, positive}, {HOTEL#CLEANLINESS, negative}
+
+#753
+phòng sạch đẹp đầy_đủ tiện_nghi cho tôi sử_dụng
+{ROOM_AMENITIES#GENERAL, positive},   {ROOMS#CLEANLINESS, positive}
+
+#754
+bữa ăn sáng cũng được tương_đối đa_dạng
+{FOOD&DRINKS#QUALITY, positive}
+
+#755
+tuy_nhiên ăn sáng ở đây chỉ có món
+{FOOD&DRINKS#STYLE&OPTIONS, negative}
+
+#756
+phòng_ốc cũng rộng_rãi và tương_đối đầy_đủ tiện_nghi
+{ROOM_AMENITIES#GENERAL, positive}, {ROOMS#DESIGN&FEATURES, positive}
+
+#757
+còn chất_lượng phòng thì tạm ổn
+{ROOMS#QUALITY, neutral}
+
+#758
+thứ hai khách_sạn không kiểm_tra kỹ phòng trước khi cho khách nhận
+{SERVICE#GENERAL, negative}
+
+#759
+khách_sạn có vị_trí rất tốt rất tiện_lợi cho việc đi_lại và vui_chơi
+{LOCATION#GENERAL, positive}
+
+#760
+mọi thứ đều ổn duy chỉ có thức_ăn trong khách_sạn quá đắt so với chất_lượng và số_lượng
+{FOOD&DRINKS#QUALITY, negative}, {FOOD&DRINKS#PRICES, negative}
+
+#761
+tuy_nhiên có điểm tôi cảm_thấy chưa được hài_lòng đó là vào buổi tối xảy ra hay lần cúp điện khoản phút rồi có lại truyền_hình cáp thì sau giá_tiền thì không có tín_hiệu nhưng tới sáng hôm sau thì có lại
+{ROOMS#MISCELLANEOUS, negative}
+
+#762
+resort chỉ ở mức tương_đối tạm chấp_nhận được chất_lượng khá ổn với mức giá khá hợp_lý
+{HOTEL#GENERAL, neutral}, {HOTEL#PRICES, positive}, {HOTEL#QUALITY, neutral}
+
+#763
+chứ về phòng ở thì không vấn_đề gì thoáng mát sạch đẹp
+{ROOMS#CLEANLINESS, positive}
+
+#764
+nói_chung tôi đánh_giá mọi thứ tầm mức trung_bình thôi
+{HOTEL#GENERAL, neutral}
+
+#765
+về dịch_vụ của happy day guesthouse tôi không có gì phàn_nàn
+{SERVICE#GENERAL, positive}
+
+#766
+có điều nước nóng ở đây lúc nóng lúc lạnh tôi có nhờ nhân_viên hỗ_trợ nhưng cũng không khắc_phục được
+{ROOMS#MISCELLANEOUS, negative}, {SERVICE#GENERAL, neutral}, {ROOMS#MISCELLANEOUS, negative}
+
+#767
+khách_sạn giá rẻ nhưng tiện_nghi tương_đối ổn
+{HOTEL#PRICES, positive}, {FACILITIES#GENERAL, positive}
+
+#768
+địa_điểm khách_sạn thuận_tiện di_chuyển đến các điểm tham_quan
+{LOCATION#GENERAL, positive}
+
+#769
+phòng ở bố_trí tiện_nghi nội_thất cần_thiết đầy_đủ
+{ROOMS#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#GENERAL, positive}
+
+#770
+nhìn_chung tôi góp_ý khách_sạn nên sớm cải_thiện lại vấn_đề trên để phục_vụ tốt hơn
+{SERVICE#GENERAL, positive}
+
+#771
+tôi thấy dịch_vụ ở happy day hotel này cũng bình_thường
+{SERVICE#GENERAL, neutral}
+
+#772
+vị_trí không gần chợ lắm
+{LOCATION#GENERAL, positive}
+
+#773
+khách_sạn có dọn phòng nhưng chỉ gấp lại chăn mà không hề quét phòng về phòng thấy chăn gối gọn_gàng nhưng phòng thì bẩn nguyên nên không hiểu dọn phòng làm gì
+{ROOMS#CLEANLINESS, negative}, {SERVICE#GENERAL, negative}
+
+#774
+thái_độ mọi người ở happy day hotel đều vui_vẻ và nhiệt_tình trong cách nói_chuyện cư_xử với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#775
+vòi_nước thì có nước chảy tùm_lum lavabo thì nước_rút chậm
+{ROOM_AMENITIES#DESIGN&FEATURES, positive}, {ROOM_AMENITIES#QUALITY, positive}
+
+#776
+tuy_nhiên cũng có một_số ưu_điểm như nhân_viên phục_vụ nhiệt_tình thân_thiện hỗ_trợ khách_hàng tốt vấn_đề vệ_sinh cũng sạch_sẽ và giá_cả chấp_nhận được
+{SERVICE#GENERAL, positive}
+
+#777
+nhân_viên có thái_độ phục_vụ tốt nhiệt_tình với khách_hàng
+{SERVICE#GENERAL, positive}
+
+#778
+họ nhiệt_tình tiếp_đón khách_hàng một_cách niềm_nở
+{SERVICE#GENERAL, positive}
+
+#779
+về nhân_viên thì tốt
+{SERVICE#GENERAL, positive}
+
+#780
+vừa_qua thì tôi có đặt phòng tại happy day thông_qua hệ_thống của công_ty mytour cho chuyến đi đến đà_lạt của mình
+{HOTEL#GENERAL, positive}
+
+#781
+tại khách_sạn có cho thuê xe_máy với giá rẻ xe cho thuê đều là xe mới
+{HOTEL#PRICES, positive}, {FACILITIES#DESIGN&FEATURES, positive}, {FACILITIES#QUALITY, positive}
+
+#782
+khách_sạn có vị_trí ngay chợ đà lạt nên rất thuận_tiện cho việc đi mua đồ và dạo chợ vào buổi tối
+{LOCATION#GENERAL, positive}
+
+#783
+cùng một câu hỏi mà hỏi tôi tới giá_tiền lần thấy cũng vui vui
+{HOTEL#GENERAL, positive}
+
+#784
+tôi đã thoả_thuận với mytour là trưa ngày thứ chuyển phòng của mình từ phòng lớn xuống phòng nhỏ
+{ROOMS#DESIGN&FEATURES, positive}
+
+#785
+nếu có dịp lên đây lần nữa tôi sẽ tiếp_tục ủng_hộ khách_sạn
+{HOTEL#GENERAL, positive}
+
+#786
+nhân_viên thì khá ổn nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#787
+đặc_biệt là thiết_kế phòng rộng và khang_trang
+{ROOMS#DESIGN&FEATURES, positive}
+
+#788
+bữa sáng ăn ngon và đa dạ ng món phòng_ốc thì dọn_dẹp sạc h sẽ gọn_gàng vị_trí đi_lại thuận_tiện nhân_viên vui_vẻ và niềm_nở chào_đón giá_cả xét ra cũng khá tương_xứng với chất_lượng nên tôi hài_lòng khi ở đây
+{FOOD&DRINKS#STYLE&OPTIONS, positive}, {FOOD&DRINKS#QUALITY, positive}, {ROOMS#CLEANLINESS, positive}, {LOCATION#GENERAL, positive}, {HOTEL#PRICES, positive}, {HOTEL#COMFORT, positive}
+
+#789
+các bạn nhân_viên thì tươi_cười và nhiệt_tình đón_tiếp
+{SERVICE#GENERAL, positive}
+
+#790
+phòng_ốc thì sạch_sẽ tiện_nghi thì đầy_đủ còn khá mới
+{ROOMS#CLEANLINESS, positive}, {ROOM_AMENITIES#QUALITY, positive}
+
+#791
+tôi có đặt phòng ở khách_sạn mường thanh grand đà_nẵng dịch_vụ ở đây tốt và tôi không phàn_nàn gì khi sử_dụng dịch_vụ ở đây
+{SERVICE#GENERAL, positive}, {ROOMS#COMFORT, positive}
+
+#792
+khách_sạn mường thanh grand đà_nẵng sau khi sử_dụng những dịch_vụ khách_sạn đang cung_cấp tôi cảm_thấy hài_lòng
+{HOTEL#COMFORT, positive}, {SERVICE#GENERAL, positive}
+
+#793
+nhân_viên không được thân_thiện phòng ở sạch ăn_uống được không có dao_cạo râu không có áo_choàng tắm chỉ thích_hợp cho ai muốn đi thăm quan trung_tâm thành_phố đi tăm biển phải mất_giá_tiền nghìn taxi chieu có_thể xem rồng phun lửa và cầu_quay từ trên khách_sạn
+{SERVICE#GENERAL, negative}, {LOCATION#GENERAL, negative}, {ROOMS#CLEANLINESS, negative}, {FOOD&DRINKS#QUALITY, positive}, {ROOM_AMENITIES#GENERAL, negative}
+
+#794
+trang_bị nội_thất phòng khá khang_trang nhưng không_gian phòng vào buổi đêm hơi ẩm
+{ROOM_AMENITIES#DESIGN&FEATURES, positive}
+
+#795
+nhân_viên nhiệt_tình lịch_sự với khách_hàng
+{SERVICE#GENERAL, positive}
+

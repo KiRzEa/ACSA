@@ -1,0 +1,3084 @@
+#1
+mà không biết phải nhân_viên cũ hay mới nữa nhưng cảm_giác thân_thiện hơn
+{SERVICE#GENERAL, positive}
+
+#2
+nay đi uống mới biết giá_thành hơi cao nhưng thật_sự đi_đôi với chất_lượng
+{RESTAURANT#PRICES, negative}, {RESTAURANT#GENERAL, positive}
+
+#3
+ngoài cô quản_lý ra thì nhân_viên phục_vụ không được chuyên_nghiệp và ưa_nhìn cứ lọng cọng khi gọi món ra món chậm không có tác_phong dịch_vụ
+{SERVICE#GENERAL, negative}
+
+#4
+sốt ăn kèm mình chọn sốt vang và sốt a sốt vang ăn ngon còn sốt a vị kì kì chua ơi là chua
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#QUALITY, neutral}
+
+#5
+gân trong món gân kiệu không quá mềm cũng không quá dai ăn rất vừa_phải và dễ_chịu
+{FOOD#QUALITY, positive}
+
+#6
+trang_trí trong quán bàn ghế cũng đẹp luôn
+{AMBIENCE#GENERAL, positive}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#7
+gọi thêm bánh trứng bánh trứng bên này là ngon xuất_sắc rồi phần trứng hấp mềm tan vỏ bánh xốp giòn lớp đường nâu bên trên ngon_ngọt bánh tan chảy trong miệng siêu hấp_dẫn
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#8
+bánh toast ăn rất lạ_miệng và ngon nữa
+{FOOD#QUALITY, positive}
+
+#9
+hãy ghé thử nhen các bạn
+{RESTAURANT#GENERAL, positive}
+
+#10
+nhân_viên phục_vụ tốt món ra nhanh nhạc hay với view lên_đèn đẹp
+{RESTAURANT#MISCELLANEOUS, positive}, {SERVICE#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#11
+vị_trí quán nằm ở số giá_tiền cũ
+{LOCATION#GENERAL, neutral}
+
+#12
+quầy tráng_miệng ngon trái_cây không tươi lắm bánh ăn cũng được thích sương sa hột é
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#13
+phải chờ lấy bánh khoảng giá_tiền
+{SERVICE#GENERAL, negative}
+
+#14
+vị_trí rất dễ tìm
+{LOCATION#GENERAL, positive}
+
+#15
+bánh đập làm_ăn ngon
+{FOOD#QUALITY, positive}
+
+#16
+ở đây mình thích nhất là bánh cuộn trà xanh bánh đậm vị đậm mùi trà xanh kem bên trong ăn ngậy hợp với cốt bánh
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#17
+món ăn ngon view siêu đẹp không_gian thoải_mái
+{FOOD#QUALITY, positive}, {AMBIENCE#GENERAL, positive}
+
+#18
+so với sự nổi_tiếng mình đã mong chất_lượng nước uống ngon hơn nhiều nên khá thất_vọng
+{DRINKS#QUALITY, negative}
+
+#19
+nhưng gần đây ngày giá_tiền mình uống trà xanh gongcha milkfoam cực tởm kiểu béo mà cảm thấy chất_béo đọng trên vòm họng ấy
+{DRINKS#QUALITY, negative}
+
+#20
+về các món ăn thì ở đây khá ổn nhân_viên cũng nhiệt_tình và dễ_thương giá chấp nhân được
+{SERVICE#GENERAL, positive}, {FOOD#QUALITY, positive}, {RESTAURANT#PRICES, neutral}
+
+#21
+toast ngon béo thom phomai lam vừa đủ cho ng có sức ăn vừa_phải
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#22
+có loại đế để bạn lựa_chọn mình thấy đế new york là vừa ăn nhất không quá dày dễ ngán cũng không quá mỏng như bánh_tráng nướng
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#23
+nước bạn mình gọi cafe kiểu ý gì đó nói_chung là chán
+{DRINKS#QUALITY, negative}
+
+#24
+trong quá_trình ăn các em staff này đảo đồ thêm đồ cũng nhanh_nhẹn
+{SERVICE#GENERAL, positive}
+
+#25
+bánh_mì hội an giá_tiền chiếc
+{FOOD#PRICES, neutral}
+
+#26
+quán chưa bao_giờ quá_tải như kfc hay lotteria nếu không muốn nói là khá vắng
+{RESTAURANT#GENERAL, neutral}
+
+#27
+vị cà_phê rất nhạt không ngọt lắm và béo
+{DRINKS#QUALITY, negative}
+
+#28
+mình có uống thử sữa dê đóng_hộp nhưng uống không được vì quá hôi
+{DRINKS#QUALITY, negative}
+
+#29
+món chính chủ_yếu là vài loại hải_sản như hào nướng phomai tôm nướng sate sò lụa xào tỏi ốc bưu hấp sả ớt
+{FOOD#STYLE&OPTIONS, neutral}
+
+#30
+phải đi thử ngay vị mới macadamia cocoa cappuchino thì thấy không được ngon lắm
+{FOOD#QUALITY, negative}, {FOOD#STYLE&OPTIONS, positive}
+
+#31
+đợt này mình mua voucher hotdeal nên cũng giảm được kha_khá
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#32
+thích nhất là món khô gà
+{FOOD#QUALITY, positive}
+
+#33
+hồng trà làm đúng vị
+{DRINKS#QUALITY, positive}
+
+#34
+kem mặn khá ngon đặc vừa không bị tan cũng một lượng khá ổn nữa
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#35
+dành cho ai muốn trải nghiệm cảm_giác uống trà quý_tộc
+{RESTAURANT#GENERAL, positive}
+
+#36
+không_gian không rộng lắm nhưng ngồi thoải_mái thoáng
+{AMBIENCE#GENERAL, neutral}
+
+#37
+món xôi nấm cũng không còn ngon như trước
+{FOOD#QUALITY, neutral}
+
+#38
+mình ăn mì ramen như trong hình gồm trứng luộc lòng_đào rong biển nấm đông cô tươi và thịt ba_chỉ kho gừng
+{FOOD#STYLE&OPTIONS, neutral}
+
+#39
+chắc hơi lạt so với khẩu_vị bình_thường nhưng với mình thì vừa
+{DRINKS#QUALITY, neutral}
+
+#40
+mình uống trà sữa nóng thể_loại này chỉ có mỗi cỡ s thôi giá là giá_tiền không ly
+{DRINKS#PRICES, neutral}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#41
+nhìn từ ngoài vào không ai nghĩ đây là quán coffe vì có rất nhiều hoa
+{AMBIENCE#GENERAL, positive}
+
+#42
+không_gian quán cũng đẹp sang_trọng
+{AMBIENCE#GENERAL, positive}
+
+#43
+nước khá nhiều
+{DRINKS#STYLE&OPTIONS, positive}
+
+#44
+mình đến quán vào tầm chiều nhưng đã rất đông mấy hôm đến vào tối thì phải không còn chỗ ngồi
+{RESTAURANT#GENERAL, positive}
+
+#45
+giá_cả chất_lượng trà sữa ô long giá_tiền siêu ngon hồi trước mình uống đậm vị trà quá chớ bây_giờ ngon hơn hẳn rồi ý thơm nữa nói_chung bị ghiền
+{DRINKS#QUALITY, positive}, {DRINKS#PRICES, neutral}
+
+#46
+há cảo ở đây cũng đa_dạng loại mà bịt_mắt lại ăn chắc kbit cái nào ra cái nào đâu vỏ dày mà nhân thì na_ná nhau rất khó phân_biệt à quên_mình phân_biệt được há cảo bắp nha vì nó có bắp
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#47
+nhà vệ_sinh chật_chội và bẩn
+{RESTAURANT#MISCELLANEOUS, negative}
+
+#48
+nước ở đây cũng đa_dạng lắm nha
+{DRINKS#STYLE&OPTIONS, positive}
+
+#49
+kêu hai lon co ca uống không hét kêu bé phục_vụ tới tính tiền trả lại lon nói câu nghe tức dể sợ đả nhập máy rồi không cho trả lại
+{SERVICE#GENERAL, negative}
+
+#50
+quán có chè thái ngô bưởi sữa_chua đậu_đỏ ăn cũng đa_dạng và ngoài_ra còn có các món ăn vặt như nem khoai
+{FOOD#STYLE&OPTIONS, positive}
+
+#51
+thái_độ nhân_viên tồi
+{SERVICE#GENERAL, negative}
+
+#52
+bò tẩm ướp vừa miệng_ăn kèm thêm các loại rau với sốt cũng hài_hoà
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#53
+mình không có ấn_tượng gì đặc_biệt với các bạn phục_vụ ở đây
+{SERVICE#GENERAL, neutral}
+
+#54
+quán nằm trên đường cách_mạng tháng tám khá dễ tìm
+{LOCATION#GENERAL, positive}
+
+#55
+ngon lắm nhé
+{RESTAURANT#GENERAL, positive}
+
+#56
+cá_nhân mình không hợp với gong cha vị của nó mình không thấy ngon
+{RESTAURANT#GENERAL, neutral}
+
+#57
+tức quá mình bỏ về luôn và từ nay không bao jo quay lại
+{RESTAURANT#GENERAL, negative}
+
+#58
+quán nhỏ nhỏ xinh_xinh dễ tìm
+{LOCATION#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#59
+bữa mình đặt_hàng ngay happy day có code giảm tới giá_tiền nhưng chất_lượng đồ uống vẫn ổn
+{RESTAURANT#MISCELLANEOUS, positive}, {DRINKS#QUALITY, positive}
+
+#60
+đến đây mà sống ảo là quá rất tốt luôn
+{AMBIENCE#GENERAL, positive}
+
+#61
+menu đặt sẵn trên bàn nên chúng_mình nhanh_chóng gọi món với sự giúp_đỡ giải_thích tận_tình của nhân_viên top blade giá_tiền g cá_hồi trộn sashimi thịt bò cuộn nấm nấm xào tỏi khoai nghiền và lon pepsi light
+{FOOD#STYLE&OPTIONS, neutral}, {SERVICE#GENERAL, positive}
+
+#62
+quán ấm_cúng nhân_viên dễ_thương món có milk foam ngon lắm nha
+{AMBIENCE#GENERAL, positive}, {SERVICE#GENERAL, positive}, {DRINKS#QUALITY, positive}
+
+#63
+trà chả hiểu sao không cho được vào tách mà cho vào cốc take away trông mất thẩm_mỹ
+{DRINKS#STYLE&OPTIONS, negative}
+
+#64
+cửa_hàng bán ngoài bánh_mì còn có các loại bánh ngọt bánh_mì ngọt các kiểu
+{FOOD#STYLE&OPTIONS, positive}
+
+#65
+gà ở đây ngon hôm đó mình với bạn gái ăn combo giá_tiền kèm nước là giá_tiền
+{FOOD#QUALITY, positive}, {FOOD#PRICES, neutral}
+
+#66
+quán hơi nhỏ được cái view vỉa_hè ngồi ngắm phố_xá xe_cộ đi_lại cũng hay_hay
+{AMBIENCE#GENERAL, neutral}
+
+#67
+mình và bạn uống thử trà sữa ở đây vị cũng khá ngon giá_cả tương_đối chấp_nhận được
+{DRINKS#QUALITY, positive}, {DRINKS#PRICES, positive}
+
+#68
+giá trung_bình khoảng giá_tiền không người nhé
+{RESTAURANT#PRICES, neutral}
+
+#69
+chapche miến trộn giá_tiền hình_thức đẹp
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, neutral}
+
+#70
+đặt_hàng trân_châu trắng mà toàn giao trân_châu đen không bao h đặt_hàng mà giao đúng yêu_cầu_là sao vậy nè
+{SERVICE#GENERAL, negative}
+
+#71
+mì để trong ly cao nước cho riêng vào túi nilong nên nhìn sạch_sẽ mà mì cũng không bị nở
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#72
+nước tương pha ngon tương giấm hơi nhạt ăn càng cay càng ngon nha_bêy
+{FOOD#QUALITY, positive}
+
+#73
+phải nói là rất không hài_lòng bàn ghế thì lắc_lư nhà_hàng thì chật_chội
+{RESTAURANT#GENERAL, negative}, {RESTAURANT#MISCELLANEOUS, negative}, {AMBIENCE#GENERAL, negative}
+
+#74
+một mâm như thế ăn vừa đủ no luôn
+{FOOD#STYLE&OPTIONS, positive}
+
+#75
+cơm trắng ở quán thích_hợp ăn với món kho hơn món canh
+{FOOD#QUALITY, positive}
+
+#76
+món này là ngon nhất này nhưng chưa đạt tới xuất_sắc
+{FOOD#QUALITY, positive}
+
+#77
+cà_phê của cheese rất thơm vị lại không quá mạnh kiểu như của starbucks nhạt nhạt nói_chung là khác với cafe hàng_quán vn hehe
+{DRINKS#QUALITY, positive}
+
+#78
+giá_tiền_túi nhỏ giá_tiền_túi to
+{FOOD#PRICES, neutral}
+
+#79
+nhà_hàng với các món ăn ngon khắp mọi vùng miền và đặc_biệt là đồ việt
+{RESTAURANT#GENERAL, positive}
+
+#80
+hương_vị đậm_đà món ăn lên cũng nhanh
+{FOOD#QUALITY, positive}, {SERVICE#GENERAL, positive}
+
+#81
+quán có view đẹp
+{AMBIENCE#GENERAL, positive}
+
+#82
+vậy cầm tiền_mặt đến ăn cho lẹ không mua chi mắc công chạy ra chạy vô lấy voucher đến ăn mà còn có cảm_giác bị coi_thường
+{SERVICE#GENERAL, negative}
+
+#83
+ở đây có trân_châu gong cha nữa cùng với các món ăn vặt nhưng chỉ đánh_giá cao trà sữa thôi v
+{DRINKS#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#84
+lần đầu_tiên đến đập vào mắt mình là một nhà_hàng cà_phê khá sang_trọng và sau đó là cách phục_vụ của nhân_viên tại quán rất chuyên_nghiệp
+{AMBIENCE#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#85
+giờ có thêm vị mới là dưa_gang trà đen nữa
+{FOOD#STYLE&OPTIONS, positive}
+
+#86
+dù vậy nước sốt lại tính tiền riêng giá_tiền cho mỗi loại thêm tiền bỏ thêm gram
+{FOOD#PRICES, neutral}
+
+#87
+dễ uống không bị say hôm mình uống trà olong vị ngọt vừa phải đường đá tốt nói_chung là rất thích thức uống ở gongcha đặc_biệt gọi qua deli giao hàng đúng giờ
+{DRINKS#QUALITY, positive}, {SERVICE#GENERAL, positive}, {DRINKS#STYLE&OPTIONS, positive}
+
+#88
+pizza mình được tự chọn vị nhé cái mình chọn là hải_sản ăn ngon lắm đó đế mỏng trên hết cho cảm_giác nhiều nhân ý mà
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#89
+nhạc quán cũng hay
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#90
+nhìn_chung thì quán khá nhỏ có lầu nhưng không_gian cũng nhỏ nhìn tối_tăm với cũ_kỹ kiểu xuống_cấp sao á
+{AMBIENCE#GENERAL, negative}
+
+#91
+do nướng bằng bếp gas nên nhanh chín lắm cũng dễ điều_chỉnh nhiệt_độ nên dễ nướng
+{FOOD#QUALITY, positive}
+
+#92
+thật_ra là rau đem ra đã nhiều rồi nên mình không kêu thêm
+{FOOD#STYLE&OPTIONS, positive}
+
+#93
+có nhiều loại salad mà mình thấy loại nào cũng ngon ngoài_ra còn có riêng ngô ngọt cà_chua bi cà_rốt giò_lụa thái sợi kèm với loại sốt khác nhau để mình tự trộn
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#94
+lâu rồi không ghé gong cha hôm_nay ghé lại uống ngon gì đâu
+{DRINKS#QUALITY, positive}
+
+#95
+tô bún ở đây bự phải biết riêu cua được bà chủ quán múc muỗng cực lớn nhé thêm đậu ở trong nồi rất thấm vài lát huyết cứng nữa cực chuẩn
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, positive}
+
+#96
+nhà_hàng này ở ngay sông nên rất thoáng mát ở đây mới có món mới về dê như lẩu dê các món nướng về dê ăn cũng rất tốt
+{LOCATION#GENERAL, positive}, {FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#97
+nhân_viên cũng thân_thiện nhanh_nhẹn
+{SERVICE#GENERAL, positive}
+
+#98
+mảng phục_vụ quá tuyệt xứng_đáng được tip
+{SERVICE#GENERAL, positive}
+
+#99
+ăn tạm được bò tương_đối mềm nhưng ướp khá là nhạt
+{FOOD#QUALITY, neutral}
+
+#100
+nhưng mình thich milkfoam ở koi hơn vì béo hơn
+{DRINKS#QUALITY, positive}
+
+#101
+quán ở vincom khu ẩm_thực nên không phải to lắm hơi bí là đằng khác
+{AMBIENCE#GENERAL, neutral}
+
+#102
+không_gian quán hơi nhỏ bán kem với nước
+{AMBIENCE#GENERAL, negative}
+
+#103
+tuy_nhiên mì ý thì có phần hơi nhạt nc sốt kèm theo cũng thế
+{FOOD#QUALITY, negative}
+
+#104
+có kèm chén pate ăn kèm nữa nè
+{FOOD#STYLE&OPTIONS, positive}
+
+#105
+tôm nhìn ngon nhưng ăn_không ngon lắm vì hơi có vị lạ lạ
+{FOOD#QUALITY, negative}, {FOOD#STYLE&OPTIONS, positive}
+
+#106
+tụi mình đi người gọi cả món mới thái tea kakigori toast lava kim sa trà hoa_hồng macchiato với trà sữa vớ hongkong
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#107
+tổng_cộng hơn giá_tiền nhưng đặt bàn qua tablenow nên được discount giá_tiền và tặng code giảm_giá giá_tiền trên giao hàng nữa tội gì không thử nhỉ
+{RESTAURANT#MISCELLANEOUS, positive}, {RESTAURANT#PRICES, neutral}
+
+#108
+đồ ăn thì không chê vào đâu được thịt bò mềm và mọng nước
+{FOOD#QUALITY, positive}
+
+#109
+à mà giá thì cũng không cao lắm cũng tầm những quán ts bây_giờ thôi nhưng giá_cả hợp với chất_lượng của nó nhe hihi
+{RESTAURANT#PRICES, positive}
+
+#110
+quán nằm trên mặt đường_phố huế
+{LOCATION#GENERAL, neutral}
+
+#111
+cá viên ngon giá hợp_lí mỗi phần nhỏ giá_tiền với đủ các món tuỳ chợ
+{FOOD#PRICES, positive}, {FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#112
+kem lotte giá_tiền thần_thánh của mình còn ngon hơn
+{FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#113
+phục_vụ bình_thường không vui không cười chắc do quán đông quá
+{SERVICE#GENERAL, neutral}
+
+#114
+mình đặt_hàng phần small nhưng thức_ăn khá nhiều tầm người ăn là vừa
+{FOOD#STYLE&OPTIONS, positive}
+
+#115
+quán rất đẹp và sang chảnh nằm ngay gần vincom bà triệu
+{AMBIENCE#GENERAL, positive}, {LOCATION#GENERAL, neutral}
+
+#116
+các bạn mang đồ ăn ra với tốc_độ thần_thánh tốc_độ ánh_sáng chờ tí là có đồ ăn rồi tưởng mang đồ cũ có sẵn ai_ngờ không tệ đến mức đó
+{SERVICE#GENERAL, positive}, {FOOD#QUALITY, neutral}
+
+#117
+không_gian vào quán khá choáng_ngợp với kiểu bài_trí của quán
+{AMBIENCE#GENERAL, positive}
+
+#118
+không gian rộng và thoáng trang_trí bắt_mắt nhé
+{AMBIENCE#GENERAL, positive}
+
+#119
+quán decor đơn_giản có nguyên thảm cỏ màu xanh trên tường luôn
+{AMBIENCE#GENERAL, positive}
+
+#120
+trà vải rất ngon nhưng mình thấy trà sữa olong lạ vị lắm uống đắng và chát ai không quen thì sẽ rất khó uống
+{DRINKS#QUALITY, positive}
+
+#121
+chè màu nhìn không hấp_dẫn lắm đậu nấu rất ngọt nên mình ăn không thấy ngon giá_tiền không ly
+{FOOD#PRICES, neutral}, {FOOD#QUALITY, negative}, {FOOD#STYLE&OPTIONS, neutral}
+
+#122
+gà thì bình_thường thôi không đặc_biệt lắm
+{FOOD#QUALITY, neutral}
+
+#123
+thấy quán mở khá lâu rồi nên ghé ăn thử
+{RESTAURANT#GENERAL, neutral}
+
+#124
+mình với chị gọi ăn thử ba món thời_gian lên món chắc tầm giá_tiền phút
+{SERVICE#GENERAL, neutral}
+
+#125
+ngoài_ra quán còn bán thêm đồ ăn như pizza cá viên chiên và báh ngọt
+{FOOD#STYLE&OPTIONS, neutral}
+
+#126
+trên_dưới tr cho chị_em ăn trưa và chắc là lần cuối bà chị cùng phòng đòi ăn thai ex dù_sao do được ăn ké người có tiền là người có quyền nên mới nhắm_mắt theo chân sau bao ngày ăn lại vẫn không thấy ngon và chả hiểu sao quán vẫn đông
+{RESTAURANT#PRICES, neutral}, {RESTAURANT#GENERAL, negative}
+
+#127
+mình hơi ngạc_nhiên là nhân_viên quán trong ca đông như_vậy
+{SERVICE#GENERAL, neutral}
+
+#128
+cầm con tôm lên húp sạch sốt rồi lột vỏ quét thêm sốt xong ăn với bánh_mì rồi canqs mình khoai_tây ta nói nó phê
+{FOOD#STYLE&OPTIONS, positive}
+
+#129
+sắp_xếp bàn người vào góc
+{AMBIENCE#GENERAL, positive}
+
+#130
+quán đông nhưng đi làm ngành dịch_vụ mà vậy thì quá tệ
+{RESTAURANT#GENERAL, negative}
+
+#131
+ấn_tượng đầu_tiên về không_gian sang_trọng ấm_cúng của nhà_hàng này
+{AMBIENCE#GENERAL, positive}
+
+#132
+chất_lượng chưa ăn ai nhưng mà đã không trân_trọng khách_hàng rồi
+{SERVICE#GENERAL, negative}
+
+#133
+quán này nằm mặt tiền_đường đông_đúc nhưng lại bị khuất vào trong vì vài quán bán vỉa_hè lấn phía trên
+{LOCATION#GENERAL, neutral}
+
+#134
+nước cũng chán luôn cái chocolate lạt nhách trà sữa hong kong cũng lạt luôn không cò mùi_vị như trước
+{DRINKS#QUALITY, negative}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#135
+mình thì không thích ăn khoai_lang lắm vì thấy ăn nhiều cứ bị bứ bứ nên toàn gọi khoai_tây thôi
+{FOOD#STYLE&OPTIONS, neutral}
+
+#136
+anh chủ quán gợi_ý uống trà đào vì món trà đào là món đặc_biệt ngon nhất_quán nên mình cũng gọi thử
+{DRINKS#QUALITY, positive}
+
+#137
+lúc mình đến thấy chị chủ đang làm chè bươi cho giao hàng số_lượng lớn nên chắc chè bưởi ngon d
+{FOOD#QUALITY, positive}
+
+#138
+chất_lượng nước uống khá tệ hơn những lần đầu mình đến
+{DRINKS#QUALITY, negative}
+
+#139
+trà bánh sang chảnh
+{FOOD#STYLE&OPTIONS, positive}, {DRINKS#STYLE&OPTIONS, positive}
+
+#140
+nước chấm_phá lấu ăn ngon mình lôi bánh_tráng ra chấm cũng hợp vị nữa
+{FOOD#QUALITY, positive}
+
+#141
+order từ trước giá_tiền h trưa nhưng chọn đến giá_tiền h chiều mới giao đâu phải ít thời_gian để làm nước vậy_mà không bao_giờ có đúng cái ly của mình
+{SERVICE#GENERAL, negative}
+
+#142
+hôm mình đi là t giá giá_tiền vé nên khá vắng ăn_uống thoải maí nhân_viên nhiệt_tình dễ_thương
+{RESTAURANT#PRICES, neutral}, {FOOD#STYLE&OPTIONS, positive}, {SERVICE#GENERAL, positive}
+
+#143
+nhân_viên thì phục_vụ tốt tư_vấn rất nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#144
+không_gian cổ từ bàn ghế đến chén bát
+{AMBIENCE#GENERAL, neutral}
+
+#145
+giờ quay lại quán đã thay_đổi đi nhiều
+{RESTAURANT#GENERAL, neutral}
+
+#146
+tách lớp chiên xù lộ ra phần thịt tôm trắng hồng rất hấp_dẫn
+{FOOD#STYLE&OPTIONS, positive}
+
+#147
+lớp dầy_đặc khoảng hơn cm trên bề_mặt
+{FOOD#STYLE&OPTIONS, positive}
+
+#148
+sốt rượu_vang đỏ mình gọi hôm đó quá loãng không chua tí_tẹo nào cũng không còn độ sệt biết vậy chọn sốt tiêu rồi
+{FOOD#QUALITY, neutral}
+
+#149
+trà sữa đúng như tên lả tá lả các loại thạch giá_tiền không ly lớn nhưng nếu muốn ăn các loại đặc_biệt thì phải kêu thêm mình sẽ note trong hình
+{DRINKS#STYLE&OPTIONS, positive}, {DRINKS#PRICES, neutral}
+
+#150
+chất_lượng cơm ở lotteria thì phong_độ luôn ổn_định rồi
+{FOOD#QUALITY, positive}
+
+#151
+ngoài_ra còn có thêm các loại bánh ngọt giá từ giá_tiền không giá_tiền hoặc trên giá_tiền ăn và uống cùng cfe cũng rất đượm
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#152
+nhân_viên rất nhiệt_tình
+{SERVICE#GENERAL, positive}
+
+#153
+rất thích_hợp ăn gia_đình
+{RESTAURANT#GENERAL, positive}
+
+#154
+trước_kia nhà_hàng chỉ chuyên phục_vụ tiếp khách gặp_gỡ bạn_bè nhưng sau_này đầu_tư thêm nhà_hàng tiệc cưới thật hoành trang
+{RESTAURANT#GENERAL, positive}
+
+#155
+bánh vừa phải bột mịn ngon dày_dặn thơm vị vừng nữa nhưng so với mình thì thấy bánh hơi bị ngọt chút_xíu
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#156
+phục_vụ lên món nhanh thân_thiện
+{SERVICE#GENERAL, positive}
+
+#157
+có một cơ_sở bên phan xích long rồi
+{RESTAURANT#GENERAL, neutral}
+
+#158
+bây_giờ_lâu không ăn quay lại thì thấy hơi thất_vọng tí
+{RESTAURANT#GENERAL, negative}
+
+#159
+nhân_viên nhiệt_tình thân_thiện lắm nè
+{SERVICE#GENERAL, positive}
+
+#160
+đi buổi trưa nên không_gian đèn_đóm không phát_huy được hết thế mạnh không đẹp lắm
+{AMBIENCE#GENERAL, neutral}
+
+#161
+công_nhận nấu ngon thiệt
+{FOOD#QUALITY, positive}
+
+#162
+đành liều chấm không_gian nè p
+{AMBIENCE#GENERAL, positive}
+
+#163
+bánh pate chaud nhỏ nhỏ ăn khai_vị kiểu lót bụng đỡ đói trong lúc đợi đến giờ làm lễ bánh nhỏ khá ngon bột bánh và nhân thơm ngon
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#164
+ly protein pro đậm mùi chuối như mùi sữa bột mình nghĩ là do có bột whey
+{DRINKS#QUALITY, positive}
+
+#165
+món miến tay_cầm gì đó thấy pr là giòn ngon lắm mà mình thấy mặn miễn thì dính hết vào với nhau không ngon theo cảm_nhận của mình
+{FOOD#QUALITY, negative}, {FOOD#STYLE&OPTIONS, negative}
+
+#166
+trà uống thì mình thấy cũng được không có gì nổi_trội nhưng cũng không mờ_nhạt
+{DRINKS#QUALITY, neutral}
+
+#167
+giá_cả khá ổn so với khu trung_tâm
+{RESTAURANT#PRICES, positive}
+
+#168
+ăm cùng khoai_tây chẳng hề ngấy mà rất hợp
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#169
+đồ ăn ngon nước uống tốt lun không_khí vui_vẻ và nhộn_nhịp thích_hợp ngồi tán ngẫu với bạn_bè và nghe nhạc
+{FOOD#QUALITY, positive}, {DRINKS#QUALITY, positive}, {RESTAURANT#GENERAL, positive}
+
+#170
+saturdays kitchen đã làm rất tốt rồi chỉ cần thêm xíu nữa là sẽ hoàn_hảo thôi
+{RESTAURANT#GENERAL, positive}
+
+#171
+nhìn cái bánh được xếp rõ đẹp và màu_sắc rất bắt_mắt
+{FOOD#STYLE&OPTIONS, positive}
+
+#172
+giá_cả giá_tiền một miếng thì phải cũng không rẻ lắm chắc phai canh sale mới dam đi ăn tiếp
+{FOOD#PRICES, neutral}
+
+#173
+mình ít khi reiew nhưng quán này đã để lại mình ấn_tượng và bạn cùng ăn với mình cũng rất thích nơi đây
+{RESTAURANT#GENERAL, positive}
+
+#174
+thích nhất ở đây có ghế_dài tựa khá là thích mà cũng khá là yên_tĩnh a
+{AMBIENCE#GENERAL, positive}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#175
+britea thương_hiệu trà sữa khá là nổi hiện_nay
+{RESTAURANT#GENERAL, positive}
+
+#176
+chất_lượng thì ngày_càng xuống mình đặt_hàng giá_tiền_đường giá_tiền đá mà lát đem ra thì đá ít mà đường nhiều hihi
+{RESTAURANT#GENERAL, negative}, {DRINKS#STYLE&OPTIONS, neutral}, {SERVICE#GENERAL, negative}
+
+#177
+popcorn nổ đều hạt to lắm
+{FOOD#STYLE&OPTIONS, positive}
+
+#178
+phục_vụ là nam đồng_phục rất hợp với phong_cách quán
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#179
+món đầu_tiên là súp tuyết nhĩ cua gà ai ăn mặn thì sẽ thấy nhạt còn mình thì thấy vừa
+{FOOD#QUALITY, positive}
+
+#180
+bánh_mì bơ tỏi vỏ giòn thơm ngậy béo của phô_mai cái to_đùng luôn ý
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#181
+lên món hơi lâu
+{SERVICE#GENERAL, negative}
+
+#182
+cách đây một năm thì nhà_hàng_phục_vụ không được tốt lắm nhưng gần đây thì chất_lượng cải_thiện rõ_rệt
+{SERVICE#GENERAL, positive}
+
+#183
+đi đứa tổng_thiệt_hại cũng mấy trăm
+{RESTAURANT#PRICES, neutral}
+
+#184
+gong cha là trải nghiệm đầu_tiên dẫn mình đến gia_nhập đạo trà sữa như hiện_nay
+{RESTAURANT#GENERAL, positive}
+
+#185
+bạn mình thì không thích gỡ xương nên gọi cơm gà viên có kèm cả quả trứng rán nữa khá tốt
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#QUALITY, positive}
+
+#186
+vị_trí nằm trên mặt_đường đinh tiên hoàng có mặt_đường luôn mặt hướng ra bờ hồ view siêu đẹp nhé
+{LOCATION#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#187
+sau em mình mỏi lưng đổi cái ghế_dựa của bàn kế bên đó cô nhân_viên quăng hẳn cái lườm vào mặt thằng nhỏ rồi đá chân_mày cho anh bạn đồng_nghiệp như kiểu ê xem nó kìa
+{SERVICE#GENERAL, negative}
+
+#188
+mình đi đen đá vì thích không_gian vintage của quán
+{AMBIENCE#GENERAL, positive}
+
+#189
+hồi đó gcha ở đây khá vắng nhưng nhờ deco lại thấy khách đông hơn nhiều
+{RESTAURANT#GENERAL, positive}
+
+#190
+sốt cũng bị nhạt và thiếu vị nên ăn ngấy lắm
+{FOOD#QUALITY, negative}
+
+#191
+cảm_thấy bản_thân có vẻ hợp trà thạch đào của cơ_sở này
+{DRINKS#QUALITY, positive}
+
+#192
+tuy_nhiên theo mình nghĩ có_lẽ nước_dùng hơi mặn
+{DRINKS#QUALITY, negative}
+
+#193
+quán nằm gần ngã tư huỳnh mẫn đạt an dương vương
+{LOCATION#GENERAL, neutral}
+
+#194
+không_gian cổ_kính nhìn vừa đẹp vừa lạ có lầu
+{AMBIENCE#GENERAL, positive}
+
+#195
+mì nóng vì được bỏ lò nướng
+{FOOD#QUALITY, positive}
+
+#196
+đồ uống thì không ngon lắm phần mình đặt_hàng cappuccino và bingsu berry hết giá_tiền giá ổn cho vị_trí trung_tâm tp
+{DRINKS#QUALITY, neutral}, {DRINKS#PRICES, neutral}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#197
+bò lúc_lắc với khoai_tây chiên sườn bò mỹ nướng sốt_bbq phần salad mực chiên giòn và cá ba sa chiên giòn
+{FOOD#STYLE&OPTIONS, neutral}
+
+#198
+ở đây xin thêm rau là cho thêm phần rau giá to lắm mà rau tần ô hơi bị ít
+{FOOD#STYLE&OPTIONS, positive}
+
+#199
+mình chọn menu giá giữa thịt rất ngon mềm và thấm sốt
+{FOOD#QUALITY, positive}
+
+#200
+nấm này cơ_bản đã khô chiên lên còn khô và ngán hơn
+{FOOD#QUALITY, negative}
+
+#201
+cơm sườn mình thấy ngon kiểu cơm bên dưới rang vàng với rau củ đậm_đà ngấm gia_vị
+{FOOD#QUALITY, positive}
+
+#202
+nhân_viên nhanh_nhẹn và chu_đáo luôn hỏi ý khách khi muốn dọn_dẹp hoặc lên món tiếp_theo biết quan_sát để_ý khách
+{SERVICE#GENERAL, positive}
+
+#203
+mình rất thích ăn sushi sẵn ra pt thèm quá nên đến thử nhìn_chung thì món ăn chưa được ngon lắm gừng ngâm hơi ngọt nước_chấm khá mặn
+{FOOD#QUALITY, neutral}, {FOOD#STYLE&OPTIONS, neutral}
+
+#204
+milk foam béo mặn chứ không ngọt
+{DRINKS#QUALITY, positive}
+
+#205
+quán có mặt_tiền trước và sau nên cảm_giác thoáng chứ không bị ngộp như các quán cf máy_lạnh khác
+{AMBIENCE#GENERAL, positive}
+
+#206
+hà nọii cũng không nhiều quán và chất_lượng như này đâu nha
+{RESTAURANT#GENERAL, positive}
+
+#207
+không_gian khá đẹp có chỗ ngồi ở cả trệt và lầu
+{AMBIENCE#GENERAL, positive}
+
+#208
+sốt tiêu thì mình chưa thấy ấn_tượng và đậm_đà cho lắm có thơm mùi tiêu nhưng vẫn thấy sốt hơi lạt thì phải hoặc do mình ăn mặn chăng
+{FOOD#QUALITY, neutral}
+
+#209
+kệ có lẩu cua_đồng ngon phết nước lẩu thơm ngon đậm vị đĩa đồ nhúng nào cũng khá đầy_đặn không độn
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#210
+kem cheese thơm ngậy có vị mặn mặn nhưng hơi thiếu chua đặc_trưng
+{FOOD#QUALITY, neutral}
+
+#211
+đồ uống ổn giá_cả hợp_lý nhân_viên nhiệt_tình
+{DRINKS#QUALITY, positive}, {RESTAURANT#PRICES, positive}, {SERVICE#GENERAL, positive}
+
+#212
+xà_lách nhìn sạch ăn ngon kèm nước_ngọt nữa
+{FOOD#QUALITY, positive}
+
+#213
+vì vắng khách nên nhân viên pha nước cũng nhanh
+{SERVICE#GENERAL, positive}, {RESTAURANT#GENERAL, neutral}
+
+#214
+chắc_chắn sẽ quay lại nếu có cơ_hội
+{RESTAURANT#GENERAL, positive}
+
+#215
+gà mềm ngấm gia_vị
+{FOOD#QUALITY, positive}
+
+#216
+mà thất_vọng nhất có_lẽ là cách phục_vụ của nhân_viên nơi đây có cảm_giác khó_chịu làm_sao ấy
+{SERVICE#GENERAL, negative}
+
+#217
+nhà_hàng không linh_động hỗ_trợ không h
+{SERVICE#GENERAL, negative}
+
+#218
+mình thích nhất bánh dâu bánh đem ra nóng đổ sốt lên chua chua_ngọt ngọt bao tăng không
+{FOOD#QUALITY, positive}
+
+#219
+uống mát lắm
+{DRINKS#QUALITY, positive}
+
+#220
+mì xào phá lấu giá_tiền không hôm_nay mì xào ngon xuất_sắc huhu bơ thơm ơi là thơm
+{FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#221
+kem và thạch ăn kèm tốt
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#222
+quadn ở pnt này mở được năm rồi ấy nay vẫn đông khách chứ không bị ế hay vắng khách đâu
+{RESTAURANT#GENERAL, positive}, {LOCATION#GENERAL, neutral}
+
+#223
+có nhiều loại thịt hải_sản giò
+{FOOD#STYLE&OPTIONS, positive}
+
+#224
+các món đều ngon
+{FOOD#QUALITY, positive}
+
+#225
+dịch_vụ giao hàng của deli thí quá tốt rồi khỏi lo
+{SERVICE#GENERAL, positive}
+
+#226
+à về giá_thành với không_gian dịch_vụ và chất_lượng ở đây thì mình cảm_thấy giá không hẳn là đắt cá_nhân mình thì thấy khá là hợp_lý
+{RESTAURANT#PRICES, positive}
+
+#227
+mỳ ý mình gọi loại là gà nấm sốt kem và sốt_bbq
+{FOOD#STYLE&OPTIONS, neutral}
+
+#228
+đồ ăn nguội giá đắt nhân_viên chào khách mà cứ như đuổi khách
+{FOOD#QUALITY, negative}, {FOOD#PRICES, negative}, {SERVICE#GENERAL, negative}
+
+#229
+giá không quá đắt đâu
+{RESTAURANT#PRICES, positive}
+
+#230
+từ chợ đông ba qua cầu gia hội rồi rẽ phải đường trịnh công sơn quán nằm bên trái bên trong con đường_đất khoảng giá_tiền mét từ_đường trịnh công_sơn
+{LOCATION#GENERAL, neutral}
+
+#231
+phô_mai nhiều cộng với bánh_mì giòn ăn rất đã
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#232
+nhớ hương_vị thơm ngon dai dai và khứa từng lát cắt ra
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#233
+có điều_hoà nhưng mùi cửa_hàng thì rất tệ có mùi của ẩm_mốc và khăn lau nhà để trong nhà_kho
+{RESTAURANT#MISCELLANEOUS, negative}, {AMBIENCE#GENERAL, negative}
+
+#234
+về phần dessert thì đồng giá giá_tiền với món là cream brulee và lava chocolate ai thích vị vừa không ngọt thì chọn lava chocolate riêng mình ưu_ái cream brulee hơn tuy hơi bé tí ăn_không đã thèm gì hết
+{FOOD#PRICES, neutral}, {FOOD#STYLE&OPTIONS, negative}
+
+#235
+đồ không có nhiều và đa_dạng như các quán bình_dân khác
+{FOOD#STYLE&OPTIONS, neutral}
+
+#236
+bánh này ăn khá lạ kiểu rán vàng ươm hơi nướng cứng ròn ấy nhá
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#237
+phần đầu thăn ngoại thì to và mềm có ít mỡ thịt ăn rất là béo
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#238
+phải nói chi_nhánh này là chi_nhánh mình cảm_thấy không tốt nhất trong những chi_nhánh của đen đá trà sữa vị như bị thiu trân_châu tím gì đó thì sượn ngắt cứng và nhai muốn gãy răng
+{DRINKS#QUALITY, negative}, {RESTAURANT#GENERAL, negative}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#239
+mỗi tội quán siêu đông nên phục_vụ hơi chậm
+{RESTAURANT#GENERAL, positive}, {SERVICE#GENERAL, negative}
+
+#240
+về phần trà trước không biết ai như mình không nhưng luôn thích mức đường ở dưới giá_tiền để cảm_nhận vị trà cho rõ
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#241
+đặc_biệt có cái thanh quấn bằng sắt dẫn lên khu_tầng tối hơn chút nhưng cảm_giác cũng rất hay
+{AMBIENCE#GENERAL, positive}
+
+#242
+bún_bò gân chả giá_tiền không tô cũng khá to nước_lèo ngon thịt mềm chả to ngon
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#243
+quán chưa thật_sự hợp vệ_sinh cho lắm thái_độ phục_vụ của nhân_viên chưa thân_thiện
+{RESTAURANT#GENERAL, neutral}, {SERVICE#GENERAL, negative}
+
+#244
+buôn_bán mà bắt_ép khách_hàng gì kỳ dậy trời
+{RESTAURANT#GENERAL, negative}
+
+#245
+nhân_viên lễ_phép và chu_đáo
+{SERVICE#GENERAL, positive}
+
+#246
+trà sữa uống cũng ổn
+{DRINKS#QUALITY, neutral}
+
+#247
+bàn khoảng tr thì phải
+{RESTAURANT#PRICES, neutral}
+
+#248
+về món thức uống trà thơm nhưng mùi lưu hơi nhạt
+{DRINKS#QUALITY, neutral}
+
+#249
+mình thấy món này mắc và không ngon vị nhạt nhoẽ và không thấm gì hết giống như ăn răng mực luộc vậy á
+{FOOD#QUALITY, negative}, {FOOD#PRICES, negative}
+
+#250
+không_gian khá rộng_rãi sắp_xếp bàn ghế hợp_lý trang_trí dễ_thương
+{AMBIENCE#GENERAL, positive}
+
+#251
+nhân_viên phục_vụ nhanh_nhẹn chuyên_nghiệp gửi xe free nhé
+{RESTAURANT#MISCELLANEOUS, positive}, {SERVICE#GENERAL, positive}
+
+#252
+vị trà của gongcha cũng không đậm lắm hay mình uống nhanh nên không nghe mùi nhỉ
+{DRINKS#QUALITY, neutral}
+
+#253
+vị trà sữa cũng tốt không đặc_biệt lắm
+{DRINKS#QUALITY, neutral}
+
+#254
+từng_lớp chesse mỏng xen_kẽ lớp bánh mềm ngon lắm nha
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#255
+đi vào thứ giá_tiền thì được giảm_giá_tiền nữa nhé
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#256
+canh rong biển rất vừa miệg
+{FOOD#QUALITY, positive}
+
+#257
+khoai_tây chiên quá mặn thật_sự rất mặn
+{FOOD#QUALITY, negative}
+
+#258
+bánh_canh ghẹ có nước súp đậm_đà ăn rất vào miệng không bị ngấy
+{FOOD#QUALITY, positive}
+
+#259
+dịch_vụ nhân_viên dễ_thương lúc ra về còn được nghe lời chào
+{SERVICE#GENERAL, positive}
+
+#260
+nhân_viên nhanh_nhẹn cũng không cần đợi lâu
+{SERVICE#GENERAL, positive}
+
+#261
+không_gian tốt chỉ là bàn hơi chật tụi mình đi người là ngồi sát sàn sạt nhau luôn
+{AMBIENCE#GENERAL, neutral}
+
+#262
+salad thì phải nói dở_tệ luôn không_lẽ khuyên mấy bạn mua chai dầu giấm trong siêu_thị ấy về mà trộn còn ngon hơn rau nhạt_nhẽo và không thấm
+{FOOD#QUALITY, negative}
+
+#263
+không_gian quán rộng_rãi nhiều bàn có cả ngoài_trời và trong nhà
+{AMBIENCE#GENERAL, positive}
+
+#264
+mì quảng có tôm to bự bánh_đa rau thịt cùng với đó là nước sốt kẹo_kẹo vô_cùng đặc_biệt làm nên món mì quảng khô siêu ngon này
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#265
+món ăn lên tương_đối lâu lúc mang lên vẫn còn nóng_hổi thơm_phức chắc nhờ dầu mè toả ra
+{SERVICE#GENERAL, negative}, {FOOD#QUALITY, positive}
+
+#266
+ngoài_ra ở đây có trà thái mình cũng mê lắm nhé
+{DRINKS#STYLE&OPTIONS, positive}
+
+#267
+vị_trí khó tìm khuất và tối kế bên đen đá
+{LOCATION#GENERAL, negative}
+
+#268
+lần khác thì lúc đóng nắp nhân_viên bị trượt tay làm milkfoam hơi đổ xíu và thêm cho mình milkfoam nhiều hơn cảm_động hết_sức
+{SERVICE#GENERAL, positive}
+
+#269
+ăn no phè hết tầm giá_tiền không ng
+{RESTAURANT#PRICES, neutral}
+
+#270
+chất_lượng thì khỏi phải bàn thịt bò đang ra vẫn còn nóng mềm đặt_hàng chín vừa nên thịt đem ra thịt bên trong khi cắt ra vẫn còn hồng siêu thích
+{FOOD#QUALITY, positive}
+
+#271
+thực_sự đen đá khá thích_hợp để ngồi trò_chuyện vì quán mở nhạc hay và xung_quanh cũng không ồn cho lắm tuy_nhiên cũng đừng ngồi lâu quá nhé vì sẽ không có chỗ cho khách khác
+{RESTAURANT#GENERAL, positive}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#272
+giá_cả tính ra không đắt với quán trà bánh sang chảnh tn đâu nhé đồ uống chỉ từ giá_tiền đơn_giá_tiền đôi và bánh tầm giá_tiền không
+{DRINKS#PRICES, positive}, {FOOD#PRICES, positive}, {RESTAURANT#PRICES, positive}
+
+#273
+trà uống ổn thơm
+{DRINKS#QUALITY, positive}
+
+#274
+thức uống mình đặt_hàng đầu_tiên hình_như có rượu_vang gì đó hơi khó uống
+{DRINKS#QUALITY, neutral}
+
+#275
+không_gian cũng không rộng lắm
+{AMBIENCE#GENERAL, neutral}
+
+#276
+decor của quán kiểu vintage
+{AMBIENCE#GENERAL, positive}
+
+#277
+vị_trí quán nằm ở tầng
+{LOCATION#GENERAL, neutral}
+
+#278
+đặc_biệt sẽ rất là đẹp nếu ăn vào ban_đêm
+{AMBIENCE#GENERAL, positive}
+
+#279
+đồ ăn ngon sạch_sẽ phục_vụ nhanh_nhẹn thái_độ tốt giá_cả phải_chăng
+{FOOD#QUALITY, positive}, {SERVICE#GENERAL, positive}, {RESTAURANT#PRICES, positive}
+
+#280
+bọn mình thích ăn măng nên gọi thêm măng giá_tiền nữa là ăn no ứ_hự luôn
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, neutral}
+
+#281
+ốc tỏi ổn ốc tươi nhưng nêm nếm không xuất_sắc đâu
+{FOOD#QUALITY, neutral}
+
+#282
+người pha_chế đồ uống nhìn rất chuyên_nghiệp
+{SERVICE#GENERAL, positive}
+
+#283
+đi ăn_ở đây lần thứ rồi mà vẫn không_thể ưng được cách phục_vụ ở đây
+{SERVICE#GENERAL, negative}
+
+#284
+ngay cạnh quầy gửi đồ của lotte mart
+{LOCATION#GENERAL, neutral}
+
+#285
+và tốt không có salad đồng_nghĩa với việc nhanh ngấy và bứ toàn đồ nhiều dầu_mỡ mà
+{FOOD#STYLE&OPTIONS, negative}, {FOOD#QUALITY, negative}
+
+#286
+chất_lượng giá đắt thế nhưng mà chất_lượng mình khá là ưng a
+{RESTAURANT#PRICES, negative}, {RESTAURANT#GENERAL, positive}
+
+#287
+salad trong dĩa kèm theo cũng tốt dễ ăn
+{FOOD#QUALITY, positive}
+
+#288
+cơ nhân thì cho thoáng tay hơn
+{FOOD#STYLE&OPTIONS, positive}
+
+#289
+lúc trước thích uống ở đây lắm nhưng sao dạo nay thấy không ngon như xưa nữa
+{RESTAURANT#GENERAL, negative}
+
+#290
+mình gọi món khá đặc_trưng của thái là cá trênchieen giòn ăn kèm xoài và gỏi ba_khía đu_đủ
+{FOOD#STYLE&OPTIONS, neutral}
+
+#291
+vị_trí nằm ở tân bình khá xa chỗ mình bình thạnh nên muốn tới đây phải xài google maps để dẫn đường vì mình không rành đường bên khu này lắm
+{LOCATION#GENERAL, neutral}
+
+#292
+hôm ấy tình_cờ mình đi với bạn qua đây thấy lò bánh này bày nhiều loại bánh nên ghé vào mua thử
+{FOOD#STYLE&OPTIONS, positive}
+
+#293
+quán nhỏ cơ_mà thấy không gọn_gàng lắm nước_chấm không quá ngon
+{AMBIENCE#GENERAL, negative}, {FOOD#QUALITY, negative}
+
+#294
+mình đặt_hàng cơm gà và cao lầu
+{FOOD#STYLE&OPTIONS, neutral}
+
+#295
+lần đầu đến huế nên gặp khó_khăn trong việc tìm quán
+{LOCATION#GENERAL, negative}
+
+#296
+trà sữa thì ổn rất thơm
+{DRINKS#QUALITY, positive}
+
+#297
+bỏng có khá nhiều vị từ bình_thường phô_mai caramel cho đến socola cũng có hết
+{FOOD#STYLE&OPTIONS, positive}
+
+#298
+chế_biến nhìn cực_kỳ chuyên_nghiệp và nhanh gọn nhưng chẳng phải vì_thế_mà mất đi phần_nào khéo_léo đâu nhé
+{RESTAURANT#GENERAL, positive}
+
+#299
+vị_trí sát biển thoáng mát vô_cùng
+{LOCATION#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#300
+điểm trừ ở của quán là phần đế bánh_nướng hơi bị giòn quá
+{FOOD#QUALITY, negative}
+
+#301
+có sân để xe nhưng vừa xe_máy thôi
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#302
+món cá_trê chiên giòn thì phải nói là xuất_sắc còn món gỏi cay ngon nhưng mình ăn ba_khía không quen nên hơi lạ lạ
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#303
+cũng không khác lắm so vơi những nhà_hàng đắt tiền
+{RESTAURANT#GENERAL, neutral}
+
+#304
+mình ăn một nồi lẩu nhỏ giá_tiền được mẹt rau một nhúm với một_ít bò sườn sụn và giò đi người ăn_không no
+{FOOD#STYLE&OPTIONS, negative}, {FOOD#PRICES, neutral}
+
+#305
+rất thích_hợp để họp_mặt bạn_bè ăn_uống tiệc_tùng gia_đình không_gian rộng_rãi buổi tối thì nghe em mình nói cao_cấp hơn có hào ăn thoải_mái mình ăn dìn ký từ hồi còn ở q không nhớ tên đường đến sau_này mở thêm ở cộng_hoà thì mình chuyển qua đó ăn luôn
+{AMBIENCE#GENERAL, positive}, {FOOD#STYLE&OPTIONS, positive}, {LOCATION#GENERAL, neutral}
+
+#306
+xôi lá_sen ăn cũng bthuong à không ngon lắm
+{FOOD#QUALITY, neutral}
+
+#307
+milkfoam ở đây còn ít hơn gongcha mua ở bên bình tân tsữa không còn béo thơm như xưa mà như nc dão thêm tí đường
+{DRINKS#STYLE&OPTIONS, negative}, {DRINKS#QUALITY, negative}
+
+#308
+à menu thay_đổi từng ngày nhé không giữ nguyên đâu
+{FOOD#STYLE&OPTIONS, positive}, {DRINKS#STYLE&OPTIONS, positive}
+
+#309
+béo béo mặn mặn_mà hình_như càng ngày_càng ít thì phải
+{DRINKS#QUALITY, neutral}, {DRINKS#STYLE&OPTIONS, negative}
+
+#310
+đồ nướng với lẩu vừa ăn
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#311
+decor chỉ là quầy hàng khiêm_tốn thôi
+{AMBIENCE#GENERAL, neutral}
+
+#312
+không thấy vị béo nhiều mà chỉ thấy mặn_chát th
+{DRINKS#QUALITY, negative}
+
+#313
+không_gian quán không rộng lắm nhưng cũng không hẹp khá ấm_cúng
+{AMBIENCE#GENERAL, neutral}
+
+#314
+con nhỏ e kiu ly trà sữa oolong hay hongkong gì đó trong cái list milk lun hehe phát_hiện được món mới ngon hơn lài xanh có vẻ mốt sẽ đổi món này
+{DRINKS#QUALITY, positive}
+
+#315
+tới tầm h là giò heo hết sạch
+{FOOD#STYLE&OPTIONS, neutral}
+
+#316
+nhưng đem về thì mùi thơm của bỏng vẫn còn giư nguyên độ giòn vẫn còn nữa chứ
+{FOOD#QUALITY, positive}
+
+#317
+rau củ xào giòn ăn cũng bình_thường
+{FOOD#QUALITY, neutral}
+
+#318
+mỗi lần ghiền trà sữa là nhớ ngay tới gong cha trà sữa này thì khỏi bàn_cãi nữa vì nó quá nổi_tiếng
+{RESTAURANT#GENERAL, positive}
+
+#319
+điểm cộng ở đây là không_gian đẹp và thoáng
+{AMBIENCE#GENERAL, positive}
+
+#320
+đang có chương_trình km gà phô_mai trứng muối salad là giá_tiền
+{RESTAURANT#MISCELLANEOUS, positive}, {FOOD#PRICES, neutral}, {FOOD#STYLE&OPTIONS, negative}
+
+#321
+cá_lăng chiên qua cho vàng đảo đảo chấm cùng mắm_tôm
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#QUALITY, positive}
+
+#322
+như_vậy thì cũng xứng_đáng để quay lại quán nhiều lần nữa đúng không nhỉ
+{RESTAURANT#GENERAL, positive}
+
+#323
+mình có đặt cả bánh gato cuộn trà xanh xong gì gì nữa í chả nhớ
+{FOOD#STYLE&OPTIONS, neutral}
+
+#324
+nhân_viên không lịch_sự với khách khi gọi món
+{SERVICE#GENERAL, negative}
+
+#325
+đặc_biệt chủ quán cũng khá lớn_tuổi nhưng phục_vụ nhanh_nhẹn tận_tình thân_thiện lắm luôn mình ăn xong còn hỏi mình là ăn có được không con nữa
+{SERVICE#GENERAL, positive}
+
+#326
+giá_tiền thì vừa phải hợp_lý
+{RESTAURANT#PRICES, positive}
+
+#327
+nhà_hàng chuyên phục_vụ những món ăn mang đậm hương_vị ý
+{RESTAURANT#GENERAL, positive}, {FOOD#QUALITY, positive}
+
+#328
+mình ăn phần bò giá_tiền gr tầm giá_tiền thì phải chất_lượng bò hơi tái nên ăn mềm ngọt thịt
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#329
+lâu_lâu đổi quán một tý hôm_qua bọn mình chọn topping beef vì nghe nói ở đây ngon và không_gian thoải_mái lắm
+{FOOD#QUALITY, positive}, {AMBIENCE#GENERAL, positive}
+
+#330
+trưa nắng thèm trà sữa đặt_hàng ly ở chi_nhánh q
+{LOCATION#GENERAL, neutral}
+
+#331
+thiệt là quán ăn_ở đây không ngon như ở xài_gòn
+{RESTAURANT#GENERAL, negative}
+
+#332
+giá_cả ở đây mình thấy hợp_lý so với chất_lượng cũng như mặt_bằng chung các quán nhật
+{RESTAURANT#PRICES, positive}, {RESTAURANT#GENERAL, positive}
+
+#333
+kêu phàn top blade với mỳ ý sốt_kem
+{FOOD#STYLE&OPTIONS, neutral}
+
+#334
+đủ giá_tiền thì được quai và sticker
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#335
+không_gian quán khá dài chật ngang nhưng biết cách bố_trí nên trông cũng ổn
+{AMBIENCE#GENERAL, neutral}
+
+#336
+lâu rồi mình mới ghé lại gongcha hình_như đây là vị mới thì phải
+{DRINKS#STYLE&OPTIONS, positive}
+
+#337
+trang_trí thì hơi chán dù giờ có thêm mấy bức tranh vẽ_vời này_nọ v
+{AMBIENCE#GENERAL, negative}
+
+#338
+trà đào không mùi nhiều váng sữa cũng nhàn_nhạt
+{DRINKS#QUALITY, negative}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#339
+nhưng bù lại bánh khá rẻ và ngon nữa
+{FOOD#PRICES, positive}, {FOOD#QUALITY, positive}
+
+#340
+quán này mình hay ghé tới rất đông khách hnay cũng không ngoại_lệ
+{RESTAURANT#GENERAL, positive}
+
+#341
+món này cũng không có gì lạ cuốn chặt tay ngon
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#342
+lúc sau có bạn nhân_viên bê nước tỏ thái_độ khi mình đổi chỗ
+{SERVICE#GENERAL, negative}
+
+#343
+mình gọi trà xanh milk foam chân trâu trắng cỡ mình tổng là giá_tiền
+{DRINKS#STYLE&OPTIONS, neutral}, {DRINKS#PRICES, neutral}
+
+#344
+gỏi gà trộn thấm gà chặt khúc vừa ăn_không phải là gà ta không thích ăn cháo thì có_thể gọi bún miến
+{FOOD#STYLE&OPTIONS, positive}
+
+#345
+đồ ăn đúng kiểu đắt xắt ra miếng nước lẩu chua_cay chuẩn vị thịt bò thì siêu siêu ngon mềm ngọt và thơm
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#346
+trần_đời không_lẽ bình_thường bán chè bưởi cho khách không bán nc cốt dừa
+{SERVICE#GENERAL, negative}
+
+#347
+rau đủ loại rau rau cải rau muốn các thứ và các món ăn kèm như sushi lém
+{FOOD#STYLE&OPTIONS, positive}
+
+#348
+giờ cao_điểm quán đông khủng_khiếp và cả nóng nữa nhưng bạn nào cũng cười tươi như hoa
+{RESTAURANT#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#349
+đủ sang đủ lịch_sự nhưng vẫn đủ lãng_mạn ấm_cúng
+{AMBIENCE#GENERAL, neutral}
+
+#350
+bạn mình thử món khác là trà xanh sữa trân_châu trắng cảm_giác như uống trà ở nhà hằng ngày ý không dở nhưng cũng không gọi là ngon
+{DRINKS#QUALITY, neutral}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#351
+giá rổ thì đương_nhiên là rất đắt rồi phù_hợp với độ sang chảnh của quán hihii
+{RESTAURANT#PRICES, negative}
+
+#352
+không_thể chấp_nhận được mình tính tiền xong đi luôn và sẽ không quay lại nữa
+{RESTAURANT#GENERAL, negative}
+
+#353
+không ngờ cái hàng vỉa_hè gần nhà lại hot đến vậy
+{RESTAURANT#GENERAL, positive}
+
+#354
+hàu hôm mình ăn khá nhỏ không tươi lắm
+{FOOD#QUALITY, negative}, {FOOD#STYLE&OPTIONS, negative}
+
+#355
+giá_cả quá mắc
+{RESTAURANT#PRICES, negative}
+
+#356
+cón mấy cái sét bánh macaron hay tổ chim thấy bình_thường không đặc_sắc được cái trang_trí đẹp
+{FOOD#QUALITY, neutral}, {FOOD#STYLE&OPTIONS, positive}
+
+#357
+spagetti cá_hồi sốt kem thì phần cá ổn mà hơi ít kem vj vừa mà do có mùi thì là nặng nên mình không thích lắm
+{FOOD#QUALITY, neutral}, {FOOD#STYLE&OPTIONS, negative}
+
+#358
+quán decor dễ_thương và khá thoáng
+{AMBIENCE#GENERAL, positive}
+
+#359
+quán lúc_nào cũng đông hết phục_vụ đông nên rất nhanh luôn
+{RESTAURANT#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#360
+ly cực xinh chữ viết_tay nhìn khá thân_thiện bao_bì nhìn có cảm_giác thanh mát lắm
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#361
+phù_hợp takeaway hơn nhưng không_gian quá nhỏ nhiều người đi mình như lại lấy bàn người nên những nhóm đi như mình không có chỗ phải lấy thêm ghế_ngồi rất chật_chội
+{AMBIENCE#GENERAL, negative}
+
+#362
+sườn non nướng như kiểu sườn trong cơm tấm á ăn phê lắm có thêm chén nước sốt chua chua mặn mặn có xí vị cay mình thì không chấm nhiều tại mình ăn sườn thấy vừa òi nè
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#363
+nước_ngọt thì loãng nhách
+{DRINKS#QUALITY, negative}
+
+#364
+đặc_biệt kem cheese rất ngon đặc không bị lỏng như các quán khác
+{FOOD#QUALITY, positive}
+
+#365
+mỳ mềm dai sốt đậm_đà vừa_miệng
+{FOOD#QUALITY, positive}
+
+#366
+nhưng mà ăn cũng không đến_nỗi nào
+{FOOD#QUALITY, neutral}
+
+#367
+rau và bún ở đây kêu thêm free hết nha
+{FOOD#STYLE&OPTIONS, positive}
+
+#368
+đi quán hồi tháng vô_tình đi ngay lúc quán khuyến_mãi giá_tiền mấy loại bò trừ usda choice
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#369
+người ly trà sữa trân_châu trắng và trà sữa trân_châu đen đặt_hàng qua giao hàng thấy ổn giao hàng cũng nhanh tầm tiếng
+{DRINKS#STYLE&OPTIONS, neutral}, {SERVICE#GENERAL, positive}
+
+#370
+medium rare làm vừa đẹp thịt mềm sốt_thơm
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#371
+mình biết là viết như này sẽ hơi kì nhưng đúng là nó không có mùi ngọt của thịt mà mình vẫn hay thấy mặc_dù mình có đặt_hàng độ chính medium
+{FOOD#QUALITY, neutral}
+
+#372
+quậy đều uống thì béo ngon hơn
+{DRINKS#QUALITY, positive}
+
+#373
+cơm_chiên hải_sản thái món dở_tệ nhất trong toàn_bộ menu tiệc
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#QUALITY, negative}
+
+#374
+nêm nếm vừa ăn bỏ bơ nhiều nên khá thơm
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#375
+có lò hâm mà thức_ăn nguội_lạnh
+{FOOD#QUALITY, negative}
+
+#376
+dạo này gà viên lotte cho ít quá hơi buồn lúc trước phần cơm cho gà nhiều hơn bây_giờ tại mình thích cái sốt của nó
+{FOOD#STYLE&OPTIONS, negative}
+
+#377
+giá_cả thi binh thg không đắt chỉ tầm từ giá_tiền không thôi ahh
+{RESTAURANT#PRICES, neutral}
+
+#378
+phần bơ nướng chung với toast không cảm_nhận được nữa nên bánh mất vị béo béo luôn
+{FOOD#QUALITY, neutral}
+
+#379
+quán rất rộng nhưng khi nào cũng đông kín hết cả chỗ
+{AMBIENCE#GENERAL, positive}, {RESTAURANT#GENERAL, positive}
+
+#380
+mình rất muốn quay lại đây lần nữa để có_thể thử thêm món crepe mật_ong gì đó cũng như bò và các món khác nói_chung là muốn thử hết
+{RESTAURANT#GENERAL, positive}
+
+#381
+chân gà rang muối rất ngon
+{FOOD#QUALITY, positive}
+
+#382
+nhân_viên nhiệt_tình chu_đáo
+{SERVICE#GENERAL, positive}
+
+#383
+không_gian khá rộng thoáng mát
+{AMBIENCE#GENERAL, positive}
+
+#384
+quán buổi tối khá đông vì gần trung_tâm đồ ăn ngon mà giá phải_chăng
+{LOCATION#GENERAL, neutral}, {FOOD#QUALITY, positive}, {FOOD#PRICES, positive}
+
+#385
+thật_sự mình là fan gong cha
+{RESTAURANT#GENERAL, positive}
+
+#386
+lẩu nước ngon rau nhút hơi già ghẹ tươi ngon_ngọt chắc thịt
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#387
+gà chiên phồng bột bắp sốt bbq giá_tiền phần miếng nhỏ
+{FOOD#STYLE&OPTIONS, negative}, {FOOD#PRICES, neutral}
+
+#388
+nhân_viên phục_vụ bàn mình khá dễ_thương
+{SERVICE#GENERAL, positive}
+
+#389
+nước hủ tíu ở đây nêm nếm vừa mà so với mình chắc là hơi ngọt còn lại ăn cũng giống giống mấy chỗ khác
+{FOOD#QUALITY, neutral}
+
+#390
+đồ ăn được nhưng cái giá thì không hấp_dẫn tẹo nào so với chất_lượng món ăn
+{FOOD#QUALITY, positive}, {FOOD#PRICES, negative}
+
+#391
+thử món nào cũng không ngon bằng green tea milk foam
+{DRINKS#QUALITY, neutral}
+
+#392
+giá_cả tương_đối_xứng tầm đồ uống theo mình thì hơi lạc cảm_nhận được vị đắng đắng của trà trân_châu không ngon lắm
+{DRINKS#QUALITY, negative}, {RESTAURANT#PRICES, neutral}
+
+#393
+quán bán mì quảng bún_bò huế bún mắm và hủ_tiếu nam vang nằm ngay đầu đường vào chung_cư trần quang diệu rất dễ tìm
+{FOOD#STYLE&OPTIONS, neutral}, {LOCATION#GENERAL, positive}
+
+#394
+đến đây giữ xe dưới hầm giá_tiền cho giữ xe quận thì cũng ổn
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#395
+theo mình thì trà sữa ở đây cũng không có gì đặc_sắc không đậm_đà rõ vị lớp sủi bọt milkfoam bên trên khá nhạt và loãng
+{DRINKS#QUALITY, negative}
+
+#396
+ai dè lúc mở_cửa đi vào thì bị nhân_viên tui cóc quan_tâm là ai mời ra khỏi quán với lý_do quán chưa set up xong mời chị qua chi_nhánh khác dùm
+{SERVICE#GENERAL, negative}
+
+#397
+đi kèm với nó là bát nước_chấm thần thần_thánh
+{FOOD#QUALITY, positive}
+
+#398
+chưa bao_giờ ăn bánh nào mà dở_vậy
+{FOOD#QUALITY, negative}
+
+#399
+matcha đậu_đỏ có cảm_giác không ngon bằng matcha đậu_đỏ bánh pudding
+{DRINKS#QUALITY, negative}
+
+#400
+bánh_mật_ong không cái mua tặng nhe
+{FOOD#PRICES, neutral}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#401
+nhưng nhai thì rất ngon và dễ gây nghiện
+{FOOD#QUALITY, positive}
+
+#402
+bò rất ngon nhiều loại thịt
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#403
+đây là chi_nhánh thứ của royaltea mình ghé
+{RESTAURANT#GENERAL, neutral}
+
+#404
+tất_nhiên giá cũng rất cao và chỉ phù_hợp với giới thượng_lưu
+{RESTAURANT#PRICES, negative}
+
+#405
+lúc vào có_nhân_viên đưng sẳn trước cổng hỏi đã đặt bàn chưa và chỉ đến chỗ mua vé nchug nhân_viên nhìn_chung rất lịch_sự và vui_vẻ
+{SERVICE#GENERAL, positive}
+
+#406
+mực chiên giòn giá_tiền mực nóng giòn khoanh to dày số_lượng ít nhưng chất_lượng chấm sốt_ok
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#407
+nước cũng không ngon lắm
+{DRINKS#QUALITY, neutral}
+
+#408
+phục_vụ ổn nhanh_nhẹn thân_thiện
+{SERVICE#GENERAL, positive}
+
+#409
+chưa ăn thì chưa biết nó thế_nào ăn rồi mới biết nó tuyệt_vời lun ăn mộtt lần phải có lần hai
+{RESTAURANT#GENERAL, positive}
+
+#410
+vẫn ấn_tượng từ lần trước nên bữa_nay tôi lại gọi món hamburger và mỳ cà_chua nhật_bản
+{FOOD#STYLE&OPTIONS, positive}
+
+#411
+giàn khánh_tiết của quán đẹp nhìn sáng nhà_hàng
+{AMBIENCE#GENERAL, positive}
+
+#412
+đi tầm trưa giá_tiền h đông khủng_khiếp nên chờ món hơi lâu nhưng không thành vấn_đề
+{RESTAURANT#GENERAL, positive}, {SERVICE#GENERAL, negative}
+
+#413
+kim chi là món ăn kèm miễn_phí nhưng rất rất là ngon lun
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#414
+wifi thì yếu đang kết_nối mà cứ bị out ra hoài
+{RESTAURANT#MISCELLANEOUS, negative}
+
+#415
+có bức tường được thiết_kế để leo núi cũng rất hấp_dẫn những người ưa mạo_hiểm
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#416
+vì chưa ăn vị ở bên sing nó ntn nên chưa chắc_chắn có chuẩn vị không nhưng mình ăn thấy hợp lắm
+{FOOD#QUALITY, positive}
+
+#417
+quán khá đông khách nên tốt nhất là nên đặt bàn trước để không phải chờ quá lâu hệ_thống đặt bàn ổn nhắn_tin hay gọi điện nhân_viên đều trả_lời lịch_sự dễ_chịu
+{RESTAURANT#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#418
+giá_tiền quẩy giá_tiền c
+{FOOD#PRICES, neutral}
+
+#419
+đồ ăn bình_thường từ salad pizza hay pasta
+{FOOD#QUALITY, neutral}, {FOOD#STYLE&OPTIONS, neutral}
+
+#420
+mình thì chẳng bao_giờ thích whipping cream trắng đâu ghét là đằng khác nhưng may quá ly này đã đổi whipping cream khác không biết là choco hay coffee nhỉ
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#421
+còn bingsu choco thì max ấn_tượng ở chỗ nguyên cái tô làm từ chocolate luôn
+{FOOD#STYLE&OPTIONS, positive}
+
+#422
+nhà_hàng_phục_vụ đồ ăn bình_thường không gì đặc_sắc giá quá cao so với chất_lượng đồ ăn
+{FOOD#QUALITY, neutral}, {FOOD#PRICES, negative}
+
+#423
+giá_cả bọn mình đến ăn vào tầm trưa nên cơm chỉ còn giá_tiền không suất
+{RESTAURANT#PRICES, neutral}
+
+#424
+quán khá rộng có tầng thì phải nhiều bàn
+{AMBIENCE#GENERAL, positive}
+
+#425
+so chất_lượng món ăn với giá_thành thì cũng hợp_lý
+{RESTAURANT#PRICES, positive}
+
+#426
+lần thứ uống một miếng của bạn thì lại thấy hơi chua t_t
+{DRINKS#QUALITY, negative}
+
+#427
+mà thấy cửa_hàng này bán nhiều đồ ăn vặt lắm luôn á khi nào có thời_gian đặt_hàng mấy món kia về ăn tiếp
+{FOOD#STYLE&OPTIONS, positive}
+
+#428
+bạn mình thì nói tanh mùi trứng chắc do tuỳ người suy_nghĩ quá
+{FOOD#QUALITY, negative}
+
+#429
+do có coupon off giá_tiền nên tạm ổn
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#430
+trân_châu trắng thì ngon nè sần_sật giòn dai
+{DRINKS#QUALITY, positive}
+
+#431
+menu đa_dạng các loại thạch cũng khá nhiều lựa_chọn có hình minh_hoạ luôn phục_vụ ổn
+{SERVICE#GENERAL, positive}, {DRINKS#STYLE&OPTIONS, positive}
+
+#432
+vì là quán bún cá bán riêng bún và cá chấm đầu_tiên ở hà_nội nên lượng khách mỗi ngày đều rất đông
+{RESTAURANT#GENERAL, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#433
+phục_vụ chào_đón thân_thiện vui_vẻ và chuyên_nghiệp từ cửa đi vào tận chỗ ngồi
+{SERVICE#GENERAL, positive}
+
+#434
+tầng của quán có rất nhiều sách truyện cả tiểu_thuyết nữa
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#435
+mình ăn các thể_loại bánh_nướng vị thì tạm được không có gì ngon nhưng không hiểu sao khá đông
+{FOOD#QUALITY, neutral}, {RESTAURANT#GENERAL, neutral}
+
+#436
+nhân_viên thân_thiện dễ_thương
+{SERVICE#GENERAL, positive}
+
+#437
+nhà_hàng mình rất thích
+{RESTAURANT#GENERAL, positive}
+
+#438
+quán nằm trên tầng tầng là circle không
+{LOCATION#GENERAL, neutral}
+
+#439
+thịt vịt béo ngon_ngọt rất là thích
+{FOOD#QUALITY, positive}
+
+#440
+ngưpfi ăn túi cỡ lớn là vừa vì popcorn khá là ngấy
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#QUALITY, negative}
+
+#441
+mình ăn dâu dầm bánh_trôi tàu và nem_chua rán
+{FOOD#STYLE&OPTIONS, neutral}
+
+#442
+trà xanh kem phomai giá_tiền không cỡ lớn
+{DRINKS#PRICES, neutral}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#443
+món chả_giò tôm thịt rất giòn và ráo dầu
+{FOOD#QUALITY, positive}
+
+#444
+không_gian rộng_rãi sang_trọng tuy_nhiên chất_lượng đã giảm_sút không như hồi còn ở lê thị hồng gấm
+{AMBIENCE#GENERAL, positive}, {RESTAURANT#GENERAL, negative}
+
+#445
+nem_chua giòn nc chấm ngon
+{FOOD#QUALITY, positive}
+
+#446
+giá_tiền h đến quán mà vẫn xếp_hàng dài_ngoằng
+{RESTAURANT#GENERAL, positive}
+
+#447
+có điều toilet thì không được thông_thoáng diện_tích hẹp và có phần hơi cũ dìn ký mà cải_thiện được thì rất vẹn_toàn
+{RESTAURANT#MISCELLANEOUS, negative}
+
+#448
+giá cũng rẻ nữa có_giá_tiền thui ấy
+{RESTAURANT#PRICES, positive}
+
+#449
+sợi mì xào mềm thấm có_điều hơi ít phá lấu há cảo chiên giòn
+{FOOD#STYLE&OPTIONS, negative}, {FOOD#QUALITY, positive}
+
+#450
+giá_cả nó ở vincom quận
+{RESTAURANT#PRICES, negative}
+
+#451
+circle không hàng trống là trong những circle không có nhiều hàng nhất trong số chuỗi circle không đặc_biệt là mình ra lúc_nào cũng còn đá xay
+{RESTAURANT#GENERAL, positive}
+
+#452
+bạn nhân_viên rất thân_thiện và tốt_bụng
+{SERVICE#GENERAL, positive}
+
+#453
+thức_ăn không ngon giá cao so với chất_lượng
+{FOOD#PRICES, negative}, {FOOD#QUALITY, negative}
+
+#454
+vô bên trong nhà_hàng càng bực_mình hơn khi cả nhà mình đến lúc khoản giá_tiền h nhưng đồ ăn_không còn cái gì cũng hết và không thấy lên món
+{FOOD#STYLE&OPTIONS, negative}, {SERVICE#GENERAL, negative}
+
+#455
+phá lấu có sẵn bánh_mì luôn nha
+{FOOD#STYLE&OPTIONS, positive}
+
+#456
+vì có thẻ giảm_giá nên mình mua có hai mươi bảy ngàn đồng à
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#457
+được cái lẩu và tráng_miệng gỡ lại được chút
+{FOOD#QUALITY, neutral}, {FOOD#STYLE&OPTIONS, neutral}
+
+#458
+nước free refill
+{DRINKS#STYLE&OPTIONS, positive}
+
+#459
+vị_trí gần đường điện biên phủ đường tương_đối nhỏ ít xe
+{LOCATION#GENERAL, neutral}
+
+#460
+mình gọi thêm khoai_tây chiên giá_tiền và bánh_mì bơ tỏi mình giá_tiền nữa
+{FOOD#PRICES, neutral}, {FOOD#STYLE&OPTIONS, neutral}
+
+#461
+sốt chảy ra hoà vào vỏ bánh giòn_rụm
+{FOOD#QUALITY, positive}
+
+#462
+đủ điểm thì bạn sẽ được nhận quai kèm sticker còn đủ điểm thì được ly sứ
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#463
+chị chủ thân_thiện đồ ăn ra khá nhanh
+{SERVICE#GENERAL, positive}
+
+#464
+phục_vụ nhanh lễ_phép
+{SERVICE#GENERAL, positive}
+
+#465
+mà bao lủng lỗ là thứ ức_chế nhất
+{RESTAURANT#MISCELLANEOUS, negative}
+
+#466
+lần đầu_tiên tới quán nhiều đồ uống quá nên bị ngợp thôi để bạn nó gọi giùm hên xui
+{DRINKS#STYLE&OPTIONS, positive}
+
+#467
+cỡ không được to nhưng bánh dày và siêu nhiều trứng ruốc nên thấy giá vừa_phải
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, positive}
+
+#468
+quán này thì quá lí_tưởng để tụ_tập ăn_uống
+{RESTAURANT#GENERAL, positive}
+
+#469
+có cảm_giác giá không đổi mà chất_lượng thua ngày_xưa nên hơi thất_vọng
+{RESTAURANT#PRICES, neutral}, {RESTAURANT#GENERAL, negative}
+
+#470
+đồ hải_sản như ngao mực tôm thì loại bé tí_ti mực mỗi đĩa được miếng bạch_tuộc cũng thế cắt nát ra rồi ăn mất ngon
+{FOOD#STYLE&OPTIONS, negative}, {FOOD#QUALITY, negative}
+
+#471
+ăn_người no lặc_lè luôn thích nhất là sườn mềm tẩm ướp vừa vị ăn cùng cơm_rang
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#472
+menu không có tiếng việt
+{RESTAURANT#MISCELLANEOUS, negative}
+
+#473
+cũng món đó mà loại nóng là giá_tiền thơm nồng mùi cà_phê hơn nhưng gọi ít ngọt mà vẫn ngọt vô_cùng đâm_ra uống hồi thấy giống menu ghê
+{DRINKS#QUALITY, positive}, {DRINKS#PRICES, neutral}
+
+#474
+quán này ngày trước cứ ra đồ sơn là mới được ăn bây_giờ mở thêm chi_nhánh ở lê hồng phong nên đi_lại tiện lắm luôn ấy
+{RESTAURANT#GENERAL, positive}, {LOCATION#GENERAL, neutral}
+
+#475
+milkfoam ở đây mặn mặn béo béo ngon nữa
+{DRINKS#QUALITY, positive}
+
+#476
+quán cũng nhỏ chừng giá_tiền bàn thôi
+{AMBIENCE#GENERAL, negative}
+
+#477
+lâu_lâu uống lại thấy ngon lắm
+{DRINKS#QUALITY, positive}
+
+#478
+quán nằm ngay phố lớn decor đẹp đừng hỏi luôn mà đi ăn sinh_nhật bạn nên chả chụp được nhiều chỉ nháy tạm vài kiểu
+{LOCATION#GENERAL, neutral}, {AMBIENCE#GENERAL, positive}
+
+#479
+vị_trí rất thuận_tiện
+{LOCATION#GENERAL, positive}
+
+#480
+ở đây gần hồ con rùa ngay trung_tâm thành_phố nên rất thuận_tiện đi_lại ở đây cũng gần diamond plaza nhà_thờ đức bà nên cũng tiện cho việc mua_sắm nữa
+{LOCATION#GENERAL, positive}
+
+#481
+giá_cả tầm giá_tiền không người
+{RESTAURANT#PRICES, neutral}
+
+#482
+ly khoảng giá_tiền thì phải
+{DRINKS#PRICES, neutral}
+
+#483
+giá_cả thì ổn không_gian đẹp vị_trí ngay trung_tâm nhân_viên phục_vụ rât dễ_thương và chiều lòng khách_hàng
+{RESTAURANT#PRICES, neutral}, {AMBIENCE#GENERAL, positive}, {LOCATION#GENERAL, neutral}, {SERVICE#GENERAL, positive}
+
+#484
+mà hạt cafe cũng không có mùi gì luôn rất mềm chắc do phơi ngoài gió lâu
+{DRINKS#QUALITY, negative}
+
+#485
+hôm giá_tiền vừa_rồi cheese coffee đã mở bán quai vải với giá giá_tiền không combo gồm quai sticker khi mua kèm bill nước bất_kì
+{RESTAURANT#PRICES, neutral}
+
+#486
+phải nói là sau mấy chục năm thì cái buffet đã có sự thay_đổi hấp_dẫn hơn cả về món ăn lẫn trang_trí
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#487
+nhân_viên thái_độ phục_vụ bình_thường không được vui_vẻ lắm nhưng được cái nhẹ_nhàng
+{SERVICE#GENERAL, neutral}
+
+#488
+mình không cảm_thấy nó ngon như mình đã từng tưởng_tượng ra
+{FOOD#QUALITY, neutral}
+
+#489
+quán nằm ở đầu ngô gia cát nếu đi từ hướng điện biên phủ rẽ vào do phía ngoài hơi nhỏ nên hơi khó tìm mình toàn đi kiếm quán thôi
+{LOCATION#GENERAL, negative}
+
+#490
+lần thứ ghé quán vì mấy lần trước đi qua đông quá không chờ được
+{RESTAURANT#GENERAL, neutral}
+
+#491
+thay_vì bưng lộn thì phải xin_lỗi khách thì bạn ấy lơ đi luôn để bạn nam phục_vụ kia ở lại cũng chẳng biết đầu_đuôi làm_sao cũng may_mắn cho bạn là gặp bên khách đều dễ_tính chứ gặp người khác là bạn đền p mì rồi
+{SERVICE#GENERAL, negative}
+
+#492
+phải nói không_gian ở đây rất đẹp lạ mang phong_cách khác hẳn với đa_phần các quán ăn nhà_hàng hiện_nay
+{AMBIENCE#GENERAL, positive}
+
+#493
+matcha latte hơi dỡ mùi match không đậm
+{DRINKS#QUALITY, negative}
+
+#494
+giá niêu cháo và niêu ếch con hình_như là giá_tiền hay sao đó
+{FOOD#PRICES, neutral}, {FOOD#STYLE&OPTIONS, neutral}
+
+#495
+mình uống trà sữa matcha đậu_đỏ bạn mình uống trà sữa hokkaido
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#496
+lần đầu uống cảm_thấy dở không đặc_biệt
+{DRINKS#QUALITY, negative}
+
+#497
+nhưng mùi_vị thì chắc không hợp với mfinh và bạn mình nên thấy không ngon
+{RESTAURANT#GENERAL, negative}
+
+#498
+cũng may mà salad gà gọi ngoài ngon phết các ông ạ
+{FOOD#QUALITY, positive}
+
+#499
+theo mình phở ở những nơi khác bình_dân mà ngon và rẻ vô_cùng chắc tại cái tiếng hồi xưa thôi còn bây_giờ thì tệ
+{FOOD#PRICES, neutral}, {FOOD#QUALITY, neutral}, {RESTAURANT#GENERAL, negative}
+
+#500
+hôm giá_tiền tôi chở vợ_con đi ăn tại đây và vô_cùng thất_vọng so với các lần trước
+{RESTAURANT#GENERAL, negative}
+
+#501
+ngoài cơm niêu sing ra thì món của bên bển cũng rất hot là cháo ếch singgapore
+{FOOD#STYLE&OPTIONS, positive}
+
+#502
+bò ngon là một chuyện còn rưới thêm trứng lên ăn ngon dã_man ý giá_tiền không bát
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#503
+uống xong rồi ăn là no luôn nói chứ trà sữa ở đây thơm ngon và lúc_nào cũng có ly chà_bá cho mình kêu luôn
+{DRINKS#STYLE&OPTIONS, positive}, {DRINKS#QUALITY, positive}
+
+#504
+đồ ăn ngon phục_vụ lẹ lên món liền không để chờ lâu
+{FOOD#QUALITY, positive}, {SERVICE#GENERAL, positive}
+
+#505
+nhưng không có tương_ớt nên không_thể chấm khoai_tây được huhu phải ăn khoai với muối_tiêu
+{FOOD#STYLE&OPTIONS, negative}
+
+#506
+ơ wtf mình bỏ tiền ra để được phục_vụ như vả vào mặt thế_á
+{SERVICE#GENERAL, negative}
+
+#507
+cả loại đều là hải_sản thích cực luôn
+{FOOD#STYLE&OPTIONS, positive}
+
+#508
+trà đá và khắn lạnh tính tiền riêng không cái
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#509
+có món sườn heo nướng ăn với cơm cũng ngon lắm nè trứng hến cũng ngon
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#QUALITY, positive}
+
+#510
+giao hàng nhanh lắm luôn mà bánh còn nóng_hổi nữa tuy hôm đó trời mưa nhưng không giao trễ giờ tí nào
+{SERVICE#GENERAL, positive}, {FOOD#QUALITY, positive}
+
+#511
+vẫn món cũ olong sữa lớn
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#512
+không_gian quán đẹp nhưng hơi hẹp
+{AMBIENCE#GENERAL, positive}
+
+#513
+chân gà ở đây chỉ có chân gà bóp không có chân gà nướng nên mình không thich lắm
+{FOOD#STYLE&OPTIONS, neutral}
+
+#514
+nhân_viên cũng rất vui_vẻ và nhiệt_tình nữa
+{SERVICE#GENERAL, positive}
+
+#515
+giá_cả thấy tốt
+{RESTAURANT#PRICES, positive}
+
+#516
+gu nhạc của quán theo kiểu cập_nhật những bài hot trong bảng xếp_hạng us uk
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#517
+hotdog thích ăn kem ở đây nữa ạ có kem than tre ăn khá hay_ho mọi người nên thử lần nhé
+{FOOD#QUALITY, positive}
+
+#518
+thứ nhất là về đồ ăn đồ trên băng_chuyền càng ngày_càng ít nhìn đi nhìn lại trên băng chả có gì toàn phải gọi nhân_viên mang đồ ra riêng cho mà chờ nhân_viên mang ra thì cũng khá là lâu
+{FOOD#STYLE&OPTIONS, negative}, {SERVICE#GENERAL, negative}
+
+#519
+phục_vụ nhiệt_tình chu_đáo không_gian thoải_mái
+{SERVICE#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#520
+suất cơm sen giá_tiền bánh_canh cá_quả giá_tiền
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#PRICES, neutral}
+
+#521
+mình rất ấn_tượng với anh quản_lí người ý ở đây
+{SERVICE#GENERAL, positive}
+
+#522
+quá tệ ở đây không nói về chất_lượng món ăn mà về dịch_vụ
+{SERVICE#GENERAL, negative}
+
+#523
+khi ăn thì sẽ nhớ và quay lại giống mình thôi vì ngon quá mà hihi
+{RESTAURANT#GENERAL, positive}
+
+#524
+giá_cả thì cũng vừa tầm không_gian hơi ồn_ào
+{RESTAURANT#PRICES, neutral}, {AMBIENCE#GENERAL, negative}
+
+#525
+mình không bao_giờ ghé lại nữa
+{RESTAURANT#GENERAL, negative}
+
+#526
+chỗ này gần đối_diện bv ctch
+{LOCATION#GENERAL, neutral}
+
+#527
+cafe và trà_cam quế ở đây đều khá tốt
+{DRINKS#QUALITY, positive}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#528
+mình kêu trà sữa thái b mình kêu trà sữa đài_loan hay gì đó mình quên tên mà thấy ngon ngon
+{DRINKS#STYLE&OPTIONS, neutral}, {DRINKS#QUALITY, positive}
+
+#529
+hiện_nay quán mới trang_trí lại nhìn sáng và tốt hơn
+{AMBIENCE#GENERAL, positive}
+
+#530
+gà dạo này ăn vị hơi lạ ngấy_mỡ
+{FOOD#QUALITY, neutral}
+
+#531
+nếu suy_nghĩ về không_gian thì cũng có_thể quay lại
+{AMBIENCE#GENERAL, positive}
+
+#532
+trà xoài kem cheese cốc to thế kia uống no lắm
+{DRINKS#STYLE&OPTIONS, positive}
+
+#533
+mọi người lưu_ý là ngồi bạn càng gần bếp càng tốt chứ ngồi phía ngoài là thua luôn mình đã từng bị lần phải chạy vô trong kêu món chứ ngồi ngoài kêu các bạn không nghe
+{SERVICE#GENERAL, negative}
+
+#534
+như kiểu nấu_ăn từ bí kíp gia_truyền ấy
+{FOOD#QUALITY, positive}
+
+#535
+còn cái lava toast mình cũng gọi mà quên chụp trời ơi nó dở kinh_khủng ngọt và ngán không hề có vị trứng muối gì luôn mà
+{FOOD#QUALITY, negative}
+
+#536
+top blade giá_tiền gr bò làm vừa tái rất ngon
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#537
+mình cũng ăn_ở đây được vài lần rồi ăn cũng được nhưng quá mắc
+{FOOD#QUALITY, positive}, {FOOD#PRICES, negative}
+
+#538
+có miếng bò cũng to cà_chua và tôm
+{FOOD#STYLE&OPTIONS, positive}
+
+#539
+cửa_hàng go lê thanh_nghị
+{RESTAURANT#GENERAL, neutral}
+
+#540
+suất như trong ảnh là giá_tiền với cỡ vừa và thêm giá_tiền tiền hộp nếu mua ma ng về suất cỡ vừa nhưng được khá nhiều và đầy_đặn
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#PRICES, neutral}
+
+#541
+mình gọi tô hủ_tiếu bò_viên
+{FOOD#STYLE&OPTIONS, neutral}
+
+#542
+thức_ăn ngon bài_trí đẹp_mắt món ăn kiểu hơi tây
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#543
+mà hôm bữa thấy chỗ này cũng vui_vẻ vô thử nhưng bị thất_vọng quá nhiều
+{RESTAURANT#GENERAL, negative}
+
+#544
+hoá_ra không mắc mà cũng không ngon như mình nghĩ
+{RESTAURANT#PRICES, positive}, {RESTAURANT#GENERAL, neutral}
+
+#545
+toast phô_mai trứng muối hơi cứng nhưng cũng ngon
+{FOOD#QUALITY, positive}
+
+#546
+điểm cộng cực lớn là trang_trí quán rất đẹp đến đây để check in thì không gì bằng
+{AMBIENCE#GENERAL, positive}
+
+#547
+quán này cũng rất đáng thử nha mọi người
+{RESTAURANT#GENERAL, positive}
+
+#548
+giá em này là giá_tiền nếu mà mua cái sẽ được tặng coi như cái giá giá_tiền à
+{RESTAURANT#MISCELLANEOUS, positive}, {FOOD#PRICES, neutral}
+
+#549
+đồ ăn ra nhanh và nóng
+{SERVICE#GENERAL, positive}, {FOOD#QUALITY, positive}
+
+#550
+không bao_giờ tỏ thái_độ khó_chịu với khách cả
+{SERVICE#GENERAL, positive}
+
+#551
+điều mà đáng trách nhất là ăn đồ ở đây xong về cả nhóm bị trúng_thực luôn ốc không tươi sạch
+{FOOD#QUALITY, negative}
+
+#552
+tuy giá khá cao nhưng so về chất_lượng thì mình lại thấy thoả_mãn
+{RESTAURANT#PRICES, negative}, {RESTAURANT#GENERAL, positive}
+
+#553
+mocha cafe xay nên cũng ngon_ngọt ngọt
+{DRINKS#QUALITY, positive}
+
+#554
+lại còn có nước_chấm đặc_biệt chua_ngọt chấm hợp rơ kinh_khủng ạ
+{FOOD#QUALITY, positive}
+
+#555
+vị_trí quán teacups mới mở tại số giá_tiền quán thánh ba đình
+{LOCATION#GENERAL, neutral}
+
+#556
+không_gian dễ_thương trang_trí đẹp
+{AMBIENCE#GENERAL, positive}
+
+#557
+hôm_nay đến quán khá vắng dù đã h chiều rồi nên chụp ảnh thoải_mái mà không bị vướng người gì cả
+{RESTAURANT#GENERAL, neutral}
+
+#558
+về phần nhân_viên thì nhanh_nhẹn hoà_đồng vui_vẻ lúc_nào cũng cười với khách nên mình rất mến
+{SERVICE#GENERAL, positive}
+
+#559
+so ra thì bên này không_khí có vẻ đìu_hiu hơn
+{AMBIENCE#GENERAL, neutral}
+
+#560
+điểm trừ là không_gian quán nằm trong hẻm nên nhỏ và hẹp giá hơi chát về phần đồ ăn
+{AMBIENCE#GENERAL, negative}, {LOCATION#GENERAL, negative}, {FOOD#PRICES, negative}
+
+#561
+có thêm phần sushi cũng khá ngon nhiều nhân ướp thấm vị
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#562
+chú bảo_vệ thân_thiện anh phục_vụ dễ_thương
+{SERVICE#GENERAL, positive}
+
+#563
+chương_trình khuyến_mãi phần ăn tối giá_tiền hợp_lí quá trời luôn vì mình cực thích miếng gà sốt của lotteria
+{RESTAURANT#MISCELLANEOUS, positive}, {FOOD#QUALITY, positive}
+
+#564
+chú giữ xe rất dễ_thương phô_mai que thân_thiện còn chọc tụi mình nữa
+{SERVICE#GENERAL, positive}
+
+#565
+giá_cả như bao quán cafe có thương_hiệu khác khá đắt
+{DRINKS#PRICES, negative}
+
+#566
+nếu hầu_bao không nhiều thì chọn top blade là đủ thưởng_thức rồi
+{RESTAURANT#GENERAL, neutral}
+
+#567
+lần ăn hokkube ribeye rất là ngon đúng độ tái_sốt_thơm
+{FOOD#QUALITY, positive}
+
+#568
+thiết_kế nhìn đã mắt luôn
+{AMBIENCE#GENERAL, positive}
+
+#569
+với mức giá từ giá_tiền trở lên cho một ly gong cha ngon thì mình nghĩ nó không đắt rất đáng thử
+{DRINKS#PRICES, neutral}, {DRINKS#QUALITY, positive}
+
+#570
+thích nhất gà đắp đất với cá nướng
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#571
+nghe nói trà sữa hương nhài ngon hơn
+{DRINKS#QUALITY, positive}
+
+#572
+nói_chung lần đầu đi ăn chỗ tệ đến thế và sẽ không bao_giờ quay lại
+{RESTAURANT#GENERAL, negative}
+
+#573
+món ăn tô bún_bò của mình khá lớn có miếng bò miếng heo huyết chả cây và ngon nhất là viên chả cua_nước_dùng không đậm_đà nhưng vừa ăn
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#574
+lâu rồi không ăn hình_như chất_lượng bị giảm hay sao á
+{FOOD#QUALITY, neutral}
+
+#575
+đúng giá_tiền p ms nhận được bánh
+{SERVICE#GENERAL, negative}
+
+#576
+giá ổn khá ngon
+{RESTAURANT#PRICES, neutral}, {RESTAURANT#GENERAL, positive}
+
+#577
+hôm bữa thấy mấy bạn review dở với lại không vệ_sinh gì đó nên cũng ngại đến ăn
+{RESTAURANT#GENERAL, negative}
+
+#578
+công_nhận là cũng nhiêu gà ăn thấy vị cũng ổn phết nhưng mà không có mùi_vị nc tương gì hết
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#579
+điều đặc_biệt ở quán bún này là khi kêu bún ra thì sẽ có chén cơm nguội đi kèm để bỏ vào ăn chung với bún
+{FOOD#STYLE&OPTIONS, positive}
+
+#580
+phục_vụ đồ cũng ổn
+{SERVICE#GENERAL, neutral}
+
+#581
+shipper của giao hàng now đứng chờ nhận hàng mà nhìn khiếp luôn
+{SERVICE#GENERAL, negative}
+
+#582
+món ăn hết nhân_viên cũng không châm thêm
+{SERVICE#GENERAL, negative}
+
+#583
+à combo không có nước nên mình cũng phải gọi nước_ngoài nhưng cũng cho đồ uống ở đây giá_tiền điểm vì nước_hoa_quả rất chất_lượng
+{DRINKS#QUALITY, positive}
+
+#584
+thường thì có cà_mì căng củ_cải_bí
+{FOOD#STYLE&OPTIONS, neutral}
+
+#585
+hình_như giờ này dành riêng cho bàn đặt trước hay sao đó nên quán khá yên_tĩnh
+{AMBIENCE#GENERAL, positive}
+
+#586
+vào ăn thì kiêu_đồ ăn lên chậm rất chậm lên không đúng đồ ăn
+{SERVICE#GENERAL, negative}
+
+#587
+chua_ngọt vừa phải nữa
+{RESTAURANT#GENERAL, positive}
+
+#588
+quán ưu_đãi liên_tục nhiều coupon tặng khách nên mình càng ghé quán thường_xuyên hơn
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#589
+à nhưng lần này ăn thấy món này bình_thường
+{FOOD#QUALITY, neutral}
+
+#590
+ăn với mì tôm thì tuyệt_vời nhất
+{FOOD#STYLE&OPTIONS, positive}
+
+#591
+quán dễ tìm không_gian vintage cổ_kính trang_trí nhìn đẹp thiệt đẹp luôn hợp chụp mấy ảnh deep deep nè
+{LOCATION#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#592
+món nước theo mình thì hơi ngọt gắt váng sữa mặn mặn béo béo uống chung hơi ngán vì trà ngọt trà đậm vị hơi tí thì ngon
+{DRINKS#QUALITY, neutral}
+
+#593
+không_gian sạch_sẽ thoáng_đãng món ăn khá ngon
+{AMBIENCE#GENERAL, positive}, {FOOD#QUALITY, positive}
+
+#594
+các món mà mình thích ở đây là trà sữa tá lả yaourt thái bánh gạo lắc xí muội bánh gạo lắc phô_mai
+{FOOD#STYLE&OPTIONS, positive}, {DRINKS#STYLE&OPTIONS, positive}
+
+#595
+về món ăn thì ngon rồi nhưng cần chỉnh_sửa cách phục_vụ ở đây
+{FOOD#QUALITY, positive}, {SERVICE#GENERAL, negative}
+
+#596
+các nguyên_liệu cho sinh_tố và yaua trái_cây đều tươi mới món yaua trái_cây có hơi bị nhiều các loại quả kèm theo trong ly luôn d
+{DRINKS#STYLE&OPTIONS, positive}, {DRINKS#QUALITY, positive}
+
+#597
+mực ngon giòn chấm với sốt_béo béo có cả phần rau trộn ăn kèm nữa
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#598
+kem cheese cũng ngon đặc vừa phải không bị lỏng quá hơi mặn quá nhưng hoà với trà lại rất tốt
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#599
+quan_trọng nữa là pha được đúng với định_lượng mình chọn chứ không phải để không cho vui
+{DRINKS#STYLE&OPTIONS, positive}
+
+#600
+mình khá thích trang_trí của quán những bức tranh đen trắng gợi nhớ cố_đô bát đĩa men gắn nghệ_thuật cảm_giác rất gần_gũi
+{AMBIENCE#GENERAL, positive}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#601
+chính_xác là trà xanh gong cha trân_châu trắng double milk foam
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#602
+mọi người khen sốt bbq ngon nhưng mình thấy không hợp tí nào sốt tiêu ăn ngon hơn phục_vụ vẫn ổn giữ xe miễn_phí
+{FOOD#QUALITY, neutral}, {RESTAURANT#MISCELLANEOUS, positive}, {SERVICE#GENERAL, neutral}
+
+#603
+view nhìn ra hàm nghi đẹp ở quận mà giá nước uống vậy là phù_hợp rồi
+{LOCATION#GENERAL, positive}, {DRINKS#PRICES, positive}
+
+#604
+bò mềm và dày ăn medium rất ngọt thịt
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#605
+mình ghé mua phần thập_cẩm giá_tiền
+{FOOD#PRICES, neutral}
+
+#606
+không_gian bên hàm nghi cũng rộng đẹp mang kiểu vintage thích là có các gác lên lầu nhìn siêu đẹp
+{AMBIENCE#GENERAL, positive}
+
+#607
+cộng thứ hai ở món cá giòn_tan không hề tanh ý
+{FOOD#QUALITY, positive}
+
+#608
+tối chủ_nhật đông xếp_hàng giá_tiền p mới mua được ly trà sữa
+{SERVICE#GENERAL, negative}, {RESTAURANT#GENERAL, neutral}
+
+#609
+nước_lèo cũng ổn nhưng hơi ngọt
+{FOOD#QUALITY, neutral}
+
+#610
+matcha đậu_đỏ không ngon hạt đậu_đỏ dỡ
+{DRINKS#QUALITY, negative}
+
+#611
+mà lẩu này thì nên ăn với ba_chỉ bò mới cảm_nhận được vị béo béo của nó
+{FOOD#STYLE&OPTIONS, positive}
+
+#612
+mấy năm rồi hôm_nay công_ty ăn tất_niên nên đặt_hàng chung với mọi người thức uống cơ_bản nhất greentea milkfoam với giá_tiền_đường
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#613
+trà lài xanh cũng tốt đậm_đà lắm mà bạn nào không quen trà đậm thì uống sẽ dễ thấy đắng
+{DRINKS#QUALITY, positive}
+
+#614
+hạn_chế của nhà_hàng là gọi thêm rau nhưng không có
+{FOOD#STYLE&OPTIONS, negative}
+
+#615
+nước nước_ngọt giá_tiền lon có chai lớn
+{DRINKS#PRICES, neutral}
+
+#616
+giá_cả ở đây cũng phải_chăng đứa mình ăn no căng rún đến lúc thanh_toán còn được chiết_khấu giá_tiền nữa
+{RESTAURANT#PRICES, positive}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#617
+giá_cả giá ở mức cao
+{RESTAURANT#PRICES, negative}
+
+#618
+không_gian thì hơi chật xíu nhưng đậm chất cổ_xưa tha_hồ sống ảo
+{AMBIENCE#GENERAL, neutral}
+
+#619
+chất_lượng đa_dạng món lắm nha tuỳ món mà ngon dở khác nhau cái này chắc do khẩu_vị mỗi người có vài món khá lạ cũng hay_hay
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, neutral}
+
+#620
+sốt ya ua cũng rất ngon rất hợp với salad
+{FOOD#QUALITY, positive}
+
+#621
+vì quán khá đông nên đặt trước để được quán chuẩn_bị cho tốt nhất đỡ mất_công tới quán mà đông quá
+{RESTAURANT#GENERAL, neutral}
+
+#622
+không mang đồ_dùng cho khách mà đợi nhắc hơn lần
+{SERVICE#GENERAL, negative}
+
+#623
+đứa hết giá_tiền cũng khá no nhưng cảm_giác không ngon như lúc đầu
+{RESTAURANT#PRICES, neutral}, {RESTAURANT#GENERAL, neutral}
+
+#624
+nhược_điểm duy_nhất là không_gian quán bị ù nên mở nhạc to nghe khá khó_chịu phải chọn bài kỹ chưa kể lúc cái máy_xay chạy đúng là cực_hình luôn
+{AMBIENCE#GENERAL, negative}, {RESTAURANT#MISCELLANEOUS, negative}
+
+#625
+trà ở đây thơm hihi thích
+{DRINKS#QUALITY, positive}
+
+#626
+tệ từ cách phục_vụ đến chất_lượng
+{SERVICE#GENERAL, negative}, {RESTAURANT#GENERAL, negative}
+
+#627
+ở đây còn có bún thịt nướng và nem_lụi nữa nhưng mình đến đây chỉ ăn bún riêu cua thôi còn nem_lụi và bún thịt nướng thì không ngon cho lắm
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, neutral}
+
+#628
+đồ uống thì ngon quá trời em bị mê món trà sữa bánh flan đá xay bánh toast thì giòn thơmm quá trời
+{DRINKS#QUALITY, positive}, {FOOD#QUALITY, positive}
+
+#629
+nói_chung mình thấy cũng bình_thường à không có gì đặc_biệt lắm
+{FOOD#QUALITY, neutral}
+
+#630
+ly vừa tầm thôi là giá_tiền nói chung tuần uống ly gong cha còn lại các ngày khác uống trà đá đường dằn_túi
+{DRINKS#PRICES, neutral}
+
+#631
+không quá ngọt vị trà sữa thơm thơm béo_béo
+{DRINKS#QUALITY, positive}
+
+#632
+nói là quán thì to quá chứ thực_ra đây chỉ là một cái xe đẩy thôi
+{AMBIENCE#GENERAL, neutral}
+
+#633
+cabonara fettuccine kết món này quá đi mất lớp sốt kem béo nhiều cực_kì nhưng lại không bị ngấy mình thì lại cuồng mì dẹt nữa
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#634
+khoai_tây bị mềm nên mình ăn chưa tới nửa đã bỏ
+{FOOD#QUALITY, negative}
+
+#635
+ăn thì cũng được nhưng không_gian và cơ_sở vật_chất quá kém
+{AMBIENCE#GENERAL, negative}, {RESTAURANT#MISCELLANEOUS, negative}, {FOOD#QUALITY, positive}
+
+#636
+mình ghé quán này ăn được lần nhìn_chung khá hài_lòng
+{RESTAURANT#GENERAL, positive}
+
+#637
+gà lên mâm ngon hơn an nam nhưng xôi thì không hấp_dẫn bằng
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#638
+tuy_nhiên nước_chấm được đóng_gói kiểu chuyên_nghiệp hơn là giống như mấy gói gia_vị trong mì gói á có răng_cưa để xé ra
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#639
+trân_châu cũng được nhân_viên cho khá nhiều
+{DRINKS#STYLE&OPTIONS, positive}
+
+#640
+free khăn giấy free giữ xe nha
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#641
+còn trà thì cô e uống latte anh uống matcha với expresso còn mình thì chọn trà chanh_leo
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#642
+túi bỏng giá_tiền nhưng chất_lượng quá ổn nên chấp_nhận
+{FOOD#PRICES, neutral}, {FOOD#QUALITY, positive}
+
+#643
+quán đông cực_kì nhưng mấy anh_chị nhân_viên vẫn phục_vụ rất nhiệt_tình vui_vẻ không rối cũng như_không khó_chịu khi khách xin thêm nước lẩu hoặc ly đá
+{SERVICE#GENERAL, positive}, {RESTAURANT#GENERAL, neutral}
+
+#644
+cà_ri ở đây vị đậm_đà thơm và rất ngon bạn nào không ăn cay được thì có_thể hơi buồn vì món cà_ri này khá là cay
+{FOOD#QUALITY, positive}
+
+#645
+được tặng vài cái voucher ở đây nên mới biết đến nhà_hàng này
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#646
+sốt tiêu đen và sốt bbq ăn cũng ổn lắm
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#647
+bếp làm quá chậm một món ăn lên cả tiếng mất thời_gian
+{SERVICE#GENERAL, negative}
+
+#648
+phần bò hokubee này được quán miêu_tả mềm ngon nên tụi mình đặt_hàng thử phần giá_tiền g này bày lên có hình trái_tim nhìn cũng khá lãng_mạn
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#649
+mà nhân_viên vui_vẻ nhiệt_tình nữa like
+{SERVICE#GENERAL, positive}
+
+#650
+nhân_viên tập_trung làm đồ ăn không niềm_nở với khách lắm và ăn_nói có chút chợ_búa
+{SERVICE#GENERAL, negative}
+
+#651
+quán nằm trong hẻm cũng rộng không_gian rộng_rãi
+{LOCATION#GENERAL, neutral}, {AMBIENCE#GENERAL, positive}
+
+#652
+phần vỏ bánh giòn bacon và gia_vị bên trong cùng với thit bò hoà_quyện rất ngon
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#653
+circle không bờ hồ siêu đông luôn đáy ạ nhất là hôm nào cấm đường trên phố đi bộ
+{RESTAURANT#GENERAL, positive}
+
+#654
+mình đặt_hàng trà đào bạn mình thì uống trà sữa
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#655
+đúng_ra là ngon nếu nó không quá nhạt
+{FOOD#QUALITY, neutral}
+
+#656
+bánh bày trên dĩa tốt đẹp_mắt vị không rõ vị gì hết vỏ xốp cũng chưa đạt nhân thì càng khó hiểu v
+{FOOD#STYLE&OPTIONS, negative}, {FOOD#QUALITY, negative}
+
+#657
+hy_vọng chủ quán xem_xét_lại việc phục_vụ bánh này cho khách vì nó quá dở và mắc so với chất_lượng
+{FOOD#QUALITY, negative}, {FOOD#PRICES, negative}
+
+#658
+quán theo style cổ_điển châu âu tinh_tế tao_nhã nên góc nào cũng đẹp nhâm_nhi một_chút trà một_chút bánh trong những tiếng nhạc không lời thật mà lãng_mạn mà
+{AMBIENCE#GENERAL, positive}
+
+#659
+salad cá_ngừ và salad gà phàn salad gà siêu rẻ ma ngon nhất
+{FOOD#QUALITY, positive}, {FOOD#PRICES, positive}
+
+#660
+rip eye bên ngoài giòn màu đẹp bên trong mềm ngọt độ chín vừa_ý
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#661
+quán đông khách nhưng phục_vụ khá nhanh có_điều hơi đau_đầu điếc tai vì phục_vụ toàn la to để gọi món
+{SERVICE#GENERAL, neutral}, {RESTAURANT#GENERAL, neutral}
+
+#662
+ngấm sốt nên mềm_nhũn không còn mùi_vị đặc_trưng của bacon cũng không phối_hợp gì với steak
+{FOOD#QUALITY, negative}
+
+#663
+bò nướng sốt thổ ăn tạm được sốt hơi ngọt và không đặc_sắc lắm cái này mẹ mình kêu mẹ khen ngon nhưng mình không thích sốt_thổ
+{FOOD#QUALITY, neutral}
+
+#664
+chờ món cũng không đến mức lâu có_thể do món mình đặt_hàng khá đơn_giản
+{SERVICE#GENERAL, neutral}
+
+#665
+mùi_vị đậm_đà lắm ăn lúc mới bưng ra còn nóng_ăn càng tuyệt
+{FOOD#QUALITY, positive}
+
+#666
+hôm đó quán đông mình được cho lên lầu ngồi vắng hơn ít khói hơn phía dưới lầu
+{RESTAURANT#GENERAL, neutral}
+
+#667
+nhân_viên lễ_phép nhưng không nhiệt_tình lắm pha_chế hơi lâu
+{SERVICE#GENERAL, neutral}
+
+#668
+trà xanh milk floam ly nhiều ghê chất_lượng nữa
+{DRINKS#QUALITY, positive}, {DRINKS#STYLE&OPTIONS, positive}
+
+#669
+nằm ngay đường nguyen hue nên rất dễ tìm
+{LOCATION#GENERAL, positive}
+
+#670
+thịt vừa đủ dai bên trong còn hơi đỏ hồng mùi thịt bò vẫn còn đậm ăn với sốt tiêu quá hợp
+{FOOD#QUALITY, positive}
+
+#671
+chả hiểu sao tính suất bún thêm có tí với giá giá_tiền nghìntđồng
+{FOOD#PRICES, negative}, {FOOD#STYLE&OPTIONS, negative}
+
+#672
+xào và nêm rất vừa_miệng nhé
+{FOOD#QUALITY, positive}
+
+#673
+còn bánh trứng nướng kiểu pháp thì phía trên là lớp caramel bên dưới là flan trứng
+{FOOD#STYLE&OPTIONS, neutral}
+
+#674
+bạn nhân_viên thì gào_thét gọi số
+{SERVICE#GENERAL, negative}
+
+#675
+nhưng mà chiều tới đông người đến ăn thì quán hơi nóng dù không_gian mở ra đường có vẻ thoáng nhưng vẫn có cảm_giác ngột_ngạt sao đó
+{AMBIENCE#GENERAL, negative}
+
+#676
+mua từ đợt khuyến_mãi mua tặng hôm giá_tiền mà giờ mới viết review
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#677
+nhưng khi ăn những món ăn_ở đây mình thấy rất tốt vị ngon sạch vệ_sinh và nhất là không phẩm màu
+{FOOD#QUALITY, positive}
+
+#678
+quán có ở hầu_hết các siêu_thị nên rất dễ tìm
+{LOCATION#GENERAL, positive}
+
+#679
+mùi_vị ngon_lành thịt mềm nhiệt_độ hơi lệch chút thịt hơi chín quá sốt_ngon
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#680
+nhân_dịp giá_tiền cả team mình kéo nhau đi ăn đặt bàn qua tablenow vì đang có mức ưu_đãi lẩu người chỉ có_giá_tiền mà thực_tế giá của nó là giá_tiền
+{RESTAURANT#PRICES, neutral}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#681
+đến đây mọi người sẽ bắt_gặp khá nhiều các loại kem
+{FOOD#STYLE&OPTIONS, positive}
+
+#682
+nước thì có mấy loại khá đặc_biệt như coca nhật mình chưa thử
+{DRINKS#STYLE&OPTIONS, positive}
+
+#683
+quán có không_gian rộng_rãi có chỗ để xe_máy và ô_tô thoải_mái
+{AMBIENCE#GENERAL, positive}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#684
+quán có trệt và lầu mà thiệt là cái lầu chưa bao_giờ mình đi mà thấy mở chắc ở dưới phải full khách thì mới mở trên đó wc trên lầu nên đi lên tối_om cũng hơi creepy
+{RESTAURANT#GENERAL, neutral}, {RESTAURANT#MISCELLANEOUS, negative}
+
+#685
+mình gọi trà sữa trà xanh với trà sữa trân_châu thêm thạch_nâu
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#686
+mình không ăn được sashimi nên không biết vị nhưng nhìn món rất tươi
+{FOOD#QUALITY, neutral}, {FOOD#STYLE&OPTIONS, positive}
+
+#687
+bánh pancake vỏ vàng thì bình_thường không có gì đặc_sắc
+{FOOD#QUALITY, neutral}
+
+#688
+menu quán chuyên đồ âu nhìn cái tên quán cũng biết món vơ đét của quán là beefsteak rồi ngoài_ra còn mấy món ăn kèm như salad mì ý
+{FOOD#STYLE&OPTIONS, neutral}, {RESTAURANT#GENERAL, positive}
+
+#689
+giá_cả không rẻ cũng không mắc tạm chấp_nhận được vì có hải_sản và hàu
+{RESTAURANT#PRICES, neutral}, {FOOD#STYLE&OPTIONS, neutral}
+
+#690
+hến xúc nếu không bằm hến thì sẽ ngon hơn nhiều
+{FOOD#QUALITY, neutral}
+
+#691
+từ xưa giờ mình không biết ăn dê mà nhóm bạn rủ qa phải chiều lòng ăn_theo khen bảo chỗ này ngon lắm
+{RESTAURANT#GENERAL, positive}
+
+#692
+không_gian sáng_sủa rộng_rãi có_điều các bàn san_sát nhau nên nhiều khi hơi ồn
+{AMBIENCE#GENERAL, neutral}, {RESTAURANT#MISCELLANEOUS, negative}
+
+#693
+quán rất đông và mình chấp_nhận đợi gần giá_tiền ph nhưng mình không thích sự không theo thứ_tự
+{RESTAURANT#GENERAL, positive}, {SERVICE#GENERAL, negative}
+
+#694
+kêu thú linh khìa mà dai_nhách khô queo
+{FOOD#QUALITY, negative}
+
+#695
+cơm gà xối mỡ hay gà_gô ti đều được làm chín giòn_rụm thấm gia_vị trong thịt gà
+{FOOD#STYLE&OPTIONS, neutral}, {FOOD#QUALITY, positive}
+
+#696
+nhớ ra sớm để còn rau nhá rau_sống nhưng thái nhỏ sạch_sẽ ăn vừa xinh
+{FOOD#STYLE&OPTIONS, positive}
+
+#697
+súp ăn lạ và thơm
+{FOOD#QUALITY, positive}
+
+#698
+socola dưa lưới với matcha
+{FOOD#STYLE&OPTIONS, neutral}
+
+#699
+về pizza thì mình chấm ở mức khá không quá xuất_sắc nhưng cũng không hề tệ
+{FOOD#QUALITY, positive}
+
+#700
+hôm_nay giảm_giá nên thấy giá tốt lại còn giảm giao hàng
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#701
+giá trà sữa thì cũng thuộc dạng cao nhưng uống ngon mình thích nhất là uống với trân_châu trắng hoặc có váng bọt
+{DRINKS#PRICES, negative}, {DRINKS#QUALITY, positive}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#702
+thực_đơn đa_dạng phong_phú hihi
+{FOOD#STYLE&OPTIONS, positive}, {DRINKS#STYLE&OPTIONS, positive}
+
+#703
+duy chỉ có mì ý là không ngon mì chín quá bở sốt không thấm_tháp
+{FOOD#QUALITY, negative}
+
+#704
+quán có tầng khá rộng được trang_trí theo phong_cách mĩ cao_bồi
+{AMBIENCE#GENERAL, positive}
+
+#705
+chicken salad rolls dễ ăn nè ăn chug nước_chấm ngon
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#706
+nằm trên mặt_đường lê hồng phong cạnh khách_sạn công_chúa khá dễ tìm
+{LOCATION#GENERAL, positive}
+
+#707
+đồ ăn vẫn là cơm hấp nấm gà nướng sốt
+{FOOD#STYLE&OPTIONS, neutral}
+
+#708
+chả cá ăn được lòng cá dai giòn bún tươi rau hành lá đầy_đủ
+{FOOD#STYLE&OPTIONS, positive}, {FOOD#QUALITY, positive}
+
+#709
+thứ hai vị ngọt tự_nhiên của mực làm_bạn không_thể quên được khi kết_hợp với chúc tương_ớt chính_hiệu cay cay the the tý làm chúng_ta không cưỡng lại được phải không nào
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#710
+không_gian quán rộng_rãi có chỗ check in đẹp
+{AMBIENCE#GENERAL, positive}
+
+#711
+chờ được tới ly trà sữa mình uống thì ôi trân_châu dở
+{DRINKS#QUALITY, negative}
+
+#712
+chỉ hơi buồn là thường bị lẫn đặt_hàng cho_dù quán vắng hay đông
+{SERVICE#GENERAL, negative}
+
+#713
+quán nằm ngay hẻm tô hiến thành khá dễ tìm nhưng để xe phải gửi đằng trước một khúc nên bạn nào mới vô lần đầu vô để xe nhớ để_ý chỗ nào có bảng gửi xe bún thịt nướng thì tấp vào
+{RESTAURANT#MISCELLANEOUS, neutral}, {LOCATION#GENERAL, positive}
+
+#714
+có món mực calamari và súp gạch cua không ngon
+{FOOD#QUALITY, negative}, {FOOD#STYLE&OPTIONS, neutral}
+
+#715
+nhà_hàng rất sạch_sẽ không_gian ấm_cúng nằm trong phòng kín tách_biệt với mặt_tiền xe_cộ đông_đúc bên ngoài
+{RESTAURANT#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#716
+giá tầm giá_tiền ly
+{DRINKS#PRICES, neutral}
+
+#717
+menu quán khá nhiều các món lạ và hấp_dẫn
+{FOOD#STYLE&OPTIONS, positive}
+
+#718
+heo giả_cầy đậm_đà thơm chấm với bánh_mì ăn ngon
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, positive}
+
+#719
+béo mặn nhẹ thơm mà không gây ngắn nên mình ghiền lắm
+{RESTAURANT#GENERAL, positive}
+
+#720
+tráng_miệng mình gọi chè đặc_biệt có món chè khúc bạch ở đây mình rất thích
+{FOOD#QUALITY, positive}
+
+#721
+giá hơn giá_tiền không ng thui
+{RESTAURANT#PRICES, positive}
+
+#722
+bò cực_kì ngon mềm lắm luôn mình là mình thích ăn thịt có lẫn mỡ_mỡ chớ nạc không thì hơi ngán nên rib eye là quá phù_hợp ngoại_trừ việc thỉnh_thoảng hơi khó cắt phần mỡ viền
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, negative}
+
+#723
+cả hai lần đêu rất hài_lòng với món ăn và chất_lượng phục_vụ
+{SERVICE#GENERAL, positive}, {FOOD#QUALITY, positive}
+
+#724
+có_điều đông khách nhân_viên gọi nhau chí_choé hết tầng này đến tầng khác
+{RESTAURANT#GENERAL, negative}
+
+#725
+chỗ đậu xe cách tiệm một_tí nên nếu lần đầu chắc phải chạy xe quay lại để giữ xe
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#726
+còn cái là phô_mai húng tây cà_tím nướng
+{FOOD#STYLE&OPTIONS, neutral}
+
+#727
+không_gian kiểu cũ cũng hay_hay
+{AMBIENCE#GENERAL, positive}
+
+#728
+ngoài_ra bên cheese đang có chương_trình tích điểm nhận quai vải sticker nữa
+{RESTAURANT#MISCELLANEOUS, positive}
+
+#729
+trà sữa taro khoai_môn mình đánh_giá rất cao vì khá ngon nha
+{DRINKS#QUALITY, positive}
+
+#730
+món ăn rất tươi nhất là mấy món sống chấm mù_tạt thì ngon khỏi bàn
+{FOOD#QUALITY, positive}
+
+#731
+ăn xong nghỉ_ngơi và nói_chuyện tấm_tắc khen đồ ngon với các bạn phục_vụ một lúc là có bánh mang ra
+{SERVICE#GENERAL, positive}, {FOOD#QUALITY, positive}
+
+#732
+chỗ gửi xe_hơi xa thôi cáv bạn đi thẳng ra sau quán là tới chỗ gửi xe rồi đó
+{RESTAURANT#MISCELLANEOUS, negative}
+
+#733
+nhân_viên giá_tiền là nam và rất thân_thiện
+{SERVICE#GENERAL, positive}
+
+#734
+mình chưa thử các món ăn mặn ở đây nhưng trông thiệt là hấp_dẫn
+{FOOD#STYLE&OPTIONS, positive}
+
+#735
+nhân_viên dễ_thương mình yêu_cầu không lấy miếng ức và lấy cho mình nhiều sốt đều được đáp_ứng hết
+{SERVICE#GENERAL, positive}
+
+#736
+nếu chỉ ăn thôi chắc khoảng giá_tiền người thoi
+{RESTAURANT#PRICES, neutral}
+
+#737
+tổng_chi_phí giá_tiền
+{RESTAURANT#PRICES, neutral}
+
+#738
+caesar salad cũng ngon
+{FOOD#QUALITY, positive}
+
+#739
+thạch mềm mình không thích lắm
+{DRINKS#QUALITY, neutral}
+
+#740
+mình nghĩ những ai chưa từng ăn chả cá nên đến đây ngon và rất dễ ăn
+{FOOD#QUALITY, positive}
+
+#741
+món mình thường_xuyên gọi là sâm dứa sữa đá bào topping đầy_đủ
+{FOOD#STYLE&OPTIONS, neutral}
+
+#742
+mỗi tội nước lẩu kim chi thì lại cay quá phải chế thêm nước nấm mới ăn được
+{FOOD#QUALITY, negative}
+
+#743
+sân để xe rộng_rãi nhân_viên giữ xe nhiệt_tình làm_việc trách_nhiệm và nghiêm_túc
+{SERVICE#GENERAL, positive}, {AMBIENCE#GENERAL, positive}
+
+#744
+milk foam ngày_càng ít mình tưởng là trên ly có vạch ép nổi là để định mức lượng milk foam những lần đầu mình uống milk foam đều được đổ full đến vạch
+{DRINKS#STYLE&OPTIONS, negative}
+
+#745
+quán rộng đẹp phong_cách theo kiểu vintage chụp hình lên xinh lắm
+{AMBIENCE#GENERAL, positive}
+
+#746
+trong ảnh là hai món green tea frappuccino giá_tiền không và caramel frappuccino giá_tiền không
+{DRINKS#PRICES, neutral}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#747
+mình mua ly gồm trà sữa trà xanh thêm thạch trái_cây trà đen milkfoam trà sữa milkfoam trà sữa hokkaido tất_cả đều cỡ mình với giá_tiền_đường giá_tiền đá
+{DRINKS#STYLE&OPTIONS, neutral}
+
+#748
+tuy_vậy chờ đồ hơi lâu tầm giá_tiền phút mới có đồ ăn
+{SERVICE#GENERAL, negative}
+
+#749
+mất_giá_tiền giá_tiền đ để mua lấy thức uống đựng trong bao nilong bị rách và sau đó ó đổ
+{DRINKS#PRICES, neutral}, {RESTAURANT#MISCELLANEOUS, negative}
+
+#750
+phục_vụ hơi kỳ vì bánh mình chưa ăn xong còn một_hai miếng trên dĩa nhưng bạn đó cứ lại hỏi ăn xong chưa để dọn làm tụi mình cũng kiểu bị kỳ kỳ xong bảo bạn đó dọn luôn cho rồi
+{SERVICE#GENERAL, negative}
+
+#751
+lê_la trong taka khát nước thì phúc long cũng không phải là lựa_chọn tệ
+{RESTAURANT#GENERAL, positive}
+
+#752
+vừa_rồi đứa đi ăn bò ở đây tổng_thiệt_hại hết giá_tiền
+{RESTAURANT#PRICES, neutral}
+
+#753
+quán này gần nhà mình ăn suốt
+{LOCATION#GENERAL, positive}
+
+#754
+súp kem ngon sốt salad ngon
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#755
+bò có độ dai vừa_phải khá mềm mình ăn sốt tiêu thấy ổn nhưng bạn mình nói sốt vang đỏ không ngon lắm
+{FOOD#QUALITY, positive}, {FOOD#STYLE&OPTIONS, neutral}
+
+#756
+mình thíc ít fomai nhiều trứng bạn í cũng cho đúng ý_nguyện hehe
+{SERVICE#GENERAL, positive}
+
+#757
+quán có cho đăng_kí thẻ thành_viên free để lần sau ăn được giảm_giá nữa mọi người nhớ hỏi thử nha
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#758
+mình gọi trà ngọc_lan kem mặn thêm trân_châu trắng tên mĩ_miều mà nhận được cốc trà chát lắm bonus thêm kem mặn đặc và bứ hong ngon huhuu
+{DRINKS#STYLE&OPTIONS, negative}, {DRINKS#QUALITY, negative}
+
+#759
+giá ổn không mắc không rẻ
+{RESTAURANT#PRICES, neutral}
+
+#760
+đồ uống đa_dạng phong_phú mình gọi thử trà sữa thái và signature tươi fruits ice blended uống cũng tạm ổn nhưng so với các chỗ khác thì bình_thường
+{DRINKS#STYLE&OPTIONS, positive}, {DRINKS#QUALITY, neutral}
+
+#761
+ts ngon mình thích thạch màu trắng í vì hết trân_châu nên bạn nhvien đề_nghị mình thử
+{DRINKS#QUALITY, positive}, {DRINKS#STYLE&OPTIONS, neutral}
+
+#762
+nhân_viên phục_vụ nhanh_nhẹn và vui_vẻ có ban_công ngồi mát_mẻ và thoải_mái
+{AMBIENCE#GENERAL, positive}, {SERVICE#GENERAL, positive}
+
+#763
+vì ăn dỡ dang nên đành ngồi đợi mấy món sau chứ thật_ra chất_lượng giảm quá nhiều ăn xong cho rồi
+{FOOD#QUALITY, negative}
+
+#764
+có đều nếu đi vào cuối tuần khá đông và đợi lâu mới có chỗ ngồi và đồ ăn
+{RESTAURANT#GENERAL, neutral}, {SERVICE#GENERAL, negative}
+
+#765
+order món quên trước quên sau chờ hoài không thấy đồ ăn mình hỏi thì xin_lỗi giá_tiền lần mệt
+{SERVICE#GENERAL, negative}
+
+#766
+nhà_hàng chuyên về hải_sản tươi_sống món hải_sản nào cũng tươi roi_rói
+{FOOD#QUALITY, positive}, {RESTAURANT#GENERAL, positive}
+
+#767
+màu_sắc bánh cũng bắt_mắt
+{FOOD#STYLE&OPTIONS, positive}
+
+#768
+đôi_khi phải gửi xe ở ngoài hẻm hoặc quá cv giá_tiền gửi
+{RESTAURANT#MISCELLANEOUS, neutral}
+
+#769
+ngoài_ra mình có gọi nước chanh leo uống thơm và ổn
+{DRINKS#QUALITY, positive}
+
+#770
+đến quán nhân_dịp quán tặng nước free nằm trên đường an dương vương mặt lộ lớn
+{LOCATION#GENERAL, positive}, {RESTAURANT#MISCELLANEOUS, positive}
+
+#771
+nhân_viên ở đây rất nhiệt_tình lịch_sự
+{SERVICE#GENERAL, positive}
+

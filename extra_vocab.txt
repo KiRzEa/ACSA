@@ -1,0 +1,22 @@
+# Extra vocab for train_mtl_acsa_v2.py --extra_vocab_file
+# Frequent Hotel/Restaurant words PhoBERT's tokenizer fragments into multiple
+# BPE pieces, found via real corpus tokenization analysis (not guessed).
+# One token per line; brand/place names excluded (don't generalize).
+
+giá_tiền
+lợ
+huhu
+toast
+cheese
+topping
+matcha
+gongcha
+blade
+bbq
+phomai
+steak
+guesthouse
+milkfoam
+olong
+bingsu
+decor
