@@ -57,8 +57,9 @@ from sklearn.metrics import precision_recall_fscore_support
 from torch.optim import AdamW
 from torch.utils.data import DataLoader, Dataset
 from tqdm.auto import tqdm
-from transformers import AutoModel, AutoTokenizer, get_cosine_schedule_with_warmup
+from transformers import AutoTokenizer, get_cosine_schedule_with_warmup
 from evaluate import evaluate_jsonl_per_category
+from model import CategoryConditionedMTL, GradNormBalancer
 
 # -----------------------------------------------------------------------------
 # Labels and category descriptions
@@ -270,181 +271,6 @@ def make_collate_fn(tokenizer, segmenter, max_length: int):
 
     return collate
 
-
-# -----------------------------------------------------------------------------
-# Model
-# -----------------------------------------------------------------------------
-class TaskAdapter(nn.Module):
-    def __init__(self, hidden_size: int, bottleneck: int, dropout: float):
-        super().__init__()
-        self.down = nn.Linear(hidden_size, bottleneck)
-        self.up = nn.Linear(bottleneck, hidden_size)
-        self.dropout = nn.Dropout(dropout)
-        self.norm = nn.LayerNorm(hidden_size)
-
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
-        delta = self.up(self.dropout(F.gelu(self.down(x))))
-        return self.norm(x + self.dropout(delta))
-
-
-def add_vocab_with_mean_init(encoder: nn.Module, tokenizer, new_tokens: Sequence[str]) -> int:
-    """
-    Extend `tokenizer`'s vocab with `new_tokens` and resize `encoder`'s input
-    embeddings to match, initializing each new token's embedding as the mean
-    of the embeddings of the subword pieces it used to tokenize into (instead
-    of the framework's default random init) -- a much better warm start given
-    only a few thousand fine-tuning examples per domain. Mutates `tokenizer`
-    in place, so every other place already holding a reference to it (e.g.
-    the DataLoader collate functions) sees the extended vocab automatically.
-    Returns the number of tokens actually added (0 if all were already in
-    the vocab).
-    """
-    embedding_matrix = encoder.get_input_embeddings().weight
-    piece_means = {}
-    for tok_str in new_tokens:
-        piece_ids = tokenizer.encode(tok_str, add_special_tokens=False)
-        if not piece_ids:
-            continue
-        piece_means[tok_str] = embedding_matrix[piece_ids].mean(dim=0).detach().clone()
-
-    num_added = tokenizer.add_tokens(list(new_tokens))
-    if num_added == 0:
-        return 0
-    encoder.resize_token_embeddings(len(tokenizer))
-
-    new_embedding_matrix = encoder.get_input_embeddings().weight
-    with torch.no_grad():
-        for tok_str, mean_vec in piece_means.items():
-            new_id = tokenizer.convert_tokens_to_ids(tok_str)
-            if new_id is not None and new_id != tokenizer.unk_token_id:
-                new_embedding_matrix[new_id] = mean_vec
-    return num_added
-
-
-class CategoryConditionedMTL(nn.Module):
-    def __init__(
-        self,
-        model_name: str,
-        tokenizer,
-        categories: Sequence[str],
-        category_texts: Sequence[str],
-        num_attention_heads: int = 8,
-        adapter_dim: int = 192,
-        dropout: float = 0.1,
-        gradient_checkpointing: bool = False,
-        extra_vocab: Optional[Sequence[str]] = None,
-    ):
-        super().__init__()
-        self.categories = list(categories)
-        self.encoder = AutoModel.from_pretrained(model_name)
-        if extra_vocab:
-            num_added = add_vocab_with_mean_init(self.encoder, tokenizer, extra_vocab)
-            print(f"Vocab extension: added {num_added}/{len(extra_vocab)} new tokens "
-                  f"(rest already in vocab), embeddings init'd from mean of original subword pieces")
-        if gradient_checkpointing and hasattr(self.encoder, "gradient_checkpointing_enable"):
-            self.encoder.gradient_checkpointing_enable()
-
-        hidden = self.encoder.config.hidden_size
-        if hidden % num_attention_heads != 0:
-            raise ValueError(
-                f"hidden_size={hidden} must be divisible by num_attention_heads={num_attention_heads}"
-            )
-
-        # Category descriptions are tokenized once; they are re-encoded by the shared
-        # PLM on each forward pass so gradients can update the semantic category queries.
-        cat_enc = tokenizer(
-            list(category_texts),
-            padding=True,
-            truncation=True,
-            max_length=48,
-            return_tensors="pt",
-        )
-        self.register_buffer("cat_input_ids", cat_enc["input_ids"], persistent=False)
-        self.register_buffer("cat_attention_mask", cat_enc["attention_mask"], persistent=False)
-
-        self.cat_query_proj = nn.Sequential(
-            nn.Linear(hidden, hidden),
-            nn.GELU(),
-            nn.LayerNorm(hidden),
-        )
-        self.cross_attention = nn.MultiheadAttention(
-            embed_dim=hidden,
-            num_heads=num_attention_heads,
-            dropout=dropout,
-            batch_first=True,
-        )
-        self.cross_norm = nn.LayerNorm(hidden)
-        self.cross_ffn = nn.Sequential(
-            nn.Linear(hidden, hidden * 2),
-            nn.GELU(),
-            nn.Dropout(dropout),
-            nn.Linear(hidden * 2, hidden),
-            nn.Dropout(dropout),
-        )
-        self.cross_ffn_norm = nn.LayerNorm(hidden)
-
-        self.acd_adapter = TaskAdapter(hidden, adapter_dim, dropout)
-        self.sent_adapter = TaskAdapter(hidden, adapter_dim, dropout)
-        self.joint_adapter = TaskAdapter(hidden, adapter_dim, dropout)
-
-        self.acd_head = nn.Linear(hidden, 1)
-        self.sent_head = nn.Linear(hidden, 3)
-        self.joint_head = nn.Linear(hidden, 4)
-
-        # Learned strength for the soft ACD -> sentiment interaction.
-        # sigmoid(0)=0.5 initially.
-        self.raw_gate_alpha = nn.Parameter(torch.tensor(0.0))
-
-    def _encode_category_queries(self) -> torch.Tensor:
-        cat_out = self.encoder(
-            input_ids=self.cat_input_ids,
-            attention_mask=self.cat_attention_mask,
-            return_dict=True,
-        ).last_hidden_state
-        # <s>/CLS-style first token representation for each semantic description.
-        return self.cat_query_proj(cat_out[:, 0, :])  # [K, D]
-
-    def forward(self, input_ids: torch.Tensor, attention_mask: torch.Tensor) -> Dict[str, torch.Tensor]:
-        sent_h = self.encoder(
-            input_ids=input_ids,
-            attention_mask=attention_mask,
-            return_dict=True,
-        ).last_hidden_state  # [B, L, D]
-
-        cat_q = self._encode_category_queries()  # [K, D]
-        batch_size = sent_h.size(0)
-        q = cat_q.unsqueeze(0).expand(batch_size, -1, -1)  # [B, K, D]
-
-        attn_out, _ = self.cross_attention(
-            query=q,
-            key=sent_h,
-            value=sent_h,
-            key_padding_mask=~attention_mask.bool(),
-            need_weights=False,
-        )
-        z = self.cross_norm(q + attn_out)
-        z = self.cross_ffn_norm(z + self.cross_ffn(z))  # shared branching representation
-
-        acd_z = self.acd_adapter(z)
-        acd_logits = self.acd_head(acd_z).squeeze(-1)  # [B, K]
-
-        # Soft gate: sentiment remains trainable even when ACD is uncertain/wrong.
-        acd_prob = torch.sigmoid(acd_logits)
-        alpha = torch.sigmoid(self.raw_gate_alpha)
-        sent_input = z * (1.0 + alpha * acd_prob.unsqueeze(-1))
-        sent_z = self.sent_adapter(sent_input)
-        sent_logits = self.sent_head(sent_z)  # [B, K, 3]
-
-        joint_z = self.joint_adapter(z)
-        joint_logits = self.joint_head(joint_z)  # [B, K, 4]
-
-        return {
-            "acd_logits": acd_logits,
-            "sent_logits": sent_logits,
-            "joint_logits": joint_logits,
-            "shared_z": z,
-            "gate_alpha": alpha,
-        }
 
 
 # -----------------------------------------------------------------------------
@@ -666,64 +492,34 @@ def compute_task_losses(
     return acd_loss, sent_loss, joint_loss
 
 
-# -----------------------------------------------------------------------------
-# GradNorm
-# -----------------------------------------------------------------------------
-class GradNormBalancer(nn.Module):
-    """
-    Dynamic task weighting based on GradNorm.
+def compute_entity_attribute_losses(
+    outputs: Dict[str, torch.Tensor],
+    batch: Dict[str, torch.Tensor],
+    entity_membership: torch.Tensor,
+    attribute_membership: torch.Tensor,
+    lambda_entity: float,
+    lambda_attribute: float,
+) -> torch.Tensor:
+    """arch-v2 auxiliary loss, added directly to total_loss (not part of
+    GradNorm's 3-task balance -- these are auxiliary signal, not a task we
+    equally care about, so fixed small lambdas are simpler and more
+    predictable than folding them into the dynamic balancer).
 
-    Gradient norms are measured at `shared_z`, the representation immediately
-    before the three task-specific adapters. This makes the method efficient and
-    directly measures conflict/imbalance at the task branching point.
-    """
+    entity/attribute gold labels aren't annotated separately -- they're
+    derived from the existing acd_labels via OR-aggregation across every
+    category sharing that entity/attribute: batch["acd_labels"] [B, K] @
+    entity_membership [K, E] gives, for each entity, how many of its
+    sibling categories are present in a given example; > 0 means at least
+    one was, i.e. the entity itself is "present"."""
+    if "entity_logits" not in outputs:
+        return outputs["acd_logits"].new_zeros(())
+    acd_labels = batch["acd_labels"]  # [B, K]
+    entity_labels = (acd_labels @ entity_membership > 0).float()  # [B, E]
+    attribute_labels = (acd_labels @ attribute_membership > 0).float()  # [B, A]
+    entity_loss = F.binary_cross_entropy_with_logits(outputs["entity_logits"], entity_labels)
+    attribute_loss = F.binary_cross_entropy_with_logits(outputs["attribute_logits"], attribute_labels)
+    return lambda_entity * entity_loss + lambda_attribute * attribute_loss
 
-    def __init__(self, num_tasks: int = 3, alpha: float = 1.5):
-        super().__init__()
-        self.raw_weights = nn.Parameter(torch.zeros(num_tasks))
-        self.alpha = alpha
-        self.register_buffer("initial_losses", torch.zeros(num_tasks))
-        self.initialized = False
-
-    def normalized_weights(self) -> torch.Tensor:
-        w = F.softplus(self.raw_weights) + 1e-6
-        return len(w) * w / w.sum()
-
-    def compute_weight_gradient(
-        self,
-        losses: Sequence[torch.Tensor],
-        shared_representation: torch.Tensor,
-    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor]:
-        loss_vec = torch.stack(list(losses))
-        if not self.initialized:
-            self.initial_losses.copy_(loss_vec.detach().clamp_min(1e-8))
-            self.initialized = True
-
-        w = self.normalized_weights()
-        grad_norms = []
-        for i, loss in enumerate(losses):
-            grad = torch.autograd.grad(
-                w[i] * loss,
-                shared_representation,
-                retain_graph=True,
-                create_graph=True,
-            )[0]
-            grad_norms.append(torch.norm(grad, p=2))
-        grad_norms = torch.stack(grad_norms)
-
-        with torch.no_grad():
-            loss_ratio = loss_vec.detach() / self.initial_losses.clamp_min(1e-8)
-            inverse_train_rate = loss_ratio / loss_ratio.mean()
-            target = grad_norms.detach().mean() * (inverse_train_rate ** self.alpha)
-
-        gradnorm_objective = torch.abs(grad_norms - target).sum()
-        weight_grad = torch.autograd.grad(
-            gradnorm_objective,
-            self.raw_weights,
-            retain_graph=True,
-            create_graph=False,
-        )[0]
-        return w, weight_grad, gradnorm_objective.detach()
 
 
 # -----------------------------------------------------------------------------
@@ -1105,6 +901,7 @@ def train(args: argparse.Namespace) -> None:
         dropout=args.dropout,
         gradient_checkpointing=args.gradient_checkpointing,
         extra_vocab=extra_vocab,
+        entity_attribute_heads=args.entity_attribute_heads,
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
@@ -1173,6 +970,13 @@ def train(args: argparse.Namespace) -> None:
 
             outputs = model(batch["input_ids"], batch["attention_mask"])
             task_losses = compute_task_losses(outputs, batch, loss_weights, loss_config)
+            ea_loss = (
+                compute_entity_attribute_losses(
+                    outputs, batch, model.entity_membership, model.attribute_membership,
+                    args.lambda_entity, args.lambda_attribute,
+                )
+                if args.entity_attribute_heads else outputs["acd_logits"].new_zeros(())
+            )
 
             if args.loss_weighting == "gradnorm":
                 assert gradnorm is not None and gradnorm_optimizer is not None
@@ -1180,7 +984,9 @@ def train(args: argparse.Namespace) -> None:
                     task_losses, outputs["shared_z"]
                 )
                 # Network parameters are optimized with current task weights treated as constants.
-                total_loss = sum(w.detach() * loss for w, loss in zip(task_w, task_losses))
+                # ea_loss is auxiliary (fixed lambda, not part of the 3-task GradNorm
+                # balance) -- added directly, same for both branches below.
+                total_loss = sum(w.detach() * loss for w, loss in zip(task_w, task_losses)) + ea_loss
                 total_loss.backward()
                 if child_masks is not None:
                     apply_child_tuning_mask(model, child_masks)
@@ -1198,7 +1004,7 @@ def train(args: argparse.Namespace) -> None:
                     dtype=task_losses[0].dtype,
                     device=device,
                 )
-                total_loss = sum(w * loss for w, loss in zip(fixed, task_losses))
+                total_loss = sum(w * loss for w, loss in zip(fixed, task_losses)) + ea_loss
                 total_loss.backward()
                 if child_masks is not None:
                     apply_child_tuning_mask(model, child_masks)
@@ -1334,6 +1140,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "for a better warm start on small fine-tuning sets. Default None -- no-op, "
         "matches the original vocab exactly.",
     )
+    p.add_argument(
+        "--entity_attribute_heads", action="store_true",
+        help="arch-v2: add 2 auxiliary sentence-level heads predicting entity presence "
+        "(ROOMS, FACILITIES, ...) and attribute presence (CLEANLINESS, COMFORT, ...), "
+        "derived automatically from existing category labels (ENTITY#ATTRIBUTE format, "
+        "no new annotation needed). Their per-category-gathered probabilities gate the "
+        "ACD head's input, same soft-gate pattern as the existing ACD->sentiment gate. "
+        "Default off -- new architecture, not yet validated.",
+    )
+    p.add_argument("--lambda_entity", type=float, default=0.3, help="Weight for the entity auxiliary loss, only used with --entity_attribute_heads.")
+    p.add_argument("--lambda_attribute", type=float, default=0.3, help="Weight for the attribute auxiliary loss, only used with --entity_attribute_heads.")
 
     p.add_argument("--epochs", type=int, default=10)
     p.add_argument("--batch_size", type=int, default=12)
