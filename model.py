@@ -94,10 +94,12 @@ class CategoryConditionedMTL(nn.Module):
         gradient_checkpointing: bool = False,
         extra_vocab: Optional[Sequence[str]] = None,
         entity_attribute_heads: bool = False,
+        learned_fusion: bool = False,
     ):
         super().__init__()
         self.categories = list(categories)
         self.entity_attribute_heads = entity_attribute_heads
+        self.learned_fusion = learned_fusion
         self.encoder = AutoModel.from_pretrained(model_name)
         if extra_vocab:
             num_added = add_vocab_with_mean_init(self.encoder, tokenizer, extra_vocab)
@@ -156,6 +158,23 @@ class CategoryConditionedMTL(nn.Module):
         # Learned strength for the soft ACD -> sentiment interaction.
         # sigmoid(0)=0.5 initially.
         self.raw_gate_alpha = nn.Parameter(torch.tensor(0.0))
+
+        # Learned fusion: replaces the fixed 0.5/0.5-weighted fuse_predictions()
+        # formula. Diagnostic across every experiment run this project (any
+        # technique, any domain) found ACD micro-F1 ~97-98% and sentiment-
+        # oracle micro-F1 ~85-91% -- both near ceiling -- yet final ACSA
+        # micro-F1 only ~73-76%, a consistent 10-17pt gap regardless of which
+        # head-training technique was applied. That gap sits entirely in how
+        # the 3 heads' outputs get combined into one answer, not in the heads
+        # themselves -- so a small MLP that LEARNS the combination (trained
+        # jointly with everything else) is targeted at the actual bottleneck,
+        # unlike every other technique tried so far.
+        if learned_fusion:
+            self.fusion_head = nn.Sequential(
+                nn.Linear(1 + 3 + 4, 32), nn.GELU(),
+                nn.Linear(32, 32), nn.GELU(),
+                nn.Linear(32, 4),
+            )
 
         # arch-v2: entity/attribute auxiliary heads. Categories are
         # "ENTITY#ATTRIBUTE" (e.g. ROOMS#CLEANLINESS) -- these two coarse,
@@ -265,6 +284,9 @@ class CategoryConditionedMTL(nn.Module):
         if entity_logits is not None:
             outputs["entity_logits"] = entity_logits
             outputs["attribute_logits"] = attribute_logits
+        if self.learned_fusion:
+            fusion_input = torch.cat([acd_logits.unsqueeze(-1), sent_logits, joint_logits], dim=-1)  # [B, K, 8]
+            outputs["fused_logits"] = self.fusion_head(fusion_input)  # [B, K, 4]
         return outputs
 
 

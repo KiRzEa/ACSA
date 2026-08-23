@@ -521,6 +521,28 @@ def compute_entity_attribute_losses(
     return lambda_entity * entity_loss + lambda_attribute * attribute_loss
 
 
+def compute_fusion_loss(
+    outputs: Dict[str, torch.Tensor],
+    batch: Dict[str, torch.Tensor],
+    joint_weight: torch.Tensor,
+    lambda_fusion: float,
+) -> torch.Tensor:
+    """Learned-fusion auxiliary loss: cross-entropy between fused_logits and
+    the same joint_labels the fixed-formula fuse_predictions() is evaluated
+    against. Added directly to total_loss with a fixed lambda (same pattern
+    as compute_entity_attribute_losses), not folded into GradNorm -- fusion
+    is a combination step over the 3 existing tasks' outputs, not a 4th task
+    to balance against them."""
+    if "fused_logits" not in outputs:
+        return outputs["acd_logits"].new_zeros(())
+    fusion_loss = F.cross_entropy(
+        outputs["fused_logits"].reshape(-1, 4),
+        batch["joint_labels"].reshape(-1),
+        weight=joint_weight,
+    )
+    return lambda_fusion * fusion_loss
+
+
 
 # -----------------------------------------------------------------------------
 # Prediction fusion and metrics
@@ -595,10 +617,23 @@ def compute_metrics(
     gold_sent = raw["sent_labels"].astype(np.int64)
     gold_joint = raw["joint_labels"].astype(np.int64)
 
-    pred_joint, presence_score = fuse_predictions(
-        raw["acd_logits"], raw["sent_logits"], raw["joint_logits"], threshold
-    )
-    pred_acd = (presence_score >= threshold).astype(np.int64)
+    if "fused_logits" in raw:
+        # Learned fusion already outputs a direct 4-way (NONE/POS/NEU/NEG)
+        # decision per category -- no threshold knob to apply, argmax is the
+        # prediction. threshold arg still accepted (tune_threshold/train()
+        # call this uniformly) but has no effect on the result in this mode.
+        fused = raw["fused_logits"]
+        fused_shift = fused - fused.max(axis=-1, keepdims=True)
+        fused_prob = np.exp(fused_shift)
+        fused_prob /= fused_prob.sum(axis=-1, keepdims=True)
+        pred_joint = fused_prob.argmax(axis=-1).astype(np.int64)
+        presence_score = 1.0 - fused_prob[..., 0]
+        pred_acd = (pred_joint > 0).astype(np.int64)
+    else:
+        pred_joint, presence_score = fuse_predictions(
+            raw["acd_logits"], raw["sent_logits"], raw["joint_logits"], threshold
+        )
+        pred_acd = (presence_score >= threshold).astype(np.int64)
 
     # ACD: flatten all sample-category decisions.
     acd_metrics = classification_metrics(gold_acd.reshape(-1), pred_acd.reshape(-1), labels=[0, 1])
@@ -675,13 +710,18 @@ def collect_outputs(model: nn.Module, loader: DataLoader, device: torch.device) 
         outputs = model(batch["input_ids"], batch["attention_mask"])
         for key in ("acd_logits", "sent_logits", "joint_logits"):
             storage[key].append(outputs[key].detach().cpu().float().numpy())
+        if "fused_logits" in outputs:
+            storage.setdefault("fused_logits", []).append(outputs["fused_logits"].detach().cpu().float().numpy())
         for key in ("acd_labels", "sent_labels", "joint_labels"):
             storage[key].append(batch[key].detach().cpu().numpy())
         storage["sample_id"].extend(batch["sample_id"])
         storage["raw_text"].extend(batch["raw_text"])
         storage["gold_labels"].extend(batch["gold_labels"])
 
-    for key in ("acd_logits", "sent_logits", "joint_logits", "acd_labels", "sent_labels", "joint_labels"):
+    concat_keys = ["acd_logits", "sent_logits", "joint_logits", "acd_labels", "sent_labels", "joint_labels"]
+    if "fused_logits" in storage:
+        concat_keys.append("fused_logits")
+    for key in concat_keys:
         storage[key] = np.concatenate(storage[key], axis=0)
     return storage
 
@@ -902,6 +942,7 @@ def train(args: argparse.Namespace) -> None:
         gradient_checkpointing=args.gradient_checkpointing,
         extra_vocab=extra_vocab,
         entity_attribute_heads=args.entity_attribute_heads,
+        learned_fusion=args.learned_fusion,
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
@@ -977,6 +1018,13 @@ def train(args: argparse.Namespace) -> None:
                 )
                 if args.entity_attribute_heads else outputs["acd_logits"].new_zeros(())
             )
+            fusion_loss = (
+                compute_fusion_loss(
+                    outputs, batch, loss_weights.joint_class_weight.to(device), args.lambda_fusion,
+                )
+                if args.learned_fusion else outputs["acd_logits"].new_zeros(())
+            )
+            aux_loss = ea_loss + fusion_loss
 
             if args.loss_weighting == "gradnorm":
                 assert gradnorm is not None and gradnorm_optimizer is not None
@@ -984,9 +1032,10 @@ def train(args: argparse.Namespace) -> None:
                     task_losses, outputs["shared_z"]
                 )
                 # Network parameters are optimized with current task weights treated as constants.
-                # ea_loss is auxiliary (fixed lambda, not part of the 3-task GradNorm
-                # balance) -- added directly, same for both branches below.
-                total_loss = sum(w.detach() * loss for w, loss in zip(task_w, task_losses)) + ea_loss
+                # aux_loss (entity/attribute + fusion) is auxiliary (fixed lambdas,
+                # not part of the 3-task GradNorm balance) -- added directly, same
+                # for both branches below.
+                total_loss = sum(w.detach() * loss for w, loss in zip(task_w, task_losses)) + aux_loss
                 total_loss.backward()
                 if child_masks is not None:
                     apply_child_tuning_mask(model, child_masks)
@@ -1004,7 +1053,7 @@ def train(args: argparse.Namespace) -> None:
                     dtype=task_losses[0].dtype,
                     device=device,
                 )
-                total_loss = sum(w * loss for w, loss in zip(fixed, task_losses)) + ea_loss
+                total_loss = sum(w * loss for w, loss in zip(fixed, task_losses)) + aux_loss
                 total_loss.backward()
                 if child_masks is not None:
                     apply_child_tuning_mask(model, child_masks)
@@ -1151,6 +1200,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--lambda_entity", type=float, default=0.3, help="Weight for the entity auxiliary loss, only used with --entity_attribute_heads.")
     p.add_argument("--lambda_attribute", type=float, default=0.3, help="Weight for the attribute auxiliary loss, only used with --entity_attribute_heads.")
+    p.add_argument(
+        "--learned_fusion", action="store_true",
+        help="Replace the fixed 0.5/0.5-weighted fuse_predictions() formula with a small "
+        "MLP (fusion_head) that learns to combine [acd_logit, sent_logits, joint_logits] "
+        "into the final 4-class (NONE/POS/NEU/NEG) decision, trained jointly with the rest "
+        "of the model. Motivated by a cross-experiment diagnostic showing ACD and sentiment-"
+        "oracle micro-F1 near ceiling (~97-98% / ~85-91%) while final ACSA micro-F1 lags "
+        "10-17pts behind regardless of head-training technique -- the fusion step, not the "
+        "heads, is the likely bottleneck. Default off -- new architecture, not yet validated.",
+    )
+    p.add_argument("--lambda_fusion", type=float, default=0.5, help="Weight for the learned-fusion auxiliary loss, only used with --learned_fusion.")
 
     p.add_argument("--epochs", type=int, default=10)
     p.add_argument("--batch_size", type=int, default=12)

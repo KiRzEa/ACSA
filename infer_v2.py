@@ -107,6 +107,7 @@ def run(args: argparse.Namespace) -> None:
         # getattr, not train_args.entity_attribute_heads: checkpoints saved
         # before this flag existed won't have it in their saved args at all.
         entity_attribute_heads=getattr(train_args, "entity_attribute_heads", False),
+        learned_fusion=getattr(train_args, "learned_fusion", False),
     )
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
     model.load_state_dict(checkpoint["model_state_dict"])
