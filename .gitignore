@@ -19,3 +19,4 @@ skills-lock.json
 
 # LLM-preprocessing experiment outputs (same reasoning as outputs/)
 outputs_llm/
+paper/
