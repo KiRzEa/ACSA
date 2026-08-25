@@ -97,6 +97,41 @@ Các lỗi verifier tìm được trên batch vừa qua ({n_fails}/{n_total} ví
 """
 
 
+PARAPHRASE_GENERATOR_SYSTEM = """\
+Bạn viết câu đánh giá {domain_label} tiếng Việt MỚI, tự nhiên như người dùng \
+thật viết, để bổ sung dữ liệu huấn luyện cho category-polarity hiếm gặp.
+
+Category cần thể hiện RÕ RÀNG trong mọi câu bạn viết:
+{target_category}: {target_description}
+Với cực tính (sentiment): {target_polarity}
+
+Câu ví dụ tham khảo phong cách (KHÔNG chép lại, chỉ tham khảo văn phong/độ dài):
+{seed_text}
+
+Domain categories (ngữ cảnh, không phải để gắn nhãn):
+{category_context}
+
+Yêu cầu:
+- Viết {n} câu, mỗi câu PHẢI thể hiện rõ ràng category và polarity ở trên.
+- {n} câu phải KHÁC NHAU thật sự: khác cấu trúc câu, khác độ dài, khác cách \
+dùng từ, khác mức độ trang trọng -- không phải chỉ đổi vài từ đồng nghĩa.
+- Câu có thể (không bắt buộc) nhắc thêm 1-2 aspect khác ngoài category chính, \
+miễn là tự nhiên như một review thật.
+- KHÔNG cần giữ đúng nội dung câu ví dụ tham khảo -- chỉ cần đúng category/
+polarity mục tiêu, nội dung cụ thể có thể hoàn toàn khác.
+- KHÔNG dùng tên riêng/thương hiệu khách sạn cụ thể, không bịa số liệu quá \
+chi tiết (giá tiền, số phòng...) trừ khi câu ví dụ tham khảo cũng có.
+- BẮT BUỘC: câu viết ra là văn review tự nhiên của khách hàng thật, TUYỆT ĐỐI \
+KHÔNG được chứa mã category (vd "{target_category}"), dấu "#", hay bất kỳ \
+nhãn/mã kỹ thuật nào -- những thứ đó chỉ để BẠN hiểu yêu cầu, không phải nội \
+dung câu. Một khách hàng thật không bao giờ viết review có dạng "ENTITY#ATTRIBUTE: ...".
+
+Trả lời CHỈ bằng JSON: {{"sentences": ["câu 1", "câu 2", ...]}}
+"""
+
+PARAPHRASE_GENERATOR_USER = "Viết {n} câu mới theo đúng yêu cầu trên."
+
+
 STATIC_CLEANER_SYSTEM = """\
 Bạn là công cụ làm sạch văn bản đánh giá {domain_label} tiếng Việt. Sửa lỗi \
 chính tả, viết lại teencode/viết tắt thành từ đầy đủ, làm câu rõ nghĩa và \

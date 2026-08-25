@@ -9,7 +9,7 @@ from __future__ import annotations
 from typing import List, Tuple
 
 from llm_client import call_json, CostTracker
-from domain_context import DOMAIN_LABELS, category_context_block
+from domain_context import DOMAIN_LABELS, category_context_block, category_description
 import prompts as P
 
 
@@ -100,3 +100,26 @@ def run_extractor(
     user = P.EXTRACTOR_USER.format(text=text)
     result = call_json(system, user, tracker, model=model, provider=provider, aws_region=aws_region)
     return [(e["category"], e["sentiment"]) for e in result.get("extractions", []) if "category" in e and "sentiment" in e]
+
+
+def run_paraphrase_generator(
+    seed_text: str, target_category: str, target_polarity: str, domain: str, n: int,
+    model: str, tracker: CostTracker, provider: str = "openai", aws_region: str = "us-east-1",
+) -> List[str]:
+    """Generates n new, stylistically-distinct sentences targeting one
+    (category, polarity) pair, for rare-pair augmentation. Does NOT assume
+    the output preserves the seed's other labels -- callers must re-label
+    candidates via run_extractor(), same self-consistency pattern as
+    run_verifier()."""
+    system = P.PARAPHRASE_GENERATOR_SYSTEM.format(
+        domain_label=DOMAIN_LABELS[domain],
+        target_category=target_category,
+        target_description=category_description(domain, target_category),
+        target_polarity=target_polarity,
+        seed_text=seed_text,
+        category_context=category_context_block(domain),
+        n=n,
+    )
+    user = P.PARAPHRASE_GENERATOR_USER.format(n=n)
+    result = call_json(system, user, tracker, model=model, provider=provider, aws_region=aws_region)
+    return [s for s in result.get("sentences", []) if isinstance(s, str) and s.strip()]

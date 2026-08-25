@@ -543,6 +543,30 @@ def compute_fusion_loss(
     return lambda_fusion * fusion_loss
 
 
+def compute_gated_fusion_loss(
+    outputs: Dict[str, torch.Tensor],
+    batch: Dict[str, torch.Tensor],
+    joint_weight: torch.Tensor,
+    lambda_fusion: float,
+) -> torch.Tensor:
+    """Gated-fusion auxiliary loss: NLL against blended_probs (already a
+    proper probability distribution, not logits -- cross_entropy expects
+    logits, so this uses log+nll_loss instead). Used INSTEAD OF
+    compute_fusion_loss when --fusion_gate is on: blended_probs already
+    depends on fused_logits (see model.py forward()), so this single loss
+    trains both fusion_head and raw_fusion_gate together -- adding the
+    plain fused_logits cross-entropy on top would double-count that path
+    for no benefit."""
+    if "blended_probs" not in outputs:
+        return outputs["acd_logits"].new_zeros(())
+    log_probs = torch.log(outputs["blended_probs"].clamp_min(1e-8))
+    loss = F.nll_loss(
+        log_probs.reshape(-1, 4),
+        batch["joint_labels"].reshape(-1),
+        weight=joint_weight,
+    )
+    return lambda_fusion * loss
+
 
 # -----------------------------------------------------------------------------
 # Prediction fusion and metrics
@@ -617,7 +641,15 @@ def compute_metrics(
     gold_sent = raw["sent_labels"].astype(np.int64)
     gold_joint = raw["joint_labels"].astype(np.int64)
 
-    if "fused_logits" in raw:
+    if "blended_probs" in raw:
+        # Gated fusion: blended_probs is already a proper 4-class distribution
+        # (gate * learned fusion_head + (1-gate) * differentiable fixed-formula
+        # reconstruction) -- argmax is the prediction, no threshold knob.
+        blended = raw["blended_probs"]
+        pred_joint = blended.argmax(axis=-1).astype(np.int64)
+        presence_score = 1.0 - blended[..., 0]
+        pred_acd = (pred_joint > 0).astype(np.int64)
+    elif "fused_logits" in raw:
         # Learned fusion already outputs a direct 4-way (NONE/POS/NEU/NEG)
         # decision per category -- no threshold knob to apply, argmax is the
         # prediction. threshold arg still accepted (tune_threshold/train()
@@ -712,6 +744,8 @@ def collect_outputs(model: nn.Module, loader: DataLoader, device: torch.device) 
             storage[key].append(outputs[key].detach().cpu().float().numpy())
         if "fused_logits" in outputs:
             storage.setdefault("fused_logits", []).append(outputs["fused_logits"].detach().cpu().float().numpy())
+        if "blended_probs" in outputs:
+            storage.setdefault("blended_probs", []).append(outputs["blended_probs"].detach().cpu().float().numpy())
         for key in ("acd_labels", "sent_labels", "joint_labels"):
             storage[key].append(batch[key].detach().cpu().numpy())
         storage["sample_id"].extend(batch["sample_id"])
@@ -721,6 +755,8 @@ def collect_outputs(model: nn.Module, loader: DataLoader, device: torch.device) 
     concat_keys = ["acd_logits", "sent_logits", "joint_logits", "acd_labels", "sent_labels", "joint_labels"]
     if "fused_logits" in storage:
         concat_keys.append("fused_logits")
+    if "blended_probs" in storage:
+        concat_keys.append("blended_probs")
     for key in concat_keys:
         storage[key] = np.concatenate(storage[key], axis=0)
     return storage
@@ -943,6 +979,7 @@ def train(args: argparse.Namespace) -> None:
         extra_vocab=extra_vocab,
         entity_attribute_heads=args.entity_attribute_heads,
         learned_fusion=args.learned_fusion,
+        fusion_gate=args.fusion_gate,
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
@@ -1018,12 +1055,16 @@ def train(args: argparse.Namespace) -> None:
                 )
                 if args.entity_attribute_heads else outputs["acd_logits"].new_zeros(())
             )
-            fusion_loss = (
-                compute_fusion_loss(
+            if args.learned_fusion and args.fusion_gate:
+                fusion_loss = compute_gated_fusion_loss(
                     outputs, batch, loss_weights.joint_class_weight.to(device), args.lambda_fusion,
                 )
-                if args.learned_fusion else outputs["acd_logits"].new_zeros(())
-            )
+            elif args.learned_fusion:
+                fusion_loss = compute_fusion_loss(
+                    outputs, batch, loss_weights.joint_class_weight.to(device), args.lambda_fusion,
+                )
+            else:
+                fusion_loss = outputs["acd_logits"].new_zeros(())
             aux_loss = ea_loss + fusion_loss
 
             if args.loss_weighting == "gradnorm":
@@ -1211,6 +1252,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
         "heads, is the likely bottleneck. Default off -- new architecture, not yet validated.",
     )
     p.add_argument("--lambda_fusion", type=float, default=0.5, help="Weight for the learned-fusion auxiliary loss, only used with --learned_fusion.")
+    p.add_argument(
+        "--fusion_gate", action="store_true",
+        help="Only meaningful with --learned_fusion. Instead of fully replacing the fixed "
+        "0.5/0.5 fuse_predictions() formula with fusion_head's output, blend the two via a "
+        "single learned scalar gate (sigmoid(raw_fusion_gate), init 0.5): "
+        "gate*fusion_head + (1-gate)*fixed_formula. Motivated by --learned_fusion alone being "
+        "a clear win on dense-data Restaurant but flat/slightly worse on sparse-category "
+        "Hotel -- lets sparse domains fall back toward the data-free fixed formula instead of "
+        "fully trusting the (data-hungry) learned combination. Default off -- new, not yet "
+        "validated.",
+    )
 
     p.add_argument("--epochs", type=int, default=10)
     p.add_argument("--batch_size", type=int, default=12)

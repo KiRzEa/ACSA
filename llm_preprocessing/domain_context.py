@@ -28,3 +28,8 @@ def category_context_block(domain: str) -> str:
 def category_list(domain: str) -> list[str]:
     domain_key = DOMAIN_LABELS[domain]
     return sorted(mapper.CATEGORY_DESCRIPTIONS[domain_key].keys())
+
+
+def category_description(domain: str, category: str) -> str:
+    domain_key = DOMAIN_LABELS[domain]
+    return mapper.CATEGORY_DESCRIPTIONS[domain_key].get(category, category)

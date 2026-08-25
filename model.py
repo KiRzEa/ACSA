@@ -95,11 +95,13 @@ class CategoryConditionedMTL(nn.Module):
         extra_vocab: Optional[Sequence[str]] = None,
         entity_attribute_heads: bool = False,
         learned_fusion: bool = False,
+        fusion_gate: bool = False,
     ):
         super().__init__()
         self.categories = list(categories)
         self.entity_attribute_heads = entity_attribute_heads
         self.learned_fusion = learned_fusion
+        self.fusion_gate = fusion_gate and learned_fusion
         self.encoder = AutoModel.from_pretrained(model_name)
         if extra_vocab:
             num_added = add_vocab_with_mean_init(self.encoder, tokenizer, extra_vocab)
@@ -175,6 +177,21 @@ class CategoryConditionedMTL(nn.Module):
                 nn.Linear(32, 32), nn.GELU(),
                 nn.Linear(32, 4),
             )
+            if self.fusion_gate:
+                # Restaurant/Hotel results showed learned_fusion is a real win
+                # on dense-data Restaurant but flat-to-slightly-worse on
+                # sparse-category Hotel -- a full replacement of the fixed
+                # formula trusts fusion_head's own (data-hungry) judgment
+                # unconditionally, which sparse categories can't back up. This
+                # scalar instead LEARNS how much to trust fusion_head's
+                # distribution vs. the data-free fixed 0.5/0.5 formula
+                # (reconstructed below as a proper distribution, not just a
+                # thresholded scalar), so dense domains can lean on the
+                # learned combination while sparse ones fall back toward the
+                # formula automatically via gradient descent, no manual
+                # per-domain tuning needed. sigmoid(0)=0.5 initially, same
+                # pattern as raw_gate_alpha above.
+                self.raw_fusion_gate = nn.Parameter(torch.tensor(0.0))
 
         # arch-v2: entity/attribute auxiliary heads. Categories are
         # "ENTITY#ATTRIBUTE" (e.g. ROOMS#CLEANLINESS) -- these two coarse,
@@ -286,7 +303,31 @@ class CategoryConditionedMTL(nn.Module):
             outputs["attribute_logits"] = attribute_logits
         if self.learned_fusion:
             fusion_input = torch.cat([acd_logits.unsqueeze(-1), sent_logits, joint_logits], dim=-1)  # [B, K, 8]
-            outputs["fused_logits"] = self.fusion_head(fusion_input)  # [B, K, 4]
+            fused_logits = self.fusion_head(fusion_input)  # [B, K, 4]
+            outputs["fused_logits"] = fused_logits
+            if self.fusion_gate:
+                # Differentiable reconstruction of fuse_predictions()'s fixed
+                # 0.5/0.5 formula as a proper 4-class (NONE/POS/NEU/NEG)
+                # distribution -- the original returns a thresholded scalar
+                # decision, not a distribution, so it can't be blended
+                # directly; this is the same math (presence_score,
+                # sentiment_score) re-expressed so gradients can flow.
+                joint_prob = F.softmax(joint_logits, dim=-1)
+                joint_presence = 1.0 - joint_prob[..., 0]
+                sent_prob = F.softmax(sent_logits, dim=-1)
+                joint_sent = joint_prob[..., 1:]
+                joint_sent = joint_sent / joint_sent.sum(dim=-1, keepdim=True).clamp_min(1e-8)
+                presence_score = 0.5 * acd_prob + 0.5 * joint_presence
+                sentiment_score = 0.5 * sent_prob + 0.5 * joint_sent
+                fixed_prob = torch.cat([
+                    (1.0 - presence_score).unsqueeze(-1),
+                    presence_score.unsqueeze(-1) * sentiment_score,
+                ], dim=-1)  # [B, K, 4], sums to 1 along last dim
+
+                fused_prob = F.softmax(fused_logits, dim=-1)
+                gate = torch.sigmoid(self.raw_fusion_gate)
+                outputs["blended_probs"] = gate * fused_prob + (1.0 - gate) * fixed_prob
+                outputs["fusion_gate_value"] = gate.detach()
         return outputs
 
 
