@@ -126,8 +126,14 @@ def parse_dataset(path: str | Path) -> List[Example]:
             sample_id = str(block_idx)
             content = lines
 
+        # A line only counts as the annotation line if it actually contains a
+        # valid {category, sentiment} pair per LABEL_RE (comma required inside
+        # the braces) -- plain "{" in line and "}" in line" false-positives on
+        # review text that happens to contain its own aside in braces with no
+        # comma (e.g. Phone_ABSA #6826: "...rung{chua bao gio thay...}. K..."),
+        # which stole ann_idx before the real label line was ever reached.
         ann_idx = next(
-            (i for i, line in enumerate(content) if "{" in line and "}" in line),
+            (i for i, line in enumerate(content) if LABEL_RE.search(line)),
             None,
         )
         if ann_idx is None:
