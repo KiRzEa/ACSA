@@ -4512,7 +4512,7 @@ giáo trình môn học nên cập nhật thường xuyên .
 
 #1131
 một môn học rất hay .
-{Chương trình  học, positive}
+{Chương trình học, positive}
 
 #1132
 giảng viên cần cân nhắc trong việc giao việc cho sinh viên .
@@ -4804,7 +4804,7 @@ luôn bám sát tiến độ làm đồ án của sinh viên .
 
 #1204
 tạo ra sự ganh đua trong mỗi buổi thực hành .
-{năng giảng dạy, positive}
+{Kỹ năng giảng dạy, positive}
 
 #1205
 vui tánh .
@@ -6760,7 +6760,7 @@ giảng viên sử dụng thời gian lên lớp không hiểu quả dẫn đế
 
 #1693
 thầy phân tích sâu sắc các vấn đề .
-{Kỹ năng gảng dạy, positive}
+{Kỹ năng giảng dạy, positive}
 
 #1694
 thầy giảng hơi khó hiểu .
@@ -7277,10 +7277,6 @@ nhiệt tình trả lời các câu hỏi của sinh viên .
 #1822
 ân cần giải đáp thắc mắc của sinh viên .
 {Hành vi, positive}
-
-#1823
-dù một tuần chỉ có 2 tiết nhưng thầy đã tận tình giảng dạy .
-{H, positive}
 
 #1824
 giảng viên cho về sớm hơn giờ quy định .
@@ -15352,7 +15348,7 @@ thêm giờ giải bài tập trên lớp .
 
 #3841
 môn học là kiểm chứng phần mềm , nhưng tất cả nội dung giảng dạy chỉ là lý thuyết suông , có chăng là một số phần mềm có thể được sử dụng trong thực tiễn , nhưng sự tìm hiểu chỉ dừng lại ở mức độ " giới thiệu " của cấp độ sinh viên , các bài seminar do sinh viên trình bày hoàn toàn không đạt chất lượng , không truyền đạt được kiến thức , slide hơn 95% là chữ , một số không nhỏ là nội dung dịch từ sách ngoại văn , nhưng lại sai nghĩa , tối nghĩa .
-{Kiến thức, negative},{cung cấp tài liệu, negative},{kỹ năng giảng dạy, negative}
+{Kiến thức, negative},{Cung cấp tài liệu, negative},{Kỹ năng giảng dạy, negative}
 
 #3842
 áp dụng những kiến thức ngoài xã hội , thực tiễn để giảng dạy vào bài học chứ không nhất thiết phải dạy theo một giáo trình cụ thể nào đó .
