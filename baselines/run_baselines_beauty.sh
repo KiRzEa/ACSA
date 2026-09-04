@@ -43,7 +43,7 @@ run_cnn() {
     local name="$1"; shift
     local out="outputs/${name}_beauty"
     skip_if_exists "$out/multi_seed_summary.json" && return 0
-    echo "[$(date '+%H:%M:%S')] START $name (GPU $CUDA_VISIBLE_DEVICES)"
+    echo "[$(date '+%H:%M:%S')] START $name (GPU ${CUDA_VISIBLE_DEVICES:-all})"
     python3 baselines/cnn_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
         --output_dir "$out" --seeds 42 "$@"
     echo "[$(date '+%H:%M:%S')] DONE  $name"
@@ -53,7 +53,7 @@ run_bert() {
     local name="$1" model="$2" segmenter="$3"
     local out="outputs/bert_beauty_${name}"
     skip_if_exists "$out/multi_seed_summary.json" && return 0
-    echo "[$(date '+%H:%M:%S')] START bert $name (GPU $CUDA_VISIBLE_DEVICES)"
+    echo "[$(date '+%H:%M:%S')] START bert $name (GPU ${CUDA_VISIBLE_DEVICES:-all})"
     python3 baselines/bert_baseline.py --mode train --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
         --output_dir "$out" --model_name "$model" --segmenter "$segmenter" --seeds 42
     echo "[$(date '+%H:%M:%S')] DONE  bert $name"
@@ -63,7 +63,7 @@ run_t5_seq2seq() {
     local name="$1" model="$2"; shift 2
     local out="outputs/${name}_beauty"
     skip_if_exists "$out/multi_seed_summary.json" && return 0
-    echo "[$(date '+%H:%M:%S')] START t5_seq2seq $name (GPU $CUDA_VISIBLE_DEVICES)"
+    echo "[$(date '+%H:%M:%S')] START t5_seq2seq $name (GPU ${CUDA_VISIBLE_DEVICES:-all})"
     python3 baselines/t5_seq2seq_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
         --output_dir "$out" --model_name "$model" --seeds 42 "$@"
     echo "[$(date '+%H:%M:%S')] DONE  t5_seq2seq $name"
@@ -73,7 +73,7 @@ run_instruction() {
     local format="$1" lang="$2"
     local out="outputs/t5_beauty_${format}_${lang}"
     skip_if_exists "$out/multi_seed_summary.json" && return 0
-    echo "[$(date '+%H:%M:%S')] START instruction $format/$lang (GPU $CUDA_VISIBLE_DEVICES)"
+    echo "[$(date '+%H:%M:%S')] START instruction $format/$lang (GPU ${CUDA_VISIBLE_DEVICES:-all})"
     python3 baselines/t5_instruction_tuning.py --domain "$DOMAIN_NAME" --format "$format" --lang "$lang" \
         --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" --output_dir "$out" --seeds 42
     echo "[$(date '+%H:%M:%S')] DONE  instruction $format/$lang"
