@@ -53,6 +53,7 @@ from transformers import (
     EarlyStoppingCallback,
     Seq2SeqTrainer,
     Seq2SeqTrainingArguments,
+    TrainerCallback,
 )
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -102,6 +103,29 @@ def set_seed(seed: int) -> None:
     np.random.seed(seed)
     torch.manual_seed(seed)
     torch.cuda.manual_seed_all(seed)
+
+
+class BestModelTracker(TrainerCallback):
+    """Keeps the best epoch's weights in CPU RAM instead of Trainer's normal
+    disk checkpoint (model + optimizer + scheduler state, saved every eval
+    even with save_total_limit=1) -- on Kaggle's limited working disk, a
+    handful of -large T5 checkpoints (10GB+ each, mostly optimizer state we
+    never need again) exhausted it mid-run ("No space left on device").
+    Nothing here ever touches disk; train_one_seed loads best_state back
+    into the model in-process right after trainer.train() returns."""
+
+    def __init__(self):
+        self.best_metric: float | None = None
+        self.best_state: dict | None = None
+
+    def on_evaluate(self, args, state, control, metrics=None, model=None, **kwargs):
+        if metrics is None or model is None:
+            return
+        metric = metrics.get("eval_loss")
+        if metric is None or (self.best_metric is not None and metric >= self.best_metric):
+            return
+        self.best_metric = metric
+        self.best_state = {k: v.detach().cpu().clone() for k, v in model.state_dict().items()}
 
 
 @torch.no_grad()
@@ -154,9 +178,7 @@ def train_one_seed(train: List[Example], dev: List[Example], test: List[Example]
         weight_decay=args.weight_decay,
         warmup_ratio=args.warmup_ratio,
         eval_strategy="epoch",
-        save_strategy="epoch",
-        save_total_limit=1,
-        load_best_model_at_end=True,
+        save_strategy="no",  # never write checkpoints to disk -- BestModelTracker keeps the best epoch in CPU RAM instead
         metric_for_best_model="eval_loss",
         greater_is_better=False,
         predict_with_generate=False,
@@ -166,15 +188,20 @@ def train_one_seed(train: List[Example], dev: List[Example], test: List[Example]
         fp16=torch.cuda.is_available() and not args.cpu,
         use_cpu=args.cpu,
     )
+    tracker = BestModelTracker()
     trainer = Seq2SeqTrainer(
         model=model,
         args=training_args,
         train_dataset=train_ds,
         eval_dataset=dev_ds,
         data_collator=collator,
-        callbacks=[EarlyStoppingCallback(early_stopping_patience=args.patience)],
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=args.patience), tracker],
     )
     trainer.train()
+
+    if tracker.best_state is not None:
+        model.load_state_dict(tracker.best_state)
+        logger.info("[seed %d] loaded best epoch (eval_loss=%.4f) from CPU RAM", seed, tracker.best_metric)
 
     predictions = generate_predictions(model, tokenizer, test, args)
     metrics = micro_prf([ex.labels for ex in test], predictions)
