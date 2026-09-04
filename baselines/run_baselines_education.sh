@@ -11,6 +11,11 @@
 # re-running this script (e.g. after a Kaggle session gets cut off) is safe.
 set -uo pipefail
 
+# Kaggle's default transformers build fails to load Salesforce/codet5-base's
+# tokenizer (TypeError: extra_special_tokens must be a list/tuple ...) --
+# pin to a version confirmed working against every model used below.
+pip install -q "transformers==4.57.6" pyvi sentencepiece accelerate
+
 TRAIN=Education_ABSA/Train.txt
 DEV=Education_ABSA/Dev.txt
 TEST=Education_ABSA/Test.txt

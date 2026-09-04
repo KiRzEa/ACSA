@@ -51,6 +51,19 @@ GPU) before being handed off for full training.
 
 ## Running
 
+**Kaggle setup**: pin `transformers` to `4.57.6` -- Kaggle's default image at time of
+writing ships a newer preview build whose tokenizer-loading refactor fails on
+`Salesforce/codet5-base`'s legacy (no `tokenizer.json`) tokenizer with
+`TypeError: extra_special_tokens must be a list/tuple of str or AddedToken, ...`
+(BERT-family checkpoints are unaffected -- they ship a fast `tokenizer.json`
+directly, so they never hit the from-slow conversion path that's broken).
+`4.57.6` is confirmed working locally against every model used here
+(`vinai/phobert-base-v2`, `xlm-roberta-base`, `Salesforce/codet5-base`,
+`VietAI/vit5-base`):
+```bash
+pip install -q "transformers==4.57.6" pyvi sentencepiece accelerate
+```
+
 SVM is fast enough to run locally right now (no Kaggle needed):
 ```bash
 python3 baselines/svm_tfidf_baseline.py \
