@@ -69,7 +69,7 @@ run_t5_seq2seq() {
 # -large checkpoints (~800M-1.2B params) OOM'd on a ~15GB Kaggle GPU at the
 # default batch_size=8/eval_batch_size=16 -- shrink batch + accumulate
 # gradients (same effective batch size) + gradient checkpointing to fit.
-LARGE_MEM_ARGS=(--batch_size 2 --eval_batch_size 4 --gradient_accumulation_steps 4 --gradient_checkpointing)
+LARGE_MEM_ARGS=(--batch_size 1 --eval_batch_size 4 --gradient_accumulation_steps 8 --gradient_checkpointing)
 run_t5_seq2seq mt5large  google/mt5-large  "${LARGE_MEM_ARGS[@]}"
 run_t5_seq2seq vit5large VietAI/vit5-large "${LARGE_MEM_ARGS[@]}"
 run_t5_seq2seq vit5base  VietAI/vit5-base
