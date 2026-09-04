@@ -123,11 +123,21 @@ def generate_predictions(model, tokenizer, examples: List[Example], args: argpar
 def train_one_seed(train: List[Example], dev: List[Example], test: List[Example], args: argparse.Namespace, seed: int, run_dir: Path):
     set_seed(seed)
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
-    model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name)
+    if args.device_map_auto:
+        # Naive model-parallel: splits the model's layers across every GPU
+        # CUDA_VISIBLE_DEVICES exposes to this process (accelerate's
+        # infer_auto_device_map), pooling their memory for models too large
+        # for any single one of them -- do NOT pin CUDA_VISIBLE_DEVICES to a
+        # single GPU for a --device_map_auto run, it needs all of them
+        # visible. Trainer detects model.hf_device_map and switches out of
+        # DataParallel/single-device mode automatically.
+        model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name, device_map="auto")
+    else:
+        model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name)
+        if torch.cuda.is_available() and not args.cpu:
+            model = model.to("cuda")
     if args.gradient_checkpointing:
         model.config.use_cache = False  # incompatible with gradient checkpointing; not needed anyway (predict_with_generate=False during training)
-    if torch.cuda.is_available() and not args.cpu:
-        model = model.to("cuda")
 
     train_ds = PromptTargetDataset(train, tokenizer, args.max_source_length, args.max_target_length)
     dev_ds = PromptTargetDataset(dev, tokenizer, args.max_source_length, args.max_target_length)
@@ -217,7 +227,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--gradient_accumulation_steps", type=int, default=1,
                     help="Raise this (and lower --batch_size) to shrink peak memory for -large checkpoints while keeping the same effective batch size")
     p.add_argument("--gradient_checkpointing", action="store_true",
-                    help="Trade compute for activation memory -- needed for mT5-large/viT5-large on a single ~15GB GPU")
+                    help="Trade compute for activation memory -- combine with --device_map_auto for mT5-large/viT5-large")
+    p.add_argument("--device_map_auto", action="store_true",
+                    help="Split the model's layers across every visible GPU (accelerate device_map='auto') instead of loading the whole model onto one -- "
+                         "needed when a single GPU's memory is smaller than the model + optimizer state + activations (e.g. mT5-large/viT5-large on a "
+                         "~15GB T4: batch_size=1 alone doesn't help, since AdamW's optimizer state for a ~1.2B-parameter model already exceeds 15GB before "
+                         "any activations). Do not also pin CUDA_VISIBLE_DEVICES to a single GPU when using this -- it needs every GPU visible.")
     p.add_argument("--learning_rate", type=float, default=2e-5)
     p.add_argument("--weight_decay", type=float, default=0.01)
     p.add_argument("--warmup_ratio", type=float, default=0.1)

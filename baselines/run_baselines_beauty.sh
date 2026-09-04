@@ -1,16 +1,26 @@
 #!/usr/bin/env bash
-# Beauty baselines for Table 4 -- Kaggle session (GPU). Fills every row of
-# Table 4 that is currently "--" for Beauty: CNN, BiLSTM-CNN, BERT-based
+# Beauty baselines for Table 4 -- Kaggle session (GPU, T4x2). Fills every row
+# of Table 4 that is currently "--" for Beauty: CNN, BiLSTM-CNN, BERT-based
 # (PhoBERT / XLM-R / Ensemble BERTs), T5-based (mT5-large / viT5-large /
 # viT5-base), and the 4 instruction-tuning variants. The SVM row is CPU-only
 # and fast enough to run locally -- see baselines/svm_tfidf_baseline.py, no
 # Kaggle session needed for it.
 #
+# Two ways this uses both GPUs: (1) models small enough for one GPU (CNN,
+# BiLSTM-CNN, PhoBERT, XLM-R, viT5-base, codet5-base) run two independent
+# jobs at once, one pinned to each GPU via CUDA_VISIBLE_DEVICES=0/1;
+# (2) mT5-large/viT5-large are too big for a single ~15GB T4 even alone, so
+# those run with --device_map_auto, which splits ONE model's layers across
+# BOTH GPUs (real model parallelism, not two separate jobs) -- see the
+# LARGE_MEM_ARGS comment below. Ensemble BERTs depends on both PhoBERT and
+# XLM-R finishing first, so it runs alone afterward (but is quick --
+# inference only, no training).
+#
 # Idempotent: each run is skipped if its summary file already exists, so
-# re-running this script (e.g. after a Kaggle session gets cut off) is safe.
-# That check relies on outputs/... resolving to the same path every run --
-# cd to the repo root first so it does, regardless of which directory the
-# caller invoked `bash .../run_baselines_beauty.sh` from.
+# re-running this script (e.g. after a Kaggle session gets cut off) is safe
+# WITHIN the same session (a brand new session starts with an empty
+# outputs/, so this can't detect runs completed in a previous session --
+# tell me the results instead and I'll record them / comment the step out).
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 
@@ -29,60 +39,88 @@ skip_if_exists() {
     return 1
 }
 
-echo "[$(date '+%H:%M:%S')] === CNN ==="
-out=outputs/cnn_beauty
-skip_if_exists "$out/multi_seed_summary.json" || \
-python3 baselines/cnn_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-    --output_dir "$out" --seeds 42
+run_cnn() {
+    local name="$1"; shift
+    local out="outputs/${name}_beauty"
+    skip_if_exists "$out/multi_seed_summary.json" && return 0
+    echo "[$(date '+%H:%M:%S')] START $name (GPU $CUDA_VISIBLE_DEVICES)"
+    python3 baselines/cnn_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
+        --output_dir "$out" --seeds 42 "$@"
+    echo "[$(date '+%H:%M:%S')] DONE  $name"
+}
 
-echo "[$(date '+%H:%M:%S')] === BiLSTM-CNN ==="
-out=outputs/bilstm_cnn_beauty
-skip_if_exists "$out/multi_seed_summary.json" || \
-python3 baselines/cnn_baseline.py --use_bilstm --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-    --output_dir "$out" --seeds 42
+run_bert() {
+    local name="$1" model="$2" segmenter="$3"
+    local out="outputs/bert_beauty_${name}"
+    skip_if_exists "$out/multi_seed_summary.json" && return 0
+    echo "[$(date '+%H:%M:%S')] START bert $name (GPU $CUDA_VISIBLE_DEVICES)"
+    python3 baselines/bert_baseline.py --mode train --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
+        --output_dir "$out" --model_name "$model" --segmenter "$segmenter" --seeds 42
+    echo "[$(date '+%H:%M:%S')] DONE  bert $name"
+}
 
-echo "[$(date '+%H:%M:%S')] === BERT-based: PhoBERT ==="
-out=outputs/bert_beauty_phobert
-skip_if_exists "$out/multi_seed_summary.json" || \
-python3 baselines/bert_baseline.py --mode train --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-    --output_dir "$out" --model_name vinai/phobert-base-v2 --segmenter pyvi --seeds 42
+run_t5_seq2seq() {
+    local name="$1" model="$2"; shift 2
+    local out="outputs/${name}_beauty"
+    skip_if_exists "$out/multi_seed_summary.json" && return 0
+    echo "[$(date '+%H:%M:%S')] START t5_seq2seq $name (GPU $CUDA_VISIBLE_DEVICES)"
+    python3 baselines/t5_seq2seq_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
+        --output_dir "$out" --model_name "$model" --seeds 42 "$@"
+    echo "[$(date '+%H:%M:%S')] DONE  t5_seq2seq $name"
+}
 
-echo "[$(date '+%H:%M:%S')] === BERT-based: XLM-R ==="
-out=outputs/bert_beauty_xlmr
-skip_if_exists "$out/multi_seed_summary.json" || \
-python3 baselines/bert_baseline.py --mode train --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-    --output_dir "$out" --model_name xlm-roberta-base --segmenter none --seeds 42
+run_instruction() {
+    local format="$1" lang="$2"
+    local out="outputs/t5_beauty_${format}_${lang}"
+    skip_if_exists "$out/multi_seed_summary.json" && return 0
+    echo "[$(date '+%H:%M:%S')] START instruction $format/$lang (GPU $CUDA_VISIBLE_DEVICES)"
+    python3 baselines/t5_instruction_tuning.py --domain "$DOMAIN_NAME" --format "$format" --lang "$lang" \
+        --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" --output_dir "$out" --seeds 42
+    echo "[$(date '+%H:%M:%S')] DONE  instruction $format/$lang"
+}
 
-echo "[$(date '+%H:%M:%S')] === BERT-based: Ensemble BERTs ==="
+# -large checkpoints (~800M-1.2B params) don't fit on a single ~15GB Kaggle
+# GPU at all -- AdamW's optimizer state for a ~1.2B-parameter model alone
+# already exceeds 15GB before any activations, so batch_size=1 doesn't save
+# it. --device_map_auto splits the model's layers across BOTH GPUs (real
+# model parallelism, not just "one job per GPU"), so these two must run
+# sequentially with neither GPU pinned via CUDA_VISIBLE_DEVICES -- each needs
+# both. gradient_checkpointing further trims activation memory on top of that.
+LARGE_MEM_ARGS=(--batch_size 2 --eval_batch_size 4 --gradient_checkpointing --device_map_auto)
+
+echo "[$(date '+%H:%M:%S')] === Statistics-based: CNN + BiLSTM-CNN, parallel ==="
+CUDA_VISIBLE_DEVICES=0 run_cnn cnn &
+CUDA_VISIBLE_DEVICES=1 run_cnn bilstm_cnn --use_bilstm &
+wait
+
+echo "[$(date '+%H:%M:%S')] === BERT-based: PhoBERT + XLM-R, parallel ==="
+CUDA_VISIBLE_DEVICES=0 run_bert phobert vinai/phobert-base-v2 pyvi &
+CUDA_VISIBLE_DEVICES=1 run_bert xlmr    xlm-roberta-base      none &
+wait
+
+echo "[$(date '+%H:%M:%S')] === BERT-based: Ensemble BERTs (depends on both above) ==="
 out=outputs/bert_beauty_ensemble
 skip_if_exists "$out/test_metrics.json" || \
 python3 baselines/bert_baseline.py --mode ensemble --test_path "$TEST" --output_dir "$out" \
     --checkpoints outputs/bert_beauty_phobert/best_model.pt outputs/bert_beauty_xlmr/best_model.pt
 
-echo "[$(date '+%H:%M:%S')] === T5-based: mT5-large / viT5-large / viT5-base ==="
-run_t5_seq2seq() {
-    local name="$1" model="$2"; shift 2
-    local out="outputs/${name}_beauty"
-    skip_if_exists "$out/multi_seed_summary.json" || \
-    python3 baselines/t5_seq2seq_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-        --output_dir "$out" --model_name "$model" --seeds 42 "$@"
-}
-# -large checkpoints (~800M-1.2B params) OOM'd on a ~15GB Kaggle GPU at the
-# default batch_size=8/eval_batch_size=16 -- shrink batch + accumulate
-# gradients (same effective batch size) + gradient checkpointing to fit.
-LARGE_MEM_ARGS=(--batch_size 2 --eval_batch_size 4 --gradient_accumulation_steps 4 --gradient_checkpointing)
+echo "[$(date '+%H:%M:%S')] === T5-based: mT5-large (both GPUs, model-parallel) ==="
 run_t5_seq2seq mt5large  google/mt5-large  "${LARGE_MEM_ARGS[@]}"
-run_t5_seq2seq vit5large VietAI/vit5-large "${LARGE_MEM_ARGS[@]}"
-run_t5_seq2seq vit5base  VietAI/vit5-base
 
-echo "[$(date '+%H:%M:%S')] === Instruction tuning: 4 variants ==="
-for format in code nl; do
-    for lang in vi en; do
-        out="outputs/t5_beauty_${format}_${lang}"
-        skip_if_exists "$out/multi_seed_summary.json" || \
-        python3 baselines/t5_instruction_tuning.py --domain "$DOMAIN_NAME" --format "$format" --lang "$lang" \
-            --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" --output_dir "$out" --seeds 42
-    done
-done
+echo "[$(date '+%H:%M:%S')] === T5-based: viT5-large (both GPUs, model-parallel) ==="
+run_t5_seq2seq vit5large VietAI/vit5-large "${LARGE_MEM_ARGS[@]}"
+
+echo "[$(date '+%H:%M:%S')] === T5-based: viT5-base + Instruction: group 1/3 (Code-Vi), parallel ==="
+CUDA_VISIBLE_DEVICES=0 run_t5_seq2seq vit5base VietAI/vit5-base &
+CUDA_VISIBLE_DEVICES=1 run_instruction code vi &
+wait
+
+echo "[$(date '+%H:%M:%S')] === Instruction tuning: group 2/3 (Code-En + NL-Vi, parallel) ==="
+CUDA_VISIBLE_DEVICES=0 run_instruction code en &
+CUDA_VISIBLE_DEVICES=1 run_instruction nl vi &
+wait
+
+echo "[$(date '+%H:%M:%S')] === Instruction tuning: group 3/3 (NL-En) ==="
+CUDA_VISIBLE_DEVICES=0 run_instruction nl en
 
 echo "[$(date '+%H:%M:%S')] Beauty baselines finished."

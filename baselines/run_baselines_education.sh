@@ -1,18 +1,26 @@
 #!/usr/bin/env bash
-# Education baselines for Table 4 -- Kaggle session (GPU). Fills the rows of
-# Table 4 that are currently "--" for Education: BERT-based (PhoBERT / XLM-R
-# / Ensemble BERTs), T5-based (mT5-large / viT5-large / viT5-base), and the
-# 4 instruction-tuning variants. Education's Statistics row (SVM/CNN/
-# BiLSTM-CNN) already has real published numbers from the dataset's own
-# paper (TNUJST5101), so this script does not re-run those -- only
-# baselines/run_baselines_beauty.sh needs them, since no prior baseline of
-# any kind exists for Beauty.
+# Education baselines for Table 4 -- Kaggle session (GPU, T4x2). Fills the
+# rows of Table 4 that are currently "--" for Education: T5-based (mT5-large
+# / viT5-large / viT5-base) and the 4 instruction-tuning variants. Education's
+# Statistics rows (SVM/CNN/BiLSTM-CNN) already have real published numbers
+# from the dataset's own paper (TNUJST5101); BERT-based (PhoBERT/XLM-R/
+# Ensemble BERTs) was already run and is already written into the paper
+# (PhoBERT: 86.32/81.19/83.67, XLM-R: 82.26/80.36/81.30, Ensemble BERTs:
+# 87.05/83.17/85.06) -- neither is re-run here.
+#
+# Two ways this uses both GPUs: (1) models small enough for one GPU
+# (viT5-base, codet5-base) run two independent jobs at once, one pinned to
+# each GPU via CUDA_VISIBLE_DEVICES=0/1; (2) mT5-large/viT5-large are too big
+# for a single ~15GB T4 even alone, so those run with --device_map_auto,
+# which splits ONE model's layers across BOTH GPUs (real model parallelism,
+# not two separate jobs) -- see the LARGE_MEM_ARGS comment below.
 #
 # Idempotent: each run is skipped if its summary file already exists, so
-# re-running this script (e.g. after a Kaggle session gets cut off) is safe.
-# That check relies on outputs/... resolving to the same path every run --
-# cd to the repo root first so it does, regardless of which directory the
-# caller invoked `bash .../run_baselines_education.sh` from.
+# re-running this script (e.g. after a Kaggle session gets cut off) is safe
+# WITHIN the same session (a brand new session starts with an empty
+# outputs/, so this can't detect runs completed in a previous session --
+# tell me the results instead and I'll record them / comment the step out,
+# as already done for BERT-based above).
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 
@@ -31,57 +39,52 @@ skip_if_exists() {
     return 1
 }
 
-# BERT-based (PhoBERT/XLM-R/Ensemble BERTs) already completed in an earlier
-# session and its numbers are already written into Table 4 of the paper
-# (PhoBERT: 86.32/81.19/83.67, XLM-R: 82.26/80.36/81.30, Ensemble BERTs:
-# 87.05/83.17/85.06) -- skipped here so a fresh Kaggle session (which starts
-# with an empty outputs/, so skip_if_exists can't detect prior local runs)
-# doesn't waste GPU time redoing already-recorded results. Flip to `true` to
-# re-run (e.g. to upgrade to 3-seed later).
-if false; then
-echo "[$(date '+%H:%M:%S')] === BERT-based: PhoBERT ==="
-out=outputs/bert_education_phobert
-skip_if_exists "$out/multi_seed_summary.json" || \
-python3 baselines/bert_baseline.py --mode train --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-    --output_dir "$out" --model_name vinai/phobert-base-v2 --segmenter pyvi --seeds 42
-
-echo "[$(date '+%H:%M:%S')] === BERT-based: XLM-R ==="
-out=outputs/bert_education_xlmr
-skip_if_exists "$out/multi_seed_summary.json" || \
-python3 baselines/bert_baseline.py --mode train --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-    --output_dir "$out" --model_name xlm-roberta-base --segmenter none --seeds 42
-
-echo "[$(date '+%H:%M:%S')] === BERT-based: Ensemble BERTs ==="
-out=outputs/bert_education_ensemble
-skip_if_exists "$out/test_metrics.json" || \
-python3 baselines/bert_baseline.py --mode ensemble --test_path "$TEST" --output_dir "$out" \
-    --checkpoints outputs/bert_education_phobert/best_model.pt outputs/bert_education_xlmr/best_model.pt
-fi
-
-echo "[$(date '+%H:%M:%S')] === T5-based: mT5-large / viT5-large / viT5-base ==="
 run_t5_seq2seq() {
     local name="$1" model="$2"; shift 2
     local out="outputs/${name}_education"
-    skip_if_exists "$out/multi_seed_summary.json" || \
+    skip_if_exists "$out/multi_seed_summary.json" && return 0
+    echo "[$(date '+%H:%M:%S')] START t5_seq2seq $name (GPU $CUDA_VISIBLE_DEVICES)"
     python3 baselines/t5_seq2seq_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
         --output_dir "$out" --model_name "$model" --seeds 42 "$@"
+    echo "[$(date '+%H:%M:%S')] DONE  t5_seq2seq $name"
 }
-# -large checkpoints (~800M-1.2B params) OOM'd on a ~15GB Kaggle GPU at the
-# default batch_size=8/eval_batch_size=16 -- shrink batch + accumulate
-# gradients (same effective batch size) + gradient checkpointing to fit.
-LARGE_MEM_ARGS=(--batch_size 1 --eval_batch_size 4 --gradient_accumulation_steps 8 --gradient_checkpointing)
-run_t5_seq2seq mt5large  google/mt5-large  "${LARGE_MEM_ARGS[@]}"
-run_t5_seq2seq vit5large VietAI/vit5-large "${LARGE_MEM_ARGS[@]}"
-run_t5_seq2seq vit5base  VietAI/vit5-base
 
-echo "[$(date '+%H:%M:%S')] === Instruction tuning: 4 variants ==="
-for format in code nl; do
-    for lang in vi en; do
-        out="outputs/t5_education_${format}_${lang}"
-        skip_if_exists "$out/multi_seed_summary.json" || \
-        python3 baselines/t5_instruction_tuning.py --domain "$DOMAIN_NAME" --format "$format" --lang "$lang" \
-            --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" --output_dir "$out" --seeds 42
-    done
-done
+run_instruction() {
+    local format="$1" lang="$2"
+    local out="outputs/t5_education_${format}_${lang}"
+    skip_if_exists "$out/multi_seed_summary.json" && return 0
+    echo "[$(date '+%H:%M:%S')] START instruction $format/$lang (GPU $CUDA_VISIBLE_DEVICES)"
+    python3 baselines/t5_instruction_tuning.py --domain "$DOMAIN_NAME" --format "$format" --lang "$lang" \
+        --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" --output_dir "$out" --seeds 42
+    echo "[$(date '+%H:%M:%S')] DONE  instruction $format/$lang"
+}
+
+# -large checkpoints (~800M-1.2B params) don't fit on a single ~15GB Kaggle
+# GPU at all -- AdamW's optimizer state for a ~1.2B-parameter model alone
+# already exceeds 15GB before any activations, so batch_size=1 doesn't save
+# it. --device_map_auto splits the model's layers across BOTH GPUs (real
+# model parallelism, not just "one job per GPU"), so these two must run
+# sequentially with neither GPU pinned via CUDA_VISIBLE_DEVICES -- each needs
+# both. gradient_checkpointing further trims activation memory on top of that.
+LARGE_MEM_ARGS=(--batch_size 2 --eval_batch_size 4 --gradient_checkpointing --device_map_auto)
+
+echo "[$(date '+%H:%M:%S')] === T5-based: mT5-large (both GPUs, model-parallel) ==="
+run_t5_seq2seq mt5large  google/mt5-large  "${LARGE_MEM_ARGS[@]}"
+
+echo "[$(date '+%H:%M:%S')] === T5-based: viT5-large (both GPUs, model-parallel) ==="
+run_t5_seq2seq vit5large VietAI/vit5-large "${LARGE_MEM_ARGS[@]}"
+
+echo "[$(date '+%H:%M:%S')] === T5-based: viT5-base + Instruction: group 1/3 (Code-Vi), parallel ==="
+CUDA_VISIBLE_DEVICES=0 run_t5_seq2seq vit5base VietAI/vit5-base &
+CUDA_VISIBLE_DEVICES=1 run_instruction code vi &
+wait
+
+echo "[$(date '+%H:%M:%S')] === Instruction tuning: group 2/3 (Code-En + NL-Vi, parallel) ==="
+CUDA_VISIBLE_DEVICES=0 run_instruction code en &
+CUDA_VISIBLE_DEVICES=1 run_instruction nl vi &
+wait
+
+echo "[$(date '+%H:%M:%S')] === Instruction tuning: group 3/3 (NL-En) ==="
+CUDA_VISIBLE_DEVICES=0 run_instruction nl en
 
 echo "[$(date '+%H:%M:%S')] Education baselines finished."
