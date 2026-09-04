@@ -1,21 +1,29 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""CNN baseline (the "CNN" row in Tables 3/4): the convolutional half of the
-BiLSTM-CNN model in notebooks/legacy/bilstm_cnn_prototype.ipynb, with the
-BiLSTM branch removed -- trainable word embeddings -> parallel Conv1d(k=2,3,4)
--> global max/average pooling -> concat -> one 4-way softmax head per category
-(NONE / positive / neutral / negative), trained jointly with summed per-category
-cross-entropy. Reimplemented in PyTorch (the prototype used Keras/TF) to match
-the rest of this repo's stack and CLI conventions (train_mtl_acsa_v2.py).
+"""CNN and BiLSTM-CNN baselines (the "CNN" and "BiLSTM-CNN" rows in Tables 3/4),
+both from notebooks/legacy/bilstm_cnn_prototype.ipynb: trainable word
+embeddings -> (optionally, --use_bilstm, a BiLSTM(256) over the embedding
+sequence, as in the prototype) -> parallel Conv1d(k=2,3,4) -> global max/average
+pooling -> concat -> one 4-way softmax head per category (NONE / positive /
+neutral / negative), trained jointly with summed per-category cross-entropy.
+Reimplemented in PyTorch (the prototype used Keras/TF) to match the rest of
+this repo's stack and CLI conventions (train_mtl_acsa_v2.py). Without
+--use_bilstm this is the "CNN" row (BiLSTM branch removed); with it, this is
+the "BiLSTM-CNN" row (same architecture as the prototype).
 
 Multi-seed: pass --seeds "42,123,2024" to train 3 independent runs and report
 best-of-3 test F1, matching the reporting convention used everywhere else in
 the paper (Section 4.3 / Tables 3-4).
 
-Example:
+Examples:
     python3 baselines/cnn_baseline.py \\
         --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt \\
         --test_path Beauty_ABSA/Test.txt --output_dir outputs/cnn_beauty \\
+        --seeds 42,123,2024
+
+    python3 baselines/cnn_baseline.py --use_bilstm \\
+        --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt \\
+        --test_path Beauty_ABSA/Test.txt --output_dir outputs/bilstm_cnn_beauty \\
         --seeds 42,123,2024
 """
 
@@ -95,12 +103,28 @@ class ACSADataset(Dataset):
 
 
 class CNNBaseline(nn.Module):
-    def __init__(self, vocab_size: int, num_categories: int, emb_dim: int = 300, num_filters: int = 128, dropout: float = 0.5):
+    def __init__(
+        self,
+        vocab_size: int,
+        num_categories: int,
+        emb_dim: int = 300,
+        num_filters: int = 128,
+        dropout: float = 0.5,
+        use_bilstm: bool = False,
+        lstm_hidden: int = 256,
+    ):
         super().__init__()
         self.embedding = nn.Embedding(vocab_size, emb_dim, padding_idx=0)
         self.spatial_dropout = nn.Dropout2d(dropout)
+        self.use_bilstm = use_bilstm
+        if use_bilstm:
+            self.bilstm = nn.LSTM(emb_dim, lstm_hidden, batch_first=True, bidirectional=True)
+            conv_in_dim = lstm_hidden * 2
+        else:
+            self.bilstm = None
+            conv_in_dim = emb_dim
         self.convs = nn.ModuleList(
-            [nn.Conv1d(emb_dim, num_filters, kernel_size=k, padding=k // 2) for k in (2, 3, 4)]
+            [nn.Conv1d(conv_in_dim, num_filters, kernel_size=k, padding=k // 2) for k in (2, 3, 4)]
         )
         pooled_dim = num_filters * 2 * len(self.convs)  # max + avg pool per conv branch
         self.dropout = nn.Dropout(dropout)
@@ -110,6 +134,8 @@ class CNNBaseline(nn.Module):
         emb = self.embedding(x)  # (B, T, C)
         emb = emb.unsqueeze(1)  # (B, 1, T, C) so Dropout2d drops whole embedding channels
         emb = self.spatial_dropout(emb).squeeze(1)  # (B, T, C)
+        if self.use_bilstm:
+            emb, _ = self.bilstm(emb)  # (B, T, 2*lstm_hidden)
         emb = emb.transpose(1, 2)  # (B, C, T) for Conv1d
         pooled = []
         for conv in self.convs:
@@ -136,7 +162,7 @@ def train_one_seed(
     dev_loader = DataLoader(dev_ds, batch_size=args.eval_batch_size)
     test_loader = DataLoader(test_ds, batch_size=args.eval_batch_size)
 
-    model = CNNBaseline(len(vocab), len(categories), dropout=args.dropout).to(device)
+    model = CNNBaseline(len(vocab), len(categories), dropout=args.dropout, use_bilstm=args.use_bilstm).to(device)
     optimizer = torch.optim.RAdam(model.parameters(), lr=args.learning_rate)
 
     def run_eval(loader: DataLoader, examples: List[Example]) -> Tuple[Dict[str, float], List[List[Tuple[str, str]]]]:
@@ -218,11 +244,12 @@ def run(args: argparse.Namespace) -> None:
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Pure-CNN (BiLSTM branch removed) ACSA baseline")
+    p = argparse.ArgumentParser(description="CNN / BiLSTM-CNN ACSA baseline (pass --use_bilstm for the BiLSTM-CNN row)")
     p.add_argument("--train_path", type=str, required=True)
     p.add_argument("--dev_path", type=str, required=True)
     p.add_argument("--test_path", type=str, required=True)
     p.add_argument("--output_dir", type=str, required=True)
+    p.add_argument("--use_bilstm", action="store_true", help="Insert a BiLSTM(256) before the conv branches -- the 'BiLSTM-CNN' row instead of 'CNN'")
     p.add_argument("--seeds", type=str, default="42,123,2024")
     p.add_argument("--max_len", type=int, default=120)
     p.add_argument("--min_freq", type=int, default=2)

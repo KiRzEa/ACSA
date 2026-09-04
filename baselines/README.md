@@ -1,13 +1,14 @@
 # baselines/
 
-Clean, script-based (not notebook) implementations of every non-architecture
-row in Tables 3/4 of the paper -- SVM, CNN, BERT-based, and instruction-tuned
+Clean, script-based (not notebook) implementations of every row in Tables 3/4
+that isn't our own architecture or a specific external paper's unreproducible
+numbers -- SVM, CNN, BiLSTM-CNN, BERT-based, and instruction-tuned
 small-language-model baselines -- generalized to run on any of the 5 domains'
-`Train.txt`/`Dev.txt`/`Test.txt` block-format data. All four scripts write
-the same `test_predictions.jsonl` schema (`{"id", "text", "gold",
-"prediction"}`, compatible with `evaluate.py`'s per-category breakdown) and
-report the same joint micro-P/R/F1 metric (`common.micro_prf`) described in
-the paper's Evaluation Metrics section.
+`Train.txt`/`Dev.txt`/`Test.txt` block-format data. Every script writes the
+same `test_predictions.jsonl` schema (`{"id", "text", "gold", "prediction"}`,
+compatible with `evaluate.py`'s per-category breakdown) and reports the same
+joint micro-P/R/F1 metric (`common.micro_prf`) described in the paper's
+Evaluation Metrics section.
 
 Each script is ported from one of the prototype notebooks in
 `notebooks/legacy/`, generalized from whichever single domain/taxonomy the
@@ -19,15 +20,29 @@ this project's earlier scattered notebook environments (Colab + TF/Keras +
 
 | Script | Table row(s) | Ported from | Needs GPU? |
 |---|---|---|---|
-| `svm_tfidf_baseline.py` | SVM (Statistics) | `notebooks/legacy/` `baseline_method_paper.pdf` method (TF-IDF + linear SVM) | No -- CPU, seconds |
-| `cnn_baseline.py` | CNN (Statistics) | `bilstm_cnn_prototype.ipynb`, BiLSTM branch removed | Yes (fast) |
-| `bert_baseline.py` | PhoBERT / Ensemble BERTs | `bert_baseline_prototype.ipynb` | Yes |
-| `t5_instruction_tuning.py` | NL/Code Instruction-Vi/En (4 rows) | `t5_quadruplet_acos_prototype.ipynb` + `t5_instruction_prototype.ipynb` | Yes |
+| `svm_tfidf_baseline.py` | SVM | `baseline_method_paper.pdf` method (TF-IDF + linear SVM) | No -- CPU, seconds |
+| `cnn_baseline.py` | CNN | `bilstm_cnn_prototype.ipynb`, BiLSTM branch removed | Yes (fast) |
+| `cnn_baseline.py --use_bilstm` | BiLSTM-CNN | `bilstm_cnn_prototype.ipynb`, unmodified architecture | Yes |
+| `bert_baseline.py` | XLM-R / PhoBERT / Ensemble BERTs | `bert_baseline_prototype.ipynb` | Yes |
+| `t5_seq2seq_baseline.py` | mT5-large / viT5-large / viT5-base ("T5-based Models") | `t5_instruction_prototype.ipynb`'s `simpletransformers.T5Model` "csc" task | Yes |
+| `t5_instruction_tuning.py` | NL/Code Instruction-Vi/En (4 rows, "Instruction Tuning with Small Language Models") | `t5_quadruplet_acos_prototype.ipynb` + `t5_instruction_prototype.ipynb` | Yes |
 
-All four were smoke-tested end-to-end locally (real run on real data for the
-CPU-only SVM script; tiny-model/short-epoch runs for the other three, to
-validate the data pipeline, training loop, and prediction parsing without a
-GPU) before being handed off for full training.
+Every one of these was smoke-tested end-to-end locally (real run on real data
+for the CPU-only SVM script; tiny-model/short-epoch runs for the rest, using
+the *real* default checkpoints -- `vinai/phobert-base-v2`, `xlm-roberta-base`,
+`Salesforce/codet5-base`, `VietAI/vit5-base` -- to validate the data
+pipeline, training loop, and prediction parsing without a full GPU run)
+before being handed off for full training.
+
+**T5-based vs. Instruction Tuning -- what's actually different**: `t5_seq2seq_baseline.py`
+passes the model *only the review*, trained purely on (review -> category +
+sentiment) pairs with no instruction text at all (`"csc: " + review ->
+"CATEGORY: polarity; ..."`); `t5_instruction_tuning.py` wraps the review in
+one of 4 explicit instruction prompts (code-style or natural-language, in
+Vietnamese or English) telling the model what to extract and how to format
+the answer. Same underlying seq2seq mechanics, genuinely different training
+signal -- that's why they're separate row groups in the table, and separate
+scripts here.
 
 ## Why these rows, and not others
 
@@ -35,19 +50,16 @@ GPU) before being handed off for full training.
   (published prior work for the statistics-based rows, our own earlier runs
   for BERT-based/T5-based/instruction-tuned) -- nothing here needs re-running
   for those three domains.
-- Education's statistics-based row already has real published numbers
-  (TNUJST5101, the dataset's own paper) -- only its BERT-based and
-  instruction-tuned rows are pending.
+- Education's SVM/CNN/BiLSTM-CNN rows already have real published numbers
+  (TNUJST5101, the dataset's own paper) -- only its BERT-based, T5-based, and
+  instruction-tuned rows are pending; `run_baselines_education.sh` does not
+  run `svm_tfidf_baseline.py` or `cnn_baseline.py` for this reason.
 - Beauty has no prior published baseline on this exact joint micro-F1 metric
   at all (`docs/references/beauty_dataset_paper.pdf`'s BiGRU+Conv1D result
   is on a different label space -- separate aspect-detection/sentiment F1,
   not joint (category, polarity) F1, and a different 7-aspect single-label
-  lipstick taxonomy) -- every row is pending for Beauty.
-- The T5-based rows (`viT5_large`/`viT5_base`) in both tables are a specific
-  external paper's (`van2023aspect`) numbers, not something we can
-  faithfully reproduce without their exact model/code, so they stay `--`
-  for Education/Beauty; only the *our-own* "Instruction Tuning with Small
-  Language Models" row group is filled in here.
+  lipstick taxonomy) -- every row is pending for Beauty, including SVM/CNN/
+  BiLSTM-CNN.
 
 ## Running
 
@@ -87,12 +99,16 @@ variant on Education:
 python3 baselines/t5_instruction_tuning.py \
     --domain "university course evaluation" --format nl --lang vi \
     --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt \
-    --output_dir outputs/t5_education_nl_vi --seeds 42,123,2024
+    --output_dir outputs/t5_education_nl_vi --seeds 42
 ```
 
-`--seeds "42,123,2024"` trains 3 independent runs and reports best-of-3 test
-F1 in `multi_seed_summary.json`, the same reporting convention as every other
-result in the paper.
+`--seeds` accepts a comma-separated list and trains one independent run per
+seed, reporting best-of-N test F1 in `multi_seed_summary.json` -- the same
+mechanism the paper's other results use for best-of-3-seed reporting. Both
+orchestration scripts currently default to a single seed (`--seeds 42`) to
+keep the remaining Beauty/Education runs affordable; bump back to
+`"42,123,2024"` (in the script or on an individual command) if 3-seed
+numbers are wanted later.
 
 ## After training: pulling numbers into the paper
 
