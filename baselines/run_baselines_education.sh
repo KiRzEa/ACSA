@@ -31,6 +31,14 @@ skip_if_exists() {
     return 1
 }
 
+# BERT-based (PhoBERT/XLM-R/Ensemble BERTs) already completed in an earlier
+# session and its numbers are already written into Table 4 of the paper
+# (PhoBERT: 86.32/81.19/83.67, XLM-R: 82.26/80.36/81.30, Ensemble BERTs:
+# 87.05/83.17/85.06) -- skipped here so a fresh Kaggle session (which starts
+# with an empty outputs/, so skip_if_exists can't detect prior local runs)
+# doesn't waste GPU time redoing already-recorded results. Flip to `true` to
+# re-run (e.g. to upgrade to 3-seed later).
+if false; then
 echo "[$(date '+%H:%M:%S')] === BERT-based: PhoBERT ==="
 out=outputs/bert_education_phobert
 skip_if_exists "$out/multi_seed_summary.json" || \
@@ -48,17 +56,22 @@ out=outputs/bert_education_ensemble
 skip_if_exists "$out/test_metrics.json" || \
 python3 baselines/bert_baseline.py --mode ensemble --test_path "$TEST" --output_dir "$out" \
     --checkpoints outputs/bert_education_phobert/best_model.pt outputs/bert_education_xlmr/best_model.pt
+fi
 
 echo "[$(date '+%H:%M:%S')] === T5-based: mT5-large / viT5-large / viT5-base ==="
 run_t5_seq2seq() {
-    local name="$1" model="$2"
+    local name="$1" model="$2"; shift 2
     local out="outputs/${name}_education"
     skip_if_exists "$out/multi_seed_summary.json" || \
     python3 baselines/t5_seq2seq_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
-        --output_dir "$out" --model_name "$model" --seeds 42
+        --output_dir "$out" --model_name "$model" --seeds 42 "$@"
 }
-run_t5_seq2seq mt5large  google/mt5-large
-run_t5_seq2seq vit5large VietAI/vit5-large
+# -large checkpoints (~800M-1.2B params) OOM'd on a ~15GB Kaggle GPU at the
+# default batch_size=8/eval_batch_size=16 -- shrink batch + accumulate
+# gradients (same effective batch size) + gradient checkpointing to fit.
+LARGE_MEM_ARGS=(--batch_size 2 --eval_batch_size 4 --gradient_accumulation_steps 4 --gradient_checkpointing)
+run_t5_seq2seq mt5large  google/mt5-large  "${LARGE_MEM_ARGS[@]}"
+run_t5_seq2seq vit5large VietAI/vit5-large "${LARGE_MEM_ARGS[@]}"
 run_t5_seq2seq vit5base  VietAI/vit5-base
 
 echo "[$(date '+%H:%M:%S')] === Instruction tuning: 4 variants ==="

@@ -124,6 +124,8 @@ def train_one_seed(train: List[Example], dev: List[Example], test: List[Example]
     set_seed(seed)
     tokenizer = AutoTokenizer.from_pretrained(args.model_name)
     model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name)
+    if args.gradient_checkpointing:
+        model.config.use_cache = False  # incompatible with gradient checkpointing; not needed anyway (predict_with_generate=False during training)
     if torch.cuda.is_available() and not args.cpu:
         model = model.to("cuda")
 
@@ -136,6 +138,8 @@ def train_one_seed(train: List[Example], dev: List[Example], test: List[Example]
         num_train_epochs=args.epochs,
         per_device_train_batch_size=args.batch_size,
         per_device_eval_batch_size=args.eval_batch_size,
+        gradient_accumulation_steps=args.gradient_accumulation_steps,
+        gradient_checkpointing=args.gradient_checkpointing,
         learning_rate=args.learning_rate,
         weight_decay=args.weight_decay,
         warmup_ratio=args.warmup_ratio,
@@ -210,6 +214,10 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--num_beams", type=int, default=4)
     p.add_argument("--batch_size", type=int, default=8)
     p.add_argument("--eval_batch_size", type=int, default=16)
+    p.add_argument("--gradient_accumulation_steps", type=int, default=1,
+                    help="Raise this (and lower --batch_size) to shrink peak memory for -large checkpoints while keeping the same effective batch size")
+    p.add_argument("--gradient_checkpointing", action="store_true",
+                    help="Trade compute for activation memory -- needed for mT5-large/viT5-large on a single ~15GB GPU")
     p.add_argument("--learning_rate", type=float, default=2e-5)
     p.add_argument("--weight_decay", type=float, default=0.01)
     p.add_argument("--warmup_ratio", type=float, default=0.1)
