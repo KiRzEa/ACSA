@@ -44,22 +44,22 @@ the answer. Same underlying seq2seq mechanics, genuinely different training
 signal -- that's why they're separate row groups in the table, and separate
 scripts here.
 
-## Why these rows, and not others
+## Status (updated as runs complete)
 
-- Restaurant/Hotel/Phone (Table 3) already have real numbers for every row
-  (published prior work for the statistics-based rows, our own earlier runs
-  for BERT-based/T5-based/instruction-tuned) -- nothing here needs re-running
-  for those three domains.
-- Education's SVM/CNN/BiLSTM-CNN rows already have real published numbers
-  (TNUJST5101, the dataset's own paper) -- only its BERT-based, T5-based, and
-  instruction-tuned rows are pending; `run_baselines_education.sh` does not
-  run `svm_tfidf_baseline.py` or `cnn_baseline.py` for this reason.
-- Beauty has no prior published baseline on this exact joint micro-F1 metric
-  at all (`docs/references/beauty_dataset_paper.pdf`'s BiGRU+Conv1D result
-  is on a different label space -- separate aspect-detection/sentiment F1,
-  not joint (category, polarity) F1, and a different 7-aspect single-label
-  lipstick taxonomy) -- every row is pending for Beauty, including SVM/CNN/
-  BiLSTM-CNN.
+- Restaurant/Hotel/Phone (Table 3): every row already has real numbers --
+  nothing here needs re-running for those three domains.
+- Education: Statistics rows (SVM/CNN/BiLSTM-CNN) are real published numbers
+  (TNUJST5101). BERT-based (PhoBERT/XLM-R/Ensemble BERTs) is done and in the
+  paper. Still pending: viT5-base, mT5-large, viT5-large, and all 4
+  instruction-tuning variants.
+- Beauty: no prior published baseline exists at all on this exact joint
+  micro-F1 metric (`docs/references/beauty_dataset_paper.pdf`'s BiGRU+Conv1D
+  result is on a different label space -- separate aspect-detection/
+  sentiment F1, not joint (category, polarity) F1, plus a different
+  7-aspect single-label lipstick taxonomy). SVM/CNN/BiLSTM-CNN, BERT-based
+  (PhoBERT/XLM-R/Ensemble BERTs), viT5-base, and 3 of 4 instruction-tuning
+  variants (Code-Vi/Code-En/NL-Vi) are done and in the paper. Still pending:
+  mT5-large, viT5-large, NL Instruction-En.
 
 ## Running
 
@@ -84,13 +84,26 @@ python3 baselines/svm_tfidf_baseline.py \
 ```
 
 Everything else needs a GPU. `run_baselines_beauty.sh` / `run_baselines_education.sh`
-run every pending row for that domain in one idempotent pass (skips any run
-whose summary file already exists, so re-running after a Kaggle session gets
-cut off at the 12h limit is always safe -- same pattern as
-`run_ablation_session1.sh`/`run_ablation_session2.sh` at the repo root):
+now cover only what's actually left (see Status above) -- each is idempotent
+(skips any run whose summary file already exists, so re-running after a
+Kaggle session gets cut off is safe within that same session):
 ```bash
 bash baselines/run_baselines_beauty.sh
 bash baselines/run_baselines_education.sh
+```
+
+`mT5-large` and `viT5-large` each have their own dedicated script per domain
+(`run_baselines_{beauty,education}_{mt5large,vit5large}.sh`) instead of
+living inside the main script -- each is a slow, both-GPUs-required
+`--device_map_auto` run (see `t5_seq2seq_baseline.py`), and running the two
+back-to-back in one session meant a crash in either one (OOM, disk, session
+timeout) could cost progress on both. Run each as its own separate Kaggle
+session:
+```bash
+bash baselines/run_baselines_beauty_mt5large.sh      # separate session
+bash baselines/run_baselines_beauty_vit5large.sh     # separate session
+bash baselines/run_baselines_education_mt5large.sh   # separate session
+bash baselines/run_baselines_education_vit5large.sh  # separate session
 ```
 
 Each individual script also runs standalone, e.g. one instruction-tuning

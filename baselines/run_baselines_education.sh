@@ -1,26 +1,24 @@
 #!/usr/bin/env bash
-# Education baselines for Table 4 -- Kaggle session (GPU, T4x2). Fills the
-# rows of Table 4 that are currently "--" for Education: T5-based (mT5-large
-# / viT5-large / viT5-base) and the 4 instruction-tuning variants. Education's
-# Statistics rows (SVM/CNN/BiLSTM-CNN) already have real published numbers
-# from the dataset's own paper (TNUJST5101); BERT-based (PhoBERT/XLM-R/
-# Ensemble BERTs) was already run and is already written into the paper
-# (PhoBERT: 86.32/81.19/83.67, XLM-R: 82.26/80.36/81.30, Ensemble BERTs:
-# 87.05/83.17/85.06) -- neither is re-run here.
+# Education baselines for Table 4 -- remainder only. BERT-based (PhoBERT/
+# XLM-R/Ensemble BERTs) is done and already recorded in the paper (PhoBERT:
+# 86.32/81.19/83.67, XLM-R: 82.26/80.36/81.30, Ensemble BERTs:
+# 87.05/83.17/85.06); Statistics rows (SVM/CNN/BiLSTM-CNN) have real
+# published numbers from the dataset's own paper (TNUJST5101). What's left:
+# viT5-base and all 4 instruction-tuning variants (none of Education's have
+# run yet). mT5-large and viT5-large each run in their own dedicated script
+# now (run_baselines_education_mt5large.sh /
+# run_baselines_education_vit5large.sh) -- run those as separate Kaggle
+# sessions, not alongside this one or each other, so a crash in one doesn't
+# cost progress on the other.
 #
-# Two ways this uses both GPUs: (1) models small enough for one GPU
-# (viT5-base, codet5-base) run two independent jobs at once, one pinned to
-# each GPU via CUDA_VISIBLE_DEVICES=0/1; (2) mT5-large/viT5-large are too big
-# for a single ~15GB T4 even alone, so those run with --device_map_auto,
-# which splits ONE model's layers across BOTH GPUs (real model parallelism,
-# not two separate jobs) -- see the LARGE_MEM_ARGS comment below.
+# viT5-base and the 4 instruction-tuning variants (using codet5-base/
+# viT5-base, both small enough for a single GPU) run two at a time, one
+# pinned to each GPU via CUDA_VISIBLE_DEVICES=0/1.
 #
-# Idempotent: each run is skipped if its summary file already exists, so
-# re-running this script (e.g. after a Kaggle session gets cut off) is safe
-# WITHIN the same session (a brand new session starts with an empty
-# outputs/, so this can't detect runs completed in a previous session --
-# tell me the results instead and I'll record them / comment the step out,
-# as already done for BERT-based above).
+# Idempotent: skipped if its summary file already exists, so re-running this
+# script is safe WITHIN the same session (a brand new session starts with an
+# empty outputs/, so this can't detect runs completed in a previous session
+# -- tell me the results instead and I'll record them / trim the script).
 set -uo pipefail
 cd "$(dirname "$0")/.." || exit 1
 
@@ -37,6 +35,19 @@ DOMAIN_NAME="university course evaluation"   # used inside T5 prompt text
 skip_if_exists() {
     [ -f "$1" ] && { echo "[$(date '+%H:%M:%S')] SKIP (already exists: $1)"; return 0; }
     return 1
+}
+
+# Called only at top-level, after a `wait` (i.e. nothing still running) --
+# each experiment re-downloads whatever checkpoint it needs, uses it, writes
+# its results, then this clears the HF cache before the next group starts,
+# trading a bit of re-download bandwidth for guaranteed disk headroom --
+# leaving caches around across a full session is what exhausted Kaggle's
+# disk ("No space left on device") in an earlier run. NEVER call this from
+# inside a backgrounded run_* job -- two parallel jobs share one cache dir,
+# and clearing it while the other is still mid-download would delete its
+# in-progress files out from under it.
+clear_hf_cache() {
+    rm -rf ~/.cache/huggingface/hub 2>/dev/null || true
 }
 
 run_t5_seq2seq() {
@@ -59,30 +70,17 @@ run_instruction() {
     echo "[$(date '+%H:%M:%S')] DONE  instruction $format/$lang"
 }
 
-# -large checkpoints (~800M-1.2B params) don't fit on a single ~15GB Kaggle
-# GPU at all -- AdamW's optimizer state for a ~1.2B-parameter model alone
-# already exceeds 15GB before any activations, so batch_size=1 doesn't save
-# it. --device_map_auto splits the model's layers across BOTH GPUs (real
-# model parallelism, not just "one job per GPU"), so these two must run
-# sequentially with neither GPU pinned via CUDA_VISIBLE_DEVICES -- each needs
-# both. gradient_checkpointing further trims activation memory on top of that.
-LARGE_MEM_ARGS=(--batch_size 2 --eval_batch_size 4 --gradient_checkpointing --device_map_auto)
-
-echo "[$(date '+%H:%M:%S')] === T5-based: mT5-large (both GPUs, model-parallel) ==="
-run_t5_seq2seq mt5large  google/mt5-large  "${LARGE_MEM_ARGS[@]}"
-
-echo "[$(date '+%H:%M:%S')] === T5-based: viT5-large (both GPUs, model-parallel) ==="
-run_t5_seq2seq vit5large VietAI/vit5-large "${LARGE_MEM_ARGS[@]}"
-
 echo "[$(date '+%H:%M:%S')] === T5-based: viT5-base + Instruction: group 1/3 (Code-Vi), parallel ==="
 CUDA_VISIBLE_DEVICES=0 run_t5_seq2seq vit5base VietAI/vit5-base &
 CUDA_VISIBLE_DEVICES=1 run_instruction code vi &
 wait
+clear_hf_cache
 
 echo "[$(date '+%H:%M:%S')] === Instruction tuning: group 2/3 (Code-En + NL-Vi, parallel) ==="
 CUDA_VISIBLE_DEVICES=0 run_instruction code en &
 CUDA_VISIBLE_DEVICES=1 run_instruction nl vi &
 wait
+clear_hf_cache
 
 echo "[$(date '+%H:%M:%S')] === Instruction tuning: group 3/3 (NL-En) ==="
 CUDA_VISIBLE_DEVICES=0 run_instruction nl en

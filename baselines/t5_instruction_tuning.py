@@ -237,6 +237,9 @@ def train_one_seed(train: List[Example], dev: List[Example], test: List[Example]
         greater_is_better=False,
         predict_with_generate=False,
         logging_steps=50,
+        disable_tqdm=True,  # per-step progress bars bloat the Kaggle notebook's own autosaved JSON --
+        # contributed to a separate "No space left on device" failure (in papermill's autosave, not this
+        # script) on top of the checkpoint-disk issue BestModelTracker already fixes.
         seed=seed,
         report_to=[],
         fp16=torch.cuda.is_available() and not args.cpu,
