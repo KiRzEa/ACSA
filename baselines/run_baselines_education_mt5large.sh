@@ -30,7 +30,7 @@ echo "[$(date '+%H:%M:%S')] === T5-based: mT5-large (both GPUs, model-parallel) 
 # CUDA_VISIBLE_DEVICES to a single GPU, it needs both visible.
 python3 baselines/t5_seq2seq_baseline.py --train_path "$TRAIN" --dev_path "$DEV" --test_path "$TEST" \
     --output_dir "$OUT" --model_name google/mt5-large --seeds 42 \
-    --batch_size 8 --eval_batch_size 4 --epochs 3 --gradient_checkpointing --device_map_auto
+    --batch_size 8 --eval_batch_size 4 --epochs 5 --gradient_checkpointing --device_map_auto
 
 # Clear the HF model cache -- mT5-large alone caches ~10GB (both .bin and
 # .safetensors); leaving it around is what exhausted Kaggle's disk
