@@ -188,7 +188,16 @@ def train_one_seed(train: List[Example], dev: List[Example], test: List[Example]
         # script) on top of the checkpoint-disk issue BestModelTracker already fixes.
         seed=seed,
         report_to=[],
-        fp16=torch.cuda.is_available() and not args.cpu,
+        # T5-family models are numerically unstable in fp16 -- their internal
+        # activations routinely overflow fp16's narrow exponent range,
+        # producing exactly the "loss: 0.0, grad_norm: nan" collapse seen in
+        # a real run here (a well-documented HF/T5 issue). NEVER enable
+        # fp16 for this script. bf16 has fp32's exponent range so it doesn't
+        # have this problem, and is used instead whenever the GPU supports
+        # it (Ampere+); Kaggle's T4 (Turing) doesn't, so this falls back to
+        # plain fp32 there -- slower, but numerically correct.
+        bf16=torch.cuda.is_available() and not args.cpu and torch.cuda.is_bf16_supported(),
+        fp16=False,
         use_cpu=args.cpu,
     )
     tracker = BestModelTracker()
