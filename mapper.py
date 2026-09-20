@@ -415,3 +415,9 @@ def get_category_descriptions(categories, domain=None):
     if missing:
         raise ValueError(f"{domain}: no description for categories {missing}")
     return {c: CATEGORY_DESCRIPTIONS[domain][_resolve_key(domain, c)] for c in categories}
+
+
+def get_category_names(categories):
+    """Category-name text (no description), used by the 'name vs description' ablation.
+    Same rule the earlier runs applied to Hotel/Phone/Education/Beauty."""
+    return {c: c.replace("#", " ").replace("&", " và ") for c in categories}

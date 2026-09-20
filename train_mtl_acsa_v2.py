@@ -59,7 +59,7 @@ from torch.utils.data import DataLoader, Dataset
 from tqdm.auto import tqdm
 from transformers import AutoTokenizer, get_cosine_schedule_with_warmup
 from evaluate import evaluate_jsonl_per_category
-from mapper import get_category_descriptions
+from mapper import get_category_descriptions, get_category_names
 from model import CategoryConditionedMTL, GradNormBalancer
 
 # -----------------------------------------------------------------------------
@@ -956,7 +956,10 @@ def train(args: argparse.Namespace) -> None:
         collate_fn=collate,
     )
 
-    cat_desc = get_category_descriptions(categories, getattr(args, "domain", None))
+    if getattr(args, "category_text", "description") == "name":
+        cat_desc = get_category_names(categories)
+    else:
+        cat_desc = get_category_descriptions(categories, getattr(args, "domain", None))
     category_texts = [segmenter(cat_desc[cat]) for cat in categories]
     Path(args.output_dir).mkdir(parents=True, exist_ok=True)
     (Path(args.output_dir) / "category_texts.json").write_text(
@@ -1224,6 +1227,8 @@ def train(args: argparse.Namespace) -> None:
 # -----------------------------------------------------------------------------
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Category-conditioned multi-task ACSA trainer")
+    p.add_argument("--category_text", choices=["description", "name"], default="description",
+                   help="text used to build the category query: mapper description (default) or raw category name (ablation)")
     p.add_argument("--domain", type=str, default=None,
                    help="Restaurant|Hotel|Phone|Education|Beauty; inferred from categories if omitted")
     p.add_argument("--train_path", type=str, required=True)

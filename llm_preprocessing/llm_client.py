@@ -176,6 +176,7 @@ def _call_openai(system_prompt: str, user_prompt: str, model: str, temperature: 
     try:
         response = client.chat.completions.create(
             model=model,
+            store=False,  # do not store the completion in the OpenAI dashboard logs
             response_format={"type": "json_object"},
             messages=[
                 {"role": "system", "content": system_prompt},
