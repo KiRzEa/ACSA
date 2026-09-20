@@ -59,6 +59,7 @@ from torch.utils.data import DataLoader, Dataset
 from tqdm.auto import tqdm
 from transformers import AutoTokenizer, get_cosine_schedule_with_warmup
 from evaluate import evaluate_jsonl_per_category
+from mapper import get_category_descriptions
 from model import CategoryConditionedMTL, GradNormBalancer
 
 # -----------------------------------------------------------------------------
@@ -955,10 +956,11 @@ def train(args: argparse.Namespace) -> None:
         collate_fn=collate,
     )
 
-    category_texts = []
-    for cat in categories:
-        desc = CATEGORY_DESCRIPTIONS_VI.get(cat, cat.replace("#", " ").replace("&", " và "))
-        category_texts.append(segmenter(desc))
+    cat_desc = get_category_descriptions(categories, getattr(args, "domain", None))
+    category_texts = [segmenter(cat_desc[cat]) for cat in categories]
+    Path(args.output_dir).mkdir(parents=True, exist_ok=True)
+    (Path(args.output_dir) / "category_texts.json").write_text(
+        json.dumps(cat_desc, ensure_ascii=False, indent=2), encoding="utf-8")
 
     extra_vocab = None
     if args.extra_vocab_file:
@@ -1022,7 +1024,9 @@ def train(args: argparse.Namespace) -> None:
             num_batches=args.child_tuning_calib_batches, ratio=args.child_tuning_ratio,
         )
 
-    total_steps = args.epochs * max(1, len(train_loader))
+    accum = max(1, args.grad_accum_steps)
+    steps_per_epoch = max(1, -(-len(train_loader) // accum))  # optimizer steps per epoch
+    total_steps = args.epochs * steps_per_epoch
     warmup_steps = int(total_steps * args.warmup_ratio)
     scheduler = get_cosine_schedule_with_warmup(
         optimizer, num_warmup_steps=warmup_steps, num_training_steps=total_steps
@@ -1048,7 +1052,9 @@ def train(args: argparse.Namespace) -> None:
 
         for step, batch in enumerate(pbar, start=1):
             batch = move_batch_to_device(batch, device)
-            optimizer.zero_grad(set_to_none=True)
+            if (step - 1) % accum == 0:
+                optimizer.zero_grad(set_to_none=True)
+            do_update = (step % accum == 0) or (step == len(train_loader))
             if gradnorm_optimizer is not None:
                 gradnorm_optimizer.zero_grad(set_to_none=True)
 
@@ -1083,12 +1089,13 @@ def train(args: argparse.Namespace) -> None:
                 # not part of the 3-task GradNorm balance) -- added directly, same
                 # for both branches below.
                 total_loss = sum(w.detach() * loss for w, loss in zip(task_w, task_losses)) + aux_loss
-                total_loss.backward()
-                if child_masks is not None:
-                    apply_child_tuning_mask(model, child_masks)
-                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
-                optimizer.step()
-                scheduler.step()
+                (total_loss / accum).backward()
+                if do_update:
+                    if child_masks is not None:
+                        apply_child_tuning_mask(model, child_masks)
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                    optimizer.step()
+                    scheduler.step()
 
                 # The GradNorm objective updates only task weights.
                 gradnorm.raw_weights.grad = grad_w.detach()
@@ -1101,12 +1108,13 @@ def train(args: argparse.Namespace) -> None:
                     device=device,
                 )
                 total_loss = sum(w * loss for w, loss in zip(fixed, task_losses)) + aux_loss
-                total_loss.backward()
-                if child_masks is not None:
-                    apply_child_tuning_mask(model, child_masks)
-                torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
-                optimizer.step()
-                scheduler.step()
+                (total_loss / accum).backward()
+                if do_update:
+                    if child_masks is not None:
+                        apply_child_tuning_mask(model, child_masks)
+                    torch.nn.utils.clip_grad_norm_(model.parameters(), args.max_grad_norm)
+                    optimizer.step()
+                    scheduler.step()
                 display_w = fixed.detach().cpu().tolist()
 
             vals = [total_loss.item()] + [x.item() for x in task_losses]
@@ -1216,6 +1224,8 @@ def train(args: argparse.Namespace) -> None:
 # -----------------------------------------------------------------------------
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Category-conditioned multi-task ACSA trainer")
+    p.add_argument("--domain", type=str, default=None,
+                   help="Restaurant|Hotel|Phone|Education|Beauty; inferred from categories if omitted")
     p.add_argument("--train_path", type=str, required=True)
     p.add_argument("--dev_path", type=str, required=True)
     p.add_argument("--test_path", type=str, required=True)
@@ -1272,6 +1282,13 @@ def build_arg_parser() -> argparse.ArgumentParser:
 
     p.add_argument("--epochs", type=int, default=10)
     p.add_argument("--batch_size", type=int, default=12)
+    p.add_argument(
+        "--grad_accum_steps", type=int, default=1,
+        help="Accumulate gradients over this many micro-batches before each optimizer step, so the "
+        "effective batch size is batch_size * grad_accum_steps. Use 16 // batch_size to keep an "
+        "effective batch of 16 with batch_size 8 or 16. GradNorm task-weight updates still happen "
+        "once per micro-batch. Default 1 = original behavior.",
+    )
     p.add_argument("--eval_batch_size", type=int, default=32)
     p.add_argument("--encoder_lr", type=float, default=2e-5)
     p.add_argument("--head_lr", type=float, default=1e-4)

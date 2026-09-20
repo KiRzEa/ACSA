@@ -351,3 +351,67 @@ def load_pair_examples(domain, csv_path):
                 continue
             examples.append((str(i), text, labels))
     return examples, skipped
+
+
+# ---------------------------------------------------------------------------
+# Category text used to condition CAGE (shared by training / inference).
+# Education and Beauty data files use Vietnamese category names, while
+# CATEGORY_DESCRIPTIONS is keyed by English codes; this table bridges them.
+# ---------------------------------------------------------------------------
+DATA_NAME_TO_KEY = {
+    "Education": {
+        "Bài tập": "Exercise",
+        "Chương trình học": "Curriculum",
+        "Chấm điểm": "Grading",
+        "Cung cấp tài liệu": "Lecture Material",
+        "Hành vi": "Behavior",
+        "Kiến thức": "Knowledge",
+        "Kinh nghiệm": "Experience",
+        "Kỹ năng giảng dạy": "Teaching Skill",
+        "Nói chung": "General",
+        "Thiết bị dạy học": "Equipment",
+        "Đề xuất": "Suggestion",
+    },
+    "Beauty": {
+        "Bao bì": "packing",
+        "Giá tiền": "price",
+        "Kết cấu": "texture",
+        "Màu sắc": "colour",
+        "Mùi hương": "smell",
+        "Vấn đề khác": "others",
+        "Vận chuyển": "shipping",
+        "Độ bền màu": "stayingpower",
+    },
+}
+
+_DESCRIBED_DOMAINS = ("Restaurant", "Hotel", "Phone", "Education", "Beauty")
+
+
+def _resolve_key(domain, category):
+    key = DATA_NAME_TO_KEY.get(domain, {}).get(category, category)
+    return key if key in CATEGORY_DESCRIPTIONS[domain] else None
+
+
+def get_category_descriptions(categories, domain=None):
+    """Return {category_name_in_data: description} for every category.
+
+    domain: one of Restaurant/Hotel/Phone/Education/Beauty (case-insensitive);
+    if None it is inferred as the unique domain that resolves ALL categories.
+    Raises ValueError instead of silently falling back to the raw name.
+    """
+    categories = list(categories)
+    if domain is None:
+        hits = [d for d in _DESCRIBED_DOMAINS
+                if all(_resolve_key(d, c) for c in categories)]
+        if len(hits) != 1:
+            raise ValueError(f"cannot infer domain from categories (candidates: {hits}); pass --domain")
+        domain = hits[0]
+    else:
+        by_lower = {d.lower(): d for d in _DESCRIBED_DOMAINS}
+        if domain.lower() not in by_lower:
+            raise ValueError(f"unknown domain {domain!r}")
+        domain = by_lower[domain.lower()]
+    missing = [c for c in categories if not _resolve_key(domain, c)]
+    if missing:
+        raise ValueError(f"{domain}: no description for categories {missing}")
+    return {c: CATEGORY_DESCRIPTIONS[domain][_resolve_key(domain, c)] for c in categories}

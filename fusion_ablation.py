@@ -28,6 +28,7 @@ import torch.nn.functional as F
 from transformers import AutoTokenizer
 
 import train_mtl_acsa_v2 as T
+from mapper import get_category_descriptions
 from infer_v2 import _load_checkpoint, _resolve_extra_vocab, _build_loader
 
 logger = logging.getLogger("fusion_ablation")
@@ -75,10 +76,8 @@ def run(args: argparse.Namespace) -> None:
     tokenizer = AutoTokenizer.from_pretrained(train_args.model_name, use_fast=False)
     extra_vocab = _resolve_extra_vocab(checkpoint_path, train_args)
 
-    category_texts = [
-        segmenter(T.CATEGORY_DESCRIPTIONS_VI.get(c, c.replace("#", " ").replace("&", " và ")))
-        for c in categories
-    ]
+    _cd = get_category_descriptions(categories, getattr(train_args, "domain", None))
+    category_texts = [segmenter(_cd[c]) for c in categories]
     model = T.CategoryConditionedMTL(
         model_name=train_args.model_name, tokenizer=tokenizer, categories=categories,
         category_texts=category_texts, num_attention_heads=train_args.num_attention_heads,

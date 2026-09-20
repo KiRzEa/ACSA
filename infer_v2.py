@@ -30,6 +30,7 @@ from torch.utils.data import DataLoader
 from transformers import AutoTokenizer
 
 import train_mtl_acsa_v2 as T
+from mapper import get_category_descriptions
 from evaluate import evaluate_jsonl_per_category
 
 logger = logging.getLogger("infer_v2")
@@ -90,10 +91,8 @@ def run(args: argparse.Namespace) -> None:
     if extra_vocab:
         logger.info("Reconstructing extended vocab: %d tokens", len(extra_vocab))
 
-    category_texts = [
-        segmenter(T.CATEGORY_DESCRIPTIONS_VI.get(c, c.replace("#", " ").replace("&", " và ")))
-        for c in categories
-    ]
+    _cd = get_category_descriptions(categories, getattr(train_args, "domain", None))
+    category_texts = [segmenter(_cd[c]) for c in categories]
     model = T.CategoryConditionedMTL(
         model_name=train_args.model_name,
         tokenizer=tokenizer,

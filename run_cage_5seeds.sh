@@ -28,6 +28,14 @@ set -uo pipefail  # no -e: one failed run must not stop the rest
 MODEL=vinai/phobert-base-v2
 SEEDS="42,123,2024,7,99"   # first three match the earlier 3-seed runs
 
+# CAGE training protocol: 10 epochs and an
+# effective batch of 16 = BATCH x ACCUM, with BATCH 16 (default) or 8 if GPU
+# memory is tight: `BATCH=8 bash run_cage_5seeds.sh` -> ACCUM=2.
+BATCH="${BATCH:-16}"
+ACCUM=$((16 / BATCH))
+EPOCHS=10
+MAXLEN=256   # maximum review length in tokens (train_mtl_acsa_v2.py default is 160)
+
 data_dir() {
   case "$1" in
     restaurant) echo Res_ABSA ;;
@@ -54,7 +62,9 @@ run() {
   fi
   local cmd=(python3 train_mtl_acsa_v2.py
     --train_path "${d}/Train.txt" --dev_path "${d}/Dev.txt" --test_path "${d}/Test.txt"
-    --model_name "$MODEL" --seeds "$SEEDS" --output_dir "$out" "$@")
+    --model_name "$MODEL" --seeds "$SEEDS" --output_dir "$out" --domain "$domain"
+    --epochs "$EPOCHS" --batch_size "$BATCH" --grad_accum_steps "$ACCUM" \
+    --max_length "$MAXLEN" "$@")
   if [ "${DRY:-0}" = "1" ]; then
     printf '%q ' "${cmd[@]}"; echo; return
   fi
