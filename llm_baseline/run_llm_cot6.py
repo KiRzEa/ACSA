@@ -125,6 +125,7 @@ def main():
     ap.add_argument("--domain", required=True, choices=list(DATA))
     ap.add_argument("--limit", type=int, default=0)
     ap.add_argument("--workers", type=int, default=12)
+    ap.add_argument("--stop_after_tokens", type=int, default=0, help="budget guard: stop sending new requests once prompt+completion tokens of this run exceed the value (0 = off)")
     ap.add_argument("--rpm", type=int, default=0, help="cap on requests per minute (0 = unlimited); Azure Llama-3.3 free quota is 20 RPM / 20k TPM")
     ap.add_argument("--reasoning_effort", default="low", choices=["none", "minimal", "low", "medium", "high"])
     ap.add_argument("--price_in", type=float, default=None)
@@ -152,8 +153,12 @@ def main():
             if r.get("content") is not None:
                 done[(r["id"], r["order"])] = r
 
+    tokcount = {"n": 0}
+
     def call(e, order):
         last = None
+        if a.stop_after_tokens and tokcount["n"] > a.stop_after_tokens:
+            return {"id": e.sample_id, "order": order, "content": None, "error": "budget guard"}
         for attempt in range(8):
             try:
                 limiter.wait()
@@ -164,6 +169,7 @@ def main():
                 if not any(k in a.model.lower() for k in ("gpt-5", "o3", "o4")): kw["temperature"] = 0
                 u = None
                 resp = client.chat.completions.create(**kw); u = resp.usage
+                with lock: tokcount["n"] += u.prompt_tokens + u.completion_tokens
                 return {"id": e.sample_id, "order": order, "content": resp.choices[0].message.content,
                         "prompt_tokens": u.prompt_tokens, "completion_tokens": u.completion_tokens}
             except Exception as ex:

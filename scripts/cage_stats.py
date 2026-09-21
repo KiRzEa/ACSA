@@ -11,7 +11,8 @@ Reports (all micro-F1 in %, sample std ddof=1):
     fixed by more than 1 SD of fixed's dev F1; otherwise fixed (simpler, no extra parameters).
  3. fixed vs learned, paired by seed (test): mean difference, seeds where learned wins, paired two-sided t-test.
  4. name vs description (fixed fusion), paired by seed (test): same statistics.
- 5. design ablations gate_hard / gate_none / query_id (outputs/cage_abl_<abl>_<d>_fixed), paired vs CAGE fixed.
+ 5. ablations (gate_hard, gate_none, query_id, lw_fixed, acd_focal, acd_asl, child_tuning, heads*, adapter*;
+    outputs/cage_abl_<abl>_<d>_fixed), paired by seed vs CAGE fixed. See run_cage_ablation.sh.
  --latex DIR additionally writes DIR/tab_stability.tex, tab_selection.tex, tab_name_vs_desc.tex
 
 Usage: python3 scripts/cage_stats.py [--out_dir outputs] [--json paper/error_analysis/cage_5seed_stats.json] [--latex paper/tables]
@@ -113,7 +114,9 @@ def main():
               f"desc wins {pr['a_wins']}/{pr['n']}, paired p={pr['p_two_sided']:.3f}")
 
     print("\n4. DESIGN ABLATIONS vs CAGE (fixed fusion, description text; paired by seed, test)")
-    for abl in ("gate_hard", "gate_none", "query_id"):
+    order = ["gate_hard", "gate_none", "query_id", "lw_fixed", "acd_focal", "acd_asl", "child_tuning",
+             "heads2", "heads4", "heads12", "heads16", "heads24", "adapter64", "adapter96", "adapter256", "adapter384", "adapter512"]
+    for abl in order:
         for d in BEST_BASELINE:
             f, x = runs[d, "fixed"], load(a.out_dir, d, f"abl:{abl}")
             if not (f and x): continue
