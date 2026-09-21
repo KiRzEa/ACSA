@@ -275,7 +275,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--learning_rate", type=float, default=2e-5)
     p.add_argument("--weight_decay", type=float, default=0.01)
     p.add_argument("--warmup_ratio", type=float, default=0.1)
-    p.add_argument("--epochs", type=int, default=20)
+    p.add_argument("--epochs", type=int, default=10)
     p.add_argument("--patience", type=int, default=5)
     p.add_argument("--cpu", action="store_true")
     return p

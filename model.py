@@ -96,12 +96,23 @@ class CategoryConditionedMTL(nn.Module):
         entity_attribute_heads: bool = False,
         learned_fusion: bool = False,
         fusion_gate: bool = False,
+        gate_mode: str = "soft",
+        category_query: str = "text",
     ):
         super().__init__()
         self.categories = list(categories)
         self.entity_attribute_heads = entity_attribute_heads
         self.learned_fusion = learned_fusion
         self.fusion_gate = fusion_gate and learned_fusion
+        if gate_mode not in ("soft", "hard", "none"):
+            raise ValueError(f"gate_mode must be soft|hard|none, got {gate_mode!r}")
+        if category_query not in ("text", "id"):
+            raise ValueError(f"category_query must be text|id, got {category_query!r}")
+        # Ablation switches (defaults reproduce the main CAGE model):
+        #   gate_mode: ACD->sentiment interaction, soft (paper), hard 1[p>=0.5], or none (sentiment reads z)
+        #   category_query: text (description/name encoded by the shared PLM) or id (learned free embedding per category)
+        self.gate_mode = gate_mode
+        self.category_query = category_query
         self.encoder = AutoModel.from_pretrained(model_name)
         if extra_vocab:
             num_added = add_vocab_with_mean_init(self.encoder, tokenizer, extra_vocab)
@@ -128,6 +139,8 @@ class CategoryConditionedMTL(nn.Module):
         self.register_buffer("cat_input_ids", cat_enc["input_ids"], persistent=False)
         self.register_buffer("cat_attention_mask", cat_enc["attention_mask"], persistent=False)
 
+        if category_query == "id":
+            self.cat_id_embedding = nn.Embedding(len(self.categories), hidden)
         self.cat_query_proj = nn.Sequential(
             nn.Linear(hidden, hidden),
             nn.GELU(),
@@ -238,6 +251,8 @@ class CategoryConditionedMTL(nn.Module):
             self.raw_ea_gate_alpha = nn.Parameter(torch.tensor(0.0))
 
     def _encode_category_queries(self) -> torch.Tensor:
+        if self.category_query == "id":
+            return self.cat_query_proj(self.cat_id_embedding.weight)  # [K, D], no category text is used
         cat_out = self.encoder(
             input_ids=self.cat_input_ids,
             attention_mask=self.cat_attention_mask,
@@ -284,7 +299,12 @@ class CategoryConditionedMTL(nn.Module):
         # Soft gate: sentiment remains trainable even when ACD is uncertain/wrong.
         acd_prob = torch.sigmoid(acd_logits)
         alpha = torch.sigmoid(self.raw_gate_alpha)
-        sent_input = z * (1.0 + alpha * acd_prob.unsqueeze(-1))
+        if self.gate_mode == "soft":
+            sent_input = z * (1.0 + alpha * acd_prob.unsqueeze(-1))
+        elif self.gate_mode == "hard":
+            sent_input = z * (acd_prob >= 0.5).to(z.dtype).unsqueeze(-1)
+        else:  # none
+            sent_input = z
         sent_z = self.sent_adapter(sent_input)
         sent_logits = self.sent_head(sent_z)  # [B, K, 3]
 

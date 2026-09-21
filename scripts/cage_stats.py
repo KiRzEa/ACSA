@@ -11,6 +11,7 @@ Reports (all micro-F1 in %, sample std ddof=1):
     fixed by more than 1 SD of fixed's dev F1; otherwise fixed (simpler, no extra parameters).
  3. fixed vs learned, paired by seed (test): mean difference, seeds where learned wins, paired two-sided t-test.
  4. name vs description (fixed fusion), paired by seed (test): same statistics.
+ 5. design ablations gate_hard / gate_none / query_id (outputs/cage_abl_<abl>_<d>_fixed), paired vs CAGE fixed.
  --latex DIR additionally writes DIR/tab_stability.tex, tab_selection.tex, tab_name_vs_desc.tex
 
 Usage: python3 scripts/cage_stats.py [--out_dir outputs] [--json paper/error_analysis/cage_5seed_stats.json] [--latex paper/tables]
@@ -30,7 +31,12 @@ DISPLAY = {"restaurant": "Restaurant", "hotel": "Hotel", "phone": "Phone", "educ
 
 def load(out_dir, d, v):
     """{seed: {'test': F1, 'dev': F1}} in %, or None if the run is missing."""
-    base = Path(out_dir) / (f"cage_name_{d}_fixed" if v == "name" else f"cage_{d}_{v}")
+    if v == "name":
+        base = Path(out_dir) / f"cage_name_{d}_fixed"
+    elif v.startswith("abl:"):
+        base = Path(out_dir) / f"cage_abl_{v[4:]}_{d}_fixed"
+    else:
+        base = Path(out_dir) / f"cage_{d}_{v}"
     seeds = sorted(base.glob("seed_*"), key=lambda p: int(p.name.split("_")[1]))
     res = {}
     for s in seeds:
@@ -105,6 +111,17 @@ def main():
         R[f"name_vs_desc/{d}"] = {"desc_mean": fm, "desc_std": fs, "name_mean": nm, "name_std": ns, **pr}
         print(f"{d:11s} desc {fm:.2f}±{fs:.2f} | name {nm:.2f}±{ns:.2f} | desc-name {pr['mean_diff']:+.2f}, "
               f"desc wins {pr['a_wins']}/{pr['n']}, paired p={pr['p_two_sided']:.3f}")
+
+    print("\n4. DESIGN ABLATIONS vs CAGE (fixed fusion, description text; paired by seed, test)")
+    for abl in ("gate_hard", "gate_none", "query_id"):
+        for d in BEST_BASELINE:
+            f, x = runs[d, "fixed"], load(a.out_dir, d, f"abl:{abl}")
+            if not (f and x): continue
+            (fm, fs), (xm, xs) = ms([v["test"] for v in f.values()]), ms([v["test"] for v in x.values()])
+            pr = paired({sd: v["test"] for sd, v in f.items()}, {sd: v["test"] for sd, v in x.items()})
+            R[f"ablation/{abl}/{d}"] = {"cage_mean": fm, "cage_std": fs, "abl_mean": xm, "abl_std": xs, **pr}
+            print(f"{abl:10s}{d:11s} CAGE {fm:.2f}±{fs:.2f} | ablated {xm:.2f}±{xs:.2f} | CAGE-ablated {pr['mean_diff']:+.2f}, "
+                  f"CAGE wins {pr['a_wins']}/{pr['n']}, paired p={pr['p_two_sided']:.3f}")
 
     Path(a.json).parent.mkdir(parents=True, exist_ok=True)
     Path(a.json).write_text(json.dumps(R, indent=2, ensure_ascii=False, default=float))

@@ -1,5 +1,6 @@
 # Shared by run_cage_5seeds_description.sh and run_cage_5seeds_name.sh (source, do not run directly).
 # Expects: CATEGORY_TEXT (description|name), VARIANTS (e.g. "fixed learned"), OUT_PREFIX (e.g. cage).
+# Optional: EXTRA_ARGS (extra flags for train_mtl_acsa_v2.py, e.g. "--gate_mode hard").
 # Protocol (identical for both scripts): PhoBERT-base-v2, 5 seeds, 10 epochs, effective batch 16 = BATCH x ACCUM,
 # max length 256, default GradNorm / BCE-ACD / 8-head / 192-d adapter config. Only --category_text differs.
 set -uo pipefail
@@ -31,7 +32,7 @@ run_variant() {   # run_variant <domain> <variant: fixed|learned>
     --train_path "${d}/Train.txt" --dev_path "${d}/Dev.txt" --test_path "${d}/Test.txt"
     --model_name "$MODEL" --seeds "$SEEDS" --output_dir "$out" --domain "$domain"
     --category_text "$CATEGORY_TEXT"
-    --epochs "$EPOCHS" --batch_size "$BATCH" --grad_accum_steps "$ACCUM" --max_length "$MAXLEN" ${extra[@]+"${extra[@]}"})
+    --epochs "$EPOCHS" --batch_size "$BATCH" --grad_accum_steps "$ACCUM" --max_length "$MAXLEN" ${EXTRA_ARGS:-} ${extra[@]+"${extra[@]}"})
   if [ "${DRY:-0}" = "1" ]; then printf '%q ' "${cmd[@]}"; echo; return; fi
   echo "[$(date '+%H:%M:%S')] START ${domain}/${variant} (category_text=${CATEGORY_TEXT})"
   SECONDS=0

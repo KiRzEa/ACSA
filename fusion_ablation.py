@@ -86,6 +86,8 @@ def run(args: argparse.Namespace) -> None:
         category_texts=category_texts, num_attention_heads=train_args.num_attention_heads,
         adapter_dim=train_args.adapter_dim, dropout=train_args.dropout, gradient_checkpointing=False,
         extra_vocab=extra_vocab, entity_attribute_heads=getattr(train_args, "entity_attribute_heads", False),
+        gate_mode=getattr(train_args, "gate_mode", "soft"),
+        category_query=getattr(train_args, "category_query", "text"),
     )
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
     model.load_state_dict(checkpoint["model_state_dict"])

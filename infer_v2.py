@@ -111,6 +111,8 @@ def run(args: argparse.Namespace) -> None:
         entity_attribute_heads=getattr(train_args, "entity_attribute_heads", False),
         learned_fusion=getattr(train_args, "learned_fusion", False),
         fusion_gate=getattr(train_args, "fusion_gate", False),
+        gate_mode=getattr(train_args, "gate_mode", "soft"),
+        category_query=getattr(train_args, "category_query", "text"),
     )
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
     model.load_state_dict(checkpoint["model_state_dict"])

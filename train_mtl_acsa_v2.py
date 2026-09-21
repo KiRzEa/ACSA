@@ -991,6 +991,8 @@ def train(args: argparse.Namespace) -> None:
         entity_attribute_heads=args.entity_attribute_heads,
         learned_fusion=args.learned_fusion,
         fusion_gate=args.fusion_gate,
+        gate_mode=args.gate_mode,
+        category_query=args.category_query,
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
@@ -1227,6 +1229,11 @@ def train(args: argparse.Namespace) -> None:
 # -----------------------------------------------------------------------------
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Category-conditioned multi-task ACSA trainer")
+    p.add_argument("--no_resume", action="store_true", help="with --seeds: retrain every seed even if its metrics.json already exists")
+    p.add_argument("--gate_mode", choices=["soft", "hard", "none"], default="soft",
+                   help="ablation: how ACD gates the sentiment head input (soft = CAGE, hard = 1[p>=0.5], none = ungated)")
+    p.add_argument("--category_query", choices=["text", "id"], default="text",
+                   help="ablation: category query from encoded text (CAGE) or a learned free embedding per category")
     p.add_argument("--category_text", choices=["description", "name"], default="description",
                    help="text used to build the category query: mapper description (default) or raw category name (ablation)")
     p.add_argument("--domain", type=str, default=None,
@@ -1384,8 +1391,12 @@ def run(args: argparse.Namespace) -> None:
         run_args.seed = seed
         run_args.output_dir = str(base_output_dir / f"seed_{seed}")
         print(f"\n{'=' * 70}\n=== Seed {seed} ({i}/{len(seeds)}) ===\n{'=' * 70}")
-        train(run_args)
-        results = json.loads((Path(run_args.output_dir) / "metrics.json").read_text(encoding="utf-8"))
+        seed_dir = Path(run_args.output_dir)
+        if not getattr(args, "no_resume", False) and (seed_dir / "metrics.json").exists() and (seed_dir / "test_predictions.jsonl").exists():
+            print(f"Seed {seed}: finished run found in {seed_dir}, reusing it (pass --no_resume to retrain)")
+        else:
+            train(run_args)
+        results = json.loads((seed_dir / "metrics.json").read_text(encoding="utf-8"))
         all_test_metrics.append(results["test"])
 
     agg = aggregate_metrics(all_test_metrics)
