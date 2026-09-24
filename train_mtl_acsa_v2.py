@@ -707,6 +707,57 @@ def compute_metrics(
     return metrics, pred_joint
 
 
+@torch.no_grad()
+def run_query_substitution_eval(model, loader, device, threshold, categories, seed=0):
+    """Counterfactual query substitution on the test set.
+
+    The heads are shared across categories and queries never interact, so the category enters the model only
+    through its query q_c.  Slot c is re-evaluated with a substituted query (own / nearest / farthest other category
+    in the model's own query space / random other / mean of all queries / zero) and scored against slot c's gold
+    labels.  Returns per-category joint F1 per arm plus cos(q_c, q_nearest(c)).
+    """
+    model.eval()
+    own = model._encode_category_queries().detach()
+    K = own.size(0)
+    unit = F.normalize(own, dim=-1)
+    sim = unit @ unit.T
+    sim.fill_diagonal_(-2.0)
+    nn_idx = sim.argmax(dim=1)
+    far_sim = unit @ unit.T
+    far_sim.fill_diagonal_(2.0)
+    far_idx = far_sim.argmin(dim=1)
+    g = torch.Generator().manual_seed(seed)
+    rnd_idx = (torch.arange(K) + torch.randint(1, K, (K,), generator=g)) % K
+    arms = {
+        "own": own,
+        "nearest": own[nn_idx],
+        "farthest": own[far_idx],
+        "random": own[rnd_idx.to(own.device)],
+        "mean": own.mean(dim=0, keepdim=True).expand(K, -1).contiguous(),
+        "zero": torch.zeros_like(own),
+    }
+    original = model._encode_category_queries
+    out = {"categories": list(categories),
+           "cos_nearest": sim.max(dim=1).values.cpu().tolist(),
+           "nearest": [categories[i] for i in nn_idx.tolist()], "arms": {}}
+    try:
+        for name, q in arms.items():
+            model._encode_category_queries = lambda q=q: q
+            raw = collect_outputs(model, loader, device)
+            metrics, pred = compute_metrics(raw, threshold)
+            gold = raw["joint_labels"].astype(np.int64)
+            tp = ((pred == gold) & (gold > 0)).sum(0)
+            fp = ((pred > 0) & (pred != gold)).sum(0)
+            fn = ((gold > 0) & (pred != gold)).sum(0)
+            f1 = np.where(2 * tp + fp + fn > 0, 200.0 * tp / np.maximum(2 * tp + fp + fn, 1), 0.0)
+            out["arms"][name] = {"acsa_f1_micro": float(metrics["acsa_f1_micro"]), "acd_f1": float(metrics.get("acd_f1_micro", 0.0)),
+                                 "per_category_f1": f1.tolist(), "gold_pairs": (gold > 0).sum(0).tolist(),
+                                 "pred_pairs": (pred > 0).sum(0).tolist()}
+    finally:
+        model._encode_category_queries = original
+    return out
+
+
 def tune_threshold(raw: Dict[str, np.ndarray]) -> Tuple[float, Dict[str, float], np.ndarray]:
     best = (-1.0, 0.5, None, None)
     for threshold in np.arange(0.20, 0.81, 0.02):
@@ -1216,6 +1267,11 @@ def train(args: argparse.Namespace) -> None:
     report_path = output_dir / "test_report.txt"
     report_path.write_text(report_buffer.getvalue(), encoding="utf-8")
 
+    if args.query_swap_eval:
+        swap = run_query_substitution_eval(model, test_loader, device, best_threshold, categories, seed=args.seed)
+        (output_dir / "query_swap.json").write_text(json.dumps(swap, ensure_ascii=False, indent=2), encoding="utf-8")
+        print("query-substitution micro-F1: " + ", ".join(f"{k}={v['acsa_f1_micro']:.2f}" for k, v in swap["arms"].items()))
+
     print(
         f"[{output_dir.name}] best_epoch={best_epoch} "
         f"test_acsa_f1_micro={test_metrics['acsa_f1_micro']:.4f} "
@@ -1229,6 +1285,7 @@ def train(args: argparse.Namespace) -> None:
 # -----------------------------------------------------------------------------
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Category-conditioned multi-task ACSA trainer")
+    p.add_argument("--query_swap_eval", action="store_true", help="after testing, re-evaluate with substituted category queries (own/nearest/farthest/random/mean/zero) and write query_swap.json")
     p.add_argument("--no_resume", action="store_true", help="with --seeds: retrain every seed even if its metrics.json already exists")
     p.add_argument("--gate_mode", choices=["soft", "hard", "none"], default="soft",
                    help="ablation: how ACD gates the sentiment head input (soft = CAGE, hard = 1[p>=0.5], none = ungated)")
