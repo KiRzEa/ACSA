@@ -185,9 +185,10 @@ def cmd_run(args, _):
         rc = 0
         with open(logs / (job["id"].replace(":", "_") + ".log"), "w") as log:
             for c in job["cmds"]:
-                rc = subprocess.run(c, shell=True, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT).returncode
-                if rc != 0:
-                    break
+                if rc != 0 and not c.startswith("rm "):
+                    continue  # after a failure only the cleanup commands still run
+                r = subprocess.run(c, shell=True, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT).returncode
+                rc = rc or r
         minutes = (time.time() - start) / 60
         print(f"[{time.strftime('%H:%M:%S')}] {'DONE' if rc == 0 else 'FAIL'} {job['id']} ({minutes:.0f} min)", flush=True)
         finish(job, minutes, rc)
