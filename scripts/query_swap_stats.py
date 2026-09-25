@@ -3,7 +3,8 @@
 Arms re-evaluate every slot c with a substituted query: own (reference), nearest / farthest other category in the model's
 own query space, a random other category, the mean of all queries, or zero.  Reports, per domain, micro-F1 (%) of each arm
 (mean +- std over seeds), and a dose-response check: across categories, Spearman correlation between cos(q_c, q_nearest(c))
-and the F1 that slot c keeps when it is answered with its nearest neighbour's query (per-category F1 averaged over seeds).
+and the retention F1(nearest query) / F1(own query) of slot c (per-category F1 averaged over seeds).
+The pooled row mixes domains whose cosine scales differ, so read the per-domain rows first.
 Because the heads are shared and queries do not interact, substituting q_j for q_c reproduces category j's decision at slot c;
 the F1 against category c's gold is therefore a measure of how much c's decision is determined by (and distinct from) its query.
 Usage: python3 scripts/query_swap_stats.py [--prefix cage_qs] [--out_dir outputs] [--json paper/error_analysis/query_swap_stats.json]
@@ -37,9 +38,11 @@ def main():
             R[f"{d}/{arm}"] = {"mean": float(v.mean()), "std": float(sd), "values": v.tolist()}
             cells.append(f"{v.mean():7.2f}±{sd:4.2f}")
         cos = np.mean([r["cos_nearest"] for r in runs], axis=0)
-        f1n = np.mean([r["arms"]["nearest"]["per_category_f1"] for r in runs], axis=0)
+        own_f1 = np.mean([r["arms"]["own"]["per_category_f1"] for r in runs], axis=0)
+        nn_f1 = np.mean([r["arms"]["nearest"]["per_category_f1"] for r in runs], axis=0)
         gold = np.mean([r["arms"]["own"]["gold_pairs"] for r in runs], axis=0)
-        keep = gold >= 5
+        keep = (gold >= 5) & (own_f1 > 0)
+        f1n = np.where(own_f1 > 0, nn_f1 / np.maximum(own_f1, 1e-9), 0.0)  # retention: F1 with the nearest query / own F1
         rho, p = stats.spearmanr(cos[keep], f1n[keep]) if keep.sum() >= 4 else (float("nan"), float("nan"))
         R[f"{d}/dose_response"] = {"spearman": float(rho), "p": float(p), "n_categories": int(keep.sum())}
         pooled_x += cos[keep].tolist(); pooled_y += f1n[keep].tolist()

@@ -25,12 +25,12 @@ DOM = {  # data dir, domain phrase used inside instruction prompts
     "education": ("Education_ABSA", "university course evaluation"), "beauty": ("Beauty_ABSA", "beauty product")}
 ORDER = ["bert", "cnn", "t5base", "instr", "t5large"]
 # Unmeasured first guesses, minutes per (job) on one T4; large models use both GPUs.
-EST = {
-    "bert": {"restaurant": 28, "hotel": 28, "phone": 30, "education": 20, "beauty": 40},          # PhoBERT + XLM-R + ensemble
-    "cnn": {"beauty": 6},
-    "t5base": {"education": 55, "beauty": 150},
-    "instr": {"restaurant": 55, "hotel": 55, "phone": 60, "education": 35, "beauty": 100},
-    "t5large": {"mt5large/education": 130, "mt5large/beauty": 360, "vit5large/education": 90, "vit5large/beauty": 240},
+EST = {  # minutes per job; base-size numbers scaled from round 1 (BERT ~90 min, instruction ~100 min on Restaurant); large ones are guesses
+    "bert": {"restaurant": 90, "hotel": 90, "phone": 95, "education": 65, "beauty": 130},          # PhoBERT + XLM-R + ensemble
+    "cnn": {"beauty": 10},
+    "t5base": {"education": 110, "beauty": 300},
+    "instr": {"restaurant": 100, "hotel": 100, "phone": 108, "education": 65, "beauty": 180},
+    "t5large": {"mt5large/education": 300, "mt5large/beauty": 720, "vit5large/education": 200, "vit5large/beauty": 480},
 }
 
 
@@ -146,7 +146,7 @@ def cmd_list(args, jobs):
 
 def cmd_plan(args, jobs):
     sessions = pack_sessions(jobs, args.budget_hours * 60, args.gpus)
-    PLAN.write_text(json.dumps({"budget_hours": args.budget_hours, "gpus": args.gpus, "sessions": sessions,
+    PLAN.write_text(json.dumps({"round": args.round, "budget_hours": args.budget_hours, "gpus": args.gpus, "sessions": sessions,
                                 "jobs": {j["id"]: j for j in jobs}}, indent=1))
     print(f"{len(jobs)} jobs -> {len(sessions)} sessions of <= {args.budget_hours} h ({args.gpus} GPUs):")
     for i, s in enumerate(sessions, 1):
@@ -154,12 +154,17 @@ def cmd_plan(args, jobs):
         for jid in s["jobs"]:
             groups[jid.split(":")[0]] = groups.get(jid.split(":")[0], 0) + 1
         print(f"  session {i:2d}: ~{s['hours']:4.1f} h, {len(s['jobs']):3d} jobs {groups}")
+    for j in jobs:
+        if j["est_min"] > args.budget_hours * 60:
+            print(f"WARNING {j['id']}: estimated {j['est_min']/60:.1f} h > budget, it will be cut by the hard deadline; measure a smaller job first or change its settings")
     print("wrote", PLAN.relative_to(ROOT))
 
 
 def cmd_run(args, _):
     plan = json.loads(PLAN.read_text())
     ids = plan["sessions"][args.session - 1]["jobs"]
+    ids = sorted(ids, key=lambda i: plan["jobs"][i]["gpus"] != 2)  # both-GPU jobs first: they wait for idle GPUs otherwise
+    tag = f"queue_{plan.get('round', 'r1')}_s{args.session}"
     if args.dry_run:
         for jid in ids:
             j = plan["jobs"][jid]
@@ -175,7 +180,22 @@ def cmd_run(args, _):
         with lock:
             with open(ROOT / "outputs" / "_job_times.tsv", "a") as f:
                 f.write(f"{job['id']}\t{minutes:.1f}\t{rc}\n")
-        subprocess.run(["bash", "scripts/pack_results.sh", f"queue_s{args.session}"], cwd=ROOT, stdout=subprocess.DEVNULL)
+        subprocess.run(["bash", "scripts/pack_results.sh", tag], cwd=ROOT, stdout=subprocess.DEVNULL)
+
+    procs, stop = set(), threading.Event()
+
+    def watchdog():  # a notebook that hits Kaggle's 12 h wall is cancelled and its output may be lost: stop cleanly first
+        while not stop.is_set():
+            if time.time() - t0 > hard:
+                print(f"[{time.strftime('%H:%M:%S')}] HARD DEADLINE ({hard/3600:.2f} h): killing running jobs so the notebook can finish", flush=True)
+                stop.set()
+                for pr in list(procs):
+                    try:
+                        os.killpg(pr.pid, 9)
+                    except Exception:
+                        pass
+                return
+            time.sleep(10)
 
     def work(job, gpu):
         env = dict(os.environ)
@@ -187,16 +207,21 @@ def cmd_run(args, _):
             for c in job["cmds"]:
                 if rc != 0 and not c.startswith("rm "):
                     continue  # after a failure only the cleanup commands still run
-                r = subprocess.run(c, shell=True, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT).returncode
+                pr = subprocess.Popen(c, shell=True, cwd=ROOT, env=env, stdout=log, stderr=subprocess.STDOUT, start_new_session=True)
+                procs.add(pr)
+                r = pr.wait()
+                procs.discard(pr)
                 rc = rc or r
         minutes = (time.time() - start) / 60
         print(f"[{time.strftime('%H:%M:%S')}] {'DONE' if rc == 0 else 'FAIL'} {job['id']} ({minutes:.0f} min)", flush=True)
         finish(job, minutes, rc)
 
+    hard = budget + args.grace_hours * 3600
+    threading.Thread(target=watchdog, daemon=True).start()
     free_gpus = list(range(workers))
     for jid in ids:
         job = plan["jobs"][jid]
-        if time.time() - t0 + job["est_min"] * 60 > budget:
+        if stop.is_set() or time.time() - t0 + job["est_min"] * 60 > budget:
             deferred.append(jid); continue
         need = min(job["gpus"], workers)
         while True:  # wait until enough GPUs are free
@@ -212,6 +237,7 @@ def cmd_run(args, _):
         print(f"[{time.strftime('%H:%M:%S')}] START {jid} on GPU {gs}", flush=True)
     for t, _g in running:
         t.join()
+    stop.set()
     if deferred:
         print(f"{len(deferred)} jobs did not fit the budget and were left for the next session:", *deferred, sep="\n  ")
 
@@ -223,9 +249,14 @@ if __name__ == "__main__":
     ap.add_argument("--gpus", type=int, default=2)
     ap.add_argument("--session", type=int, default=1)
     ap.add_argument("--calibrate", default=None)
+    ap.add_argument("--round", default="r2", help="plan: tag put in the zip names (queue_<round>_s<N>.zip) so rounds do not overwrite each other")
+    ap.add_argument("--tag", action="store_true", help="print the zip tag of --session and exit")
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--grace-hours", type=float, default=0.75, help="run: hard-kill running jobs this long after --budget-hours")
     a = ap.parse_args()
-    if a.cmd == "run":
+    if a.cmd == "run" and a.tag:
+        print(f"queue_{json.loads(PLAN.read_text()).get('round', 'r1')}_s{a.session}")
+    elif a.cmd == "run":
         cmd_run(a, None)
     else:
         a.budget_hours = a.budget_hours or 10.5
