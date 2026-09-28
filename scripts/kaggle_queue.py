@@ -29,7 +29,8 @@ EST = {  # minutes per job; base-size numbers scaled from round 1 (BERT ~90 min,
     "bert": {"restaurant": 90, "hotel": 90, "phone": 95, "education": 65, "beauty": 130},          # PhoBERT + XLM-R + ensemble
     "cnn": {"beauty": 10},
     "t5base": {"education": 110, "beauty": 300},
-    "instr": {"restaurant": 100, "hotel": 100, "phone": 108, "education": 65, "beauty": 180},
+    "instr": {"nl": {"restaurant": 65, "hotel": 65, "phone": 62, "education": 45, "beauty": 120},          # measured: Phone NL ~60 min,
+              "code": {"restaurant": 150, "hotel": 150, "phone": 230, "education": 82, "beauty": 300}},  # Phone code 175-290, Education code 76-89
     "t5large": {"mt5large/education": 300, "mt5large/beauty": 720, "vit5large/education": 200, "vit5large/beauty": 480},
 }
 
@@ -91,7 +92,7 @@ def build_jobs(calib):
                     dirname = f"t5_{d}_{fmt}_{lang}"
                     if not seed_done(dirname, s):
                         out = f"outputs/{dirname}/seed_{s}"
-                        add("instr", f"{fmt}_{lang}", d, s, EST["instr"][d], 1,
+                        add("instr", f"{fmt}_{lang}", d, s, EST["instr"][fmt][d], 1,
                             [f"python3 baselines/t5_instruction_tuning.py --domain '{prompt_dom}' --format {fmt} --lang {lang} {tr} --output_dir {out} --seeds {s}"], [f"{out}/multi_seed_summary.json"])
     rank = {g: i for i, g in enumerate(ORDER)}
     jobs.sort(key=lambda j: (rank[j["group"]], j["seed"] != 42, list(DOM).index(j["domain"]), j["seed"]))
