@@ -1,23 +1,8 @@
 {
- "round": "r4",
+ "round": "r5",
  "budget_hours": 10.5,
  "gpus": 2,
  "sessions": [
-  {
-   "jobs": [
-    "instr:nl_en:phone:s42",
-    "instr:nl_en:hotel:s99",
-    "instr:code_vi:phone:s7",
-    "instr:nl_en:phone:s7",
-    "instr:code_vi:phone:s2024",
-    "instr:code_en:phone:s2024",
-    "instr:nl_vi:education:s7",
-    "instr:nl_en:education:s7",
-    "instr:nl_vi:beauty:s7",
-    "instr:nl_en:beauty:s7"
-   ],
-   "hours": 10.5
-  },
   {
    "jobs": [
     "instr:code_vi:beauty:s99",
@@ -32,30 +17,24 @@
     "instr:nl_vi:beauty:s2024",
     "instr:nl_en:beauty:s2024",
     "t5large:mt5large:education:s7",
-    "t5large:vit5large:education:s7"
-   ],
-   "hours": 10.3
-  },
-  {
-   "jobs": [
-    "t5large:mt5large:education:s99",
+    "t5large:vit5large:education:s7",
     "t5large:vit5large:education:s99"
    ],
-   "hours": 8.3
+   "hours": 10.4
   },
   {
    "jobs": [
     "t5large:mt5large:education:s123",
-    "t5large:vit5large:education:s123"
+    "t5large:vit5large:education:s123",
+    "t5large:mt5large:education:s2024"
    ],
-   "hours": 8.3
+   "hours": 8.1
   },
   {
    "jobs": [
-    "t5large:mt5large:education:s2024",
     "t5large:vit5large:education:s2024"
    ],
-   "hours": 8.3
+   "hours": 3.3
   },
   {
    "jobs": [
@@ -107,146 +86,6 @@
   }
  ],
  "jobs": {
-  "instr:nl_en:phone:s42": {
-   "id": "instr:nl_en:phone:s42",
-   "group": "instr",
-   "domain": "phone",
-   "seed": 42,
-   "gpus": 1,
-   "est_min": 62.449999999999996,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'mobile phone' --format nl --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/t5_phone_nl_en/seed_42 --seeds 42"
-   ],
-   "dirs": [
-    "outputs/t5_phone_nl_en/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:nl_en:hotel:s99": {
-   "id": "instr:nl_en:hotel:s99",
-   "group": "instr",
-   "domain": "hotel",
-   "seed": 99,
-   "gpus": 1,
-   "est_min": 65,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'hotel' --format nl --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/t5_hotel_nl_en/seed_99 --seeds 99"
-   ],
-   "dirs": [
-    "outputs/t5_hotel_nl_en/seed_99/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:phone:s7": {
-   "id": "instr:code_vi:phone:s7",
-   "group": "instr",
-   "domain": "phone",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 271.25,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/t5_phone_code_vi/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_phone_code_vi/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:nl_en:phone:s7": {
-   "id": "instr:nl_en:phone:s7",
-   "group": "instr",
-   "domain": "phone",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 62.449999999999996,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'mobile phone' --format nl --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/t5_phone_nl_en/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_phone_nl_en/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:phone:s2024": {
-   "id": "instr:code_vi:phone:s2024",
-   "group": "instr",
-   "domain": "phone",
-   "seed": 2024,
-   "gpus": 1,
-   "est_min": 271.25,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/t5_phone_code_vi/seed_2024 --seeds 2024"
-   ],
-   "dirs": [
-    "outputs/t5_phone_code_vi/seed_2024/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:phone:s2024": {
-   "id": "instr:code_en:phone:s2024",
-   "group": "instr",
-   "domain": "phone",
-   "seed": 2024,
-   "gpus": 1,
-   "est_min": 175.25,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'mobile phone' --format code --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/t5_phone_code_en/seed_2024 --seeds 2024"
-   ],
-   "dirs": [
-    "outputs/t5_phone_code_en/seed_2024/multi_seed_summary.json"
-   ]
-  },
-  "instr:nl_vi:education:s7": {
-   "id": "instr:nl_vi:education:s7",
-   "group": "instr",
-   "domain": "education",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 45,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_nl_vi/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_education_nl_vi/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:nl_en:education:s7": {
-   "id": "instr:nl_en:education:s7",
-   "group": "instr",
-   "domain": "education",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 45,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_nl_en/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_education_nl_en/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:nl_vi:beauty:s7": {
-   "id": "instr:nl_vi:beauty:s7",
-   "group": "instr",
-   "domain": "beauty",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 120,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_vi/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_beauty_nl_vi/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:nl_en:beauty:s7": {
-   "id": "instr:nl_en:beauty:s7",
-   "group": "instr",
-   "domain": "beauty",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 120,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_en/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_beauty_nl_en/seed_7/multi_seed_summary.json"
-   ]
-  },
   "instr:code_vi:beauty:s99": {
    "id": "instr:code_vi:beauty:s99",
    "group": "instr",
@@ -309,7 +148,7 @@
    "domain": "beauty",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 120,
+   "est_min": 79.0,
    "cmds": [
     "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_vi/seed_2024 --seeds 2024"
    ],
@@ -323,7 +162,7 @@
    "domain": "beauty",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 120,
+   "est_min": 81.5,
    "cmds": [
     "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_en/seed_2024 --seeds 2024"
    ],
@@ -337,7 +176,7 @@
    "domain": "education",
    "seed": 7,
    "gpus": 2,
-   "est_min": 300,
+   "est_min": 141.5,
    "cmds": [
     "python3 baselines/t5_seq2seq_baseline.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/mt5large_education/seed_7 --model_name google/mt5-large --seeds 7 --batch_size 8 --eval_batch_size 4 --epochs 10 --gradient_checkpointing --device_map_auto",
     "rm -rf ~/.cache/huggingface/hub"
@@ -361,21 +200,6 @@
     "outputs/vit5large_education/seed_7/multi_seed_summary.json"
    ]
   },
-  "t5large:mt5large:education:s99": {
-   "id": "t5large:mt5large:education:s99",
-   "group": "t5large",
-   "domain": "education",
-   "seed": 99,
-   "gpus": 2,
-   "est_min": 300,
-   "cmds": [
-    "python3 baselines/t5_seq2seq_baseline.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/mt5large_education/seed_99 --model_name google/mt5-large --seeds 99 --batch_size 8 --eval_batch_size 4 --epochs 10 --gradient_checkpointing --device_map_auto",
-    "rm -rf ~/.cache/huggingface/hub"
-   ],
-   "dirs": [
-    "outputs/mt5large_education/seed_99/multi_seed_summary.json"
-   ]
-  },
   "t5large:vit5large:education:s99": {
    "id": "t5large:vit5large:education:s99",
    "group": "t5large",
@@ -397,7 +221,7 @@
    "domain": "education",
    "seed": 123,
    "gpus": 2,
-   "est_min": 300,
+   "est_min": 141.5,
    "cmds": [
     "python3 baselines/t5_seq2seq_baseline.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/mt5large_education/seed_123 --model_name google/mt5-large --seeds 123 --batch_size 8 --eval_batch_size 4 --epochs 10 --gradient_checkpointing --device_map_auto",
     "rm -rf ~/.cache/huggingface/hub"
@@ -427,7 +251,7 @@
    "domain": "education",
    "seed": 2024,
    "gpus": 2,
-   "est_min": 300,
+   "est_min": 141.5,
    "cmds": [
     "python3 baselines/t5_seq2seq_baseline.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/mt5large_education/seed_2024 --model_name google/mt5-large --seeds 2024 --batch_size 8 --eval_batch_size 4 --epochs 10 --gradient_checkpointing --device_map_auto",
     "rm -rf ~/.cache/huggingface/hub"
