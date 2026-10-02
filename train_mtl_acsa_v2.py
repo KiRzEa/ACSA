@@ -217,10 +217,17 @@ def build_segmenter(name: str):
 # Dataset and collator
 # -----------------------------------------------------------------------------
 class ACSADataset(Dataset):
-    def __init__(self, examples: Sequence[Example], categories: Sequence[str]):
+    def __init__(self, examples: Sequence[Example], categories: Sequence[str], holdout_category: str | None = None):
         self.examples = list(examples)
         self.categories = list(categories)
         self.cat2idx = {cat: i for i, cat in enumerate(self.categories)}
+        # Zero-shot leave-one-category-out ablation (see run_cage_zeroshot.sh): when set, every
+        # example is stripped of this category's gold label as if it never occurred in training,
+        # by forcing its slot to the same "absent" pattern used for any category that genuinely
+        # doesn't occur in a given sentence. The category stays in `categories` (so the model
+        # still has a query row + dev/test can still score it) -- only its *positive* training
+        # signal is withheld. Pass this only for the train split; dev/test keep real gold.
+        self.holdout_idx = self.cat2idx[holdout_category] if holdout_category else None
 
     def __len__(self) -> int:
         return len(self.examples)
@@ -235,6 +242,8 @@ class ACSADataset(Dataset):
 
         for cat, polarity in ex.labels:
             c = self.cat2idx[cat]
+            if c == self.holdout_idx:
+                continue  # zero-shot ablation: withhold this category's training signal
             s = SENTIMENT2ID[polarity]
             acd[c] = 1.0
             sent[c] = s
@@ -969,15 +978,21 @@ def train(args: argparse.Namespace) -> None:
     test_examples = parse_dataset(args.test_path)
     categories = validate_categories(train_examples, dev_examples, test_examples)
 
+    holdout_category = getattr(args, "holdout_category", None) or None
+    if holdout_category and holdout_category not in categories:
+        raise ValueError(f"--holdout_category {holdout_category!r} not found in categories: {categories}")
+
     print_dataset_stats("train", train_examples)
     print_dataset_stats("dev", dev_examples)
     print_dataset_stats("test", test_examples)
     print("\nCategories:", categories)
+    if holdout_category:
+        print(f"Zero-shot ablation: withholding all '{holdout_category}' training labels (dev/test unaffected)")
 
     segmenter = build_segmenter(args.segmenter)
     tokenizer = AutoTokenizer.from_pretrained(args.model_name, use_fast=False)
 
-    train_ds = ACSADataset(train_examples, categories)
+    train_ds = ACSADataset(train_examples, categories, holdout_category=holdout_category)
     dev_ds = ACSADataset(dev_examples, categories)
     test_ds = ACSADataset(test_examples, categories)
 
@@ -1287,6 +1302,8 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Category-conditioned multi-task ACSA trainer")
     p.add_argument("--query_swap_eval", action="store_true", help="after testing, re-evaluate with substituted category queries (own/nearest/farthest/random/mean/zero) and write query_swap.json")
     p.add_argument("--no_resume", action="store_true", help="with --seeds: retrain every seed even if its metrics.json already exists")
+    p.add_argument("--holdout_category", type=str, default=None,
+                   help="zero-shot ablation (see run_cage_zeroshot.sh): withhold this category's training labels entirely (dev/test still scored on it)")
     p.add_argument("--gate_mode", choices=["soft", "hard", "none"], default="soft",
                    help="ablation: how ACD gates the sentiment head input (soft = CAGE, hard = 1[p>=0.5], none = ungated)")
     p.add_argument("--category_query", choices=["text", "id"], default="text",

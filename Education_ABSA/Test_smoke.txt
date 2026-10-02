@@ -1,0 +1,31 @@
+#1
+cần nhiều giờ thực hành hơn nữa vì chủ yếu được học lý thuyết , thời gian tiếp xúc thiết bị ít .
+{Nói chung, negative}, {Đề xuất, negative}
+
+#2
+giảng viên nhiệt tình , kết hợp truyền đạt nhiều kiến thức trong thực tiễn .
+{Kinh nghiệm, positive}, {Hành vi, positive}
+
+#3
+cách truyền đạt , sự tận tâm .
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#4
+thầy dạy hay và rất nhiệt tình .
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#5
+môn học nên cập nhật giáo trình mới liên tục , tài liệu học tập cũ , rất nhiều chỗ sai .
+{Cung cấp tài liệu, negative}, {Đề xuất, negative}
+
+#6
+giảng viên nghỉ phải thông báo cho sinh viên trước , vì môn học thầy luôn điểm danh nhưng thầy lại không lên lớp thường xuyên , bắt sinh viên phải chờ rồi ra về thường xuyên .
+{Đề xuất, negative}, {Hành vi, negative}
+
+#7
+thay đổi cách truyền đạt môn , thay vì giảng viên có giờ lên lớp giảng bài nhàm chán , sinh viên tiếp thu thụ động , ý kiến : giảng viên chia nhỏ nhóm học tập , mỗi buổi sẽ đưa chủ đề của bài hôm đó và giải thích cách làm việc , cho thời gian sinh viên làm việc nhóm với sự giám xác của giảng viên , sau đó bốc thăm cho từng nhóm lên trình bày , sau đó giảng viên nhận xét cho điểm .
+{Đề xuất, negative}, {Kỹ năng giảng dạy, negative}
+
+#8
+giảng viên giảng dạy nhiệt tình , phương pháp dạy hay , chỉ dẫn hiệu quả , bài tập làm nhiều .
+{Bài tập, positive}, {Hành vi, positive}, {Kỹ năng giảng dạy, positive}

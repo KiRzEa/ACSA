@@ -1,0 +1,31 @@
+#1
+thầy dạy tận tâm , truyền đạt tốt .
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#2
+cách trình bày ( giọng nói khó nghe ) , diễn đạt kiến thức chưa được tốt .
+{Hành vi, negative}, {Kỹ năng giảng dạy, negative}
+
+#3
+cô nhiệt tình , dạy dễ hiểu .
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#4
+thầy giảng dạy rất nhiệt tình , dễ hiểu .
+{Hành vi, positive}, {Kỹ năng giảng dạy, positive}
+
+#5
+giảng dễ hiểu , kỹ , có chút nghiêm khắc .
+{Hành vi, positive}, {Kỹ năng giảng dạy, positive}
+
+#6
+giảng dạy kỹ , hỗ trợ sinh viên .
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#7
+cô dễ thương dạy dễ hiểu và tạo cảm hứng học tập .
+{Hành vi, positive}, {Kỹ năng giảng dạy, positive}
+
+#8
+phòng wzjwz35 nhà trường nên thay máy chiếu mới , vì nó đã quá cũ và thường xuyên gặp vấn đề .
+{Đề xuất, negative}, {Thiết bị dạy học, negative}

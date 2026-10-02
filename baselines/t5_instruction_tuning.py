@@ -43,6 +43,7 @@ Example:
 from __future__ import annotations
 
 import argparse
+import difflib
 import logging
 import random
 import re
@@ -130,6 +131,36 @@ def build_target(fmt: str, lang: str, labels: List[Tuple[str, str]]) -> str:
         return "; ".join(pairs) if pairs else ("no aspects mentioned" if lang == "en" else "khong co khia canh nao duoc de cap")
 
 
+def canonicalize_category(raw: str, categories: List[str]) -> str:
+    """Map a generated category string back to the closest known category.
+
+    ViT5-base's SentencePiece vocabulary has no '#' token (it tokenizes to <unk>,
+    and generate_predictions' skip_special_tokens=True decode then drops it
+    entirely), so every category using this dataset's 'A#B' naming (Restaurant,
+    Hotel) comes back from the model with '#' silently missing, e.g.
+    'FOOD#QUALITY' -> 'FOODQUALITY'; CodeT5-base (the --format code checkpoint)
+    has '#' in-vocabulary and is unaffected. Try an exact match first, then a
+    match after stripping '#' from the canonical names (the observed failure
+    mode), then fall back to fuzzy matching for ordinary generation noise
+    (typos, spacing); if nothing matches well, return the raw string unchanged
+    so it is still scored as an error rather than silently coerced to a wrong
+    category.
+    """
+    raw = raw.strip()
+    if raw in categories:
+        return raw
+    stripped = {c.replace("#", ""): c for c in categories}
+    if raw in stripped:
+        return stripped[raw]
+    close = difflib.get_close_matches(raw, categories, n=1, cutoff=0.6)
+    if close:
+        return close[0]
+    close = difflib.get_close_matches(raw, list(stripped), n=1, cutoff=0.6)
+    if close:
+        return stripped[close[0]]
+    return raw
+
+
 def parse_prediction(fmt: str, lang: str, text: str) -> List[Tuple[str, str]]:
     if fmt == "code":
         return [(c.strip(), s.strip().lower()) for c, s in _CODE_PAIR_RE.findall(text)]
@@ -195,7 +226,7 @@ class BestModelTracker(TrainerCallback):
 
 
 @torch.no_grad()
-def generate_predictions(model, tokenizer, examples: List[Example], args: argparse.Namespace, device: torch.device) -> List[List[Tuple[str, str]]]:
+def generate_predictions(model, tokenizer, examples: List[Example], args: argparse.Namespace, device: torch.device, categories: List[str]) -> List[List[Tuple[str, str]]]:
     model.eval()
     device = next(model.parameters()).device  # Trainer may have placed the model on a device
     # (e.g. MPS) that --cpu / the caller's own cuda-availability check didn't anticipate.
@@ -207,11 +238,12 @@ def generate_predictions(model, tokenizer, examples: List[Example], args: argpar
         out = model.generate(**enc, max_new_tokens=args.max_target_length, num_beams=args.num_beams)
         decoded = tokenizer.batch_decode(out, skip_special_tokens=True)
         for text in decoded:
-            predictions.append(parse_prediction(args.format, args.lang, text))
+            pairs = parse_prediction(args.format, args.lang, text)
+            predictions.append([(canonicalize_category(c, categories), s) for c, s in pairs])
     return predictions
 
 
-def train_one_seed(train: List[Example], dev: List[Example], test: List[Example], args: argparse.Namespace, seed: int, run_dir: Path):
+def train_one_seed(train: List[Example], dev: List[Example], test: List[Example], args: argparse.Namespace, seed: int, run_dir: Path, categories: List[str]):
     set_seed(seed)
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
 
@@ -269,7 +301,7 @@ def train_one_seed(train: List[Example], dev: List[Example], test: List[Example]
         model.load_state_dict(tracker.best_state)
         logger.info("[seed %d] loaded best epoch (eval_loss=%.4f) from CPU RAM", seed, tracker.best_metric)
 
-    predictions = generate_predictions(model, tokenizer, test, args, device)
+    predictions = generate_predictions(model, tokenizer, test, args, device, categories)
     metrics = micro_prf([ex.labels for ex in test], predictions)
     return metrics, predictions
 
@@ -281,12 +313,13 @@ def run(args: argparse.Namespace) -> None:
     logger.info("Loaded %d train / %d dev / %d test examples (domain=%s, format=%s, lang=%s)",
                 len(train), len(dev), len(test), args.domain, args.format, args.lang)
 
+    categories = infer_categories(train, dev, test)
     output_dir = Path(args.output_dir)
     seeds = [int(s) for s in args.seeds.split(",")]
     per_seed_results = []
     for seed in seeds:
         run_dir = output_dir / f"seed_{seed}" / "trainer_state"
-        metrics, predictions = train_one_seed(train, dev, test, args, seed, run_dir)
+        metrics, predictions = train_one_seed(train, dev, test, args, seed, run_dir, categories)
         logger.info("[seed %d] test P/R/F1: %.2f / %.2f / %.2f", seed, metrics["precision"], metrics["recall"], metrics["f1"])
         per_seed_results.append({"seed": seed, "metrics": metrics, "predictions": predictions})
 

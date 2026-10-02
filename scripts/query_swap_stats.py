@@ -44,7 +44,8 @@ def main():
         keep = (gold >= 5) & (own_f1 > 0)
         f1n = np.where(own_f1 > 0, nn_f1 / np.maximum(own_f1, 1e-9), 0.0)  # retention: F1 with the nearest query / own F1
         rho, p = stats.spearmanr(cos[keep], f1n[keep]) if keep.sum() >= 4 else (float("nan"), float("nan"))
-        R[f"{d}/dose_response"] = {"spearman": float(rho), "p": float(p), "n_categories": int(keep.sum())}
+        R[f"{d}/dose_response"] = {"spearman": float(rho), "p": float(p), "n_categories": int(keep.sum()),
+                                    "mean_retention": float(f1n[keep].mean()), "median_retention": float(np.median(f1n[keep]))}
         pooled_x += cos[keep].tolist(); pooled_y += f1n[keep].tolist()
         print(f"{d:11s}{len(runs):3d}" + "".join(f"{c:>14s}" for c in cells) + f"   rho={rho:+.2f} (p={p:.3f}, n={int(keep.sum())})")
     if len(pooled_x) >= 4:

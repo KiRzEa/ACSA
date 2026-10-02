@@ -1,0 +1,63 @@
+#1
+thầy liên hệ thực tiễn nhiều gây hứng thú cho sinh viên .
+{Kỹ năng giảng dạy, positive}, {Kinh nghiệm, positive}
+
+#2
+thầy tận tình , giảng dạy hay , có nhiều ví dụ thực tế cho sinh viên dễ hiểu .
+{Kinh nghiệm, positive}, {Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#3
+giảng viên tạo hoạt động cho lớp tốt , nhiệt tình , tiết học thú vị .
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#4
+em rất hài lòng về thầy , thầy rất tận tình giúp đỡ sinh viên , mọi thắc mắc luôn được trả lời đầy đủ .
+{Hành vi, positive}, {Nói chung, positive}
+
+#5
+cô dạy dễ hiểu , nhiệt tình .
+{Hành vi, positive}, {Kỹ năng giảng dạy, positive}
+
+#6
+thầy cho nhiều bài tập về nhà và có hướng dẫn giải .
+{Bài tập, positive}
+
+#7
+giáo viên dạy tận tâm , dễ hiểu , vui vẻ !
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#8
+thầy dạy hay , tận tình , gần gũi với học sinh .
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#9
+cuối kỳ 100% là bài tập , mà cơ bản thì mình không thấy thầy đứng lên trong lúc dạy lần nào , chỉ ngồi yên đó đọc slide thôi , slide tiếng anh , chỗ dịch tiếng việt , chỗ thì không dịch , cũng khó học , nên chỉ lên mạng học thôi .
+{Hành vi, negative}, {Cung cấp tài liệu, negative}
+
+#10
+sự nhiệt tình trả lời các câu hỏi của sinh viên , tài liệu được cung cấp đầy đủ rõ ràng .
+{Cung cấp tài liệu, positive}, {Hành vi, positive}
+
+#11
+thầy giảng rất chi tiết , rất nhiệt tình .
+{Hành vi, positive}, {Kỹ năng giảng dạy, positive}
+
+#12
+thầy dạy rất chuẩn và nhiệt tình , kèm theo thời gian tập luyện và nghỉ ngơi hợp lý !
+{Kỹ năng giảng dạy, positive}, {Hành vi, positive}
+
+#13
+tận tâm , cho nhiều bài tập .
+{Bài tập, positive}, {Hành vi, positive}
+
+#14
+phương pháp dạy của cô đạt hiệu quả với sinh viên yếu , kém nhưng lại nhàm chán , tốn khá nhiều thời gian cho sinh viên học mức khá giỏi trở lên , kiến thức mới ngoài giáo trình mạng lại chưa nhiều , gần như không .
+{Kỹ năng giảng dạy, negative}, {Kinh nghiệm, negative}
+
+#15
+cô giảng dạy nhiệt tình , cô bài tập trên courses nhiều dù có vắng mặt hay lơ là trong lúc học vẫn nắm được bài và học tốt .
+{Hành vi, positive}, {Bài tập, positive}
+
+#16
+giảng viên có khả năng truyền đạt , liên hệ thực tiễn giảng viên nhiệt tình , tận tâm .
+{Hành vi, positive}, {Kinh nghiệm, positive}, {Kỹ năng giảng dạy, positive}

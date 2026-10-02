@@ -97,6 +97,32 @@ def paired(a, b):
     return {"n": len(d), "mean_diff": float(d.mean()), "a_wins": int((d > 0).sum()), "t": float(t), "p_two_sided": float(p)}
 
 
+def ensemble_significance(out_dir):
+    """CAGE fixed/learned vs Ensemble BERTs, both as 5-seed distributions: Welch two-sample one-sided t-test
+    (unequal variance -- the two are independently trained architectures, not paired draws). This is the
+    significance test reported in Table 4/tab:main_results; unlike the old one-sample test against a single
+    baseline run, both sides now have real seed variance once Ensemble BERTs also has 5 seeds (outputs/bert_<d>_ensemble)."""
+    out = {}
+    for d in DISPLAY:
+        ens = baseline_f1_by_seed(out_dir, f"bert_{d}_ensemble", "pred")
+        if len(ens) != 5:
+            continue
+        ev = np.array(list(ens.values()))
+        for variant in ("fixed", "learned"):
+            cage = {}
+            for f in sorted(Path(out_dir, f"cage_{d}_{variant}").glob("seed_*/metrics.json")):
+                j = json.loads(f.read_text()); seed = int(f.parent.name.split("_")[1])
+                v = j["test"][KEY]; cage[seed] = v * 100 if v <= 1 else v
+            if len(cage) != 5:
+                continue
+            cv = np.array(list(cage.values()))
+            t, p = stats.ttest_ind(cv, ev, alternative="greater", equal_var=False)
+            out[f"{d}/{variant}"] = {"cage_mean": float(cv.mean()), "cage_std": float(cv.std(ddof=1)),
+                                     "ens_mean": float(ev.mean()), "ens_std": float(ev.std(ddof=1)),
+                                     "margin": float(cv.mean() - ev.mean()), "welch_t": float(t), "p_one_sided": float(p)}
+    return out
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out_dir", default="outputs")
@@ -173,6 +199,14 @@ def main():
                                            "welch_t": float(t), "welch_p_one_sided": float(p), **pr}
             print(f"{d:11s}{label:22s} n={len(b)} baseline {bm:.2f}±{bstd:.2f} | CAGE {cm:.2f}±{cstd:.2f} | diff {cm-bm:+.2f}, "
                   f"Welch one-sided p={p:.4f}, paired p={pr['p_two_sided']:.3f}, CAGE wins {pr['a_wins']}/{pr['n']}")
+
+    print("\n6. CAGE vs Ensemble BERTs, both 5-seed distributions (Welch two-sample one-sided t-test) -- Table 4 significance")
+    ens_sig = ensemble_significance(a.out_dir)
+    for k, v in ens_sig.items():
+        stars = "***" if v["p_one_sided"] <= 0.001 else "**" if v["p_one_sided"] < 0.01 else "*" if v["p_one_sided"] < 0.05 else "ns"
+        print(f"{k:20s} CAGE {v['cage_mean']:.2f}±{v['cage_std']:.2f} vs Ens {v['ens_mean']:.2f}±{v['ens_std']:.2f}  "
+              f"margin {v['margin']:+.2f}  p={v['p_one_sided']:.4f} {stars}")
+    R["ensemble_significance"] = ens_sig
 
     Path(a.json).parent.mkdir(parents=True, exist_ok=True)
     Path(a.json).write_text(json.dumps(R, indent=2, ensure_ascii=False, default=float))

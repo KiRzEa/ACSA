@@ -4,7 +4,8 @@ Question 1 (semantic overlap): do categories whose training usage overlaps more 
 Question 2 (rarity): does CAGE help rare categories more than frequent ones?
 
 Per-category joint F1 (pair = category + polarity): tp = category present in gold and pred with the same polarity;
-fp = predicted pair not matched; fn = gold pair not matched.  Gain = mean CAGE F1 over seeds - baseline F1.
+fp = predicted pair not matched; fn = gold pair not matched.  Gain = mean CAGE F1 over 5 seeds - mean baseline F1 over
+its own 5 seeds (outputs/bert_<d>_phobert/seed_*/, falling back to the flat single-run file if seeds are absent).
 Overlap of category c = max over c' != c of the cosine between the TF-IDF centroids of the training reviews that
 carry c and c' (model-free, measures how much two categories are used on the same kind of content).
 
@@ -40,6 +41,24 @@ def per_category_f1(path):
                 tp[c] + fn[c]) for c in cats}  # (F1, gold count)
 
 
+def per_category_f1_multiseed(out_dir, name):
+    """Mean per-category F1 over outputs/<name>/seed_*/test_predictions.jsonl, plus the flat
+    outputs/<name>/test_predictions.jsonl if present (the original seed-42 run predates the seed_* layout)."""
+    base = Path(out_dir) / name
+    files = sorted(base.glob("seed_*/test_predictions.jsonl"))
+    flat = base / "test_predictions.jsonl"
+    if flat.exists():
+        files.append(flat)
+    runs = [per_category_f1(f) for f in files]
+    cats = set().union(*(r.keys() for r in runs)) if runs else set()
+    out = {}
+    for c in cats:
+        f1s = [r[c][0] for r in runs if c in r]
+        gold = max(r[c][1] for r in runs if c in r)  # same test set every seed; max is robust to a seed missing a rare category
+        out[c] = (float(np.mean(f1s)), gold)
+    return out, len(files)
+
+
 def overlap_and_support(domain):
     train = parse_dataset(ROOT / DOMAINS[domain] / "Train.txt")
     docs = {}
@@ -58,16 +77,19 @@ def overlap_and_support(domain):
 
 def main():
     ap = argparse.ArgumentParser()
+    ap.add_argument("--out_dir", default="outputs")
     ap.add_argument("--cage", default="outputs/cage_{d}_fixed")
-    ap.add_argument("--baseline", default="outputs/bert_{d}_phobert")
+    ap.add_argument("--baseline", default="bert_{d}_phobert")
     ap.add_argument("--min_test", type=int, default=10)
     ap.add_argument("--json", default="paper/error_analysis/category_analysis.json")
     a = ap.parse_args()
     rows = []
     for d in DOMAINS:
-        base = per_category_f1(ROOT / a.baseline.format(d=d) / "test_predictions.jsonl")
+        base, n_base = per_category_f1_multiseed(a.out_dir, a.baseline.format(d=d))
+        assert n_base == 5, f"{d}: expected 5 baseline seeds, found {n_base} in {a.baseline.format(d=d)}"
         seeds = sorted((ROOT / a.cage.format(d=d)).glob("seed_*/test_predictions.jsonl"))
         runs = [per_category_f1(s) for s in seeds]
+        assert len(runs) == 5, f"{d}: expected 5 CAGE seeds, found {len(runs)}"
         ov = overlap_and_support(d)
         for c, (ovl, nb, ntr) in ov.items():
             if c not in base or base[c][1] < a.min_test:
