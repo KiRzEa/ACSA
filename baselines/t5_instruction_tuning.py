@@ -26,11 +26,14 @@ language:
   - nl+en:   a plain English instruction, target "CATEGORY is SENTIMENT; ...".
   - nl+vi:   a plain Vietnamese instruction, target "CATEGORY là SENTIMENT; ...".
 
-Default base model is Salesforce/codet5-base for --format code (matches the
-first prototype) and VietAI/vit5-base for --format nl (native Vietnamese
-SentencePiece vocabulary, tokenizes the Vietnamese review text far more
-efficiently than codet5-base's English/code vocabulary) -- override either
-with --model_name.
+Both formats default to VietAI/vit5-base (native Vietnamese SentencePiece
+vocabulary; the review text is always Vietnamese), so Code vs NL differs only in
+prompt/target linearization. Salesforce/codet5-base was used for --format code
+earlier but is pretrained on code + English only and was dropped. ViT5's vocabulary
+has no '{', '}', '=', '#' tokens (decoded as <unk>, then dropped), so the code
+target is a single brace-free list of tuples, e.g.
+    danh_sach_khia_canh_cam_xuc.extend([("FOOD#QUALITY", "positive")])
+Override the backbone with --model_name.
 
 Example:
     python3 baselines/t5_instruction_tuning.py \\
@@ -70,7 +73,7 @@ from common import Example, infer_categories, load_examples, micro_prf, write_me
 logger = logging.getLogger("t5_instruction_tuning")
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s", datefmt="%H:%M:%S")
 
-DEFAULT_MODEL = {"code": "Salesforce/codet5-base", "nl": "VietAI/vit5-base"}
+DEFAULT_MODEL = {"code": "VietAI/vit5-base", "nl": "VietAI/vit5-base"}
 
 CODE_TEMPLATE_EN = '''def extract_category_sentiment_list(review):
     """Extract (category, sentiment) pairs from a {domain} review. sentiment is one of: positive, neutral, negative."""
@@ -81,8 +84,7 @@ CODE_TEMPLATE_EN = '''def extract_category_sentiment_list(review):
 # Run an example
 review = "{review}"
 results = extract_category_sentiment_list(review)
-for pair in results:
-    print(f"category_sentiment_list.append({{pair}})")'''
+print("category_sentiment_list.extend(" + str(results) + ")")'''
 
 CODE_TEMPLATE_VI = '''def trich_xuat_danh_sach_khia_canh_cam_xuc(danh_gia):
     """Trich xuat cac cap (khia canh, cam xuc) tu mot danh gia {domain}. cam_xuc la mot trong: positive, neutral, negative."""
@@ -93,8 +95,7 @@ CODE_TEMPLATE_VI = '''def trich_xuat_danh_sach_khia_canh_cam_xuc(danh_gia):
 # Chay thu vi du
 danh_gia = "{review}"
 ket_qua = trich_xuat_danh_sach_khia_canh_cam_xuc(danh_gia)
-for cap in ket_qua:
-    print(f"danh_sach_khia_canh_cam_xuc.append({{cap}})")'''
+print("danh_sach_khia_canh_cam_xuc.extend(" + str(ket_qua) + ")")'''
 
 NL_TEMPLATE_EN = (
     'Extract every (category, sentiment) pair expressed in the following Vietnamese {domain} review, '
@@ -110,7 +111,7 @@ NL_TEMPLATE_VI = (
     "Tra loi:"
 )
 
-_CODE_PAIR_RE = re.compile(r'\{[^{}]*?"[^"]+"\s*:\s*"([^"]*)"\s*,\s*"[^"]+"\s*:\s*"([^"]*)"[^{}]*?\}')
+_CODE_PAIR_RE = re.compile(r'\(\s*"([^"]*)"\s*,\s*"([^"]*)"\s*\)')
 
 
 def build_prompt(fmt: str, lang: str, domain: str, review: str) -> str:
@@ -121,10 +122,9 @@ def build_prompt(fmt: str, lang: str, domain: str, review: str) -> str:
 
 def build_target(fmt: str, lang: str, labels: List[Tuple[str, str]]) -> str:
     if fmt == "code":
-        key1, key2 = ("category", "sentiment") if lang == "en" else ("khia_canh", "cam_xuc")
         list_name = "category_sentiment_list" if lang == "en" else "danh_sach_khia_canh_cam_xuc"
-        lines = [f'{list_name}.append({{"{key1}": "{c}", "{key2}": "{s}"}})' for c, s in labels]
-        return "\n".join(lines) if lines else f"{list_name} = []"
+        pairs = ", ".join(f'("{c}", "{s}")' for c, s in labels)
+        return f"{list_name}.extend([{pairs}])"
     else:
         joiner = " is " if lang == "en" else " la "
         pairs = [f"{c}{joiner}{s}" for c, s in labels]
@@ -138,8 +138,7 @@ def canonicalize_category(raw: str, categories: List[str]) -> str:
     and generate_predictions' skip_special_tokens=True decode then drops it
     entirely), so every category using this dataset's 'A#B' naming (Restaurant,
     Hotel) comes back from the model with '#' silently missing, e.g.
-    'FOOD#QUALITY' -> 'FOODQUALITY'; CodeT5-base (the --format code checkpoint)
-    has '#' in-vocabulary and is unaffected. Try an exact match first, then a
+    'FOOD#QUALITY' -> 'FOODQUALITY'. Try an exact match first, then a
     match after stripping '#' from the canonical names (the observed failure
     mode), then fall back to fuzzy matching for ordinary generation noise
     (typos, spacing); if nothing matches well, return the raw string unchanged
@@ -349,7 +348,7 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--dev_path", type=str, required=True)
     p.add_argument("--test_path", type=str, required=True)
     p.add_argument("--output_dir", type=str, required=True)
-    p.add_argument("--model_name", type=str, default=None, help="Overrides the format-based default (codet5-base for code, vit5-base for nl)")
+    p.add_argument("--model_name", type=str, default=None, help="Overrides the default backbone (vit5-base for both formats)")
     p.add_argument("--seeds", type=str, default="42,123,2024")
     p.add_argument("--max_source_length", type=int, default=256)
     p.add_argument("--max_target_length", type=int, default=200)

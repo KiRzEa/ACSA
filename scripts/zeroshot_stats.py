@@ -97,7 +97,8 @@ def main():
 
     print("\nBy tier (mean gap across domains, only combos where both sides are present)")
     for tier in ("most", "median", "rarest"):
-        gaps = [v["gap"] for k, v in R.items() if v["tier"] == tier]
+        gaps = [v["gap"] for k, v in R.items() if v.get("tier") == tier]  # .get: R also holds "by_tier/*"
+        # summary rows added by this same loop (no "tier" key), which R.items() sees once we mutate R below.
         if gaps:
             print(f"  {tier:8s} n={len(gaps)}  mean gap {np.mean(gaps):+.2f}  median {np.median(gaps):+.2f}")
             R[f"by_tier/{tier}"] = {"n": len(gaps), "mean_gap": float(np.mean(gaps)), "median_gap": float(np.median(gaps))}

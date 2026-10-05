@@ -30,7 +30,7 @@ EST = {  # minutes per job; base-size numbers scaled from round 1 (BERT ~90 min,
     "cnn": {"beauty": 10},
     "t5base": {"education": 110, "beauty": 300},
     "instr": {"nl": {"restaurant": 65, "hotel": 65, "phone": 62, "education": 45, "beauty": 120},          # measured: Phone NL ~60 min,
-              "code": {"restaurant": 150, "hotel": 150, "phone": 230, "education": 82, "beauty": 300}},  # Phone code 175-290, Education code 76-89
+              "code": {"restaurant": 100, "hotel": 100, "phone": 95, "education": 70, "beauty": 180}},  # ViT5-base now (CodeT5 dropped); ~1.5x NL, unmeasured
     "t5large": {"mt5large/education": 300, "mt5large/beauty": 440, "vit5large/education": 200, "vit5large/beauty": 180},  # beauty scaled from measured education time by train-set-size ratio (~3.2x), not yet measured directly
 }
 

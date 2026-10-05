@@ -22,3 +22,4 @@ outputs_llm/
 paper/
 *.pdf
 *.zip
+.foundry
