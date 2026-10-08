@@ -23,3 +23,5 @@ paper/
 *.pdf
 *.zip
 .foundry
+
+architecture_samples/

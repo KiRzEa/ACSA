@@ -1,503 +1,73 @@
 {
- "round": "r8",
+ "round": "r9",
  "budget_hours": 10.5,
  "gpus": 2,
  "sessions": [
   {
    "jobs": [
-    "instr:code_vi:education:s123",
-    "instr:code_en:education:s123",
-    "instr:code_vi:education:s2024",
-    "instr:code_en:education:s2024",
-    "instr:code_vi:beauty:s7",
-    "instr:code_en:beauty:s7",
-    "instr:code_vi:beauty:s99",
-    "instr:code_en:beauty:s99"
+    "instr:nl_vi:education:s42",
+    "instr:nl_en:education:s42",
+    "instr:nl_vi:beauty:s42",
+    "instr:nl_en:beauty:s42"
    ],
-   "hours": 7.3
-  },
-  {
-   "jobs": [
-    "instr:code_vi:restaurant:s42",
-    "instr:code_en:restaurant:s42",
-    "instr:code_vi:hotel:s42",
-    "instr:code_en:hotel:s42",
-    "instr:code_vi:phone:s42",
-    "instr:code_en:phone:s42",
-    "instr:code_vi:education:s42",
-    "instr:code_en:education:s42",
-    "instr:code_vi:beauty:s42",
-    "instr:code_en:beauty:s42",
-    "instr:code_vi:education:s7",
-    "instr:code_en:education:s7"
-   ],
-   "hours": 9.4
-  },
-  {
-   "jobs": [
-    "instr:code_vi:restaurant:s7",
-    "instr:code_en:restaurant:s7",
-    "instr:code_vi:restaurant:s99",
-    "instr:code_en:restaurant:s99",
-    "instr:code_vi:restaurant:s123",
-    "instr:code_en:restaurant:s123",
-    "instr:code_vi:restaurant:s2024",
-    "instr:code_en:restaurant:s2024",
-    "instr:code_vi:hotel:s7",
-    "instr:code_en:hotel:s7",
-    "instr:code_vi:hotel:s99",
-    "instr:code_en:hotel:s99"
-   ],
-   "hours": 9.8
+   "hours": 2.8
   }
  ],
  "jobs": {
-  "instr:code_vi:education:s123": {
-   "id": "instr:code_vi:education:s123",
-   "group": "instr",
-   "domain": "education",
-   "seed": 123,
-   "gpus": 1,
-   "est_min": 42,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_vi/seed_123 --seeds 123"
-   ],
-   "dirs": [
-    "outputs/t5_education_code_vi/seed_123/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:education:s123": {
-   "id": "instr:code_en:education:s123",
-   "group": "instr",
-   "domain": "education",
-   "seed": 123,
-   "gpus": 1,
-   "est_min": 42,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_en/seed_123 --seeds 123"
-   ],
-   "dirs": [
-    "outputs/t5_education_code_en/seed_123/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:education:s2024": {
-   "id": "instr:code_vi:education:s2024",
-   "group": "instr",
-   "domain": "education",
-   "seed": 2024,
-   "gpus": 1,
-   "est_min": 42,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_vi/seed_2024 --seeds 2024"
-   ],
-   "dirs": [
-    "outputs/t5_education_code_vi/seed_2024/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:education:s2024": {
-   "id": "instr:code_en:education:s2024",
-   "group": "instr",
-   "domain": "education",
-   "seed": 2024,
-   "gpus": 1,
-   "est_min": 42,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_en/seed_2024 --seeds 2024"
-   ],
-   "dirs": [
-    "outputs/t5_education_code_en/seed_2024/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:beauty:s7": {
-   "id": "instr:code_vi:beauty:s7",
-   "group": "instr",
-   "domain": "beauty",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 176,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_code_vi/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_beauty_code_vi/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:beauty:s7": {
-   "id": "instr:code_en:beauty:s7",
-   "group": "instr",
-   "domain": "beauty",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 176,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_code_en/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_beauty_code_en/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:beauty:s99": {
-   "id": "instr:code_vi:beauty:s99",
-   "group": "instr",
-   "domain": "beauty",
-   "seed": 99,
-   "gpus": 1,
-   "est_min": 176,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_code_vi/seed_99 --seeds 99"
-   ],
-   "dirs": [
-    "outputs/t5_beauty_code_vi/seed_99/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:beauty:s99": {
-   "id": "instr:code_en:beauty:s99",
-   "group": "instr",
-   "domain": "beauty",
-   "seed": 99,
-   "gpus": 1,
-   "est_min": 176,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_code_en/seed_99 --seeds 99"
-   ],
-   "dirs": [
-    "outputs/t5_beauty_code_en/seed_99/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:restaurant:s42": {
-   "id": "instr:code_vi:restaurant:s42",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 42,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_vi/seed_42 --seeds 42"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_vi/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:restaurant:s42": {
-   "id": "instr:code_en:restaurant:s42",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 42,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_en/seed_42 --seeds 42"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_en/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:hotel:s42": {
-   "id": "instr:code_vi:hotel:s42",
-   "group": "instr",
-   "domain": "hotel",
-   "seed": 42,
-   "gpus": 1,
-   "est_min": 94,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/t5_hotel_code_vi/seed_42 --seeds 42"
-   ],
-   "dirs": [
-    "outputs/t5_hotel_code_vi/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:hotel:s42": {
-   "id": "instr:code_en:hotel:s42",
-   "group": "instr",
-   "domain": "hotel",
-   "seed": 42,
-   "gpus": 1,
-   "est_min": 94,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/t5_hotel_code_en/seed_42 --seeds 42"
-   ],
-   "dirs": [
-    "outputs/t5_hotel_code_en/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:phone:s42": {
-   "id": "instr:code_vi:phone:s42",
-   "group": "instr",
-   "domain": "phone",
-   "seed": 42,
-   "gpus": 1,
-   "est_min": 113,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/t5_phone_code_vi/seed_42 --seeds 42"
-   ],
-   "dirs": [
-    "outputs/t5_phone_code_vi/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:phone:s42": {
-   "id": "instr:code_en:phone:s42",
-   "group": "instr",
-   "domain": "phone",
-   "seed": 42,
-   "gpus": 1,
-   "est_min": 113,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'mobile phone' --format code --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/t5_phone_code_en/seed_42 --seeds 42"
-   ],
-   "dirs": [
-    "outputs/t5_phone_code_en/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:education:s42": {
-   "id": "instr:code_vi:education:s42",
+  "instr:nl_vi:education:s42": {
+   "id": "instr:nl_vi:education:s42",
    "group": "instr",
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 42,
+   "est_min": 45,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_vi/seed_42 --seeds 42"
+    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_nl_vi/seed_42 --seeds 42"
    ],
    "dirs": [
-    "outputs/t5_education_code_vi/seed_42/multi_seed_summary.json"
+    "outputs/t5_education_nl_vi/seed_42/multi_seed_summary.json"
    ]
   },
-  "instr:code_en:education:s42": {
-   "id": "instr:code_en:education:s42",
+  "instr:nl_en:education:s42": {
+   "id": "instr:nl_en:education:s42",
    "group": "instr",
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 42,
+   "est_min": 45,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_en/seed_42 --seeds 42"
+    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_nl_en/seed_42 --seeds 42"
    ],
    "dirs": [
-    "outputs/t5_education_code_en/seed_42/multi_seed_summary.json"
+    "outputs/t5_education_nl_en/seed_42/multi_seed_summary.json"
    ]
   },
-  "instr:code_vi:beauty:s42": {
-   "id": "instr:code_vi:beauty:s42",
+  "instr:nl_vi:beauty:s42": {
+   "id": "instr:nl_vi:beauty:s42",
    "group": "instr",
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 176,
+   "est_min": 120,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_code_vi/seed_42 --seeds 42"
+    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_vi/seed_42 --seeds 42"
    ],
    "dirs": [
-    "outputs/t5_beauty_code_vi/seed_42/multi_seed_summary.json"
+    "outputs/t5_beauty_nl_vi/seed_42/multi_seed_summary.json"
    ]
   },
-  "instr:code_en:beauty:s42": {
-   "id": "instr:code_en:beauty:s42",
+  "instr:nl_en:beauty:s42": {
+   "id": "instr:nl_en:beauty:s42",
    "group": "instr",
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 176,
+   "est_min": 120,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_code_en/seed_42 --seeds 42"
+    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_en/seed_42 --seeds 42"
    ],
    "dirs": [
-    "outputs/t5_beauty_code_en/seed_42/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:education:s7": {
-   "id": "instr:code_vi:education:s7",
-   "group": "instr",
-   "domain": "education",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 42,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_vi/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_education_code_vi/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:education:s7": {
-   "id": "instr:code_en:education:s7",
-   "group": "instr",
-   "domain": "education",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 42,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_code_en/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_education_code_en/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:restaurant:s7": {
-   "id": "instr:code_vi:restaurant:s7",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_vi/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_vi/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:restaurant:s7": {
-   "id": "instr:code_en:restaurant:s7",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_en/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_en/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:restaurant:s99": {
-   "id": "instr:code_vi:restaurant:s99",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 99,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_vi/seed_99 --seeds 99"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_vi/seed_99/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:restaurant:s99": {
-   "id": "instr:code_en:restaurant:s99",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 99,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_en/seed_99 --seeds 99"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_en/seed_99/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:restaurant:s123": {
-   "id": "instr:code_vi:restaurant:s123",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 123,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_vi/seed_123 --seeds 123"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_vi/seed_123/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:restaurant:s123": {
-   "id": "instr:code_en:restaurant:s123",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 123,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_en/seed_123 --seeds 123"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_en/seed_123/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:restaurant:s2024": {
-   "id": "instr:code_vi:restaurant:s2024",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 2024,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_vi/seed_2024 --seeds 2024"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_vi/seed_2024/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:restaurant:s2024": {
-   "id": "instr:code_en:restaurant:s2024",
-   "group": "instr",
-   "domain": "restaurant",
-   "seed": 2024,
-   "gpus": 1,
-   "est_min": 100,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/t5_restaurant_code_en/seed_2024 --seeds 2024"
-   ],
-   "dirs": [
-    "outputs/t5_restaurant_code_en/seed_2024/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:hotel:s7": {
-   "id": "instr:code_vi:hotel:s7",
-   "group": "instr",
-   "domain": "hotel",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 94,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/t5_hotel_code_vi/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_hotel_code_vi/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:hotel:s7": {
-   "id": "instr:code_en:hotel:s7",
-   "group": "instr",
-   "domain": "hotel",
-   "seed": 7,
-   "gpus": 1,
-   "est_min": 94,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/t5_hotel_code_en/seed_7 --seeds 7"
-   ],
-   "dirs": [
-    "outputs/t5_hotel_code_en/seed_7/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_vi:hotel:s99": {
-   "id": "instr:code_vi:hotel:s99",
-   "group": "instr",
-   "domain": "hotel",
-   "seed": 99,
-   "gpus": 1,
-   "est_min": 94,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/t5_hotel_code_vi/seed_99 --seeds 99"
-   ],
-   "dirs": [
-    "outputs/t5_hotel_code_vi/seed_99/multi_seed_summary.json"
-   ]
-  },
-  "instr:code_en:hotel:s99": {
-   "id": "instr:code_en:hotel:s99",
-   "group": "instr",
-   "domain": "hotel",
-   "seed": 99,
-   "gpus": 1,
-   "est_min": 94,
-   "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/t5_hotel_code_en/seed_99 --seeds 99"
-   ],
-   "dirs": [
-    "outputs/t5_hotel_code_en/seed_99/multi_seed_summary.json"
+    "outputs/t5_beauty_nl_en/seed_42/multi_seed_summary.json"
    ]
   }
  }
