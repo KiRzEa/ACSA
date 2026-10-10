@@ -33,7 +33,8 @@ def main():
         runs = [json.loads(f.read_text()) for f in files]
         cells = []
         for arm in ARMS:
-            v = np.array([100 * r["arms"][arm]["acsa_f1_micro"] for r in runs])
+            # pair-scored F1 (same scorer as Table 4) when the run recorded it; older runs only have the slot-level score
+            v = np.array([100 * r["arms"][arm].get("acsa_f1_pairs", r["arms"][arm]["acsa_f1_micro"]) for r in runs])
             sd = v.std(ddof=1) if len(v) > 1 else float("nan")
             R[f"{d}/{arm}"] = {"mean": float(v.mean()), "std": float(sd), "values": v.tolist()}
             cells.append(f"{v.mean():7.2f}±{sd:4.2f}")

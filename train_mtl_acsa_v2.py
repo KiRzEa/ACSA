@@ -716,6 +716,18 @@ def compute_metrics(
     return metrics, pred_joint
 
 
+def pair_micro_f1(raw: Dict, pred_joint: np.ndarray, categories: Sequence[str]) -> float:
+    """Micro-F1 (fraction) over sets of (category, sentiment) pairs, scored against the original gold labels -- the
+    scorer every reported model uses (test_predictions.jsonl). Unlike compute_metrics' one-label-per-category matrix,
+    it keeps both labels of a category annotated with two polarities (2 Hotel test reviews)."""
+    tp = fp = fn = 0
+    for i in range(len(pred_joint)):
+        gold = {(c, s) for c, s in raw["gold_labels"][i]}
+        pred = {(categories[c], ID2JOINT[int(v)]) for c, v in enumerate(pred_joint[i]) if v != 0}
+        tp += len(gold & pred); fp += len(pred - gold); fn += len(gold - pred)
+    return 2 * tp / (2 * tp + fp + fn) if tp else 0.0
+
+
 @torch.no_grad()
 def run_query_substitution_eval(model, loader, device, threshold, categories, seed=0):
     """Counterfactual query substitution on the test set.
@@ -759,7 +771,9 @@ def run_query_substitution_eval(model, loader, device, threshold, categories, se
             fp = ((pred > 0) & (pred != gold)).sum(0)
             fn = ((gold > 0) & (pred != gold)).sum(0)
             f1 = np.where(2 * tp + fp + fn > 0, 200.0 * tp / np.maximum(2 * tp + fp + fn, 1), 0.0)
-            out["arms"][name] = {"acsa_f1_micro": float(metrics["acsa_f1_micro"]), "acd_f1": float(metrics.get("acd_f1_micro", 0.0)),
+            out["arms"][name] = {"acsa_f1_micro": float(metrics["acsa_f1_micro"]),
+                                 "acsa_f1_pairs": float(pair_micro_f1(raw, pred, categories)),
+                                 "acd_f1": float(metrics.get("acd_f1_micro", 0.0)),
                                  "per_category_f1": f1.tolist(), "gold_pairs": (gold > 0).sum(0).tolist(),
                                  "pred_pairs": (pred > 0).sum(0).tolist()}
     finally:

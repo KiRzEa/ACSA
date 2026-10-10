@@ -108,6 +108,13 @@ def build_jobs(calib):
                         f"python3 train_mtl_acsa_v2.py {tr} --model_name vinai/phobert-base-v2 --seed {s} --output_dir {out} "
                         f"--domain {d} --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 {flag}",
                         f"rm -f {out}/best_model.pt"], [f"{out}/metrics.json"])
+        for s in SEEDS:  # CAGE main configuration re-run with query substitution on the same models (review MC2):
+            out = f"outputs/cage_v2_{d}_fixed/seed_{s}"  # Table 4 and the query-substitution table then share one set of models
+            if not (ROOT / out / "metrics.json").exists():
+                add("cage", "main_v2", d, s, EST["cage"][d], 1, [
+                    f"python3 train_mtl_acsa_v2.py {tr} --model_name vinai/phobert-base-v2 --seed {s} --output_dir {out} "
+                    f"--domain {d} --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --query_swap_eval",
+                    f"rm -f {out}/best_model.pt"], [f"{out}/metrics.json"])
     rank = {g: i for i, g in enumerate(ORDER)}
     jobs.sort(key=lambda j: (rank[j["group"]], j["seed"] != 42, list(DOM).index(j["domain"]), j["seed"]))
     return jobs
