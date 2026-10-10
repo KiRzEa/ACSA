@@ -32,6 +32,7 @@ from scipy import stats
 
 DOMAINS = ["restaurant", "hotel", "phone", "education", "beauty"]
 SEEDS = [42, 123, 2024, 7, 99]
+MAIN = "cage_v2"  # main CAGE runs behind Table 4 (see scripts/cage_stats.py MAIN_FIXED)
 COMPONENT_ABLS = ["lw_fixed", "acd_focal", "acd_asl", "child_tuning", "heads2", "heads4", "heads12", "heads16",
                   "heads24", "adapter64", "adapter96", "adapter256", "adapter384", "adapter512"]
 DESIGN_ABLS = ["gate_hard", "gate_none", "query_id"]
@@ -50,21 +51,21 @@ def comparisons():
     out = []
     for d in DOMAINS:
         out.append(("fusion", "design_choices_39", "exploratory", "Learned fusion", d,
-                    f"cage_{d}_learned", f"cage_{d}_fixed", "Learned - Fixed"))
+                    f"cage_{d}_learned", f"{MAIN}_{d}_fixed", "Learned - Fixed"))
     for d in DOMAINS:
         out.append(("namedesc", "design_choices_39", "exploratory", "Description vs name", d,
-                    f"cage_{d}_fixed", f"cage_name_{d}_fixed", "Description - Name"))
+                    f"{MAIN}_{d}_fixed", f"cage_name_{d}_fixed", "Description - Name"))
     for abl in DESIGN_ABLS:
         for d in DOMAINS:
             out.append(("design", "design_choices_39", "exploratory", LABEL[abl], d,
-                        f"cage_{d}_fixed", f"cage_abl_{abl}_{d}_fixed", "CAGE - ablated"))
+                        f"{MAIN}_{d}_fixed", f"cage_abl_{abl}_{d}_fixed", "CAGE - ablated"))
     for abl in COMPONENT_ABLS:
         out.append(("component", "design_choices_39", "exploratory", LABEL[abl], "restaurant",
-                    "cage_restaurant_fixed", f"cage_abl_{abl}_restaurant_fixed", "CAGE - ablated"))
+                    f"{MAIN}_restaurant_fixed", f"cage_abl_{abl}_restaurant_fixed", "CAGE - ablated"))
     for abl in CONDITIONING_ABLS:
         for d in DOMAINS:
             out.append(("conditioning", "conditioning", "confirmatory (pre-specified)", LABEL[abl], d,
-                        f"cage_{d}_fixed", f"cage_abl_{abl}_{d}_fixed", "CAGE - ablated"))
+                        f"{MAIN}_{d}_fixed", f"cage_abl_{abl}_{d}_fixed", "CAGE - ablated"))
     return out
 
 

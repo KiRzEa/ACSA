@@ -39,6 +39,9 @@ BEST_BASELINE = {  # reference baseline per domain for the stability test: Ensem
     "phone": ("Ensemble BERTs", 84.36), "education": ("Ensemble BERTs", 85.06),
     "beauty": ("Ensemble BERTs", 92.45)}
 KEY = "acsa_f1_micro"
+# Main CAGE runs (fixed fusion) behind Table 4: re-run 2026-10-10 with --query_swap_eval so that Table 4 and the
+# query-substitution table come from the same models. The earlier set is outputs/cage_<d>_fixed.
+MAIN_FIXED = "cage_v2"
 DISPLAY = {"restaurant": "Restaurant", "hotel": "Hotel", "phone": "Phone", "education": "Education", "beauty": "Beauty"}
 
 
@@ -49,7 +52,7 @@ def load(out_dir, d, v):
     elif v.startswith("abl:"):
         base = Path(out_dir) / f"cage_abl_{v[4:]}_{d}_fixed"
     else:
-        base = Path(out_dir) / f"cage_{d}_{v}"
+        base = Path(out_dir) / (f"{MAIN_FIXED}_{d}_fixed" if v == "fixed" else f"cage_{d}_{v}")
     seeds = sorted(base.glob("seed_*"), key=lambda p: int(p.name.split("_")[1]))
     res = {}
     for s in seeds:

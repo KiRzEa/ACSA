@@ -61,7 +61,7 @@ PRIMARY = "phobert_mean"
 # ----------------------------------------------------------------------------------------------------------------
 # 1. rows (identical construction to scripts/category_analysis.py with --min_test 5)
 # ----------------------------------------------------------------------------------------------------------------
-def build_rows(out_dir="outputs", cage="outputs/cage_{d}_fixed", baseline="bert_{d}_phobert", min_test=MIN_TEST):
+def build_rows(out_dir="outputs", cage="outputs/cage_v2_{d}_fixed", baseline="bert_{d}_phobert", min_test=MIN_TEST):
     rows = []
     for d in DOMAIN_ORDER:
         base, n_base = per_category_f1_multiseed(ROOT / out_dir, baseline.format(d=d))
@@ -96,7 +96,7 @@ def check_against_stored(rows, path):
 # ----------------------------------------------------------------------------------------------------------------
 # 2. description similarity
 # ----------------------------------------------------------------------------------------------------------------
-def load_category_texts(cage="outputs/cage_{d}_fixed"):
+def load_category_texts(cage="outputs/cage_v2_{d}_fixed"):
     texts, identical = {}, {}
     for d in DOMAIN_ORDER:
         files = sorted((ROOT / cage.format(d=d)).glob("seed_*/category_texts.json"))

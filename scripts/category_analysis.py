@@ -78,9 +78,9 @@ def overlap_and_support(domain):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out_dir", default="outputs")
-    ap.add_argument("--cage", default="outputs/cage_{d}_fixed")
+    ap.add_argument("--cage", default="outputs/cage_v2_{d}_fixed")
     ap.add_argument("--baseline", default="bert_{d}_phobert")
-    ap.add_argument("--min_test", type=int, default=10)
+    ap.add_argument("--min_test", type=int, default=5)  # the paper: categories with >= 5 gold test pairs (74)
     ap.add_argument("--json", default="paper/error_analysis/category_analysis.json")
     a = ap.parse_args()
     rows = []

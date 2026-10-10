@@ -21,7 +21,7 @@ ARMS = ["own", "nearest", "farthest", "random", "mean", "zero"]
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--out_dir", default="outputs")
-    ap.add_argument("--prefix", default="cage_qs")
+    ap.add_argument("--prefix", default="cage_v2")
     ap.add_argument("--json", default="paper/error_analysis/query_swap_stats.json")
     a = ap.parse_args()
     R, pooled_x, pooled_y = {}, [], []
