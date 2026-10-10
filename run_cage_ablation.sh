@@ -10,6 +10,11 @@
 #               child_tuning  Child-Tuning of the encoder
 #   heads       heads2 heads4 heads12 heads16 heads24     (cross-attention heads; default 8)
 #   adapter     adapter64 adapter96 adapter256 adapter384 adapter512  (adapter bottleneck; default 192)
+#   conditioning  cond_none       no category conditioning: pooled review state, per-category output layers
+#                 cond_concat     MLP over [h_<s>; q_c] instead of cross-attention
+#                 cond_attn_only  cross-attention output alone, without the residual/FFN block
+#   minimal     minimal_joint   minimal CAGE: joint head only (no ACD/sentiment heads, no gate, no GradNorm)
+#   review      conditioning + minimal (the reviewer's MC1/MC3 runs; all 5 domains)
 # Usage: bash run_cage_ablation.sh <name|group|all|everything> [domain ...]
 #   all = design; everything = design + components + heads + adapter. Default domains: restaurant hotel.
 #   Each ablation x domain = 5 trainings.  DRY=1 prints the commands.  Resumable.
@@ -18,11 +23,15 @@ ABL="${1:-all}"; shift || true
 DOMS=("$@"); [ ${#DOMS[@]} -eq 0 ] && DOMS=(restaurant hotel)
 DESIGN="gate_hard gate_none query_id"; COMPONENTS="lw_fixed acd_focal acd_asl child_tuning"
 HEADS="heads2 heads4 heads12 heads16 heads24"; ADAPTER="adapter64 adapter96 adapter256 adapter384 adapter512"
+CONDITIONING="cond_none cond_concat cond_attn_only"; MINIMAL="minimal_joint"
 case "$ABL" in
   all|design) list="$DESIGN" ;;
   components) list="$COMPONENTS" ;;
   heads) list="$HEADS" ;;
   adapter) list="$ADAPTER" ;;
+  conditioning) list="$CONDITIONING" ;;
+  minimal) list="$MINIMAL" ;;
+  review) list="$CONDITIONING $MINIMAL" ;;
   everything) list="$DESIGN $COMPONENTS $HEADS $ADAPTER" ;;
   *) list="$ABL" ;;
 esac
@@ -32,6 +41,8 @@ extra_args() {
     query_id) echo "--category_query id" ;;    lw_fixed) echo "--loss_weighting fixed" ;;
     acd_focal) echo "--acd_loss_fn focal" ;;   acd_asl) echo "--acd_loss_fn asl" ;;
     child_tuning) echo "--child_tuning" ;;
+    cond_none) echo "--conditioning none" ;;  cond_concat) echo "--conditioning concat" ;;
+    cond_attn_only) echo "--conditioning attn_only" ;;  minimal_joint) echo "--heads joint_only" ;;
     heads*) echo "--num_attention_heads ${1#heads}" ;;
     adapter*) echo "--adapter_dim ${1#adapter}" ;;
     *) echo "" ;;

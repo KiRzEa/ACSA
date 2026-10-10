@@ -1,6 +1,11 @@
 """Summarise CAGE 5-seed runs (mean +- std, stability vs single-run baselines, config selection, ablation).
 
-Inputs (per domain d, variant v in {fixed, learned, name}): outputs/cage_<d>_<v>/seed_<s>/metrics.json
+Inputs (per domain d, variant v in {fixed, learned, name}): outputs/cage_<d>_<v>/seed_<s>/
+  test F1 = set-based (category, sentiment) pair scoring of test_predictions.jsonl, the same scorer as every baseline
+  (_pred_f1). metrics.json is not used for test: the training-time evaluator keeps one gold label per category, so
+  on Hotel it drops one of the two labels in the 2 test reviews that give HOTEL#MISCELLANEOUS two polarities
+  (3,260 instead of 3,262 gold pairs; about +0.03 F1). dev F1 still comes from metrics.json, since that is what
+  the configuration selection actually used.
   fixed   = description text, fixed fusion      learned = description text, learned fusion
   name    = category NAME text, fixed fusion (ablation; outputs/cage_name_<d>_fixed, session-1 outputs are renamed to this)
 
@@ -11,7 +16,8 @@ Reports (all micro-F1 in %, sample std ddof=1):
     fixed by more than 1 SD of fixed's dev F1; otherwise fixed (simpler, no extra parameters).
  3. fixed vs learned, paired by seed (test): mean difference, seeds where learned wins, paired two-sided t-test.
  4. name vs description (fixed fusion), paired by seed (test): same statistics.
- 5. ablations (gate_hard, gate_none, query_id, lw_fixed, acd_focal, acd_asl, child_tuning, heads*, adapter*;
+ 5. ablations (gate_hard, gate_none, query_id, lw_fixed, acd_focal, acd_asl, child_tuning, heads*, adapter*,
+    cond_none, cond_concat, cond_attn_only, minimal_joint;
     outputs/cage_abl_<abl>_<d>_fixed), paired by seed vs CAGE fixed. See run_cage_ablation.sh.
  6. two-sample tests against every baseline with >= 2 seeds (section 5 of the printout).
  --latex DIR additionally writes DIR/tab_stability.tex, tab_selection.tex, tab_name_vs_desc.tex
@@ -51,7 +57,9 @@ def load(out_dir, d, v):
         if f.exists():
             m = json.loads(f.read_text())
             sc = lambda x: x * 100 if x <= 1.0 else x
-            res[int(s.name.split("_")[1])] = {"test": sc(m["test"][KEY]), "dev": sc(m["dev"][KEY])}
+            pf = s / "test_predictions.jsonl"
+            test = _pred_f1(pf) if pf.exists() else sc(m["test"][KEY])
+            res[int(s.name.split("_")[1])] = {"test": test, "dev": sc(m["dev"][KEY])}
     return res or None
 
 
@@ -110,9 +118,8 @@ def ensemble_significance(out_dir):
         ev = np.array(list(ens.values()))
         for variant in ("fixed", "learned"):
             cage = {}
-            for f in sorted(Path(out_dir, f"cage_{d}_{variant}").glob("seed_*/metrics.json")):
-                j = json.loads(f.read_text()); seed = int(f.parent.name.split("_")[1])
-                v = j["test"][KEY]; cage[seed] = v * 100 if v <= 1 else v
+            for s, r in (load(out_dir, d, variant) or {}).items():
+                cage[s] = r["test"]
             if len(cage) != 5:
                 continue
             cv = np.array(list(cage.values()))
@@ -169,7 +176,8 @@ def main():
 
     print("\n4. DESIGN ABLATIONS vs CAGE (fixed fusion, description text; paired by seed, test)")
     order = ["gate_hard", "gate_none", "query_id", "lw_fixed", "acd_focal", "acd_asl", "child_tuning",
-             "heads2", "heads4", "heads12", "heads16", "heads24", "adapter64", "adapter96", "adapter256", "adapter384", "adapter512"]
+             "heads2", "heads4", "heads12", "heads16", "heads24", "adapter64", "adapter96", "adapter256", "adapter384", "adapter512",
+             "cond_none", "cond_concat", "cond_attn_only", "minimal_joint"]
     for abl in order:
         for d in BEST_BASELINE:
             f, x = runs[d, "fixed"], load(a.out_dir, d, f"abl:{abl}")

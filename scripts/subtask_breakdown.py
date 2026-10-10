@@ -14,12 +14,18 @@ def analyse(path):
     gc, pc, hc = Counter(), Counter(), Counter()
     for line in open(path, encoding="utf-8"):
         r = json.loads(line)
+        # joint F1 is scored on (category, sentiment) pair sets, the scorer used for every model in the paper;
+        # a {category: sentiment} dict would keep one label per category and drop the second gold label of the
+        # 2 Hotel test reviews that give HOTEL#MISCELLANEOUS two polarities (about +0.02 F1).
+        gs = {(x["category"], x["sentiment"]) for x in r["gold"]}
+        ps = {(x["category"], x["sentiment"]) for x in r["prediction"]}
+        jt += len(gs & ps); jg += len(gs); jp += len(ps)
         g = {x["category"]: x["sentiment"] for x in r["gold"]}
         p = {x["category"]: x["sentiment"] for x in r["prediction"]}
-        jg += len(g); jp += len(p); gc.update(list(g)); pc.update(list(p))
+        gc.update(list(g)); pc.update(list(p))
         for c, s in p.items():
             if c in g:
-                tp += 1; hc[c] += 1; ok += g[c] == s; jt += g[c] == s
+                tp += 1; hc[c] += 1; ok += g[c] == s
             else:
                 fp += 1
         fn += sum(c not in p for c in g)

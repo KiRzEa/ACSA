@@ -1,73 +1,1628 @@
 {
- "round": "r9",
- "budget_hours": 10.5,
+ "round": "r10",
+ "budget_hours": 5.8,
  "gpus": 2,
  "sessions": [
   {
    "jobs": [
-    "instr:nl_vi:education:s42",
-    "instr:nl_en:education:s42",
-    "instr:nl_vi:beauty:s42",
-    "instr:nl_en:beauty:s42"
+    "cage:cond_none:restaurant:s42",
+    "cage:cond_concat:restaurant:s42",
+    "cage:cond_attn_only:restaurant:s42",
+    "cage:minimal_joint:restaurant:s42",
+    "cage:cond_none:hotel:s42",
+    "cage:cond_concat:hotel:s42",
+    "cage:cond_attn_only:hotel:s42",
+    "cage:minimal_joint:hotel:s42",
+    "cage:cond_none:phone:s42",
+    "cage:cond_concat:phone:s42",
+    "cage:cond_attn_only:phone:s42",
+    "cage:minimal_joint:phone:s42",
+    "cage:cond_none:education:s42",
+    "cage:cond_concat:education:s42",
+    "cage:cond_attn_only:education:s42",
+    "cage:minimal_joint:education:s42",
+    "cage:cond_none:beauty:s42",
+    "cage:cond_concat:beauty:s42",
+    "cage:cond_attn_only:beauty:s42",
+    "cage:minimal_joint:beauty:s42",
+    "cage:cond_none:restaurant:s7",
+    "cage:cond_concat:restaurant:s7",
+    "cage:cond_attn_only:restaurant:s7",
+    "cage:minimal_joint:restaurant:s7",
+    "cage:cond_none:restaurant:s99",
+    "cage:cond_concat:restaurant:s99",
+    "cage:cond_none:education:s7",
+    "cage:cond_concat:education:s7"
    ],
-   "hours": 2.8
+   "hours": 5.8
+  },
+  {
+   "jobs": [
+    "cage:cond_attn_only:restaurant:s99",
+    "cage:minimal_joint:restaurant:s99",
+    "cage:cond_none:restaurant:s123",
+    "cage:cond_concat:restaurant:s123",
+    "cage:cond_attn_only:restaurant:s123",
+    "cage:minimal_joint:restaurant:s123",
+    "cage:cond_none:restaurant:s2024",
+    "cage:cond_concat:restaurant:s2024",
+    "cage:cond_attn_only:restaurant:s2024",
+    "cage:minimal_joint:restaurant:s2024",
+    "cage:cond_none:hotel:s7",
+    "cage:cond_concat:hotel:s7",
+    "cage:cond_attn_only:hotel:s7",
+    "cage:minimal_joint:hotel:s7",
+    "cage:cond_none:hotel:s99",
+    "cage:cond_concat:hotel:s99",
+    "cage:cond_attn_only:hotel:s99",
+    "cage:minimal_joint:hotel:s99",
+    "cage:cond_none:hotel:s123",
+    "cage:cond_concat:hotel:s123",
+    "cage:cond_attn_only:hotel:s123",
+    "cage:minimal_joint:hotel:s123",
+    "cage:cond_none:hotel:s2024",
+    "cage:cond_concat:hotel:s2024",
+    "cage:cond_attn_only:hotel:s2024",
+    "cage:minimal_joint:hotel:s2024"
+   ],
+   "hours": 5.7
+  },
+  {
+   "jobs": [
+    "cage:cond_none:phone:s7",
+    "cage:cond_concat:phone:s7",
+    "cage:cond_attn_only:phone:s7",
+    "cage:minimal_joint:phone:s7",
+    "cage:cond_none:phone:s99",
+    "cage:cond_concat:phone:s99",
+    "cage:cond_attn_only:phone:s99",
+    "cage:minimal_joint:phone:s99",
+    "cage:cond_none:phone:s123",
+    "cage:cond_concat:phone:s123",
+    "cage:cond_attn_only:phone:s123",
+    "cage:minimal_joint:phone:s123",
+    "cage:cond_none:phone:s2024",
+    "cage:cond_concat:phone:s2024",
+    "cage:cond_attn_only:phone:s2024",
+    "cage:minimal_joint:phone:s2024",
+    "cage:cond_attn_only:education:s7",
+    "cage:minimal_joint:education:s7",
+    "cage:cond_none:education:s99",
+    "cage:cond_concat:education:s99",
+    "cage:cond_attn_only:education:s99",
+    "cage:minimal_joint:education:s99",
+    "cage:cond_none:education:s123",
+    "cage:cond_concat:education:s123",
+    "cage:cond_attn_only:education:s123",
+    "cage:minimal_joint:education:s123",
+    "cage:cond_none:education:s2024",
+    "cage:cond_concat:education:s2024",
+    "cage:cond_attn_only:education:s2024",
+    "cage:minimal_joint:education:s2024"
+   ],
+   "hours": 5.8
+  },
+  {
+   "jobs": [
+    "cage:cond_none:beauty:s7",
+    "cage:cond_concat:beauty:s7",
+    "cage:cond_attn_only:beauty:s7",
+    "cage:minimal_joint:beauty:s7",
+    "cage:cond_none:beauty:s99",
+    "cage:cond_concat:beauty:s99",
+    "cage:cond_attn_only:beauty:s99",
+    "cage:minimal_joint:beauty:s99",
+    "cage:cond_none:beauty:s123",
+    "cage:cond_concat:beauty:s123",
+    "cage:cond_attn_only:beauty:s123",
+    "cage:minimal_joint:beauty:s123",
+    "cage:cond_none:beauty:s2024",
+    "cage:cond_concat:beauty:s2024",
+    "cage:cond_attn_only:beauty:s2024",
+    "cage:minimal_joint:beauty:s2024"
+   ],
+   "hours": 5.3
   }
  ],
  "jobs": {
-  "instr:nl_vi:education:s42": {
-   "id": "instr:nl_vi:education:s42",
-   "group": "instr",
+  "cage:cond_none:restaurant:s42": {
+   "id": "cage:cond_none:restaurant:s42",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_none_restaurant_fixed/seed_42 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_restaurant_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_restaurant_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_concat:restaurant:s42": {
+   "id": "cage:cond_concat:restaurant:s42",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_concat_restaurant_fixed/seed_42 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_restaurant_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_restaurant_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:restaurant:s42": {
+   "id": "cage:cond_attn_only:restaurant:s42",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_42 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:restaurant:s42": {
+   "id": "cage:minimal_joint:restaurant:s42",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_minimal_joint_restaurant_fixed/seed_42 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_restaurant_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_restaurant_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_none:hotel:s42": {
+   "id": "cage:cond_none:hotel:s42",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_none_hotel_fixed/seed_42 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_hotel_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_hotel_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_concat:hotel:s42": {
+   "id": "cage:cond_concat:hotel:s42",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_concat_hotel_fixed/seed_42 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_hotel_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_hotel_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:hotel:s42": {
+   "id": "cage:cond_attn_only:hotel:s42",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_attn_only_hotel_fixed/seed_42 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_hotel_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_hotel_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:hotel:s42": {
+   "id": "cage:minimal_joint:hotel:s42",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_minimal_joint_hotel_fixed/seed_42 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_hotel_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_hotel_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_none:phone:s42": {
+   "id": "cage:cond_none:phone:s42",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_none_phone_fixed/seed_42 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_phone_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_phone_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_concat:phone:s42": {
+   "id": "cage:cond_concat:phone:s42",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_concat_phone_fixed/seed_42 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_phone_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_phone_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:phone:s42": {
+   "id": "cage:cond_attn_only:phone:s42",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_attn_only_phone_fixed/seed_42 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_phone_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_phone_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:phone:s42": {
+   "id": "cage:minimal_joint:phone:s42",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_minimal_joint_phone_fixed/seed_42 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_phone_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_phone_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_none:education:s42": {
+   "id": "cage:cond_none:education:s42",
+   "group": "cage",
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 15,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_nl_vi/seed_42 --seeds 42"
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_none_education_fixed/seed_42 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_education_fixed/seed_42/best_model.pt"
    ],
    "dirs": [
-    "outputs/t5_education_nl_vi/seed_42/multi_seed_summary.json"
+    "outputs/cage_abl_cond_none_education_fixed/seed_42/metrics.json"
    ]
   },
-  "instr:nl_en:education:s42": {
-   "id": "instr:nl_en:education:s42",
-   "group": "instr",
+  "cage:cond_concat:education:s42": {
+   "id": "cage:cond_concat:education:s42",
+   "group": "cage",
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 15,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/t5_education_nl_en/seed_42 --seeds 42"
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_concat_education_fixed/seed_42 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_education_fixed/seed_42/best_model.pt"
    ],
    "dirs": [
-    "outputs/t5_education_nl_en/seed_42/multi_seed_summary.json"
+    "outputs/cage_abl_cond_concat_education_fixed/seed_42/metrics.json"
    ]
   },
-  "instr:nl_vi:beauty:s42": {
-   "id": "instr:nl_vi:beauty:s42",
-   "group": "instr",
+  "cage:cond_attn_only:education:s42": {
+   "id": "cage:cond_attn_only:education:s42",
+   "group": "cage",
+   "domain": "education",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_attn_only_education_fixed/seed_42 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_education_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_education_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:education:s42": {
+   "id": "cage:minimal_joint:education:s42",
+   "group": "cage",
+   "domain": "education",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_minimal_joint_education_fixed/seed_42 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_education_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_education_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_none:beauty:s42": {
+   "id": "cage:cond_none:beauty:s42",
+   "group": "cage",
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 120,
+   "est_min": 40,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_vi/seed_42 --seeds 42"
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_none_beauty_fixed/seed_42 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_beauty_fixed/seed_42/best_model.pt"
    ],
    "dirs": [
-    "outputs/t5_beauty_nl_vi/seed_42/multi_seed_summary.json"
+    "outputs/cage_abl_cond_none_beauty_fixed/seed_42/metrics.json"
    ]
   },
-  "instr:nl_en:beauty:s42": {
-   "id": "instr:nl_en:beauty:s42",
-   "group": "instr",
+  "cage:cond_concat:beauty:s42": {
+   "id": "cage:cond_concat:beauty:s42",
+   "group": "cage",
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 120,
+   "est_min": 40,
    "cmds": [
-    "python3 baselines/t5_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/t5_beauty_nl_en/seed_42 --seeds 42"
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_concat_beauty_fixed/seed_42 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_beauty_fixed/seed_42/best_model.pt"
    ],
    "dirs": [
-    "outputs/t5_beauty_nl_en/seed_42/multi_seed_summary.json"
+    "outputs/cage_abl_cond_concat_beauty_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:beauty:s42": {
+   "id": "cage:cond_attn_only:beauty:s42",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_cond_attn_only_beauty_fixed/seed_42 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_beauty_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_beauty_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:beauty:s42": {
+   "id": "cage:minimal_joint:beauty:s42",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 42,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 42 --output_dir outputs/cage_abl_minimal_joint_beauty_fixed/seed_42 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_beauty_fixed/seed_42/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_beauty_fixed/seed_42/metrics.json"
+   ]
+  },
+  "cage:cond_none:restaurant:s7": {
+   "id": "cage:cond_none:restaurant:s7",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_none_restaurant_fixed/seed_7 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_restaurant_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_restaurant_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_concat:restaurant:s7": {
+   "id": "cage:cond_concat:restaurant:s7",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_concat_restaurant_fixed/seed_7 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_restaurant_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_restaurant_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:restaurant:s7": {
+   "id": "cage:cond_attn_only:restaurant:s7",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_7 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:restaurant:s7": {
+   "id": "cage:minimal_joint:restaurant:s7",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_minimal_joint_restaurant_fixed/seed_7 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_restaurant_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_restaurant_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_none:restaurant:s99": {
+   "id": "cage:cond_none:restaurant:s99",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_none_restaurant_fixed/seed_99 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_restaurant_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_restaurant_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_concat:restaurant:s99": {
+   "id": "cage:cond_concat:restaurant:s99",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_concat_restaurant_fixed/seed_99 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_restaurant_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_restaurant_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:restaurant:s99": {
+   "id": "cage:cond_attn_only:restaurant:s99",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_99 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:restaurant:s99": {
+   "id": "cage:minimal_joint:restaurant:s99",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_minimal_joint_restaurant_fixed/seed_99 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_restaurant_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_restaurant_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_none:restaurant:s123": {
+   "id": "cage:cond_none:restaurant:s123",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_none_restaurant_fixed/seed_123 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_restaurant_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_restaurant_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_concat:restaurant:s123": {
+   "id": "cage:cond_concat:restaurant:s123",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_concat_restaurant_fixed/seed_123 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_restaurant_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_restaurant_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:restaurant:s123": {
+   "id": "cage:cond_attn_only:restaurant:s123",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_123 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:restaurant:s123": {
+   "id": "cage:minimal_joint:restaurant:s123",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_minimal_joint_restaurant_fixed/seed_123 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_restaurant_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_restaurant_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_none:restaurant:s2024": {
+   "id": "cage:cond_none:restaurant:s2024",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_none_restaurant_fixed/seed_2024 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_restaurant_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_restaurant_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_concat:restaurant:s2024": {
+   "id": "cage:cond_concat:restaurant:s2024",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_concat_restaurant_fixed/seed_2024 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_restaurant_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_restaurant_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:restaurant:s2024": {
+   "id": "cage:cond_attn_only:restaurant:s2024",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_2024 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_restaurant_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:restaurant:s2024": {
+   "id": "cage:minimal_joint:restaurant:s2024",
+   "group": "cage",
+   "domain": "restaurant",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 20,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_minimal_joint_restaurant_fixed/seed_2024 --domain restaurant --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_restaurant_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_restaurant_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_none:hotel:s7": {
+   "id": "cage:cond_none:hotel:s7",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_none_hotel_fixed/seed_7 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_hotel_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_hotel_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_concat:hotel:s7": {
+   "id": "cage:cond_concat:hotel:s7",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_concat_hotel_fixed/seed_7 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_hotel_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_hotel_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:hotel:s7": {
+   "id": "cage:cond_attn_only:hotel:s7",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_attn_only_hotel_fixed/seed_7 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_hotel_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_hotel_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:hotel:s7": {
+   "id": "cage:minimal_joint:hotel:s7",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_minimal_joint_hotel_fixed/seed_7 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_hotel_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_hotel_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_none:hotel:s99": {
+   "id": "cage:cond_none:hotel:s99",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_none_hotel_fixed/seed_99 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_hotel_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_hotel_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_concat:hotel:s99": {
+   "id": "cage:cond_concat:hotel:s99",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_concat_hotel_fixed/seed_99 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_hotel_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_hotel_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:hotel:s99": {
+   "id": "cage:cond_attn_only:hotel:s99",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_attn_only_hotel_fixed/seed_99 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_hotel_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_hotel_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:hotel:s99": {
+   "id": "cage:minimal_joint:hotel:s99",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_minimal_joint_hotel_fixed/seed_99 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_hotel_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_hotel_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_none:hotel:s123": {
+   "id": "cage:cond_none:hotel:s123",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_none_hotel_fixed/seed_123 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_hotel_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_hotel_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_concat:hotel:s123": {
+   "id": "cage:cond_concat:hotel:s123",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_concat_hotel_fixed/seed_123 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_hotel_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_hotel_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:hotel:s123": {
+   "id": "cage:cond_attn_only:hotel:s123",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_attn_only_hotel_fixed/seed_123 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_hotel_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_hotel_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:hotel:s123": {
+   "id": "cage:minimal_joint:hotel:s123",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_minimal_joint_hotel_fixed/seed_123 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_hotel_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_hotel_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_none:hotel:s2024": {
+   "id": "cage:cond_none:hotel:s2024",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_none_hotel_fixed/seed_2024 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_hotel_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_hotel_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_concat:hotel:s2024": {
+   "id": "cage:cond_concat:hotel:s2024",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_concat_hotel_fixed/seed_2024 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_hotel_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_hotel_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:hotel:s2024": {
+   "id": "cage:cond_attn_only:hotel:s2024",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_attn_only_hotel_fixed/seed_2024 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_hotel_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_hotel_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:hotel:s2024": {
+   "id": "cage:minimal_joint:hotel:s2024",
+   "group": "cage",
+   "domain": "hotel",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_minimal_joint_hotel_fixed/seed_2024 --domain hotel --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_hotel_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_hotel_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_none:phone:s7": {
+   "id": "cage:cond_none:phone:s7",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_none_phone_fixed/seed_7 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_phone_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_phone_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_concat:phone:s7": {
+   "id": "cage:cond_concat:phone:s7",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_concat_phone_fixed/seed_7 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_phone_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_phone_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:phone:s7": {
+   "id": "cage:cond_attn_only:phone:s7",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_attn_only_phone_fixed/seed_7 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_phone_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_phone_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:phone:s7": {
+   "id": "cage:minimal_joint:phone:s7",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_minimal_joint_phone_fixed/seed_7 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_phone_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_phone_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_none:phone:s99": {
+   "id": "cage:cond_none:phone:s99",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_none_phone_fixed/seed_99 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_phone_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_phone_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_concat:phone:s99": {
+   "id": "cage:cond_concat:phone:s99",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_concat_phone_fixed/seed_99 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_phone_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_phone_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:phone:s99": {
+   "id": "cage:cond_attn_only:phone:s99",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_attn_only_phone_fixed/seed_99 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_phone_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_phone_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:phone:s99": {
+   "id": "cage:minimal_joint:phone:s99",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_minimal_joint_phone_fixed/seed_99 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_phone_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_phone_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_none:phone:s123": {
+   "id": "cage:cond_none:phone:s123",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_none_phone_fixed/seed_123 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_phone_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_phone_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_concat:phone:s123": {
+   "id": "cage:cond_concat:phone:s123",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_concat_phone_fixed/seed_123 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_phone_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_phone_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:phone:s123": {
+   "id": "cage:cond_attn_only:phone:s123",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_attn_only_phone_fixed/seed_123 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_phone_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_phone_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:phone:s123": {
+   "id": "cage:minimal_joint:phone:s123",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_minimal_joint_phone_fixed/seed_123 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_phone_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_phone_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_none:phone:s2024": {
+   "id": "cage:cond_none:phone:s2024",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_none_phone_fixed/seed_2024 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_phone_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_phone_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_concat:phone:s2024": {
+   "id": "cage:cond_concat:phone:s2024",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_concat_phone_fixed/seed_2024 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_phone_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_phone_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:phone:s2024": {
+   "id": "cage:cond_attn_only:phone:s2024",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_attn_only_phone_fixed/seed_2024 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_phone_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_phone_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:phone:s2024": {
+   "id": "cage:minimal_joint:phone:s2024",
+   "group": "cage",
+   "domain": "phone",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 30,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_minimal_joint_phone_fixed/seed_2024 --domain phone --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_phone_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_phone_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_none:education:s7": {
+   "id": "cage:cond_none:education:s7",
+   "group": "cage",
+   "domain": "education",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_none_education_fixed/seed_7 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_education_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_education_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_concat:education:s7": {
+   "id": "cage:cond_concat:education:s7",
+   "group": "cage",
+   "domain": "education",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_concat_education_fixed/seed_7 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_education_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_education_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:education:s7": {
+   "id": "cage:cond_attn_only:education:s7",
+   "group": "cage",
+   "domain": "education",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_attn_only_education_fixed/seed_7 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_education_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_education_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:education:s7": {
+   "id": "cage:minimal_joint:education:s7",
+   "group": "cage",
+   "domain": "education",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_minimal_joint_education_fixed/seed_7 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_education_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_education_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_none:education:s99": {
+   "id": "cage:cond_none:education:s99",
+   "group": "cage",
+   "domain": "education",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_none_education_fixed/seed_99 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_education_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_education_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_concat:education:s99": {
+   "id": "cage:cond_concat:education:s99",
+   "group": "cage",
+   "domain": "education",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_concat_education_fixed/seed_99 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_education_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_education_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:education:s99": {
+   "id": "cage:cond_attn_only:education:s99",
+   "group": "cage",
+   "domain": "education",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_attn_only_education_fixed/seed_99 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_education_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_education_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:education:s99": {
+   "id": "cage:minimal_joint:education:s99",
+   "group": "cage",
+   "domain": "education",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_minimal_joint_education_fixed/seed_99 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_education_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_education_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_none:education:s123": {
+   "id": "cage:cond_none:education:s123",
+   "group": "cage",
+   "domain": "education",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_none_education_fixed/seed_123 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_education_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_education_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_concat:education:s123": {
+   "id": "cage:cond_concat:education:s123",
+   "group": "cage",
+   "domain": "education",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_concat_education_fixed/seed_123 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_education_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_education_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:education:s123": {
+   "id": "cage:cond_attn_only:education:s123",
+   "group": "cage",
+   "domain": "education",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_attn_only_education_fixed/seed_123 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_education_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_education_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:education:s123": {
+   "id": "cage:minimal_joint:education:s123",
+   "group": "cage",
+   "domain": "education",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_minimal_joint_education_fixed/seed_123 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_education_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_education_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_none:education:s2024": {
+   "id": "cage:cond_none:education:s2024",
+   "group": "cage",
+   "domain": "education",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_none_education_fixed/seed_2024 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_education_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_education_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_concat:education:s2024": {
+   "id": "cage:cond_concat:education:s2024",
+   "group": "cage",
+   "domain": "education",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_concat_education_fixed/seed_2024 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_education_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_education_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:education:s2024": {
+   "id": "cage:cond_attn_only:education:s2024",
+   "group": "cage",
+   "domain": "education",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_attn_only_education_fixed/seed_2024 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_education_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_education_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:education:s2024": {
+   "id": "cage:minimal_joint:education:s2024",
+   "group": "cage",
+   "domain": "education",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 15,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_minimal_joint_education_fixed/seed_2024 --domain education --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_education_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_education_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_none:beauty:s7": {
+   "id": "cage:cond_none:beauty:s7",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_none_beauty_fixed/seed_7 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_beauty_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_beauty_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_concat:beauty:s7": {
+   "id": "cage:cond_concat:beauty:s7",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_concat_beauty_fixed/seed_7 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_beauty_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_beauty_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:beauty:s7": {
+   "id": "cage:cond_attn_only:beauty:s7",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_cond_attn_only_beauty_fixed/seed_7 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_beauty_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_beauty_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:beauty:s7": {
+   "id": "cage:minimal_joint:beauty:s7",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 7,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 7 --output_dir outputs/cage_abl_minimal_joint_beauty_fixed/seed_7 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_beauty_fixed/seed_7/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_beauty_fixed/seed_7/metrics.json"
+   ]
+  },
+  "cage:cond_none:beauty:s99": {
+   "id": "cage:cond_none:beauty:s99",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_none_beauty_fixed/seed_99 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_beauty_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_beauty_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_concat:beauty:s99": {
+   "id": "cage:cond_concat:beauty:s99",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_concat_beauty_fixed/seed_99 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_beauty_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_beauty_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:beauty:s99": {
+   "id": "cage:cond_attn_only:beauty:s99",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_cond_attn_only_beauty_fixed/seed_99 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_beauty_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_beauty_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:beauty:s99": {
+   "id": "cage:minimal_joint:beauty:s99",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 99,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 99 --output_dir outputs/cage_abl_minimal_joint_beauty_fixed/seed_99 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_beauty_fixed/seed_99/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_beauty_fixed/seed_99/metrics.json"
+   ]
+  },
+  "cage:cond_none:beauty:s123": {
+   "id": "cage:cond_none:beauty:s123",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_none_beauty_fixed/seed_123 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_beauty_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_beauty_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_concat:beauty:s123": {
+   "id": "cage:cond_concat:beauty:s123",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_concat_beauty_fixed/seed_123 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_beauty_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_beauty_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:beauty:s123": {
+   "id": "cage:cond_attn_only:beauty:s123",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_cond_attn_only_beauty_fixed/seed_123 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_beauty_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_beauty_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:beauty:s123": {
+   "id": "cage:minimal_joint:beauty:s123",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 123,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 123 --output_dir outputs/cage_abl_minimal_joint_beauty_fixed/seed_123 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_beauty_fixed/seed_123/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_beauty_fixed/seed_123/metrics.json"
+   ]
+  },
+  "cage:cond_none:beauty:s2024": {
+   "id": "cage:cond_none:beauty:s2024",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_none_beauty_fixed/seed_2024 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning none",
+    "rm -f outputs/cage_abl_cond_none_beauty_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_none_beauty_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_concat:beauty:s2024": {
+   "id": "cage:cond_concat:beauty:s2024",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_concat_beauty_fixed/seed_2024 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning concat",
+    "rm -f outputs/cage_abl_cond_concat_beauty_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_concat_beauty_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:cond_attn_only:beauty:s2024": {
+   "id": "cage:cond_attn_only:beauty:s2024",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_cond_attn_only_beauty_fixed/seed_2024 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --conditioning attn_only",
+    "rm -f outputs/cage_abl_cond_attn_only_beauty_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_cond_attn_only_beauty_fixed/seed_2024/metrics.json"
+   ]
+  },
+  "cage:minimal_joint:beauty:s2024": {
+   "id": "cage:minimal_joint:beauty:s2024",
+   "group": "cage",
+   "domain": "beauty",
+   "seed": 2024,
+   "gpus": 1,
+   "est_min": 40,
+   "cmds": [
+    "python3 train_mtl_acsa_v2.py --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --model_name vinai/phobert-base-v2 --seed 2024 --output_dir outputs/cage_abl_minimal_joint_beauty_fixed/seed_2024 --domain beauty --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 --heads joint_only",
+    "rm -f outputs/cage_abl_minimal_joint_beauty_fixed/seed_2024/best_model.pt"
+   ],
+   "dirs": [
+    "outputs/cage_abl_minimal_joint_beauty_fixed/seed_2024/metrics.json"
    ]
   }
  }

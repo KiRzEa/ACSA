@@ -23,7 +23,10 @@ SEEDS = [42, 123, 2024, 7, 99]
 DOM = {  # data dir, domain phrase used inside instruction prompts
     "restaurant": ("Res_ABSA", "restaurant"), "hotel": ("Hotel_ABSA", "hotel"), "phone": ("Phone_ABSA", "mobile phone"),
     "education": ("Education_ABSA", "university course evaluation"), "beauty": ("Beauty_ABSA", "beauty product")}
-ORDER = ["bert", "cnn", "t5base", "instr", "t5large"]
+ORDER = ["bert", "cnn", "t5base", "instr", "t5large", "cage"]
+# CAGE ablations requested in review (MC1: what replaces cross-attention; MC3: minimal CAGE), see run_cage_ablation.sh.
+CAGE_REVIEW = {"cond_none": "--conditioning none", "cond_concat": "--conditioning concat",
+               "cond_attn_only": "--conditioning attn_only", "minimal_joint": "--heads joint_only"}
 # Unmeasured first guesses, minutes per (job) on one T4; large models use both GPUs.
 EST = {  # minutes per job; base-size numbers scaled from round 1 (BERT ~90 min, instruction ~100 min on Restaurant); large ones are guesses
     "bert": {"restaurant": 90, "hotel": 90, "phone": 95, "education": 65, "beauty": 130},          # PhoBERT + XLM-R + ensemble
@@ -31,6 +34,9 @@ EST = {  # minutes per job; base-size numbers scaled from round 1 (BERT ~90 min,
     "t5base": {"education": 110, "beauty": 300},
     "instr": {"nl": {"restaurant": 65, "hotel": 65, "phone": 62, "education": 45, "beauty": 120},          # measured: Phone NL ~60 min,
               "code": {"restaurant": 100, "hotel": 100, "phone": 95, "education": 70, "beauty": 180}},  # ViT5-base now (CodeT5 dropped); ~1.5x NL, unmeasured
+    # one CAGE training (one seed, 10 epochs + early stopping): NOT measured per job. Kaggle session 3 fit 45 sequential
+    # Restaurant trainings and session 5 30 Phone+Beauty ones, so <= ~15 and ~24 min; Hotel re-encodes 34 descriptions per step.
+    "cage": {"restaurant": 20, "hotel": 30, "phone": 30, "education": 15, "beauty": 40},
     "t5large": {"mt5large/education": 300, "mt5large/beauty": 440, "vit5large/education": 200, "vit5large/beauty": 180},  # beauty scaled from measured education time by train-set-size ratio (~3.2x), not yet measured directly
 }
 
@@ -94,6 +100,14 @@ def build_jobs(calib):
                         out = f"outputs/{dirname}/seed_{s}"
                         add("instr", f"{fmt}_{lang}", d, s, EST["instr"][fmt][d], 1,
                             [f"python3 baselines/t5_instruction_tuning.py --domain '{prompt_dom}' --format {fmt} --lang {lang} {tr} --output_dir {out} --seeds {s}"], [f"{out}/multi_seed_summary.json"])
+        for abl, flag in CAGE_REVIEW.items():
+            for s in SEEDS:
+                out = f"outputs/cage_abl_{abl}_{d}_fixed/seed_{s}"
+                if not (ROOT / out / "metrics.json").exists():
+                    add("cage", abl, d, s, EST["cage"][d], 1, [
+                        f"python3 train_mtl_acsa_v2.py {tr} --model_name vinai/phobert-base-v2 --seed {s} --output_dir {out} "
+                        f"--domain {d} --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 {flag}",
+                        f"rm -f {out}/best_model.pt"], [f"{out}/metrics.json"])
     rank = {g: i for i, g in enumerate(ORDER)}
     jobs.sort(key=lambda j: (rank[j["group"]], j["seed"] != 42, list(DOM).index(j["domain"]), j["seed"]))
     return jobs

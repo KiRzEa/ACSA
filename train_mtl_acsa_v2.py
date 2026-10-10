@@ -1059,6 +1059,8 @@ def train(args: argparse.Namespace) -> None:
         fusion_gate=args.fusion_gate,
         gate_mode=args.gate_mode,
         category_query=args.category_query,
+        conditioning=getattr(args, "conditioning", "xattn"),
+        heads=getattr(args, "heads", "three"),
     )
 
     device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
@@ -1102,6 +1104,11 @@ def train(args: argparse.Namespace) -> None:
     scheduler = get_cosine_schedule_with_warmup(
         optimizer, num_warmup_steps=warmup_steps, num_training_steps=total_steps
     )
+
+    if getattr(args, "heads", "three") == "joint_only":
+        # Minimal CAGE: the joint head is the only trained head, so there is nothing for GradNorm to balance.
+        args.loss_weighting, args.lambda_acd, args.lambda_sent, args.lambda_joint = "fixed", 0.0, 0.0, 1.0
+        print("heads=joint_only: training the joint head alone (fixed weights acd=0, sent=0, joint=1, no gate)")
 
     gradnorm = None
     gradnorm_optimizer = None
@@ -1178,7 +1185,9 @@ def train(args: argparse.Namespace) -> None:
                     dtype=task_losses[0].dtype,
                     device=device,
                 )
-                total_loss = sum(w * loss for w, loss in zip(fixed, task_losses)) + aux_loss
+                # A zero-weight task is left out rather than multiplied by 0, so a NaN loss (e.g. no gold sentiment
+                # in the batch) cannot leak into the total.
+                total_loss = sum(w * loss for w, loss in zip(fixed, task_losses) if float(w) != 0.0) + aux_loss
                 (total_loss / accum).backward()
                 if do_update:
                     if child_masks is not None:
@@ -1306,6 +1315,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
                    help="zero-shot ablation (see run_cage_zeroshot.sh): withhold this category's training labels entirely (dev/test still scored on it)")
     p.add_argument("--gate_mode", choices=["soft", "hard", "none"], default="soft",
                    help="ablation: how ACD gates the sentiment head input (soft = CAGE, hard = 1[p>=0.5], none = ungated)")
+    p.add_argument("--conditioning", choices=["xattn", "attn_only", "concat", "none"], default="xattn",
+                   help="ablation: how the category enters z_c -- xattn (paper: cross-attention + residual/FFN block), "
+                        "attn_only (attention output alone), concat (MLP over [h_<s>; q_c], no attention), "
+                        "none (pooled review for every category, per-category output layers)")
+    p.add_argument("--heads", choices=["three", "joint_only"], default="three",
+                   help="ablation: three task heads (paper) or joint_only (minimal CAGE: one 4-way head, no gate/GradNorm)")
     p.add_argument("--category_query", choices=["text", "id"], default="text",
                    help="ablation: category query from encoded text (CAGE) or a learned free embedding per category")
     p.add_argument("--category_text", choices=["description", "name"], default="description",

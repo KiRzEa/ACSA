@@ -98,6 +98,8 @@ class CategoryConditionedMTL(nn.Module):
         fusion_gate: bool = False,
         gate_mode: str = "soft",
         category_query: str = "text",
+        conditioning: str = "xattn",
+        heads: str = "three",
     ):
         super().__init__()
         self.categories = list(categories)
@@ -108,11 +110,28 @@ class CategoryConditionedMTL(nn.Module):
             raise ValueError(f"gate_mode must be soft|hard|none, got {gate_mode!r}")
         if category_query not in ("text", "id"):
             raise ValueError(f"category_query must be text|id, got {category_query!r}")
+        if conditioning not in ("xattn", "attn_only", "concat", "none"):
+            raise ValueError(f"conditioning must be xattn|attn_only|concat|none, got {conditioning!r}")
+        if heads not in ("three", "joint_only"):
+            raise ValueError(f"heads must be three|joint_only, got {heads!r}")
+        if heads == "joint_only" and (learned_fusion or entity_attribute_heads):
+            raise ValueError("heads='joint_only' cannot be combined with learned_fusion or entity_attribute_heads")
         # Ablation switches (defaults reproduce the main CAGE model):
         #   gate_mode: ACD->sentiment interaction, soft (paper), hard 1[p>=0.5], or none (sentiment reads z)
         #   category_query: text (description/name encoded by the shared PLM) or id (learned free embedding per category)
+        #   conditioning: how the category enters z_c --
+        #     xattn      cross-attention + residual/LayerNorm + FFN/residual/LayerNorm (paper)
+        #     attn_only  z_c = MultiHead(q_c, H, H): the same attention without the residual/FFN block
+        #     concat     z_c = MLP([h_<s>; q_c]): category-conditioned, but no attention over the review tokens
+        #     none       z_c = h_<s> for every c, no category conditioning; per-category output layers replace the
+        #                shared heads (otherwise every category would get the same prediction)
+        #   heads: three (ACD + sentiment + joint, paper) or joint_only (one 4-way head; no ACD/sentiment heads, no gate,
+        #     no GradNorm). joint_only still returns acd/sent logits, derived from the joint distribution, so the fixed
+        #     fusion and metrics code run unchanged: presence = 1 - p(NONE), thresholded at the dev-tuned tau.
         self.gate_mode = gate_mode
         self.category_query = category_query
+        self.conditioning = conditioning
+        self.heads = heads
         self.encoder = AutoModel.from_pretrained(model_name)
         if extra_vocab:
             num_added = add_vocab_with_mean_init(self.encoder, tokenizer, extra_vocab)
@@ -161,14 +180,35 @@ class CategoryConditionedMTL(nn.Module):
             nn.Dropout(dropout),
         )
         self.cross_ffn_norm = nn.LayerNorm(hidden)
+        if conditioning == "concat":
+            self.concat_mlp = nn.Sequential(
+                nn.Linear(2 * hidden, 2 * hidden),
+                nn.GELU(),
+                nn.Dropout(dropout),
+                nn.Linear(2 * hidden, hidden),
+                nn.LayerNorm(hidden),
+            )
 
-        self.acd_adapter = TaskAdapter(hidden, adapter_dim, dropout)
-        self.sent_adapter = TaskAdapter(hidden, adapter_dim, dropout)
+        if heads == "three":
+            self.acd_adapter = TaskAdapter(hidden, adapter_dim, dropout)
+            self.sent_adapter = TaskAdapter(hidden, adapter_dim, dropout)
         self.joint_adapter = TaskAdapter(hidden, adapter_dim, dropout)
 
-        self.acd_head = nn.Linear(hidden, 1)
-        self.sent_head = nn.Linear(hidden, 3)
-        self.joint_head = nn.Linear(hidden, 4)
+        num_categories = len(self.categories)
+        if conditioning == "none":
+            # One output layer per category (the review representation is the same for every category).
+            bound = hidden ** -0.5
+            def per_category(*shape):
+                return nn.Parameter(torch.empty(*shape).uniform_(-bound, bound))
+            if heads == "three":
+                self.acd_head_w, self.acd_head_b = per_category(num_categories, hidden), per_category(num_categories)
+                self.sent_head_w, self.sent_head_b = per_category(num_categories, 3, hidden), per_category(num_categories, 3)
+            self.joint_head_w, self.joint_head_b = per_category(num_categories, 4, hidden), per_category(num_categories, 4)
+        else:
+            if heads == "three":
+                self.acd_head = nn.Linear(hidden, 1)
+                self.sent_head = nn.Linear(hidden, 3)
+            self.joint_head = nn.Linear(hidden, 4)
 
         # Learned strength for the soft ACD -> sentiment interaction.
         # sigmoid(0)=0.5 initially.
@@ -261,6 +301,16 @@ class CategoryConditionedMTL(nn.Module):
         # <s>/CLS-style first token representation for each semantic description.
         return self.cat_query_proj(cat_out[:, 0, :])  # [K, D]
 
+    def _head(self, x: torch.Tensor, task: str) -> torch.Tensor:
+        """Task output layer: shared across categories, or one per category when conditioning='none'."""
+        if self.conditioning != "none":
+            out = getattr(self, f"{task}_head")(x)
+            return out.squeeze(-1) if task == "acd" else out
+        w, b = getattr(self, f"{task}_head_w"), getattr(self, f"{task}_head_b")
+        if task == "acd":
+            return torch.einsum("bkd,kd->bk", x, w) + b  # [B, K]
+        return torch.einsum("bkd,kcd->bkc", x, w) + b  # [B, K, C]
+
     def forward(self, input_ids: torch.Tensor, attention_mask: torch.Tensor) -> Dict[str, torch.Tensor]:
         sent_h = self.encoder(
             input_ids=input_ids,
@@ -268,19 +318,43 @@ class CategoryConditionedMTL(nn.Module):
             return_dict=True,
         ).last_hidden_state  # [B, L, D]
 
-        cat_q = self._encode_category_queries()  # [K, D]
         batch_size = sent_h.size(0)
-        q = cat_q.unsqueeze(0).expand(batch_size, -1, -1)  # [B, K, D]
+        num_categories = len(self.categories)
+        if self.conditioning == "none":
+            # No category conditioning: the pooled review state stands in for every category.
+            z = sent_h[:, 0, :].unsqueeze(1).expand(-1, num_categories, -1).contiguous()  # [B, K, D]
+        else:
+            cat_q = self._encode_category_queries()  # [K, D]
+            q = cat_q.unsqueeze(0).expand(batch_size, -1, -1)  # [B, K, D]
+            if self.conditioning == "concat":
+                pooled = sent_h[:, 0, :].unsqueeze(1).expand(-1, num_categories, -1)  # [B, K, D]
+                z = self.concat_mlp(torch.cat([pooled, q], dim=-1))
+            else:
+                attn_out, _ = self.cross_attention(
+                    query=q,
+                    key=sent_h,
+                    value=sent_h,
+                    key_padding_mask=~attention_mask.bool(),
+                    need_weights=False,
+                )
+                if self.conditioning == "attn_only":
+                    z = attn_out
+                else:
+                    z = self.cross_norm(q + attn_out)
+                    z = self.cross_ffn_norm(z + self.cross_ffn(z))  # shared branching representation
 
-        attn_out, _ = self.cross_attention(
-            query=q,
-            key=sent_h,
-            value=sent_h,
-            key_padding_mask=~attention_mask.bool(),
-            need_weights=False,
-        )
-        z = self.cross_norm(q + attn_out)
-        z = self.cross_ffn_norm(z + self.cross_ffn(z))  # shared branching representation
+        if self.heads == "joint_only":
+            joint_logits = self._head(self.joint_adapter(z), "joint")  # [B, K, 4]
+            # Derived, not trained: log-odds of presence and the polarity logits of the joint head, so the fixed
+            # fusion (presence 0.5/0.5 mix, sentiment 0.5/0.5 mix) reduces exactly to the joint head alone.
+            acd_logits = torch.logsumexp(joint_logits[..., 1:], dim=-1) - joint_logits[..., 0]
+            return {
+                "acd_logits": acd_logits,
+                "sent_logits": joint_logits[..., 1:],
+                "joint_logits": joint_logits,
+                "shared_z": z,
+                "gate_alpha": torch.sigmoid(self.raw_gate_alpha).detach(),
+            }
 
         entity_logits = attribute_logits = None
         z_for_acd = z
@@ -294,7 +368,7 @@ class CategoryConditionedMTL(nn.Module):
             z_for_acd = z * (1.0 + ea_gate * 0.5 * (entity_prob + attribute_prob).unsqueeze(-1))
 
         acd_z = self.acd_adapter(z_for_acd)
-        acd_logits = self.acd_head(acd_z).squeeze(-1)  # [B, K]
+        acd_logits = self._head(acd_z, "acd")  # [B, K]
 
         # Soft gate: sentiment remains trainable even when ACD is uncertain/wrong.
         acd_prob = torch.sigmoid(acd_logits)
@@ -306,10 +380,10 @@ class CategoryConditionedMTL(nn.Module):
         else:  # none
             sent_input = z
         sent_z = self.sent_adapter(sent_input)
-        sent_logits = self.sent_head(sent_z)  # [B, K, 3]
+        sent_logits = self._head(sent_z, "sent")  # [B, K, 3]
 
         joint_z = self.joint_adapter(z)
-        joint_logits = self.joint_head(joint_z)  # [B, K, 4]
+        joint_logits = self._head(joint_z, "joint")  # [B, K, 4]
 
         outputs = {
             "acd_logits": acd_logits,

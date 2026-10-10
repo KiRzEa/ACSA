@@ -1,0 +1,163 @@
+% Passages removed from paper/sn-main_paper.tex on 2026-10-08 at the user's request
+% (drop the zero-shot category generalization experiment and every claim that depends on it).
+% paper/ is git-ignored, so this file is the only copy. The LLM zero-shot prompting baseline is unrelated and stays.
+
+% ===== [1] Abstract: removed clauses =====
+% after 'rather than any particular way of instantiating it':
+-- though a zero-shot test shows this conditioning
+cannot substitute for training on a category directly.
+% at the end of the last sentence ('...worth building on for Vietnamese ACSA'):
+, with full category coverage at training time, not query design, as its main
+current limitation.
+
+% ===== [2] Contributions (ablation item): original sentence =====
+Two further
+    tests probe the category query itself: substituting another category's query at
+    inference collapses that category's prediction, and a category whose positive training
+    labels are withheld is not recovered from its query alone (Sections~\ref{sec:query-swap}
+    and~\ref{sec:zeroshot}).
+
+% ===== [3] Ablation Study intro: removed clauses =====
+, and the zero-shot runs of
+Section~\ref{sec:zeroshot} use three seeds and a one-sided Welch test.
+; and whether the query alone suffices for a
+category without positive training examples (Section~\ref{sec:zeroshot}).
+
+% ===== [4] Subsection 5.3.4, complete (was between Counterfactual Query Substitution and Overall Verdict) =====
+\subsubsection{Zero-Shot Category Generalization}
+\label{sec:zeroshot}
+
+The substitution above fixes training and perturbs only what happens at
+inference: every category was trained normally, and only its query is
+swapped afterward. This leaves a different question open. Section~\ref{sec:cross-attn}
+builds each category's query from a short text description rather than a
+free-standing index precisely so that the category's identity, not just its
+position in a fixed list, is available to the model. If that design does
+what it suggests, a category's description should let the shared heads
+recognize it at test time even for a category the model never had the
+chance to learn from directly. We test this
+directly rather than assume it: for three categories per domain, the most
+frequent, the median, and the rarest by training support (restricted to
+categories with at least 15 test occurrences, so the resulting F1 stays
+well-defined), we remove that category's positive training signal entirely,
+forcing its presence label to absent on every training example while every
+other category's labels, and the held-out category's own query text and
+dev/test gold labels, are left untouched. This is zero-shot in the sense
+that the held-out category contributes no positive training signal, not in
+the sense that it is invisible to the model: its query and ACD slot remain
+active throughout training, and every one of its training instances
+supplies a negative gradient update, so the test is closer to training the
+shared head against the category than to simply never training on it. CAGE
+is then trained and evaluated as in the main results: 45 runs in total, five
+domains times three frequency tiers times three seeds.
+
+The outcome is not a smaller version of the main results; it is a different
+regime entirely. Every one of the 15 held-out categories scores
+\textbf{exactly 0.00 F1} in every one of its three seeds
+(Table~\ref{tab:zeroshot}), against 64.1 to 94.3 F1 for the same category
+trained normally, a gap large enough, and uniform enough, that no
+statistical test is needed to see it; we report one anyway (Welch
+two-sample, one-sided, $p<0.001$ throughout) for completeness. We checked
+that this is a real effect of the model's predictions, not an artifact of how we
+score them, by reading the raw predictions directly: for Beauty's
+\texttt{Colour}, the gold label is present on 727 of 1,607 test reviews, and
+the trained model predicts it on none of them, while every other category
+in the same output file is predicted at normal, gold-proportional rates. The
+collapse also does not track frequency: zero-shot F1 is 0.00 in every tier, so a
+category that would otherwise have had thousands of training examples fails as
+completely as one that would have had barely enough to evaluate; the tiers' mean
+losses (88.1 F1 for the most frequent, 80.5 for the rarest) differ only because
+their supervised F1 does.
+
+\begin{table*}[!htbp]
+\centering
+\caption{Zero-shot leave-one-category-out: a category's own F1 with its positive
+training labels withheld entirely vs.\ trained normally (test micro-F1, \%; mean
+$\pm$ std; zero-shot 3 seeds, supervised 5 seeds; Welch two-sample one-sided
+$t$-test). Every comparison reaches $p<0.001$.}
+\label{tab:zeroshot}
+\small
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llccc}
+\toprule
+\textbf{Domain} & \textbf{Category (tier)} & \textbf{Supervised} & \textbf{Zero-shot} & \textbf{Gap} \\
+\midrule
+Restaurant & Food\#Quality (most) & $83.70\pm1.12$ & $0.00\pm0.00$ & $-83.70$ \\
+Restaurant & Restaurant\#Miscellaneous (median) & $70.73\pm2.30$ & $0.00\pm0.00$ & $-70.73$ \\
+Restaurant & Drinks\#Prices (rarest) & $69.09\pm2.57$ & $0.00\pm0.00$ & $-69.09$ \\
+Hotel & Service\#General (most) & $86.25\pm0.72$ & $0.00\pm0.00$ & $-86.25$ \\
+Hotel & Food\&Drinks\#Style\&Options (median) & $83.12\pm2.34$ & $0.00\pm0.00$ & $-83.12$ \\
+Hotel & Facilities\#Cleanliness (rarest) & $83.88\pm4.80$ & $0.00\pm0.00$ & $-83.88$ \\
+Phone & General (most) & $87.84\pm0.32$ & $0.00\pm0.00$ & $-87.84$ \\
+Phone & Price (median) & $80.80\pm0.38$ & $0.00\pm0.00$ & $-80.80$ \\
+Phone & Storage (rarest) & $70.21\pm3.99$ & $0.00\pm0.00$ & $-70.21$ \\
+Education & Behavior (most) & $89.75\pm0.56$ & $0.00\pm0.00$ & $-89.75$ \\
+Education & General (median) & $64.08\pm3.23$ & $0.00\pm0.00$ & $-64.08$ \\
+Education & Materials (rarest) & $88.46\pm1.64$ & $0.00\pm0.00$ & $-88.46$ \\
+Beauty & Colour (most) & $92.97\pm0.35$ & $0.00\pm0.00$ & $-92.97$ \\
+Beauty & Packing (median) & $94.32\pm0.43$ & $0.00\pm0.00$ & $-94.32$ \\
+Beauty & Staying Power (rarest) & $90.67\pm0.33$ & $0.00\pm0.00$ & $-90.67$ \\
+\bottomrule
+\end{tabular}%
+}
+\end{table*}
+
+This is a qualitatively different failure than substituting a wrong query.
+There, the nearest neighbor's query still recovered 7.3 to 24.4 F1, because
+the substitute query still pointed at a category the shared heads had
+actually learned to detect; even the farthest and the all-zero query
+recovered a little (up to 16.3 and 5.7 F1 respectively). Here, the
+category's own, correct query recovers nothing, consistent with withholding
+its labels not leaving the detector untrained so much as training it toward
+the opposite conclusion: every one of the training examples (58 to over 6,000 per held-out
+category) where that category's presence label was forced to absent is a gradient
+step telling the shared ACD head that whatever pattern this query produces
+should never fire, though confirming this from the model's raw presence
+scores rather than its thresholded predictions is left to future work. The
+query still identifies which category is being asked about, as
+Section~\ref{sec:query-swap} shows, but it cannot substitute for positive
+training examples of that category.
+
+
+% ===== [5] Overall Verdict: removed closing sentences =====
+The zero-shot result of
+Section~\ref{sec:zeroshot} sharpens this further: the same description that
+recovers 64 to 94 F1 for a normally-trained category recovers nothing for
+one whose positive training labels were withheld, so the query's text is not
+sufficient on its own; what the evidence credits is specifically the query
+together with having been trained on that category.
+
+% ===== [6] Discussion (limitations): removed paragraph, was before "Some baseline cells are single values." =====
+\textbf{CAGE, trained as described here, does not recover a category whose positive
+training labels are withheld.} Withholding a category's positive training labels entirely,
+while leaving its query text and dev/test gold untouched, collapses that
+category's F1 to 0.00 in every domain and every seed tested
+(Section~\ref{sec:zeroshot}), regardless of how frequent the category would
+otherwise have been. The category-text query identifies which category is
+being asked about, but it does not let the architecture answer for one whose
+positive training labels were withheld; whether loss-masking the category instead of
+forcing it to absent, or a per-category rather than shared decision
+threshold, would change this outcome is untested.
+
+% ===== [7] Conclusion: "which three further analyses" became "two"; removed passage after the query-substitution sentence =====
+A leave-one-category-out zero-shot test
+(Section~\ref{sec:zeroshot}) shows what that substitution alone could not: the
+query's text is not a substitute for positive training examples of the category either,
+since withholding one category's positive training labels, while leaving its
+query and test-time gold untouched, drives that category's F1 to 0.00 in all 15
+categories tested, across five domains and three frequency tiers, against
+64.1 to 94.3 F1 for the same category trained normally. CAGE's category
+query tells the shared heads which category to look for; under the training
+procedure used throughout this paper, whether they can find it depends on
+having been trained to, not on what the query says.
+
+% ===== [8] Conclusion: "Four directions" became "Three"; removed fourth direction =====
+Fourth, since Section~\ref{sec:zeroshot} shows CAGE, trained this way,
+cannot recognize a category whose positive training labels were withheld, at least
+with the one description per category we tested, covering a new category in a live taxonomy today means relabeling and
+retraining; closing that gap,
+through few-shot adaptation with a handful of labeled examples per new category,
+through meta-learning across the category set, or by regularizing the ACD head so
+that withheld categories keep some residual sensitivity rather than being actively
+suppressed, is a concrete target for future architectures in this space, not just a
+caveat on this one.
