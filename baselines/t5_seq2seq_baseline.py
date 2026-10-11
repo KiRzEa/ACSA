@@ -249,6 +249,66 @@ def run(args: argparse.Namespace) -> None:
     logger.info("Wrote predictions/summary to %s", output_dir)
 
 
+def run_profile(args: argparse.Namespace) -> None:
+    """--profile_json: train ONE epoch with the Trainer configuration of train_one_seed (no dev evaluation), then time
+    generation on test reviews (see cost_profile.py)."""
+    import cost_profile as CP
+    train, test = load_examples(args.train_path), load_examples(args.test_path)
+    set_seed(42)
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name)
+    if args.device_map_auto:
+        model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name, device_map="auto")
+    else:
+        model = AutoModelForSeq2SeqLM.from_pretrained(args.model_name)
+        if torch.cuda.is_available() and not args.cpu:
+            model = model.to("cuda")
+    if args.gradient_checkpointing:
+        model.config.use_cache = False
+    train_ds = PromptTargetDataset(train, tokenizer, args.max_source_length, args.max_target_length)
+    training_args = Seq2SeqTrainingArguments(
+        output_dir=str(Path(args.output_dir) / "profile_trainer"), num_train_epochs=1,
+        per_device_train_batch_size=args.batch_size, gradient_accumulation_steps=args.gradient_accumulation_steps,
+        gradient_checkpointing=args.gradient_checkpointing, learning_rate=args.learning_rate, weight_decay=args.weight_decay,
+        warmup_ratio=args.warmup_ratio, eval_strategy="no", save_strategy="no", predict_with_generate=False,
+        logging_steps=50, disable_tqdm=True, seed=42, report_to=[],
+        bf16=torch.cuda.is_available() and not args.cpu and torch.cuda.is_bf16_supported(), fp16=False, use_cpu=args.cpu)
+    trainer = Seq2SeqTrainer(model=model, args=training_args, train_dataset=train_ds,
+                             data_collator=DataCollatorForSeq2Seq(tokenizer, model=model))
+    CP.reset_peak()
+    t0 = CP.now()
+    trainer.train()
+    epoch_seconds = CP.now() - t0
+    MODEL_NAME, SOURCE, PARSE = args.model_name, (lambda ex: build_input(ex.text)), parse_prediction
+
+    rec = {"model": MODEL_NAME, "domain": Path(args.train_path).parent.name, "batch_size": args.batch_size,
+           "max_source_length": args.max_source_length, "max_target_length": args.max_target_length, "num_beams": args.num_beams,
+           "gradient_checkpointing": bool(getattr(args, "gradient_checkpointing", False)),
+           "device_map_auto": bool(getattr(args, "device_map_auto", False)), "train_batches": len(trainer.get_train_dataloader()),
+           "epoch_seconds": round(epoch_seconds, 1), **CP.peak_gpu(), **CP.count_params(model)}
+
+    # Inference as deployed: key/value cache on (training with gradient checkpointing switches it off), no checkpointing.
+    model.eval()
+    if hasattr(model, "gradient_checkpointing_disable"):
+        model.gradient_checkpointing_disable()
+    model.config.use_cache = True
+    model.generation_config.use_cache = True
+    device = next(model.parameters()).device
+    items = test[:args.profile_latency_n]
+    gen_tokens = []
+
+    def predict(examples):  # end to end: prompt + tokenization, generation, decoding + parsing
+        enc = tokenizer([SOURCE(ex) for ex in examples], truncation=True, max_length=args.max_source_length,
+                        padding=True, return_tensors="pt").to(device)
+        out = model.generate(**enc, max_new_tokens=args.max_target_length, num_beams=args.num_beams)
+        gen_tokens.extend((out != tokenizer.pad_token_id).sum(dim=1).tolist())
+        return [PARSE(t) for t in tokenizer.batch_decode(out, skip_special_tokens=True)]
+
+    rec.update(CP.latency(lambda ex: predict([ex]), items))
+    rec["generated_tokens_mean"] = round(sum(gen_tokens) / max(1, len(gen_tokens)), 1)
+    rec.update(CP.throughput(predict, items, args.eval_batch_size))
+    CP.write(args.profile_json, rec)
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Plain seq2seq T5-family ACSA baseline (review -> category+sentiment, no instruction)")
     p.add_argument("--train_path", type=str, required=True)
@@ -278,8 +338,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--epochs", type=int, default=10)
     p.add_argument("--patience", type=int, default=5)
     p.add_argument("--cpu", action="store_true")
+    p.add_argument("--profile_json", type=str, default=None,
+                   help="train ONE epoch, then write training cost and inference latency to this JSON and exit (cost_profile.py)")
+    p.add_argument("--profile_latency_n", type=int, default=200, help="test reviews timed at batch size 1 in --profile_json mode")
     return p
 
 
 if __name__ == "__main__":
-    run(build_arg_parser().parse_args())
+    _args = build_arg_parser().parse_args()
+    run_profile(_args) if _args.profile_json else run(_args)

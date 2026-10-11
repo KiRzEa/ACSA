@@ -243,6 +243,43 @@ def run(args: argparse.Namespace) -> None:
     logger.info("Wrote predictions/summary to %s", output_dir)
 
 
+def run_profile(args: argparse.Namespace) -> None:
+    """--profile_json: train ONE epoch exactly as train_one_seed does, then time inference (see cost_profile.py)."""
+    import cost_profile as CP
+    train, dev, test = load_examples(args.train_path), load_examples(args.dev_path), load_examples(args.test_path)
+    categories = infer_categories(train, dev, test)
+    set_seed(42)
+    device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
+    vocab = build_vocab(train, args.min_freq)
+    train_loader = DataLoader(ACSADataset(train, vocab, categories, args.max_len), batch_size=args.batch_size, shuffle=True)
+    model = CNNBaseline(len(vocab), len(categories), dropout=args.dropout, use_bilstm=args.use_bilstm).to(device)
+    optimizer = torch.optim.RAdam(model.parameters(), lr=args.learning_rate)
+    CP.reset_peak()
+    t0 = CP.now()
+    model.train()
+    for x, y in train_loader:
+        x, y = x.to(device), y.to(device)
+        optimizer.zero_grad()
+        logits = model(x)
+        loss = sum(F.cross_entropy(logits[c], y[:, c]) for c in range(len(categories)))
+        loss.backward()
+        optimizer.step()
+    rec = {"model": "BiLSTM-CNN" if args.use_bilstm else "CNN", "domain": Path(args.train_path).parent.name,
+           "n_categories": len(categories), "batch_size": args.batch_size, "max_len": args.max_len,
+           "train_batches": len(train_loader), "epoch_seconds": round(CP.now() - t0, 1), **CP.peak_gpu(), **CP.count_params(model)}
+    model.eval()
+    items = test[:args.profile_latency_n]
+
+    def predict(examples):  # end to end: segmentation + vocabulary lookup, forward, argmax per category
+        x = torch.stack([ACSADataset(examples, vocab, categories, args.max_len)[i][0] for i in range(len(examples))]).to(device)
+        idx = torch.stack([l.argmax(dim=1) for l in model(x)], dim=1).cpu().numpy()
+        return [[(categories[c], LABELS[row[c]]) for c in range(len(categories)) if row[c] != 0] for row in idx]
+
+    rec.update(CP.latency(lambda ex: predict([ex]), items))
+    rec.update(CP.throughput(predict, items, args.eval_batch_size))
+    CP.write(args.profile_json, rec)
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="CNN / BiLSTM-CNN ACSA baseline (pass --use_bilstm for the BiLSTM-CNN row)")
     p.add_argument("--train_path", type=str, required=True)
@@ -261,8 +298,12 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--patience", type=int, default=5)
     p.add_argument("--min_delta", type=float, default=1e-3)
     p.add_argument("--cpu", action="store_true")
+    p.add_argument("--profile_json", type=str, default=None,
+                   help="train ONE epoch, then write training cost and inference latency to this JSON and exit (cost_profile.py)")
+    p.add_argument("--profile_latency_n", type=int, default=200, help="test reviews timed at batch size 1 in --profile_json mode")
     return p
 
 
 if __name__ == "__main__":
-    run(build_arg_parser().parse_args())
+    _args = build_arg_parser().parse_args()
+    run_profile(_args) if _args.profile_json else run(_args)

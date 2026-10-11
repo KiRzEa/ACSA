@@ -982,6 +982,36 @@ def write_predictions(
             f.write(json.dumps(record, ensure_ascii=False) + "\n")
 
 
+def profile_cage(args, model, test_ds, collate, device, categories, epoch_seconds, n_batches) -> None:
+    """--profile_json: one-epoch training cost and inference latency of this configuration (see cost_profile.py)."""
+    import cost_profile as CP
+    rec = {"model": "CAGE", "domain": getattr(args, "domain", None), "n_categories": len(categories),
+           "conditioning": getattr(args, "conditioning", "xattn"), "heads": getattr(args, "heads", "three"),
+           "learned_fusion": bool(args.learned_fusion), "batch_size": args.batch_size, "max_length": args.max_length,
+           "train_batches": n_batches, "epoch_seconds": round(epoch_seconds, 1), **CP.peak_gpu(), **CP.count_params(model)}
+    model.eval()
+    items = [test_ds[i] for i in range(min(args.profile_latency_n, len(test_ds)))]
+
+    def predict(batch_items):
+        batch = move_batch_to_device(collate(batch_items), device)
+        out = model(batch["input_ids"], batch["attention_mask"])
+        if "fused_logits" in out:
+            return out["fused_logits"].argmax(-1).cpu().numpy()
+        return fuse_predictions(out["acd_logits"].float().cpu().numpy(), out["sent_logits"].float().cpu().numpy(),
+                                out["joint_logits"].float().cpu().numpy(), 0.5)[0]
+
+    # As the training/evaluation code runs it: every forward pass re-encodes the K category descriptions.
+    rec.update({f"uncached_{k}": v for k, v in CP.latency(lambda it: predict([it]), items).items()})
+    # Deployment setting: the queries do not depend on the review, so they are encoded once and reused.
+    if getattr(args, "conditioning", "xattn") != "none":
+        with torch.no_grad():
+            q = model._encode_category_queries().detach()
+        model._encode_category_queries = lambda: q
+    rec.update(CP.latency(lambda it: predict([it]), items))
+    rec.update(CP.throughput(predict, items, args.eval_batch_size))
+    CP.write(args.profile_json, rec)
+
+
 def train(args: argparse.Namespace) -> None:
     set_seed(args.seed)
     output_dir = Path(args.output_dir)
@@ -1137,7 +1167,14 @@ def train(args: argparse.Namespace) -> None:
     checkpoint_path = output_dir / "best_model.pt"
     history = []
 
+    profiling = bool(getattr(args, "profile_json", None))
+    if profiling:
+        import cost_profile as CP
+        CP.reset_peak()
+
     for epoch in range(1, args.epochs + 1):
+        if profiling:
+            epoch_t0 = CP.now()
         model.train()
         running = np.zeros(4, dtype=np.float64)  # total, acd, sent, joint
         pbar = tqdm(train_loader, desc=f"train epoch {epoch}")
@@ -1221,6 +1258,10 @@ def train(args: argparse.Namespace) -> None:
                 w="/".join(f"{x:.2f}" for x in display_w),
                 gate=f"{outputs['gate_alpha'].item():.2f}",
             )
+
+        if profiling:  # one epoch is enough: measure it, time inference, write the record and stop
+            profile_cage(args, model, test_ds, collate, device, categories, CP.now() - epoch_t0, len(train_loader))
+            return
 
         # Tune the ACSA presence threshold on dev for each epoch.
         dev_raw = collect_outputs(model, dev_loader, device)
@@ -1323,6 +1364,9 @@ def train(args: argparse.Namespace) -> None:
 # -----------------------------------------------------------------------------
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Category-conditioned multi-task ACSA trainer")
+    p.add_argument("--profile_json", type=str, default=None,
+                   help="train ONE epoch, then write training cost and inference latency to this JSON and exit (cost_profile.py)")
+    p.add_argument("--profile_latency_n", type=int, default=200, help="test reviews timed at batch size 1 in --profile_json mode")
     p.add_argument("--query_swap_eval", action="store_true", help="after testing, re-evaluate with substituted category queries (own/nearest/farthest/random/mean/zero) and write query_swap.json")
     p.add_argument("--no_resume", action="store_true", help="with --seeds: retrain every seed even if its metrics.json already exists")
     p.add_argument("--holdout_category", type=str, default=None,

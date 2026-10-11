@@ -283,6 +283,48 @@ def run_ensemble(args: argparse.Namespace) -> None:
     logger.info("Wrote predictions/metrics to %s", output_dir)
 
 
+def run_profile(args: argparse.Namespace) -> None:
+    """--profile_json: train ONE epoch exactly as train_one_seed does, then time inference (see cost_profile.py)."""
+    import cost_profile as CP
+    train, dev, test = load_examples(args.train_path), load_examples(args.dev_path), load_examples(args.test_path)
+    categories = infer_categories(train, dev, test)
+    set_seed(42)
+    device = torch.device("cuda" if torch.cuda.is_available() and not args.cpu else "cpu")
+    tokenizer = AutoTokenizer.from_pretrained(args.model_name, use_fast=False)
+    segmenter = build_segmenter(args.segmenter)
+    train_loader = DataLoader(ACSADataset(train, categories, tokenizer, segmenter, args.max_length), batch_size=args.batch_size, shuffle=True)
+    model = BertBaseline(args.model_name, len(categories), dropout=args.dropout).to(device)
+    optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate, weight_decay=args.weight_decay)
+
+    CP.reset_peak()
+    t0 = CP.now()
+    model.train()
+    for input_ids, attention_mask, y in train_loader:
+        input_ids, attention_mask, y = input_ids.to(device), attention_mask.to(device), y.to(device)
+        optimizer.zero_grad()
+        logits = model(input_ids, attention_mask)
+        loss = sum(F.cross_entropy(logits[c], y[:, c]) for c in range(len(categories)))
+        loss.backward()
+        torch.nn.utils.clip_grad_norm_(model.parameters(), 1.0)
+        optimizer.step()
+    rec = {"model": args.model_name, "domain": Path(args.train_path).parent.name, "n_categories": len(categories),
+           "batch_size": args.batch_size, "max_length": args.max_length, "train_batches": len(train_loader),
+           "epoch_seconds": round(CP.now() - t0, 1), **CP.peak_gpu(), **CP.count_params(model)}
+
+    model.eval()
+    items = test[:args.profile_latency_n]
+
+    def predict(examples):  # end to end: segmentation + tokenization, forward, argmax per category
+        ds = ACSADataset(examples, categories, tokenizer, segmenter, args.max_length)
+        ids, mask, _ = (torch.stack(t) for t in zip(*[ds[i] for i in range(len(ds))]))
+        logits = model(ids.to(device), mask.to(device))
+        return logits_to_predictions([F.softmax(l, dim=1).cpu().numpy() for l in logits], categories)
+
+    rec.update(CP.latency(lambda ex: predict([ex]), items))
+    rec.update(CP.throughput(predict, items, args.eval_batch_size))
+    CP.write(args.profile_json, rec)
+
+
 def build_arg_parser() -> argparse.ArgumentParser:
     p = argparse.ArgumentParser(description="Fine-tuned BERT-family ACSA baseline (per-category CLS classification)")
     p.add_argument("--mode", choices=["train", "ensemble"], default="train")
@@ -306,12 +348,17 @@ def build_arg_parser() -> argparse.ArgumentParser:
     p.add_argument("--save_checkpoint", action="store_true", default=True)
     p.add_argument("--no_save_checkpoint", action="store_false", dest="save_checkpoint")
     p.add_argument("--cpu", action="store_true")
+    p.add_argument("--profile_json", type=str, default=None,
+                   help="train ONE epoch, then write training cost and inference latency to this JSON and exit (cost_profile.py)")
+    p.add_argument("--profile_latency_n", type=int, default=200, help="test reviews timed at batch size 1 in --profile_json mode")
     return p
 
 
 if __name__ == "__main__":
     args = build_arg_parser().parse_args()
-    if args.mode == "train":
+    if args.profile_json:
+        run_profile(args)
+    elif args.mode == "train":
         if not args.train_path or not args.dev_path:
             raise ValueError("--mode train needs --train_path and --dev_path")
         run_train(args)

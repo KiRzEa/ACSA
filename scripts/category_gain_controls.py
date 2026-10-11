@@ -1,4 +1,4 @@
-"""Controlled re-analysis of per-category CAGE gains (reviewer Major Comment 4, Section 5.4.5 / sec:category-gains).
+"""Controlled re-analysis of per-category CAGE gains (the category-level analysis of the paper).
 
 Builds on scripts/category_analysis.py (same rows: categories with >= 5 gold test pairs, gain = mean CAGE F1 over
 5 seeds - mean PhoBERT F1 over 5 seeds, support = # training reviews carrying the category, overlap = max TF-IDF

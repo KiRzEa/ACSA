@@ -24,7 +24,7 @@ DOM = {  # data dir, domain phrase used inside instruction prompts
     "restaurant": ("Res_ABSA", "restaurant"), "hotel": ("Hotel_ABSA", "hotel"), "phone": ("Phone_ABSA", "mobile phone"),
     "education": ("Education_ABSA", "university course evaluation"), "beauty": ("Beauty_ABSA", "beauty product")}
 ORDER = ["bert", "cnn", "t5base", "instr", "t5large", "cage"]
-# CAGE ablations requested in review (MC1: what replaces cross-attention; MC3: minimal CAGE), see run_cage_ablation.sh.
+# CAGE ablations replacing cross-attention and the minimal (joint-head-only) CAGE, see run_cage_ablation.sh.
 CAGE_REVIEW = {"cond_none": "--conditioning none", "cond_concat": "--conditioning concat",
                "cond_attn_only": "--conditioning attn_only", "minimal_joint": "--heads joint_only"}
 # Unmeasured first guesses, minutes per (job) on one T4; large models use both GPUs.
@@ -108,7 +108,7 @@ def build_jobs(calib):
                         f"python3 train_mtl_acsa_v2.py {tr} --model_name vinai/phobert-base-v2 --seed {s} --output_dir {out} "
                         f"--domain {d} --category_text description --epochs 10 --batch_size 16 --grad_accum_steps 1 --max_length 256 {flag}",
                         f"rm -f {out}/best_model.pt"], [f"{out}/metrics.json"])
-        for s in SEEDS:  # CAGE main configuration re-run with query substitution on the same models (review MC2):
+        for s in SEEDS:  # CAGE main configuration with query substitution on the same models:
             out = f"outputs/cage_v2_{d}_fixed/seed_{s}"  # Table 4 and the query-substitution table then share one set of models
             if not (ROOT / out / "metrics.json").exists():
                 add("cage", "main_v2", d, s, EST["cage"][d], 1, [

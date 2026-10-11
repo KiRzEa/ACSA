@@ -9,5 +9,5 @@
 #   A: education restaurant   B: hotel phone   C: beauty
 CATEGORY_TEXT=description
 VARIANTS="${VARIANTS:-fixed learned}"
-OUT_PREFIX=cage
+OUT_PREFIX="${OUT_PREFIX:-cage}"   # cage_v2 + EXTRA_ARGS=--query_swap_eval reproduces the Table 4 runs
 source "$(dirname "$0")/scripts/cage_common.sh"

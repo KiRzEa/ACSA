@@ -14,7 +14,7 @@
 #                 cond_concat     MLP over [h_<s>; q_c] instead of cross-attention
 #                 cond_attn_only  cross-attention output alone, without the residual/FFN block
 #   minimal     minimal_joint   minimal CAGE: joint head only (no ACD/sentiment heads, no gate, no GradNorm)
-#   review      conditioning + minimal (the reviewer's MC1/MC3 runs; all 5 domains)
+#   review      conditioning + minimal (replacing cross-attention, minimal CAGE; all 5 domains)
 # Usage: bash run_cage_ablation.sh <name|group|all|everything> [domain ...]
 #   all = design; everything = design + components + heads + adapter. Default domains: restaurant hotel.
 #   Each ablation x domain = 5 trainings.  DRY=1 prints the commands.  Resumable.

@@ -1,0 +1,11 @@
+torch>=2.1
+transformers==4.57.6
+accelerate
+sentencepiece
+pyvi
+numpy
+scipy
+scikit-learn
+tqdm
+# LLM prompting baselines only (llm_baseline/); boto3 is optional
+openai

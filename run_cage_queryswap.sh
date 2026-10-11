@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Counterfactual query substitution (advisor request): CAGE fixed fusion, 5 seeds, protocol of run_cage_5seeds_description.sh,
+# Counterfactual query substitution: CAGE fixed fusion, 5 seeds, protocol of run_cage_5seeds_description.sh,
 # plus --query_swap_eval, which after testing re-evaluates every slot with a substituted query (own / nearest / farthest /
 # random / mean / zero) and writes <run>/seed_<s>/query_swap.json.  Aggregate with scripts/query_swap_stats.py.
 #   bash run_cage_queryswap.sh [domain ...]            description queries -> outputs/cage_qs_<domain>_fixed/

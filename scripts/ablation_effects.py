@@ -1,6 +1,6 @@
 """Effect sizes, 95% CIs and multiple-testing correction for CAGE's paired ablation comparisons.
 
-Answers reviewer Major Comment 3: every design-choice comparison in the paper is reported with its mean paired
+Every design-choice comparison in the paper is reported with its mean paired
 difference, the 95% t-interval of that difference, Cohen's d_z, the raw two-sided paired t-test p, and p-values
 adjusted for multiplicity (Holm and Bonferroni) within a declared correction set.
 
