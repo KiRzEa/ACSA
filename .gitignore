@@ -25,3 +25,49 @@ paper/
 .foundry
 
 architecture_samples/
+
+# --- Not needed to reproduce the paper: kept locally, excluded from the public repo ---
+# Exploratory / superseded code and notes
+archive/
+notebooks/
+docs/
+reference_papers/
+IDEAS.md
+hotel_domain_results.csv
+train_mtl_acsa.py
+infer.py
+ensemble.py
+fusion_ablation.py
+preprocessing.py
+clean_datasets.py
+convert_pair_to_absa.py
+paraphrases.py
+modal_runner.py
+extra_vocab.txt
+# Raw pair-format sources and domains not used in the paper (the *_ABSA folders hold the five datasets)
+data/
+Mother_ABSA/
+Technology_ABSA/
+# LLM preprocessing experiments; the baselines only need these two modules
+llm_preprocessing/*
+!llm_preprocessing/data_io.py
+!llm_preprocessing/llm_client.py
+# Session wrappers and experiments not reported in the paper
+run_ablation_session*.sh
+run_cage_session*.sh
+run_cage_checkpoint.sh
+run_cage_zeroshot.sh
+run_kaggle_queryswap.sh
+scripts/zeroshot_stats.py
+scripts/paraphrase_robustness.py
+scripts/paraphrase_stats.py
+scripts/modal_zeroshot_resume.sh
+# Local artefacts
+kaggle_zips_archive/
+*.docx
+*.png
+
+# Dataset variants not used in the paper (source CSVs, smoke-test subsets, augmentation experiments)
+Beauty_ABSA/data_*.csv
+*_smoke.txt
+*_augmented.txt
