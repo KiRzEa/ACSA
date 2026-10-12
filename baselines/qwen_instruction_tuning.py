@@ -331,4 +331,6 @@ if __name__ == "__main__":
     a = build_arg_parser().parse_args()
     a.backend = a.backend or ("unsloth" if torch.cuda.is_available() else "hf")
     a.model_name = a.model_name or DEFAULT_MODEL[a.backend]
+    if a.backend == "unsloth" and not a.load_in_4bit and a.model_name.endswith("-bnb-4bit"):
+        a.model_name = a.model_name[:-len("-bnb-4bit")]  # 16-bit LoRA needs the unquantized checkpoint
     run(a)
