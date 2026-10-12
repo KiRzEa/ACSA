@@ -31,7 +31,8 @@ from __future__ import annotations
 import os
 import sys
 
-import torch
+os.environ.setdefault("CUDA_VISIBLE_DEVICES", "0")  # one GPU per process; the Kaggle queue sets it explicitly
+import torch  # noqa: E402
 
 # Unsloth patches transformers at import time, so it must be imported before anything imports transformers
 # (t5_instruction_tuning below does). Only attempted when a GPU is present and the hf backend is not forced.
@@ -43,7 +44,9 @@ if torch.cuda.is_available() and not _WANT_HF:
         pass
 
 import argparse  # noqa: E402
+import dataclasses  # noqa: E402
 import json  # noqa: E402
+import math  # noqa: E402
 import logging  # noqa: E402
 import random  # noqa: E402
 import time  # noqa: E402
@@ -200,6 +203,32 @@ def generate(model, tokenizer, examples: List[Example], args, categories: List[s
     return preds, raw
 
 
+def training_arguments(args, n_train: int, seed: int, output_dir: Path, gpu: bool, bf16: bool) -> TrainingArguments:
+    """TrainingArguments for transformers 4.x and 5.x. Version 5 dropped warmup_ratio (the warmup is then given in
+    steps) and may drop other options; anything this version does not know is left out and reported."""
+    total_steps = args.max_steps or math.ceil(n_train / (args.batch_size * args.grad_accum)) * args.epochs
+    kw = dict(output_dir=str(output_dir / "trainer_state"), num_train_epochs=args.epochs,
+              per_device_train_batch_size=args.batch_size, gradient_accumulation_steps=args.grad_accum,
+              per_device_eval_batch_size=args.batch_size, learning_rate=args.learning_rate, weight_decay=args.weight_decay,
+              lr_scheduler_type="linear", optim="adamw_8bit" if args.backend == "unsloth" else "adamw_torch",
+              eval_strategy="epoch", save_strategy="no", metric_for_best_model="eval_loss", greater_is_better=False,
+              prediction_loss_only=True, group_by_length=True, logging_steps=25, disable_tqdm=True, report_to=[],
+              seed=seed, data_seed=seed, bf16=bf16, fp16=gpu and not bf16, use_cpu=not torch.cuda.is_available(),
+              remove_unused_columns=False, max_steps=args.max_steps if args.max_steps else -1)
+    fields = {f.name for f in dataclasses.fields(TrainingArguments)}
+    if "warmup_ratio" in fields:
+        kw["warmup_ratio"] = args.warmup_ratio
+    else:
+        kw["warmup_steps"] = math.ceil(args.warmup_ratio * total_steps)
+    if "group_by_length" not in fields and "train_sampling_strategy" in fields:  # 5.x name of the same sampler
+        kw.pop("group_by_length")
+        kw["train_sampling_strategy"] = "group_by_length"
+    dropped = sorted(k for k in kw if k not in fields)
+    if dropped:
+        logger.warning("this transformers version has no TrainingArguments %s; left out", dropped)
+    return TrainingArguments(**{k: v for k, v in kw.items() if k in fields})
+
+
 def run(args) -> None:
     train, dev, test = load_examples(args.train_path), load_examples(args.dev_path), load_examples(args.test_path)
     categories = infer_categories(train, dev, test)
@@ -221,16 +250,7 @@ def run(args) -> None:
         train_ds, dev_ds = ChatSFTDataset(train, tokenizer, args), ChatSFTDataset(dev, tokenizer, args)
         gpu = torch.cuda.is_available()
         bf16 = gpu and torch.cuda.is_bf16_supported()
-        targs = TrainingArguments(
-            output_dir=str(output_dir / "trainer_state"), num_train_epochs=args.epochs,
-            per_device_train_batch_size=args.batch_size, gradient_accumulation_steps=args.grad_accum,
-            per_device_eval_batch_size=args.batch_size, learning_rate=args.learning_rate, weight_decay=args.weight_decay,
-            lr_scheduler_type="linear", warmup_ratio=args.warmup_ratio, optim="adamw_8bit" if args.backend == "unsloth" else "adamw_torch",
-            eval_strategy="epoch", save_strategy="no", metric_for_best_model="eval_loss", greater_is_better=False,
-            prediction_loss_only=True, group_by_length=True,
-            logging_steps=25, disable_tqdm=True, report_to=[], seed=seed, data_seed=seed,
-            bf16=bf16, fp16=gpu and not bf16, use_cpu=not torch.cuda.is_available(), remove_unused_columns=False,
-            max_steps=args.max_steps if args.max_steps else -1)
+        targs = training_arguments(args, len(train_ds), seed, output_dir, gpu, bf16)
         tracker = BestAdapterTracker()
         trainer = Trainer(model=model, args=targs, train_dataset=train_ds, eval_dataset=dev_ds,
                           data_collator=PadCollator(tokenizer.pad_token_id),
