@@ -15,27 +15,30 @@
     "qwen:nl_en:hotel:s42",
     "qwen:code_vi:phone:s42",
     "qwen:code_en:phone:s42",
+    "qwen:nl_vi:education:s42",
+    "qwen:nl_en:education:s42"
+   ],
+   "hours": 10.3
+  },
+  {
+   "jobs": [
     "qwen:nl_vi:phone:s42",
     "qwen:nl_en:phone:s42",
     "qwen:code_vi:education:s42",
     "qwen:code_en:education:s42",
-    "qwen:nl_vi:education:s42",
-    "qwen:nl_en:education:s42",
+    "qwen:code_vi:beauty:s42",
+    "qwen:code_en:beauty:s42",
     "qwen:nl_vi:beauty:s42",
     "qwen:nl_en:beauty:s42",
-    "qwen:nl_vi:education:s7",
-    "qwen:nl_en:education:s7"
+    "qwen:nl_vi:restaurant:s7",
+    "qwen:nl_en:restaurant:s7"
    ],
-   "hours": 10.4
+   "hours": 10.3
   },
   {
    "jobs": [
-    "qwen:code_vi:beauty:s42",
-    "qwen:code_en:beauty:s42",
     "qwen:code_vi:restaurant:s7",
     "qwen:code_en:restaurant:s7",
-    "qwen:nl_vi:restaurant:s7",
-    "qwen:nl_en:restaurant:s7",
     "qwen:code_vi:restaurant:s99",
     "qwen:code_en:restaurant:s99",
     "qwen:nl_vi:restaurant:s99",
@@ -44,15 +47,17 @@
     "qwen:code_en:restaurant:s123",
     "qwen:nl_vi:restaurant:s123",
     "qwen:nl_en:restaurant:s123",
-    "qwen:code_vi:restaurant:s2024",
-    "qwen:code_en:restaurant:s2024"
+    "qwen:nl_vi:restaurant:s2024",
+    "qwen:nl_en:restaurant:s2024",
+    "qwen:nl_vi:education:s7",
+    "qwen:nl_en:education:s7"
    ],
    "hours": 10.4
   },
   {
    "jobs": [
-    "qwen:nl_vi:restaurant:s2024",
-    "qwen:nl_en:restaurant:s2024",
+    "qwen:code_vi:restaurant:s2024",
+    "qwen:code_en:restaurant:s2024",
     "qwen:code_vi:hotel:s7",
     "qwen:code_en:hotel:s7",
     "qwen:nl_vi:hotel:s7",
@@ -61,25 +66,28 @@
     "qwen:code_en:hotel:s99",
     "qwen:nl_vi:hotel:s99",
     "qwen:nl_en:hotel:s99",
+    "qwen:nl_vi:hotel:s123",
+    "qwen:nl_en:hotel:s123"
+   ],
+   "hours": 9.9
+  },
+  {
+   "jobs": [
     "qwen:code_vi:hotel:s123",
     "qwen:code_en:hotel:s123",
-    "qwen:nl_vi:hotel:s123",
-    "qwen:nl_en:hotel:s123",
     "qwen:code_vi:hotel:s2024",
     "qwen:code_en:hotel:s2024",
     "qwen:nl_vi:hotel:s2024",
     "qwen:nl_en:hotel:s2024",
-    "qwen:code_vi:education:s7",
-    "qwen:code_en:education:s7"
-   ],
-   "hours": 10.3
-  },
-  {
-   "jobs": [
     "qwen:code_vi:phone:s7",
     "qwen:code_en:phone:s7",
     "qwen:nl_vi:phone:s7",
-    "qwen:nl_en:phone:s7",
+    "qwen:nl_en:phone:s7"
+   ],
+   "hours": 10.2
+  },
+  {
+   "jobs": [
     "qwen:code_vi:phone:s99",
     "qwen:code_en:phone:s99",
     "qwen:nl_vi:phone:s99",
@@ -88,19 +96,21 @@
     "qwen:code_en:phone:s123",
     "qwen:nl_vi:phone:s123",
     "qwen:nl_en:phone:s123",
-    "qwen:nl_vi:phone:s2024",
-    "qwen:nl_en:phone:s2024",
-    "qwen:nl_vi:education:s99",
-    "qwen:nl_en:education:s99"
+    "qwen:code_vi:education:s7",
+    "qwen:code_en:education:s7"
    ],
-   "hours": 10.5
+   "hours": 10.4
   },
   {
    "jobs": [
     "qwen:code_vi:phone:s2024",
     "qwen:code_en:phone:s2024",
+    "qwen:nl_vi:phone:s2024",
+    "qwen:nl_en:phone:s2024",
     "qwen:code_vi:education:s99",
     "qwen:code_en:education:s99",
+    "qwen:nl_vi:education:s99",
+    "qwen:nl_en:education:s99",
     "qwen:code_vi:education:s123",
     "qwen:code_en:education:s123",
     "qwen:nl_vi:education:s123",
@@ -108,35 +118,40 @@
     "qwen:code_vi:education:s2024",
     "qwen:code_en:education:s2024",
     "qwen:nl_vi:education:s2024",
-    "qwen:nl_en:education:s2024",
+    "qwen:nl_en:education:s2024"
+   ],
+   "hours": 10.1
+  },
+  {
+   "jobs": [
     "qwen:code_vi:beauty:s7",
     "qwen:code_en:beauty:s7",
     "qwen:nl_vi:beauty:s7",
-    "qwen:nl_en:beauty:s7"
+    "qwen:nl_en:beauty:s7",
+    "qwen:nl_vi:beauty:s99",
+    "qwen:nl_en:beauty:s99"
    ],
-   "hours": 9.1
+   "hours": 8.7
   },
   {
    "jobs": [
     "qwen:code_vi:beauty:s99",
     "qwen:code_en:beauty:s99",
-    "qwen:nl_vi:beauty:s99",
-    "qwen:nl_en:beauty:s99",
     "qwen:code_vi:beauty:s123",
-    "qwen:code_en:beauty:s123",
-    "qwen:nl_vi:beauty:s123",
-    "qwen:nl_en:beauty:s123",
-    "qwen:nl_vi:beauty:s2024",
-    "qwen:nl_en:beauty:s2024"
+    "qwen:code_en:beauty:s123"
    ],
-   "hours": 9.6
+   "hours": 8.5
   },
   {
    "jobs": [
+    "qwen:nl_vi:beauty:s123",
+    "qwen:nl_en:beauty:s123",
     "qwen:code_vi:beauty:s2024",
-    "qwen:code_en:beauty:s2024"
+    "qwen:code_en:beauty:s2024",
+    "qwen:nl_vi:beauty:s2024",
+    "qwen:nl_en:beauty:s2024"
    ],
-   "hours": 2.6
+   "hours": 8.7
   }
  ],
  "jobs": {
@@ -146,7 +161,7 @@
    "domain": "restaurant",
    "seed": 42,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_vi/seed_42 --seeds 42"
    ],
@@ -160,7 +175,7 @@
    "domain": "restaurant",
    "seed": 42,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_en/seed_42 --seeds 42"
    ],
@@ -174,7 +189,7 @@
    "domain": "restaurant",
    "seed": 42,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_vi/seed_42 --seeds 42"
    ],
@@ -188,7 +203,7 @@
    "domain": "restaurant",
    "seed": 42,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_en/seed_42 --seeds 42"
    ],
@@ -202,7 +217,7 @@
    "domain": "hotel",
    "seed": 42,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_vi/seed_42 --seeds 42"
    ],
@@ -216,7 +231,7 @@
    "domain": "hotel",
    "seed": 42,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_en/seed_42 --seeds 42"
    ],
@@ -230,7 +245,7 @@
    "domain": "hotel",
    "seed": 42,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_vi/seed_42 --seeds 42"
    ],
@@ -244,7 +259,7 @@
    "domain": "hotel",
    "seed": 42,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_en/seed_42 --seeds 42"
    ],
@@ -258,7 +273,7 @@
    "domain": "phone",
    "seed": 42,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_vi/seed_42 --seeds 42"
    ],
@@ -272,7 +287,7 @@
    "domain": "phone",
    "seed": 42,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_en/seed_42 --seeds 42"
    ],
@@ -286,7 +301,7 @@
    "domain": "phone",
    "seed": 42,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_vi/seed_42 --seeds 42"
    ],
@@ -300,7 +315,7 @@
    "domain": "phone",
    "seed": 42,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_en/seed_42 --seeds 42"
    ],
@@ -314,7 +329,7 @@
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_vi/seed_42 --seeds 42"
    ],
@@ -328,7 +343,7 @@
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_en/seed_42 --seeds 42"
    ],
@@ -342,7 +357,7 @@
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_vi/seed_42 --seeds 42"
    ],
@@ -356,7 +371,7 @@
    "domain": "education",
    "seed": 42,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_en/seed_42 --seeds 42"
    ],
@@ -370,7 +385,7 @@
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_vi/seed_42 --seeds 42"
    ],
@@ -384,7 +399,7 @@
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_en/seed_42 --seeds 42"
    ],
@@ -398,7 +413,7 @@
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_vi/seed_42 --seeds 42"
    ],
@@ -412,7 +427,7 @@
    "domain": "beauty",
    "seed": 42,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_en/seed_42 --seeds 42"
    ],
@@ -426,7 +441,7 @@
    "domain": "restaurant",
    "seed": 7,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_vi/seed_7 --seeds 7"
    ],
@@ -440,7 +455,7 @@
    "domain": "restaurant",
    "seed": 7,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_en/seed_7 --seeds 7"
    ],
@@ -454,7 +469,7 @@
    "domain": "restaurant",
    "seed": 7,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_vi/seed_7 --seeds 7"
    ],
@@ -468,7 +483,7 @@
    "domain": "restaurant",
    "seed": 7,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_en/seed_7 --seeds 7"
    ],
@@ -482,7 +497,7 @@
    "domain": "restaurant",
    "seed": 99,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_vi/seed_99 --seeds 99"
    ],
@@ -496,7 +511,7 @@
    "domain": "restaurant",
    "seed": 99,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_en/seed_99 --seeds 99"
    ],
@@ -510,7 +525,7 @@
    "domain": "restaurant",
    "seed": 99,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_vi/seed_99 --seeds 99"
    ],
@@ -524,7 +539,7 @@
    "domain": "restaurant",
    "seed": 99,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_en/seed_99 --seeds 99"
    ],
@@ -538,7 +553,7 @@
    "domain": "restaurant",
    "seed": 123,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_vi/seed_123 --seeds 123"
    ],
@@ -552,7 +567,7 @@
    "domain": "restaurant",
    "seed": 123,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_en/seed_123 --seeds 123"
    ],
@@ -566,7 +581,7 @@
    "domain": "restaurant",
    "seed": 123,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_vi/seed_123 --seeds 123"
    ],
@@ -580,7 +595,7 @@
    "domain": "restaurant",
    "seed": 123,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_en/seed_123 --seeds 123"
    ],
@@ -594,7 +609,7 @@
    "domain": "restaurant",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_vi/seed_2024 --seeds 2024"
    ],
@@ -608,7 +623,7 @@
    "domain": "restaurant",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 82,
+   "est_min": 128,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format code --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_code_en/seed_2024 --seeds 2024"
    ],
@@ -622,7 +637,7 @@
    "domain": "restaurant",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang vi --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_vi/seed_2024 --seeds 2024"
    ],
@@ -636,7 +651,7 @@
    "domain": "restaurant",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 47,
+   "est_min": 67,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'restaurant' --format nl --lang en --train_path Res_ABSA/Train.txt --dev_path Res_ABSA/Dev.txt --test_path Res_ABSA/Test.txt --output_dir outputs/qwen_restaurant_nl_en/seed_2024 --seeds 2024"
    ],
@@ -650,7 +665,7 @@
    "domain": "hotel",
    "seed": 7,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_vi/seed_7 --seeds 7"
    ],
@@ -664,7 +679,7 @@
    "domain": "hotel",
    "seed": 7,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_en/seed_7 --seeds 7"
    ],
@@ -678,7 +693,7 @@
    "domain": "hotel",
    "seed": 7,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_vi/seed_7 --seeds 7"
    ],
@@ -692,7 +707,7 @@
    "domain": "hotel",
    "seed": 7,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_en/seed_7 --seeds 7"
    ],
@@ -706,7 +721,7 @@
    "domain": "hotel",
    "seed": 99,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_vi/seed_99 --seeds 99"
    ],
@@ -720,7 +735,7 @@
    "domain": "hotel",
    "seed": 99,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_en/seed_99 --seeds 99"
    ],
@@ -734,7 +749,7 @@
    "domain": "hotel",
    "seed": 99,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_vi/seed_99 --seeds 99"
    ],
@@ -748,7 +763,7 @@
    "domain": "hotel",
    "seed": 99,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_en/seed_99 --seeds 99"
    ],
@@ -762,7 +777,7 @@
    "domain": "hotel",
    "seed": 123,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_vi/seed_123 --seeds 123"
    ],
@@ -776,7 +791,7 @@
    "domain": "hotel",
    "seed": 123,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_en/seed_123 --seeds 123"
    ],
@@ -790,7 +805,7 @@
    "domain": "hotel",
    "seed": 123,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_vi/seed_123 --seeds 123"
    ],
@@ -804,7 +819,7 @@
    "domain": "hotel",
    "seed": 123,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_en/seed_123 --seeds 123"
    ],
@@ -818,7 +833,7 @@
    "domain": "hotel",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_vi/seed_2024 --seeds 2024"
    ],
@@ -832,7 +847,7 @@
    "domain": "hotel",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 84,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format code --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_code_en/seed_2024 --seeds 2024"
    ],
@@ -846,7 +861,7 @@
    "domain": "hotel",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang vi --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_vi/seed_2024 --seeds 2024"
    ],
@@ -860,7 +875,7 @@
    "domain": "hotel",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 48,
+   "est_min": 68,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'hotel' --format nl --lang en --train_path Hotel_ABSA/Train.txt --dev_path Hotel_ABSA/Dev.txt --test_path Hotel_ABSA/Test.txt --output_dir outputs/qwen_hotel_nl_en/seed_2024 --seeds 2024"
    ],
@@ -874,7 +889,7 @@
    "domain": "phone",
    "seed": 7,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_vi/seed_7 --seeds 7"
    ],
@@ -888,7 +903,7 @@
    "domain": "phone",
    "seed": 7,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_en/seed_7 --seeds 7"
    ],
@@ -902,7 +917,7 @@
    "domain": "phone",
    "seed": 7,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_vi/seed_7 --seeds 7"
    ],
@@ -916,7 +931,7 @@
    "domain": "phone",
    "seed": 7,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_en/seed_7 --seeds 7"
    ],
@@ -930,7 +945,7 @@
    "domain": "phone",
    "seed": 99,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_vi/seed_99 --seeds 99"
    ],
@@ -944,7 +959,7 @@
    "domain": "phone",
    "seed": 99,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_en/seed_99 --seeds 99"
    ],
@@ -958,7 +973,7 @@
    "domain": "phone",
    "seed": 99,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_vi/seed_99 --seeds 99"
    ],
@@ -972,7 +987,7 @@
    "domain": "phone",
    "seed": 99,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_en/seed_99 --seeds 99"
    ],
@@ -986,7 +1001,7 @@
    "domain": "phone",
    "seed": 123,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_vi/seed_123 --seeds 123"
    ],
@@ -1000,7 +1015,7 @@
    "domain": "phone",
    "seed": 123,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_en/seed_123 --seeds 123"
    ],
@@ -1014,7 +1029,7 @@
    "domain": "phone",
    "seed": 123,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_vi/seed_123 --seeds 123"
    ],
@@ -1028,7 +1043,7 @@
    "domain": "phone",
    "seed": 123,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_en/seed_123 --seeds 123"
    ],
@@ -1042,7 +1057,7 @@
    "domain": "phone",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_vi/seed_2024 --seeds 2024"
    ],
@@ -1056,7 +1071,7 @@
    "domain": "phone",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 113,
+   "est_min": 184,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format code --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_code_en/seed_2024 --seeds 2024"
    ],
@@ -1070,7 +1085,7 @@
    "domain": "phone",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang vi --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_vi/seed_2024 --seeds 2024"
    ],
@@ -1084,7 +1099,7 @@
    "domain": "phone",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 66,
+   "est_min": 94,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'mobile phone' --format nl --lang en --train_path Phone_ABSA/Train.txt --dev_path Phone_ABSA/Dev.txt --test_path Phone_ABSA/Test.txt --output_dir outputs/qwen_phone_nl_en/seed_2024 --seeds 2024"
    ],
@@ -1098,7 +1113,7 @@
    "domain": "education",
    "seed": 7,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_vi/seed_7 --seeds 7"
    ],
@@ -1112,7 +1127,7 @@
    "domain": "education",
    "seed": 7,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_en/seed_7 --seeds 7"
    ],
@@ -1126,7 +1141,7 @@
    "domain": "education",
    "seed": 7,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_vi/seed_7 --seeds 7"
    ],
@@ -1140,7 +1155,7 @@
    "domain": "education",
    "seed": 7,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_en/seed_7 --seeds 7"
    ],
@@ -1154,7 +1169,7 @@
    "domain": "education",
    "seed": 99,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_vi/seed_99 --seeds 99"
    ],
@@ -1168,7 +1183,7 @@
    "domain": "education",
    "seed": 99,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_en/seed_99 --seeds 99"
    ],
@@ -1182,7 +1197,7 @@
    "domain": "education",
    "seed": 99,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_vi/seed_99 --seeds 99"
    ],
@@ -1196,7 +1211,7 @@
    "domain": "education",
    "seed": 99,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_en/seed_99 --seeds 99"
    ],
@@ -1210,7 +1225,7 @@
    "domain": "education",
    "seed": 123,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_vi/seed_123 --seeds 123"
    ],
@@ -1224,7 +1239,7 @@
    "domain": "education",
    "seed": 123,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_en/seed_123 --seeds 123"
    ],
@@ -1238,7 +1253,7 @@
    "domain": "education",
    "seed": 123,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_vi/seed_123 --seeds 123"
    ],
@@ -1252,7 +1267,7 @@
    "domain": "education",
    "seed": 123,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_en/seed_123 --seeds 123"
    ],
@@ -1266,7 +1281,7 @@
    "domain": "education",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_vi/seed_2024 --seeds 2024"
    ],
@@ -1280,7 +1295,7 @@
    "domain": "education",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 45,
+   "est_min": 71,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format code --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_code_en/seed_2024 --seeds 2024"
    ],
@@ -1294,7 +1309,7 @@
    "domain": "education",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang vi --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_vi/seed_2024 --seeds 2024"
    ],
@@ -1308,7 +1323,7 @@
    "domain": "education",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 26,
+   "est_min": 38,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'university course evaluation' --format nl --lang en --train_path Education_ABSA/Train.txt --dev_path Education_ABSA/Dev.txt --test_path Education_ABSA/Test.txt --output_dir outputs/qwen_education_nl_en/seed_2024 --seeds 2024"
    ],
@@ -1322,7 +1337,7 @@
    "domain": "beauty",
    "seed": 7,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_vi/seed_7 --seeds 7"
    ],
@@ -1336,7 +1351,7 @@
    "domain": "beauty",
    "seed": 7,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_en/seed_7 --seeds 7"
    ],
@@ -1350,7 +1365,7 @@
    "domain": "beauty",
    "seed": 7,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_vi/seed_7 --seeds 7"
    ],
@@ -1364,7 +1379,7 @@
    "domain": "beauty",
    "seed": 7,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_en/seed_7 --seeds 7"
    ],
@@ -1378,7 +1393,7 @@
    "domain": "beauty",
    "seed": 99,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_vi/seed_99 --seeds 99"
    ],
@@ -1392,7 +1407,7 @@
    "domain": "beauty",
    "seed": 99,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_en/seed_99 --seeds 99"
    ],
@@ -1406,7 +1421,7 @@
    "domain": "beauty",
    "seed": 99,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_vi/seed_99 --seeds 99"
    ],
@@ -1420,7 +1435,7 @@
    "domain": "beauty",
    "seed": 99,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_en/seed_99 --seeds 99"
    ],
@@ -1434,7 +1449,7 @@
    "domain": "beauty",
    "seed": 123,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_vi/seed_123 --seeds 123"
    ],
@@ -1448,7 +1463,7 @@
    "domain": "beauty",
    "seed": 123,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_en/seed_123 --seeds 123"
    ],
@@ -1462,7 +1477,7 @@
    "domain": "beauty",
    "seed": 123,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_vi/seed_123 --seeds 123"
    ],
@@ -1476,7 +1491,7 @@
    "domain": "beauty",
    "seed": 123,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_en/seed_123 --seeds 123"
    ],
@@ -1490,7 +1505,7 @@
    "domain": "beauty",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_vi/seed_2024 --seeds 2024"
    ],
@@ -1504,7 +1519,7 @@
    "domain": "beauty",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 154,
+   "est_min": 255,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format code --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_code_en/seed_2024 --seeds 2024"
    ],
@@ -1518,7 +1533,7 @@
    "domain": "beauty",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang vi --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_vi/seed_2024 --seeds 2024"
    ],
@@ -1532,7 +1547,7 @@
    "domain": "beauty",
    "seed": 2024,
    "gpus": 1,
-   "est_min": 90,
+   "est_min": 132,
    "cmds": [
     "python3 baselines/qwen_instruction_tuning.py --domain 'beauty product' --format nl --lang en --train_path Beauty_ABSA/Train.txt --dev_path Beauty_ABSA/Dev.txt --test_path Beauty_ABSA/Test.txt --output_dir outputs/qwen_beauty_nl_en/seed_2024 --seeds 2024"
    ],
