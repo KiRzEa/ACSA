@@ -23,7 +23,7 @@ SEEDS = [42, 123, 2024, 7, 99]
 DOM = {  # data dir, domain phrase used inside instruction prompts
     "restaurant": ("Res_ABSA", "restaurant"), "hotel": ("Hotel_ABSA", "hotel"), "phone": ("Phone_ABSA", "mobile phone"),
     "education": ("Education_ABSA", "university course evaluation"), "beauty": ("Beauty_ABSA", "beauty product")}
-ORDER = ["bert", "cnn", "t5base", "instr", "t5large", "cage"]
+ORDER = ["bert", "cnn", "t5base", "instr", "t5large", "cage", "qwen"]
 # CAGE ablations replacing cross-attention and the minimal (joint-head-only) CAGE, see run_cage_ablation.sh.
 CAGE_REVIEW = {"cond_none": "--conditioning none", "cond_concat": "--conditioning concat",
                "cond_attn_only": "--conditioning attn_only", "minimal_joint": "--heads joint_only"}
@@ -37,6 +37,11 @@ EST = {  # minutes per job; base-size numbers scaled from round 1 (BERT ~90 min,
     # one CAGE training (one seed, 10 epochs + early stopping): NOT measured per job. Kaggle session 3 fit 45 sequential
     # Restaurant trainings and session 5 30 Phone+Beauty ones, so <= ~15 and ~24 min; Hotel re-encodes 34 descriptions per step.
     "cage": {"restaurant": 20, "hotel": 30, "phone": 30, "education": 15, "beauty": 40},
+    # Qwen2.5-3B-Instruct + LoRA (Unsloth, 4-bit, 2 epochs, one T4): NOT measured. Assumes ~1k trained tokens/s
+    # (Qwen tokens per epoch: NL 0.34-1.37M, Code 0.88-3.34M; the code prompt holds the review twice) plus ~4 min for
+    # loading, dev loss and greedy generation. Replace with --calibrate after the first session.
+    "qwen": {"nl": {"restaurant": 30, "hotel": 30, "phone": 40, "education": 18, "beauty": 55},
+             "code": {"restaurant": 65, "hotel": 65, "phone": 85, "education": 35, "beauty": 120}},
     "t5large": {"mt5large/education": 300, "mt5large/beauty": 440, "vit5large/education": 200, "vit5large/beauty": 180},  # beauty scaled from measured education time by train-set-size ratio (~3.2x), not yet measured directly
 }
 
@@ -100,6 +105,15 @@ def build_jobs(calib):
                         out = f"outputs/{dirname}/seed_{s}"
                         add("instr", f"{fmt}_{lang}", d, s, EST["instr"][fmt][d], 1,
                             [f"python3 baselines/t5_instruction_tuning.py --domain '{prompt_dom}' --format {fmt} --lang {lang} {tr} --output_dir {out} --seeds {s}"], [f"{out}/multi_seed_summary.json"])
+        for fmt in ("code", "nl"):  # Qwen2.5-3B instruction tuning, same prompts as the ViT5 rows above (run_kaggle_qwen.sh)
+            for lang in ("vi", "en"):
+                for s in SEEDS:
+                    dirname = f"qwen_{d}_{fmt}_{lang}"
+                    if not seed_done(dirname, s):
+                        out = f"outputs/{dirname}/seed_{s}"
+                        add("qwen", f"{fmt}_{lang}", d, s, EST["qwen"][fmt][d], 1,
+                            [f"python3 baselines/qwen_instruction_tuning.py --domain '{prompt_dom}' --format {fmt} --lang {lang} {tr} --output_dir {out} --seeds {s}"],
+                            [f"{out}/multi_seed_summary.json"])
         for abl, flag in CAGE_REVIEW.items():
             for s in SEEDS:
                 out = f"outputs/cage_abl_{abl}_{d}_fixed/seed_{s}"
@@ -275,6 +289,7 @@ if __name__ == "__main__":
     ap.add_argument("--tag", action="store_true", help="print the zip tag of --session and exit")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--grace-hours", type=float, default=0.75, help="run: hard-kill running jobs this long after --budget-hours")
+    ap.add_argument("--groups", default=None, help="list/plan: comma-separated job groups to keep, e.g. qwen")
     a = ap.parse_args()
     if a.cmd == "run" and a.tag:
         print(f"queue_{json.loads(PLAN.read_text()).get('round', 'r1')}_s{a.session}")
@@ -283,4 +298,6 @@ if __name__ == "__main__":
     else:
         a.budget_hours = a.budget_hours or 10.5
         jobs = build_jobs(load_calibration(a.calibrate))
+        if a.groups:
+            jobs = [j for j in jobs if j["group"] in a.groups.split(",")]
         {"list": cmd_list, "plan": cmd_plan}[a.cmd](a, jobs)

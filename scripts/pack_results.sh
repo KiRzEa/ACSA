@@ -17,5 +17,5 @@ DEST="/kaggle/working"; [ -d "$DEST" ] || DEST="."
 OUT="${DEST}/cage_results_${TAG}.zip"
 shopt -s nullglob
 zip -q -r "$OUT" outputs/* \
-  -i '*_job_times.tsv' '*/test_metrics.json' '*/query_swap.json' '*/paraphrase_eval.json' '*/metrics.json' '*/multi_seed_summary.json' '*/test_predictions.jsonl' '*/dev_predictions.jsonl' '*/category_texts.json' '*/history.json' 'outputs/cage_ckpt_*/seed_*/best_model.pt'
+  -i '*_job_times.tsv' '*/test_metrics.json' '*/query_swap.json' '*/paraphrase_eval.json' '*/metrics.json' '*/multi_seed_summary.json' '*/test_predictions.jsonl' '*/test_generations.jsonl' '*/dev_predictions.jsonl' '*/category_texts.json' '*/history.json' 'outputs/cage_ckpt_*/seed_*/best_model.pt'
 ls -lh "$OUT"; unzip -l "$OUT" | tail -1
