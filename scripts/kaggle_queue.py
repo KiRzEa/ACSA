@@ -37,11 +37,12 @@ EST = {  # minutes per job; base-size numbers scaled from round 1 (BERT ~90 min,
     # one CAGE training (one seed, 10 epochs + early stopping): NOT measured per job. Kaggle session 3 fit 45 sequential
     # Restaurant trainings and session 5 30 Phone+Beauty ones, so <= ~15 and ~24 min; Hotel re-encodes 34 descriptions per step.
     "cage": {"restaurant": 20, "hotel": 30, "phone": 30, "education": 15, "beauty": 40},
-    # Qwen2.5-3B-Instruct + LoRA (Unsloth, 4-bit, 2 epochs, one T4): NOT measured. Assumes ~1k trained tokens/s
-    # (Qwen tokens per epoch: NL 0.34-1.37M, Code 0.88-3.34M; the code prompt holds the review twice) plus ~4 min for
-    # loading, dev loss and greedy generation. Replace with --calibrate after the first session.
-    "qwen": {"nl": {"restaurant": 30, "hotel": 30, "phone": 40, "education": 18, "beauty": 55},
-             "code": {"restaurant": 65, "hotel": 65, "phone": 85, "education": 35, "beauty": 120}},
+    # Qwen2.5-3B-Instruct + LoRA (Unsloth, 4-bit, 2 epochs, one T4). Kaggle check 2026-10-12 (NL, Education, 400 reviews):
+    # 2.6 s per step of 16 (~6 reviews/s, ~770 tokens/s), dev 19 reviews/s, generation ~6 reviews/s, 4.7 GB peak.
+    # NL scaled by train/dev/test sizes and sequence length; Code assumes ~1.75x longer steps and 2x slower generation
+    # (not yet measured). Includes ~2 min loading. Replace with --calibrate after the first session.
+    "qwen": {"nl": {"restaurant": 47, "hotel": 48, "phone": 66, "education": 26, "beauty": 90},
+             "code": {"restaurant": 82, "hotel": 84, "phone": 113, "education": 45, "beauty": 154}},
     "t5large": {"mt5large/education": 300, "mt5large/beauty": 440, "vit5large/education": 200, "vit5large/beauty": 180},  # beauty scaled from measured education time by train-set-size ratio (~3.2x), not yet measured directly
 }
 
